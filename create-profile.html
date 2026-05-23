@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWAYMVAR | Create Your Profile</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-mono { font-family: 'Space Mono', monospace; }
+  .glass-nav { backdrop-filter: blur(12px); background: rgba(254,252,245,0.93); }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  .step-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .step-dot.done { background: #2D5016; color: white; }
+  .step-dot.active { background: #C9960C; color: #1C1A14; }
+  .step-dot.pending { background: #EDE5D0; color: #5C5040; border: 2px solid #D4C5A0; }
+  .form-label { font-family: 'Space Mono', monospace; font-size: 10px; color: #A67C00; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 6px; }
+  .form-input { width: 100%; padding: 12px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1C1A14; outline: none; transition: border-color 0.2s; }
+  .form-input:focus { border-color: #C9960C; }
+  .form-select { width: 100%; padding: 12px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1C1A14; outline: none; }
+  .form-textarea { width: 100%; padding: 12px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1C1A14; outline: none; resize: vertical; min-height: 100px; transition: border-color 0.2s; }
+  .form-textarea:focus { border-color: #C9960C; }
+  .trait-btn { padding: 8px 16px; border-radius: 999px; border: 1.5px solid #D4C5A0; background: white; color: #5C5040; font-family: 'Space Mono', monospace; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+  .trait-btn.selected { background: #EDF5E0; border-color: #2D5016; color: #2D5016; }
+  .section-card { background: white; border: 1px solid #D4C5A0; border-left: 4px solid #C9960C; border-radius: 14px; padding: 28px; margin-bottom: 20px; }
+  .progress-bar { height: 6px; background: #EDE5D0; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #2D5016; border-radius: 3px; transition: width 0.5s ease; }
+  .photo-upload { border: 2px dashed #D4C5A0; border-radius: 14px; padding: 40px 24px; text-align: center; cursor: pointer; transition: all 0.2s; background: white; position: relative; }
+  .photo-upload:hover { border-color: #C9960C; background: #FFF8E1; }
+</style>
+</head>
+<body style="padding-bottom:80px;">
+
+<!-- NAV -->
+<header class="fixed top-0 w-full z-50 glass-nav" style="border-bottom:1px solid #D4C5A0;">
+  <div style="max-width:1000px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;">
+    <a href="index.html" style="text-decoration:none;">
+      <h1 class="font-display" style="font-size:20px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;">SWAYMVAR</h1>
+      <p class="font-mono" style="font-size:9px;color:#A67C00;letter-spacing:0.2em;">swaymvar.in</p>
+    </a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span class="font-mono" style="font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;" id="step-label">Step 1 of 5</span>
+      <a href="discover.html" class="font-mono" style="font-size:11px;color:#2D5016;text-decoration:none;border-bottom:1px solid #C9960C;padding-bottom:1px;">View Profiles</a>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main style="max-width:800px;margin:0 auto;padding:100px 24px 40px;">
+
+  <!-- PAGE HEADER -->
+  <div style="text-align:center;margin-bottom:40px;">
+    <p class="font-mono" style="font-size:10px;color:#C9960C;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px;">Founding Member</p>
+    <h2 class="font-display" style="font-size:clamp(28px,4vw,40px);color:#2D5016;font-weight:700;margin-bottom:10px;">Create Your Profile</h2>
+    <p style="color:#5C5040;font-size:15px;line-height:1.7;max-width:560px;margin:0 auto;">You are in control. Only you can create your profile — no family submissions. Your profile is private until you choose to make it visible.</p>
+  </div>
+
+  <!-- PROGRESS -->
+  <div style="margin-bottom:36px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span class="font-mono" style="font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;">Profile completion</span>
+      <span class="font-mono" style="font-size:11px;color:#2D5016;font-weight:700;" id="progress-pct">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width:0%;" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- STEP INDICATORS -->
+  <div style="display:flex;gap:8px;margin-bottom:36px;overflow-x:auto;padding-bottom:4px;">
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;" id="step-indicator-1">
+      <div class="step-dot active">1</div>
+      <span class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;">Basic Info</span>
+    </div>
+    <div style="flex:1;min-width:20px;height:1px;background:#D4C5A0;align-self:center;"></div>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;" id="step-indicator-2">
+      <div class="step-dot pending">2</div>
+      <span class="font-mono" style="font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;">Work & Posting</span>
+    </div>
+    <div style="flex:1;min-width:20px;height:1px;background:#D4C5A0;align-self:center;"></div>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;" id="step-indicator-3">
+      <div class="step-dot pending">3</div>
+      <span class="font-mono" style="font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;">Personality</span>
+    </div>
+    <div style="flex:1;min-width:20px;height:1px;background:#D4C5A0;align-self:center;"></div>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;" id="step-indicator-4">
+      <div class="step-dot pending">4</div>
+      <span class="font-mono" style="font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;">Life Preferences</span>
+    </div>
+    <div style="flex:1;min-width:20px;height:1px;background:#D4C5A0;align-self:center;"></div>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;" id="step-indicator-5">
+      <div class="step-dot pending">5</div>
+      <span class="font-mono" style="font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;">Photo & Privacy</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ STEP 1: BASIC INFO ════════════════════════ -->
+  <div id="step-1">
+
+    <!-- Photo Upload -->
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:16px;">Your Photo</p>
+      <div class="photo-upload" id="photo-zone" onclick="document.getElementById('photo-input').click()">
+        <input type="file" id="photo-input" accept="image/*" style="display:none;" onchange="handlePhoto(this)"/>
+        <div id="photo-placeholder">
+          <span class="material-symbols-outlined" style="font-size:40px;color:#D4C5A0;display:block;margin-bottom:10px;">add_photo_alternate</span>
+          <p style="font-weight:600;color:#1C1A14;margin-bottom:4px;">Upload your photo</p>
+          <p style="color:#5C5040;font-size:13px;margin-bottom:8px;">JPG or PNG · Max 5MB · Your face should be clearly visible</p>
+          <p style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;letter-spacing:0.1em;text-transform:uppercase;">🔒 Photo is blurred by default until you choose to reveal it</p>
+        </div>
+        <img id="photo-preview" style="display:none;width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto;border:3px solid #C9960C;" src="" alt="Preview"/>
+      </div>
+    </div>
+
+    <!-- Personal Details -->
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:20px;">Personal Details</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <label class="form-label">First Name *</label>
+          <input type="text" class="form-input" placeholder="Your first name" id="fname"/>
+        </div>
+        <div>
+          <label class="form-label">Last Name *</label>
+          <input type="text" class="form-input" placeholder="Your last name" id="lname"/>
+        </div>
+        <div>
+          <label class="form-label">Age *</label>
+          <input type="number" class="form-input" placeholder="e.g. 28" min="21" max="45" id="age"/>
+        </div>
+        <div>
+          <label class="form-label">Height</label>
+          <select class="form-select" id="height">
+            <option value="">Select height</option>
+            <option>4'10"</option><option>4'11"</option>
+            <option>5'0"</option><option>5'1"</option><option>5'2"</option>
+            <option>5'3"</option><option>5'4"</option><option>5'5"</option>
+            <option>5'6"</option><option>5'7"</option><option>5'8"</option>
+            <option>5'9"</option><option>5'10"</option><option>5'11"</option>
+            <option>6'0"</option><option>6'1"</option><option>6'2"+</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Gender *</label>
+          <select class="form-select" id="gender">
+            <option value="">Select</option>
+            <option>Woman</option>
+            <option>Man</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Mother Tongue</label>
+          <input type="text" class="form-input" placeholder="e.g. Hindi, Tamil, Bengali" id="language"/>
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <label class="form-label">About Yourself *</label>
+        <textarea class="form-textarea" placeholder="Write a few lines about yourself — who you are, what you do, what you value. Be genuine. This is the first thing someone reads about you." id="about"></textarea>
+        <p style="font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;margin-top:6px;">Tip: Avoid writing your designation here — that is in the Work section. Write about YOU as a person.</p>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:20px;">Education</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <label class="form-label">Highest Qualification *</label>
+          <select class="form-select" id="qualification">
+            <option value="">Select</option>
+            <option>Class 12 / Intermediate</option>
+            <option>Diploma</option>
+            <option>Bachelor's Degree (BA/BSc/BCom/BEng)</option>
+            <option>Master's Degree (MA/MSc/MCom/MEng)</option>
+            <option>MBA / PGDM</option>
+            <option>CA / CFA / CMA</option>
+            <option>LLB / LLM</option>
+            <option>MBBS / MD</option>
+            <option>PhD / Doctorate</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Field of Study</label>
+          <input type="text" class="form-input" placeholder="e.g. Economics, Engineering, Commerce" id="field"/>
+        </div>
+        <div style="grid-column:1/-1;">
+          <label class="form-label">College / University</label>
+          <input type="text" class="form-input" placeholder="e.g. Delhi University, IIT Bombay, Osmania University" id="college"/>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;margin-top:24px;">
+      <button onclick="goToStep(2)" style="padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">
+        Next: Work & Posting →
+      </button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ STEP 2: WORK & POSTING ════════════════════════ -->
+  <div id="step-2" style="display:none;">
+
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:20px;">Your Organisation</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="grid-column:1/-1;">
+          <label class="form-label">Organisation *</label>
+          <select class="form-select" id="org">
+            <option value="">Select your organisation</option>
+            <optgroup label="Financial Regulators">
+              <option>RBI</option><option>SEBI</option><option>NABARD</option>
+              <option>PFRDA</option><option>IRDAI</option><option>NaBFID</option>
+              <option>EXIM Bank</option><option>SIDBI</option><option>NHB</option>
+            </optgroup>
+            <optgroup label="PSU Banks">
+              <option>SBI</option><option>PNB</option><option>Bank of Baroda</option>
+              <option>Canara Bank</option><option>Union Bank of India</option>
+              <option>Bank of India</option><option>Indian Bank</option>
+              <option>UCO Bank</option><option>Bank of Maharashtra</option>
+              <option>Central Bank of India</option><option>Punjab & Sind Bank</option>
+              <option>Other PSU Bank</option>
+            </optgroup>
+            <optgroup label="Public Insurance">
+              <option>LIC</option><option>GIC Re</option><option>National Insurance</option>
+              <option>New India Assurance</option><option>Oriental Insurance</option>
+              <option>United India Insurance</option>
+            </optgroup>
+            <optgroup label="Oil & Energy PSUs">
+              <option>IOCL</option><option>BPCL</option><option>HPCL</option>
+              <option>ONGC</option><option>GAIL</option><option>Oil India</option>
+              <option>Coal India</option><option>NTPC</option><option>Power Grid</option>
+              <option>NHPC</option><option>BHEL</option><option>SAIL</option>
+            </optgroup>
+            <optgroup label="Aviation & Transport">
+              <option>Airports Authority of India (AAI)</option>
+              <option>Air Traffic Control (ATC)</option>
+              <option>Air India</option><option>Pawan Hans</option>
+              <option>Indian Railways</option><option>IRCTC</option>
+              <option>RITES</option><option>CONCOR</option>
+            </optgroup>
+            <optgroup label="Other PSUs">
+              <option>ISRO</option><option>HAL</option><option>BEL</option>
+              <option>DRDO</option><option>BSNL</option><option>MTNL</option>
+              <option>FCI</option><option>NABFID</option>
+              <option>Other Central Government PSU</option>
+            </optgroup>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Designation / Grade *</label>
+          <input type="text" class="form-input" placeholder="e.g. Assistant, Officer, Clerk, Engineer, Scale II" id="designation"/>
+        </div>
+        <div>
+          <label class="form-label">Years of Service</label>
+          <select class="form-select" id="years">
+            <option value="">Select</option>
+            <option>Less than 1 year</option>
+            <option>1–3 years</option><option>3–5 years</option>
+            <option>5–10 years</option><option>10–15 years</option>
+            <option>15+ years</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:20px;">Current Posting</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <label class="form-label">Current Posting City *</label>
+          <input type="text" class="form-input" placeholder="e.g. Mumbai, Kanpur, Bengaluru" id="city"/>
+        </div>
+        <div>
+          <label class="form-label">Current Posting State *</label>
+          <input type="text" class="form-input" placeholder="e.g. Maharashtra, Uttar Pradesh" id="state"/>
+        </div>
+        <div style="grid-column:1/-1;">
+          <label class="form-label">Relocation Openness *</label>
+          <p style="color:#5C5040;font-size:13px;margin-bottom:10px;line-height:1.6;">Be honest. This is one of the most important things a potential partner needs to know.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;" id="relocation-options">
+            <label style="display:flex;align-items:flex-start;gap:12px;padding:14px;border:1.5px solid #D4C5A0;border-radius:10px;cursor:pointer;background:white;" id="reloc-1">
+              <input type="radio" name="relocation" value="flexible" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;"/>
+              <div>
+                <p style="font-weight:600;color:#1C1A14;font-size:14px;">Fully flexible</p>
+                <p style="color:#5C5040;font-size:13px;">I am open to moving anywhere in India for the right match</p>
+              </div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:12px;padding:14px;border:1.5px solid #D4C5A0;border-radius:10px;cursor:pointer;background:white;" id="reloc-2">
+              <input type="radio" name="relocation" value="zone" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;"/>
+              <div>
+                <p style="font-weight:600;color:#1C1A14;font-size:14px;">Flexible within a region</p>
+                <p style="color:#5C5040;font-size:13px;">I can move within a few states but not all over India</p>
+              </div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:12px;padding:14px;border:1.5px solid #D4C5A0;border-radius:10px;cursor:pointer;background:white;" id="reloc-3">
+              <input type="radio" name="relocation" value="city" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;"/>
+              <div>
+                <p style="font-weight:600;color:#1C1A14;font-size:14px;">Prefer to stay in current city</p>
+                <p style="color:#5C5040;font-size:13px;">I want a partner who is also based here or willing to move here</p>
+              </div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:12px;padding:14px;border:1.5px solid #D4C5A0;border-radius:10px;cursor:pointer;background:white;">
+              <input type="radio" name="relocation" value="discuss" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;"/>
+              <div>
+                <p style="font-weight:600;color:#1C1A14;font-size:14px;">Open to discussion</p>
+                <p style="color:#5C5040;font-size:13px;">I want to figure this out together with the right person</p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;">
+      <button onclick="goToStep(1)" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
+      <button onclick="goToStep(3)" style="padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Personality →</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ STEP 3: PERSONALITY ════════════════════════ -->
+  <div id="step-3" style="display:none;">
+
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Your Personality</p>
+      <p style="color:#5C5040;font-size:13px;margin-bottom:20px;line-height:1.6;">Select the traits that genuinely describe you. Be honest — these help find someone truly compatible, not just someone who sounds good on paper.</p>
+
+      <!-- Big 5 Sliders -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <div style="background:#F9F5EC;border-radius:10px;padding:18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-weight:600;color:#1C1A14;font-size:14px;">🧘 Introvert</span>
+            <span style="font-weight:600;color:#1C1A14;font-size:14px;">Extrovert 🎉</span>
+          </div>
+          <input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="intro-extro" oninput="updateSliderLabel('intro-extro-label',this.value,['Strongly Introvert','More Introvert','Ambivert','More Extrovert','Strongly Extrovert'])"/>
+          <p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:6px;" id="intro-extro-label">Ambivert</p>
+        </div>
+
+        <div style="background:#F9F5EC;border-radius:10px;padding:18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-weight:600;color:#1C1A14;font-size:14px;">😌 Very Calm</span>
+            <span style="font-weight:600;color:#1C1A14;font-size:14px;">Very Emotional 💭</span>
+          </div>
+          <input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="calm-emo" oninput="updateSliderLabel('calm-emo-label',this.value,['Very calm, rarely stressed','Generally calm','Balanced','Emotionally expressive','Deeply feeling, sensitive'])"/>
+          <p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:6px;" id="calm-emo-label">Balanced</p>
+        </div>
+
+        <div style="background:#F9F5EC;border-radius:10px;padding:18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-weight:600;color:#1C1A14;font-size:14px;">📋 Very Organised</span>
+            <span style="font-weight:600;color:#1C1A14;font-size:14px;">Spontaneous ✨</span>
+          </div>
+          <input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="org-spon" oninput="updateSliderLabel('org-spon-label',this.value,['Very structured and planned','Mostly organised','Mix of both','Generally spontaneous','Very spontaneous and flexible'])"/>
+          <p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:6px;" id="org-spon-label">Mix of both</p>
+        </div>
+
+        <div style="background:#F9F5EC;border-radius:10px;padding:18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-weight:600;color:#1C1A14;font-size:14px;">🤝 Very Agreeable</span>
+            <span style="font-weight:600;color:#1C1A14;font-size:14px;">Very Assertive 💪</span>
+          </div>
+          <input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="agree-assert" oninput="updateSliderLabel('agree-assert-label',this.value,['Very collaborative, always harmonious','Mostly agreeable','Balanced','Mostly assertive','Very direct and holds position'])"/>
+          <p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:6px;" id="agree-assert-label">Balanced</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Positive Trait Tags -->
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Select Your Traits</p>
+      <p style="color:#5C5040;font-size:13px;margin-bottom:16px;">Pick up to 8 that genuinely describe you.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;" id="trait-container">
+        <button class="trait-btn" onclick="toggleTrait(this)">Honest</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Loyal</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Ambitious</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Empathetic</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Curious</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Creative</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Disciplined</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Optimistic</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Humorous</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Patient</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Independent</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Family-oriented</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Adventurous</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Practical</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Generous</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Intellectual</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Calm</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Caring</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Determined</button>
+        <button class="trait-btn" onclick="toggleTrait(this)">Principled</button>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;">
+      <button onclick="goToStep(2)" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
+      <button onclick="goToStep(4)" style="padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Life Preferences →</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ STEP 4: LIFE PREFERENCES ════════════════════════ -->
+  <div id="step-4" style="display:none;">
+
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Life Preferences</p>
+      <p style="color:#5C5040;font-size:13px;margin-bottom:24px;line-height:1.6;">These small things matter a lot in daily married life. Answer honestly.</p>
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <!-- Diet -->
+        <div>
+          <label class="form-label">Dietary Preference *</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="diet-options">
+            <button class="trait-btn" onclick="selectOne('diet-options',this)">Vegetarian</button>
+            <button class="trait-btn" onclick="selectOne('diet-options',this)">Vegetarian (Jain)</button>
+            <button class="trait-btn" onclick="selectOne('diet-options',this)">Eggetarian</button>
+            <button class="trait-btn" onclick="selectOne('diet-options',this)">Non-Vegetarian</button>
+            <button class="trait-btn" onclick="selectOne('diet-options',this)">Vegan</button>
+            <button class="trait-btn" onclick="selectOne('diet-options',this)">No preference</button>
+          </div>
+        </div>
+
+        <!-- Travel -->
+        <div>
+          <label class="form-label">Travel Style</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="travel-options">
+            <button class="trait-btn" onclick="selectOne('travel-options',this)">🏔️ Mountains</button>
+            <button class="trait-btn" onclick="selectOne('travel-options',this)">🏖️ Beaches</button>
+            <button class="trait-btn" onclick="selectOne('travel-options',this)">🏛️ Heritage & Culture</button>
+            <button class="trait-btn" onclick="selectOne('travel-options',this)">🌍 International traveller</button>
+            <button class="trait-btn" onclick="selectOne('travel-options',this)">🏠 Prefer staying home</button>
+            <button class="trait-btn" onclick="selectOne('travel-options',this)">Mix of everything</button>
+          </div>
+        </div>
+
+        <!-- Social Life -->
+        <div>
+          <label class="form-label">Social Life</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="social-options">
+            <button class="trait-btn" onclick="selectOne('social-options',this)">🎉 Love parties & gatherings</button>
+            <button class="trait-btn" onclick="selectOne('social-options',this)">🍽️ Small dinners with close friends</button>
+            <button class="trait-btn" onclick="selectOne('social-options',this)">🏠 Prefer quiet evenings at home</button>
+            <button class="trait-btn" onclick="selectOne('social-options',this)">Mix of both</button>
+          </div>
+        </div>
+
+        <!-- Cooking -->
+        <div>
+          <label class="form-label">Cooking</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="cook-options">
+            <button class="trait-btn" onclick="selectOne('cook-options',this)">🍳 Love cooking at home</button>
+            <button class="trait-btn" onclick="selectOne('cook-options',this)">🍽️ Prefer eating out</button>
+            <button class="trait-btn" onclick="selectOne('cook-options',this)">Mix of both</button>
+            <button class="trait-btn" onclick="selectOne('cook-options',this)">Don't mind either way</button>
+          </div>
+        </div>
+
+        <!-- Children -->
+        <div>
+          <label class="form-label">Children</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="kids-options">
+            <button class="trait-btn" onclick="selectOne('kids-options',this)">👶 Want children</button>
+            <button class="trait-btn" onclick="selectOne('kids-options',this)">🚫 Do not want children</button>
+            <button class="trait-btn" onclick="selectOne('kids-options',this)">⏳ Open but not urgent</button>
+            <button class="trait-btn" onclick="selectOne('kids-options',this)">Prefer not to say</button>
+          </div>
+        </div>
+
+        <!-- Parents -->
+        <div>
+          <label class="form-label">Living Arrangement with Parents</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="parents-options">
+            <button class="trait-btn" onclick="selectOne('parents-options',this)">🏠 Joint family</button>
+            <button class="trait-btn" onclick="selectOne('parents-options',this)">🏘️ Same city as parents</button>
+            <button class="trait-btn" onclick="selectOne('parents-options',this)">✈️ Independent household</button>
+            <button class="trait-btn" onclick="selectOne('parents-options',this)">Open to discussion</button>
+          </div>
+        </div>
+
+        <!-- Siblings -->
+        <div>
+          <label class="form-label">Siblings & Family Bond</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="sibling-options">
+            <button class="trait-btn" onclick="selectOne('sibling-options',this)">Very close, involved in my life</button>
+            <button class="trait-btn" onclick="selectOne('sibling-options',this)">Close but independent</button>
+            <button class="trait-btn" onclick="selectOne('sibling-options',this)">Occasional contact</button>
+            <button class="trait-btn" onclick="selectOne('sibling-options',this)">Only child</button>
+          </div>
+        </div>
+
+        <!-- Money -->
+        <div>
+          <label class="form-label">Money Approach</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;" id="money-options">
+            <button class="trait-btn" onclick="selectOne('money-options',this)">💰 Saver — financial security first</button>
+            <button class="trait-btn" onclick="selectOne('money-options',this)">💳 Spend on experiences and quality</button>
+            <button class="trait-btn" onclick="selectOne('money-options',this)">📈 Investor mindset</button>
+            <button class="trait-btn" onclick="selectOne('money-options',this)">Balanced approach</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;">
+      <button onclick="goToStep(3)" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
+      <button onclick="goToStep(5)" style="padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Privacy Settings →</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════ STEP 5: PRIVACY & SUBMIT ════════════════════════ -->
+  <div id="step-5" style="display:none;">
+
+    <div class="section-card">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;">Privacy Settings</p>
+      <p style="color:#5C5040;font-size:13px;margin-bottom:24px;line-height:1.6;">You are in complete control. These settings can be changed anytime.</p>
+
+      <div style="display:flex;flex-direction:column;gap:14px;">
+
+        <div style="padding:18px;background:#F9F5EC;border-radius:10px;border:1px solid #D4C5A0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div>
+            <p style="font-weight:600;color:#1C1A14;font-size:14px;margin-bottom:3px;">Photo visibility</p>
+            <p style="color:#5C5040;font-size:13px;">Your photo is blurred by default. You choose when to reveal it.</p>
+          </div>
+          <select class="form-select" style="width:auto;" id="photo-privacy">
+            <option value="blurred">🔒 Blurred for everyone</option>
+            <option value="mutual">🔑 Visible only on mutual interest</option>
+            <option value="visible">👁️ Visible to all verified members</option>
+          </select>
+        </div>
+
+        <div style="padding:18px;background:#F9F5EC;border-radius:10px;border:1px solid #D4C5A0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div>
+            <p style="font-weight:600;color:#1C1A14;font-size:14px;margin-bottom:3px;">Full name visibility</p>
+            <p style="color:#5C5040;font-size:13px;">Show first name only, or full name after mutual interest</p>
+          </div>
+          <select class="form-select" style="width:auto;" id="name-privacy">
+            <option value="first">First name only</option>
+            <option value="mutual">Full name on mutual interest</option>
+            <option value="full">Full name visible</option>
+          </select>
+        </div>
+
+        <div style="padding:18px;background:#F9F5EC;border-radius:10px;border:1px solid #D4C5A0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div>
+            <p style="font-weight:600;color:#1C1A14;font-size:14px;margin-bottom:3px;">Who can contact you</p>
+            <p style="color:#5C5040;font-size:13px;">Control who can send you an expression of interest</p>
+          </div>
+          <select class="form-select" style="width:auto;" id="contact-privacy">
+            <option value="verified">Only verified members</option>
+            <option value="shortlist">Only those I shortlist</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Verification Reminder -->
+    <div style="background:#EDF5E0;border:1px solid #2D5016;border-left:4px solid #2D5016;border-radius:12px;padding:20px;margin-bottom:20px;display:flex;gap:14px;align-items:flex-start;">
+      <span style="font-size:24px;flex-shrink:0;">🛡️</span>
+      <div>
+        <p style="font-weight:700;color:#2D5016;font-size:14px;margin-bottom:6px;">Peer Verification Required</p>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;">Your profile will go live only after a trusted colleague from your organisation confirms your professional details. This keeps the platform genuine for everyone. After submitting, go to the <a href="verify.html" style="color:#2D5016;font-weight:700;">Verification page</a> to complete this step.</p>
+      </div>
+    </div>
+
+    <!-- Consent -->
+    <div style="background:#F9F5EC;border-radius:12px;padding:20px;margin-bottom:24px;">
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+        <input type="checkbox" id="consent-check" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;width:16px;height:16px;"/>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;">I confirm that I am creating this profile myself. I understand that no family member, agent, or third party can create a profile on my behalf on SWAYMVAR. The information I have provided is accurate to the best of my knowledge.</p>
+      </label>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <button onclick="goToStep(4)" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
+      <button onclick="submitProfile()" style="padding:16px 40px;background:#8B1A1A;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Submit Profile for Verification →</button>
+    </div>
+
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div id="step-success" style="display:none;text-align:center;padding:60px 24px;">
+    <div style="width:72px;height:72px;border-radius:50%;background:#EDF5E0;border:2px solid #2D5016;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:32px;">✦</div>
+    <h3 class="font-display" style="font-size:32px;color:#2D5016;font-weight:700;margin-bottom:12px;">Profile Submitted</h3>
+    <p style="color:#5C5040;font-size:15px;line-height:1.7;max-width:480px;margin:0 auto 32px;">Your profile has been submitted. The next step is peer verification — a trusted colleague from your organisation will confirm your details. We will reach you at your official email within 48 hours.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="verify.html" style="padding:14px 28px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Go to Verification →</a>
+      <a href="discover.html" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;text-decoration:none;">Explore Profiles</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- MOBILE NAV -->
+<nav style="display:none;position:fixed;bottom:0;width:100%;background:#FEFCF5;border-top:2px solid #C9960C;height:64px;z-index:50;" id="mobile-nav">
+  <div style="display:flex;justify-content:space-around;align-items:center;height:100%;">
+    <a href="index.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;"><span class="material-symbols-outlined" style="color:#5C5040;font-size:20px;">home</span><span class="font-mono" style="font-size:9px;color:#5C5040;">Home</span></a>
+    <a href="discover.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;"><span class="material-symbols-outlined" style="color:#5C5040;font-size:20px;">explore</span><span class="font-mono" style="font-size:9px;color:#5C5040;">Discover</span></a>
+    <a href="create-profile.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;"><span class="material-symbols-outlined" style="color:#2D5016;font-size:20px;">person_add</span><span class="font-mono" style="font-size:9px;color:#2D5016;">Create</span></a>
+    <a href="verify.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;"><span class="material-symbols-outlined" style="color:#5C5040;font-size:20px;">verified_user</span><span class="font-mono" style="font-size:9px;color:#5C5040;">Verify</span></a>
+  </div>
+</nav>
+
+<script>
+let currentStep = 1;
+const totalSteps = 5;
+
+function goToStep(n) {
+  document.getElementById('step-' + currentStep).style.display = 'none';
+  currentStep = n;
+  document.getElementById('step-' + currentStep).style.display = 'block';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const pct = Math.round(((currentStep - 1) / totalSteps) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('step-label').textContent = 'Step ' + currentStep + ' of ' + totalSteps;
+
+  // Update step dots
+  for (let i = 1; i <= totalSteps; i++) {
+    const dot = document.querySelector('#step-indicator-' + i + ' .step-dot');
+    const label = document.querySelector('#step-indicator-' + i + ' span');
+    if (dot) {
+      dot.className = 'step-dot ' + (i < currentStep ? 'done' : i === currentStep ? 'active' : 'pending');
+      if (i < currentStep) dot.innerHTML = '✓';
+      else dot.innerHTML = i;
+    }
+    if (label) {
+      label.style.color = i === currentStep ? '#C9960C' : i < currentStep ? '#2D5016' : '#5C5040';
+    }
+  }
+}
+
+function handlePhoto(input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('photo-placeholder').style.display = 'none';
+      const preview = document.getElementById('photo-preview');
+      preview.src = e.target.result;
+      preview.style.display = 'block';
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function toggleTrait(btn) {
+  const selected = document.querySelectorAll('#trait-container .trait-btn.selected');
+  if (!btn.classList.contains('selected') && selected.length >= 8) {
+    btn.style.opacity = '0.5';
+    setTimeout(() => btn.style.opacity = '1', 600);
+    return;
+  }
+  btn.classList.toggle('selected');
+}
+
+function selectOne(containerId, btn) {
+  document.querySelectorAll('#' + containerId + ' .trait-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function updateSliderLabel(labelId, value, labels) {
+  document.getElementById(labelId).textContent = labels[parseInt(value) - 1];
+}
+
+function submitProfile() {
+  const consent = document.getElementById('consent-check');
+  if (!consent.checked) {
+    consent.parentElement.parentElement.style.border = '2px solid #8B1A1A';
+    consent.parentElement.parentElement.style.background = '#FDF0F0';
+    setTimeout(() => {
+      consent.parentElement.parentElement.style.border = '1px solid #D4C5A0';
+      consent.parentElement.parentElement.style.background = '#F9F5EC';
+    }, 2000);
+    return;
+  }
+  document.getElementById('step-5').style.display = 'none';
+  document.getElementById('step-success').style.display = 'block';
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('progress-pct').textContent = '100%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Show mobile nav
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.innerWidth < 768) {
+    document.getElementById('mobile-nav').style.display = 'flex';
+    document.body.style.paddingBottom = '64px';
+  }
+});
+</script>
+</body>
+</html>
