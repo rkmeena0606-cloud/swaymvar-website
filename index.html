@@ -48,7 +48,131 @@
 
 <!-- ═══ HERO ═══ -->
 <section style="padding:0;position:relative;height:100vh;overflow:hidden;margin-top:64px;">
-  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1400&fit=crop" alt="Accomplished Woman" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" id="hero-img"/>
+  <!-- Animated Indian Pattern Background -->
+<div id="hero-img" style="position:absolute;inset:0;width:100%;height:100%;overflow:hidden;">
+  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+    <defs>
+      <!-- Deep mehendi gradient background -->
+      <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#1a3308;stop-opacity:1"/>
+        <stop offset="50%" style="stop-color:#2D5016;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#0d1f05;stop-opacity:1"/>
+      </linearGradient>
+      <!-- Gold shimmer -->
+      <radialGradient id="gold-glow" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" style="stop-color:#C9960C;stop-opacity:0.15"/>
+        <stop offset="100%" style="stop-color:#C9960C;stop-opacity:0"/>
+      </radialGradient>
+      <!-- Animations -->
+      <style>
+        .rotate-slow { animation: rotateSlow 40s linear infinite; transform-origin: center; }
+        .rotate-rev  { animation: rotateRev 50s linear infinite; transform-origin: center; }
+        .pulse-gold  { animation: pulseGold 4s ease-in-out infinite; }
+        .float-up    { animation: floatUp 8s ease-in-out infinite; }
+        .float-up-2  { animation: floatUp 10s ease-in-out infinite 2s; }
+        .float-up-3  { animation: floatUp 12s ease-in-out infinite 4s; }
+        @keyframes rotateSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @keyframes rotateRev  { from{transform:rotate(360deg)} to{transform:rotate(0deg)} }
+        @keyframes pulseGold  { 0%,100%{opacity:0.3} 50%{opacity:0.7} }
+        @keyframes floatUp    { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-20px)} }
+      </style>
+    </defs>
+
+    <!-- Base background -->
+    <rect width="100%" height="100%" fill="url(#bg-grad)"/>
+    <rect width="100%" height="100%" fill="url(#gold-glow)"/>
+
+    <!-- Large central mandala -->
+    <g transform="translate(50%, 45%)" class="rotate-slow" style="transform-box:fill-box;">
+      <g transform="translate(-300,-300)">
+        <!-- Outer ring petals -->
+        <g opacity="0.12">
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(0,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(30,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(60,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(90,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(120,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(150,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(180,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(210,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(240,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(270,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(300,300,300)"/>
+          <ellipse cx="300" cy="80"  rx="18" ry="50" fill="#C9960C" transform="rotate(330,300,300)"/>
+        </g>
+        <!-- Middle ring -->
+        <g opacity="0.18">
+          <ellipse cx="300" cy="150" rx="12" ry="35" fill="#E8B84B" transform="rotate(0,300,300)"/>
+          <ellipse cx="300" cy="150" rx="12" ry="35" fill="#E8B84B" transform="rotate(45,300,300)"/>
+          <ellipse cx="300" cy="150" rx="12" ry="35" fill="#E8B84B" transform="rotate(90,300,300)"/>
+          <ellipse cx="300" cy="150" rx="12" ry="35" fill="#E8B84B" transform="rotate(135,300,300)"/>
+          <ellipse cx="300" cy="150" rx="12" ry="35" fill="#E8B84B" transform="rotate(180,300,300)"/>
+          <ellipse cx="300" cy="150" rx="12" ry="35" fill="#E8B84B" transform="rotate(225,300,300)"/>
+          <ellipse cx="300" cy="150" rx="12" ry="35" fill="#E8B84B" transform="rotate(270,300,300)"/>
+          <ellipse cx="300" cy="150" rx="12" ry="35" fill="#E8B84B" transform="rotate(315,300,300)"/>
+        </g>
+        <!-- Inner lotus -->
+        <g opacity="0.25">
+          <ellipse cx="300" cy="220" rx="8" ry="22" fill="#C9960C" transform="rotate(0,300,300)"/>
+          <ellipse cx="300" cy="220" rx="8" ry="22" fill="#C9960C" transform="rotate(60,300,300)"/>
+          <ellipse cx="300" cy="220" rx="8" ry="22" fill="#C9960C" transform="rotate(120,300,300)"/>
+          <ellipse cx="300" cy="220" rx="8" ry="22" fill="#C9960C" transform="rotate(180,300,300)"/>
+          <ellipse cx="300" cy="220" rx="8" ry="22" fill="#C9960C" transform="rotate(240,300,300)"/>
+          <ellipse cx="300" cy="220" rx="8" ry="22" fill="#C9960C" transform="rotate(300,300,300)"/>
+        </g>
+        <!-- Center circle -->
+        <circle cx="300" cy="300" r="30" fill="none" stroke="#C9960C" stroke-width="2" opacity="0.4"/>
+        <circle cx="300" cy="300" r="20" fill="#C9960C" opacity="0.2" class="pulse-gold"/>
+        <circle cx="300" cy="300" r="8"  fill="#E8B84B" opacity="0.5" class="pulse-gold"/>
+      </g>
+    </g>
+
+    <!-- Counter-rotating outer ring -->
+    <g transform="translate(50%, 45%)" class="rotate-rev" style="transform-box:fill-box;">
+      <g transform="translate(-300,-300)">
+        <circle cx="300" cy="300" r="260" fill="none" stroke="#C9960C" stroke-width="1" stroke-dasharray="8 16" opacity="0.15"/>
+        <circle cx="300" cy="300" r="220" fill="none" stroke="#E8B84B" stroke-width="1" stroke-dasharray="4 12" opacity="0.1"/>
+      </g>
+    </g>
+
+    <!-- Corner paisley motifs -->
+    <!-- Top left -->
+    <g transform="translate(60,60)" opacity="0.1" class="float-up">
+      <ellipse cx="0" cy="0" rx="40" ry="80" fill="none" stroke="#C9960C" stroke-width="2" transform="rotate(-30)"/>
+      <ellipse cx="10" cy="10" rx="20" ry="40" fill="none" stroke="#E8B84B" stroke-width="1.5" transform="rotate(-30)"/>
+      <circle cx="0" cy="-60" r="6" fill="#C9960C" opacity="0.6" transform="rotate(-30)"/>
+    </g>
+    <!-- Top right -->
+    <g transform="translate(calc(100% - 60px),60)" opacity="0.1" class="float-up-2">
+      <ellipse cx="0" cy="0" rx="40" ry="80" fill="none" stroke="#C9960C" stroke-width="2" transform="rotate(30)"/>
+      <ellipse cx="-10" cy="10" rx="20" ry="40" fill="none" stroke="#E8B84B" stroke-width="1.5" transform="rotate(30)"/>
+      <circle cx="0" cy="-60" r="6" fill="#C9960C" opacity="0.6" transform="rotate(30)"/>
+    </g>
+
+    <!-- Floating dots pattern -->
+    <g opacity="0.2" class="pulse-gold">
+      <circle cx="15%" cy="20%" r="3" fill="#E8B84B"/>
+      <circle cx="25%" cy="70%" r="2" fill="#C9960C"/>
+      <circle cx="75%" cy="25%" r="3" fill="#E8B84B"/>
+      <circle cx="85%" cy="65%" r="2" fill="#C9960C"/>
+      <circle cx="10%" cy="50%" r="2" fill="#E8B84B"/>
+      <circle cx="90%" cy="40%" r="3" fill="#C9960C"/>
+      <circle cx="50%" cy="15%" r="2" fill="#E8B84B"/>
+      <circle cx="40%" cy="80%" r="3" fill="#C9960C"/>
+    </g>
+
+    <!-- Subtle grid of small diamonds -->
+    <g opacity="0.06">
+      <rect x="5%"  y="10%" width="8" height="8" fill="#C9960C" transform="rotate(45,5%,10%)"/>
+      <rect x="20%" y="15%" width="6" height="6" fill="#E8B84B" transform="rotate(45,20%,15%)"/>
+      <rect x="80%" y="20%" width="8" height="8" fill="#C9960C" transform="rotate(45,80%,20%)"/>
+      <rect x="95%" y="10%" width="6" height="6" fill="#E8B84B" transform="rotate(45,95%,10%)"/>
+      <rect x="5%"  y="80%" width="8" height="8" fill="#C9960C" transform="rotate(45,5%,80%)"/>
+      <rect x="95%" y="85%" width="6" height="6" fill="#E8B84B" transform="rotate(45,95%,85%)"/>
+    </g>
+
+  </svg>
+</div>
   <div class="hero-overlay" style="position:absolute;inset:0;"></div>
   <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:80px;text-align:center;padding-left:24px;padding-right:24px;">
     <div class="font-mono" style="display:inline-block;padding:8px 20px;margin-bottom:20px;background:rgba(201,150,12,0.2);border:1px solid #C9960C;color:#E8B84B;font-size:10px;letter-spacing:0.3em;border-radius:4px;">✦ INVITE-ONLY · SWAYMVAR.IN · FREE FOR ALL MEMBERS ✦</div>
@@ -540,7 +664,7 @@
 // Nav shadow on scroll
 window.addEventListener('scroll', () => {
   document.getElementById('main-nav').style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(45,80,22,0.12)' : 'none';
-  document.getElementById('hero-img').style.transform = `translateY(${window.scrollY * 0.35}px)`;
+  // parallax disabled for SVG background
 });
 
 // Show mobile nav
