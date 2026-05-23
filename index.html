@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SWAYMVAR | Where Destiny Meets Choice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#2e4f00",
+                        "tertiary-container": "#cea700",
+                        "secondary-fixed": "#c5f090",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#eec200",
+                        "surface-container": "#e9edff",
+                        "primary-fixed": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-container-low": "#f1f3ff",
+                        "secondary": "#456818",
+                        "secondary-fixed-dim": "#a9d477",
+                        "on-surface": "#141b2b",
+                        "inverse-surface": "#293040",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#4e3e00",
+                        "surface-dim": "#d3daef",
+                        "outline-variant": "#e1bfbb",
+                        "on-primary-fixed-variant": "#8e1214",
+                        "inverse-primary": "#ffb4ac",
+                        "secondary-container": "#c2ed8d",
+                        "surface-tint": "#b02d29",
+                        "surface-container-highest": "#dce2f7",
+                        "on-surface-variant": "#59413e",
+                        "on-primary-container": "#ffaaa1",
+                        "tertiary": "#735c00",
+                        "on-secondary-container": "#496d1c",
+                        "tertiary-fixed": "#ffe083",
+                        "outline": "#8d706d",
+                        "surface-variant": "#dce2f7",
+                        "on-background": "#141b2b",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#231b00",
+                        "surface": "#f9f9ff",
+                        "primary": "#760009",
+                        "surface-container-high": "#e1e8fd",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "primary-container": "#991b1b",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "on-secondary-fixed": "#102000",
+                        "on-primary-fixed": "#410002",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>.glass-nav {
+    backdrop-filter: blur(12px);
+    background: rgba(249, 249, 255, 0.8)
+    }
+.paisley-pattern {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAWmkg6dNj9jWK1hkGmjYTvdJE32dp8pqSIN_Y5dnnU9qyLDIjzNGy8CcaUGC9OXvXy20ofFQFO5rZ1hXBeygdFUq8sFcU8LvOXhFGNKGubHwFw135SmW7Z0G58ppgns3QxlzebktmxxvX9wNMsanI8AX6aLOyX1M7a7RT7lbmHpQs_dpUb-2qinVXqkCFPPoaZLHrGj2XQ3wgmzSOrSbUjtAZ16t1v5QPCRYGxkPA4KrT5yePhFivxoL9cc2kaURFkKh2ZhjLGNRk);
+    background-blend-mode: overlay
+    }
+.gold-border {
+    border-top: 4px solid #cea700
+    }
+.mandala-bullet::before {
+    content: "✦";
+    color: #cea700;
+    margin-right: 12px;
+    font-size: 0.8em
+    }
+.hero-gradient {
+    background: linear-gradient(to top, rgba(20, 27, 43, 0.9) 0%, rgba(20, 27, 43, 0.2) 50%, rgba(20, 27, 43, 0.1) 100%)
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 shadow-sm glass-nav border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary uppercase tracking-[0.2em]">SWAYAMVAR</h1>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a class="font-headline-md text-body-md text-primary font-semibold hover:opacity-80 transition-all uppercase tracking-widest" href="index.html">Philosophy</a>
+<a class="font-headline-md text-body-md text-on-surface-variant hover:text-primary transition-all uppercase tracking-widest" href="index.html">Rituals</a>
+<a class="font-headline-md text-body-md text-on-surface-variant hover:text-primary transition-all uppercase tracking-widest" href="index.html">The Circle</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-6 py-2 border border-tertiary-container text-tertiary font-label-lg uppercase tracking-widest hover:bg-tertiary-container/10 transition-colors">Concierge</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden">
+<img alt="Elite Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC23cR8r-NYJYzL0XnUufeZxRHUWkZLqDeA1YwXfVg2xxPj5AE7DuI7y5IRRtvZypVqNxhUWZCnv2E8IMsdeWWQyONsD8knvyJ3R4TRdTehvrfJt4VsFsFhD8Ft4iT-3FP9nSOEQuRK-jz4g9nzP0Ow5usMjqVkVJODGqQtqqjcQ0efJjWMkK8m4Kz-lme1etYtSjqMKcFGTiF3hsLgU6rkTSQH_nII_ia3yj0nGyQ4RiGtF5gAXD354L0ILqaliQyhPryuMKnZn38"/>
+</div>
+</div>
+</div>
+</header>
+<main class="mt-16">
+<!-- Hero Section -->
+<section class="relative h-[90vh] w-full overflow-hidden">
+<img alt="Majestic Couple" class="absolute inset-0 w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0t8wM_CHyCtW5X9EtWQ8XlwV8BSXHF01BWHFz-AMlZldund-T5wW09ZpXRv8Dne8wt0O631MVZGz9qtILuoIqHNnMzpHFmOf2pyiijFVlaXp2EVvVhIU0I6b7h9Uztg_gTQhXBssj6a-8G8Vv_oWA2L13h3HvGOFqfKCFYsV-jDPfm6lkqYE7YZ2x7Z-XKn5U8TAd9MOaaRU9m7Z58xUyCZW5sXTeBtwf-iIcsfIiIgWw9f4gyYqrtrkO8E4KcYHYOSQWCz2yZx4"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="absolute inset-0 flex flex-col justify-end items-center pb-24 px-margin-mobile text-center">
+<p class="text-tertiary-fixed font-label-lg uppercase tracking-[0.3em] mb-4">A Sacred Tradition Reimagined</p>
+<h2 class="text-white font-display-lg-mobile md:text-display-lg mb-6 max-w-4xl leading-tight">Where Destiny Meets Choice: The Modern Swayamvar</h2>
+<div class="flex gap-6 mt-4">
+<button class="bg-primary text-white px-8 py-4 font-body-md font-bold uppercase tracking-widest rounded-lg shadow-lg hover:scale-95 transition-transform">Begin Your Journey</button>
+<button class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 font-body-md font-bold uppercase tracking-widest rounded-lg hover:bg-white/20 transition-all">Our Philosophy</button>
+</div>
+</div>
+</section>
+<!-- The Pillars of Virtue (Bento Grid) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2 uppercase tracking-widest">The Pillars of Virtue</h3>
+<div class="w-24 h-1 bg-tertiary-container mx-auto"></div>
+<p class="mt-6 text-on-surface-variant font-body-lg max-w-2xl mx-auto italic">Drawing inspiration from the dignity of Sita and the agency of Draupadi, we uphold the sacred standards of union.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Pillar 1 -->
+<div class="group relative bg-surface-container-lowest p-8 gold-border shadow-sm paisley-pattern hover:shadow-xl transition-all duration-500 overflow-hidden">
+<div class="absolute -right-8 -top-8 text-surface-container-highest opacity-20 transform rotate-45">
+<span class="material-symbols-outlined text-[120px]">verified_user</span>
+</div>
+<div class="relative z-10">
+<div class="w-16 h-16 bg-secondary-container/20 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">shield_person</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-4">Ram's Integrity</h4>
+<p class="text-on-surface-variant font-body-md leading-relaxed mb-6">Professional Verification at the highest level. We ensure every suitor meets the rigorous standards of character and achievement required for a noble alliance.</p>
+<span class="text-secondary font-label-lg uppercase tracking-widest group-hover:translate-x-2 inline-block transition-transform">Verification Protocol →</span>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="group relative bg-surface-container-lowest p-8 gold-border shadow-sm paisley-pattern hover:shadow-xl transition-all duration-500 overflow-hidden">
+<div class="absolute -right-8 -top-8 text-surface-container-highest opacity-20 transform rotate-45">
+<span class="material-symbols-outlined text-[120px]">lock</span>
+</div>
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary-container/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">privacy_tip</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-4">Draupadi's Grace</h4>
+<p class="text-on-surface-variant font-body-md leading-relaxed mb-6">Privacy First. Your lineage and presence are guarded with the utmost sanctity. Information is shared only when the ritual of introduction is mutual.</p>
+<span class="text-primary font-label-lg uppercase tracking-widest group-hover:translate-x-2 inline-block transition-transform">Privacy Vault →</span>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="group relative bg-surface-container-lowest p-8 gold-border shadow-sm paisley-pattern hover:shadow-xl transition-all duration-500 overflow-hidden">
+<div class="absolute -right-8 -top-8 text-surface-container-highest opacity-20 transform rotate-45">
+<span class="material-symbols-outlined text-[120px]">groups</span>
+</div>
+<div class="relative z-10">
+<div class="w-16 h-16 bg-tertiary-container/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-tertiary text-3xl">eye_tracking</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-4">The Sacred Circle</h4>
+<p class="text-on-surface-variant font-body-md leading-relaxed mb-6">Women-Controlled Visibility. You define who enters your orbit. Complete autonomy over your profile's reach ensures you remain the architect of your destiny.</p>
+<span class="text-tertiary font-label-lg uppercase tracking-widest group-hover:translate-x-2 inline-block transition-transform">Control Settings →</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Editorial Section -->
+<section class="bg-surface-dim/30 py-24">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="w-full md:w-1/2 relative">
+<div class="aspect-[4/5] bg-surface-container-high rounded-xl overflow-hidden shadow-2xl">
+<img alt="Traditional Ritual" class="w-full h-full object-cover" data-alt="A close-up, high-fashion editorial photograph of a traditional Indian wedding ritual. Golden sunlight streams onto hands adorned with intricate henna (Mehendi) holding a garland of jasmine and marigolds. The scene is shot in a minimalist luxury aesthetic with a soft-focus background of ancient stone architecture. The color palette emphasizes warm golds, deep reds (Sindoor), and organic greens (Mehendi), creating a mood of sacredness and professional elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyuA14uL89UPHnGEhqL7qqcJQOKIg6dXbARY1vWhCRSnE_NHo8G3M4xMKsGTdk4mTiHSPP29mY5z4TwdGgSdhSXzzcVnpMuW0423JqOHvuQVLdfcatUDbI9I2wOi3Y29kJChZIrcz9Piw0A_xaibDU5hff-m3bkn8NClw90enKpANevG_o-zMPWBq4KlJvkcoMkIAMNBFxDHcHzhQwAeloMcLFALkG_PTx4_UpcKfdAgFoSeQ4Qg-K_QqLMJyx__OjiPjJI4ZkCYI"/>
+</div>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-white p-4 shadow-xl hidden md:block">
+<div class="w-full h-full border border-tertiary-container flex flex-col items-center justify-center text-center p-4">
+<span class="text-tertiary font-display-lg text-4xl mb-2">108</span>
+<p class="text-on-surface-variant font-label-md uppercase tracking-widest">Ritual Checkpoints</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2">
+<h3 class="font-headline-lg text-display-lg-mobile md:text-headline-lg text-on-surface mb-8 leading-tight">A Protocol Designed for the Extraordinary</h3>
+<p class="text-on-surface-variant font-body-lg mb-8 leading-relaxed">SWAYMVAR is not an application; it is a concierge-led sanctuary for high-net-worth professionals who value heritage as much as modern success. Our process filters for virtue, ambition, and cultural alignment.</p>
+<ul class="space-y-6">
+<li class="mandala-bullet font-body-md text-on-surface">Psychometric alignment based on ancestral values.</li>
+<li class="mandala-bullet font-body-md text-on-surface">Income and asset verification for lifestyle compatibility.</li>
+<li class="mandala-bullet font-body-md text-on-surface">Exclusive introduction rituals via our Concierge.</li>
+<li class="mandala-bullet font-body-md text-on-surface">Strict 1:1 interaction model to prevent "profile fatigue".</li>
+</ul>
+<button class="mt-10 px-10 py-5 bg-tertiary text-white font-label-lg uppercase tracking-[0.2em] hover:bg-tertiary/90 transition-all rounded-sm shadow-md">Apply for Membership</button>
+</div>
+</div>
+</section>
+<!-- Success Stories Carousel Placeholder -->
+<section class="py-24 overflow-hidden">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-12">
+<h3 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-widest text-center">Modern Legacies</h3>
+</div>
+<div class="flex gap-8 px-margin-mobile md:px-margin-desktop overflow-x-auto pb-12 snap-x no-scrollbar">
+<!-- Success Card 1 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-center bg-white p-8 border border-outline-variant relative group">
+<div class="absolute top-0 left-0 w-full h-1 bg-tertiary-container"></div>
+<p class="italic text-on-surface-variant font-body-md mb-8">"The privacy standards at SWAYMVAR allowed me to find a partner who respected my professional boundaries while sharing my cultural roots."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwNodePmCwIZgye24bZX8VRBHdOc44SXyz-ZOak7Bbbkwt7Dfa_6B_H-g3svNEPKF2NwDpZjTLF-10775VgN6DcBuFmlen67NLWDUN3lB7z83EetnTZTGmU5KX1McbtpOozNg6zOlt2RmXH3XKhLs7xv6rP03aZfhMvxErt8j3qyCHiH1d7UR3zBu22EvUVju-Y8cYbPx_qtx6AoSzdjRORew_ikeuCyml_SzVQNp_KyILU5LVEShwAqOu7sC-fmEAvW2k61GvTcU"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Ananya V.</p>
+<p class="text-label-md text-tertiary uppercase">CEO, FinTech Global</p>
+</div>
+</div>
+</div>
+<!-- Success Card 2 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-center bg-white p-8 border border-outline-variant relative group">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<p class="italic text-on-surface-variant font-body-md mb-8">"Verification was rigorous, but it gave me the peace of mind that every connection was genuine. It truly felt like a sacred space."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz8qRhTsMsyu6szQZK1m0gBPt1EeZLHiovgwSrQ1H8TgbkHDD_GPCU85wv_jHeaZHW85kjsIELryJdRDOF1nYh18_YUHnz_PqQRQvMFw2ztOnSM2uIFddZVlCDlZ955ik7SZ-OdRJZS36Uqv7w8mcKbqR0AMlzZxmTZH5AnbtHAN5XmYdOtqGB75nSqEjHCl1v8c7n6N-0lE8xnrFuOvsLbTyS2j1fQ7WQ5-EhpT95sY9DvPxTmyjWJTGMeauPXleN18WannL5UCk"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Vikram R.</p>
+<p class="text-label-md text-tertiary uppercase">Senior Surgeon, London</p>
+</div>
+</div>
+</div>
+<!-- Success Card 3 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-center bg-white p-8 border border-outline-variant relative group">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<p class="italic text-on-surface-variant font-body-md mb-8">"I chose my destiny with the same agency as the queens of our past. The Sacred Circle put me in total control."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_9tgy4QXupasgKirvFK89G8oee3bk6VumhHEEja8FqIdHfucCo6BEDsZmCsvvhUwM_Vi2DaPaBhdZNeLXGzRd1wTzd6dTIQfB_-FtLZq6VBzc5lIc_YywHTWDnZPEtGdL2oiiK2Oi9ZCyrjTIMNV7LuaFKqUgQdtEmgjb9iAStY4-TChAQ_GJHdum74QYBMwvbRvD2qUHfIsxAnaSiFCtEqXC-a8DHJLN9PAsL_W8G47iFJn7D3iO90hfGERt9fjHjcVOhR6Vu94"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Meera S.</p>
+<p class="text-label-md text-tertiary uppercase">Humanitarian Law Expert</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="bg-inverse-surface py-24 text-center px-margin-mobile">
+<h3 class="text-white font-display-lg-mobile md:text-headline-lg mb-6 uppercase tracking-[0.3em]">Your Seat Awaits</h3>
+<p class="text-surface-variant font-body-lg max-w-2xl mx-auto mb-12">Applications for the Autumn cohort are now being reviewed by the Concierge. Embark on the path where tradition meets your ambition.</p>
+<form class="max-w-md mx-auto flex flex-col gap-6">
+<input class="bg-transparent border-0 border-b border-outline-variant text-white focus:ring-0 focus:border-tertiary-container text-center placeholder:text-surface-variant font-label-lg uppercase tracking-widest" placeholder="YOUR ELITE EMAIL ADDRESS" type="email"/>
+<button class="bg-primary text-white py-5 px-12 font-label-lg uppercase tracking-[0.3em] hover:bg-primary-container transition-all shadow-lg">Request Invite</button>
+</form>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-on-surface w-full py-16 border-t-2 border-secondary">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop space-y-8 md:space-y-0">
+<div class="text-center md:text-left">
+<h2 class="font-headline-md text-headline-md text-secondary-fixed uppercase tracking-widest mb-2">Swayamvar</h2>
+<p class="text-surface-variant font-label-lg opacity-80">© 2026 Swaymvar.in. Exclusivity &amp; Verification Guaranteed.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-surface-variant font-label-lg uppercase tracking-widest hover:text-secondary-fixed transition-opacity" href="index.html">Exclusivity Protocol</a>
+<a class="text-surface-variant font-label-lg uppercase tracking-widest hover:text-secondary-fixed transition-opacity" href="index.html">Verification Standards</a>
+<a class="text-surface-variant font-label-lg uppercase tracking-widest hover:text-secondary-fixed transition-opacity" href="index.html">Privacy Policy</a>
+<a class="text-surface-variant font-label-lg uppercase tracking-widest hover:text-secondary-fixed transition-opacity" href="index.html">Contact Concierge</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container dark:bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_20px_rgba(118,0,9,0.05)] flex justify-around items-center h-20 pb-safe px-4">
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-sm text-label-sm">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Circle</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions and subtle effects
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.add('shadow-sm');
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Simple parallax for hero image
+        const heroImg = document.querySelector('.hero-gradient').previousElementSibling;
+        window.addEventListener('scroll', () => {
+            const speed = 0.5;
+            const yPos = -(window.scrollY * speed);
+            heroImg.style.transform = `translateY(${yPos}px)`;
+        });
+    </script>
+</body></html>
