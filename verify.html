@@ -19,6 +19,14 @@
   .step-card.active { border-color: #C9960C !important; box-shadow: 0 0 0 2px rgba(201,150,12,0.2); }
   .step-card.done { border-color: #2D5016 !important; }
 </style>
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#2D5016"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png"/>
 </head>
 <body class="pb-20 md:pb-0">
 
@@ -263,6 +271,15 @@ function simulatePeer() {
     document.getElementById('progress-bar').style.width = '100%';
     document.getElementById('progress-label').textContent = '✓ Verification Complete';
   }, 1500);
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(reg) { console.log('SW registered:', reg.scope); })
+      .catch(function(err) { console.log('SW error:', err); })
+  })
 }
 </script>
 </body>

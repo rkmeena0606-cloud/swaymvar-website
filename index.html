@@ -35,6 +35,14 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
 .rotate-rev { animation: rotateRev 55s linear infinite; transform-origin: 300px 300px; }
 .pulse-gold { animation: pulseGold 3s ease-in-out infinite; }
 </style>
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#2D5016"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png"/>
 </head>
 <body>
 
@@ -660,6 +668,15 @@ document.getElementById('invite-form').addEventListener('submit', async function
     alert('Error: ' + error.message)
   }
 })
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(reg) { console.log('SW registered:', reg.scope); })
+      .catch(function(err) { console.log('SW error:', err); })
+  })
+}
 </script>
 </body>
 </html>

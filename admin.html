@@ -24,6 +24,14 @@
   .tab-btn.active { background: rgba(201,150,12,0.15); color: #C9960C; border-color: #C9960C; }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#2D5016"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png"/>
 </head>
 <body>
 
@@ -417,6 +425,15 @@ function filterProfiles() {
 document.getElementById('detail-modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal()
 })
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(reg) { console.log('SW registered:', reg.scope); })
+      .catch(function(err) { console.log('SW error:', err); })
+  })
+}
 </script>
 </body>
 </html>
