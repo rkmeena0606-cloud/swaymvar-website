@@ -1,296 +1,269 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SWAYMVAR | Professional Verification Hub</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=DM+Sans:wght@400;500;700&amp;family=Space+Mono:wght@700&amp;family=Cormorant+Garamond:wght@600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .henna-filter {
-            filter: sepia(0.3) saturate(0.8) contrast(1.1);
-        }
-        .paisley-bg {
-            background-image: radial-gradient(#EDF5E0 0.5px, transparent 0.5px);
-            background-size: 24px 24px;
-        }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "tertiary": "#690008",
-                        "surface-container-low": "#f9f3e8",
-                        "on-secondary-fixed-variant": "#5b4300",
-                        "on-tertiary-fixed": "#410003",
-                        "inverse-on-surface": "#f6f0e6",
-                        "on-secondary-container": "#735500",
-                        "on-surface-variant": "#43493d",
-                        "on-primary-container": "#98c27b",
-                        "on-tertiary-fixed-variant": "#8a1a1a",
-                        "surface-container-highest": "#e8e2d8",
-                        "secondary-fixed": "#ffdf9e",
-                        "primary-fixed": "#c4efa3",
-                        "on-primary": "#ffffff",
-                        "surface": "#fff9ee",
-                        "surface-container-high": "#eee7dd",
-                        "background": "#fff9ee",
-                        "on-primary-fixed": "#0a2100",
-                        "on-secondary": "#ffffff",
-                        "on-tertiary-container": "#ff9a91",
-                        "on-primary-fixed-variant": "#2c4f15",
-                        "tertiary-container": "#8b1a1a",
-                        "surface-bright": "#fff9ee",
-                        "primary-fixed-dim": "#a8d38a",
-                        "primary-container": "#2d5016",
-                        "on-surface": "#1d1b15",
-                        "on-secondary-fixed": "#261a00",
-                        "secondary": "#795900",
-                        "secondary-container": "#fdca56",
-                        "outline-variant": "#c3c9b9",
-                        "on-error-container": "#93000a",
-                        "on-tertiary": "#ffffff",
-                        "on-background": "#1d1b15",
-                        "tertiary-fixed-dim": "#ffb3ac",
-                        "surface-container": "#f3ede3",
-                        "inverse-surface": "#333029",
-                        "surface-variant": "#e8e2d8",
-                        "on-error": "#ffffff",
-                        "error": "#ba1a1a",
-                        "tertiary-fixed": "#ffdad6",
-                        "outline": "#73796c",
-                        "surface-dim": "#dfd9cf",
-                        "inverse-primary": "#a8d38a",
-                        "surface-tint": "#43682b",
-                        "primary": "#173901",
-                        "error-container": "#ffdad6",
-                        "secondary-fixed-dim": "#f1bf4c"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "margin_mobile": "16px",
-                        "margin_desktop": "48px",
-                        "base": "8px",
-                        "gutter": "24px",
-                        "container_max_width": "1200px",
-                        "divider_height": "4px"
-                    },
-                    "fontFamily": {
-                        "body-main": ["DM Sans"],
-                        "label-caps": ["Space Mono"],
-                        "display-lg": ["Playfair Display"],
-                        "section-title": ["Cormorant Garamond"],
-                        "display-lg-mobile": ["Playfair Display"]
-                    },
-                    "fontSize": {
-                        "body-main": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "700"}],
-                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "section-title": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
-                    }
-                },
-            },
-        }
-    </script>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
+  * { box-sizing: border-box; }
+  body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-mono-s { font-family: 'Space Mono', monospace; }
+  .glass-nav { backdrop-filter: blur(12px); background: rgba(254,252,245,0.92); }
+  .card-accent { border-left: 4px solid #C9960C; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  .step-card { transition: all 0.3s; }
+  .step-card.active { border-color: #C9960C !important; box-shadow: 0 0 0 2px rgba(201,150,12,0.2); }
+  .step-card.done { border-color: #2D5016 !important; }
+</style>
 </head>
-<body class="bg-surface text-on-surface font-body-main selection:bg-secondary-container">
-<!-- Top Navigation -->
-<header class="bg-surface docked full-width top-0 border-b-4 border-secondary flex justify-between items-center w-full px-margin_mobile md:px-margin_desktop py-4 max-w-container_max_width mx-auto z-50">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
-<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-[0.35em] text-primary uppercase">SWAYMVAR</h1>
-</div>
-<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-caps text-label-caps hover:bg-primary-container transition-colors active:scale-95 duration-200">
-            Get Verified
-        </button>
+<body class="pb-20 md:pb-0">
+
+<!-- NAV -->
+<header class="fixed top-0 w-full z-50 glass-nav border-b" style="border-color:#D4C5A0;">
+  <div class="max-w-6xl mx-auto px-4 md:px-12 py-4 flex justify-between items-center">
+    <a href="index.html"><h1 class="font-display font-bold text-2xl tracking-[0.3em] uppercase" style="color:#2D5016;">SWAYMVAR</h1></a>
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="font-mono-s text-xs uppercase tracking-widest" style="color:#5C5040;">Home</a>
+      <a href="discover.html" class="font-mono-s text-xs uppercase tracking-widest" style="color:#5C5040;">Discover</a>
+      <a href="verify.html" class="font-mono-s text-xs uppercase tracking-widest font-bold" style="color:#2D5016;border-bottom:2px solid #C9960C;padding-bottom:2px;">Verification</a>
+    </nav>
+    <a href="index.html#invite" class="hidden md:block px-5 py-2 font-mono-s text-xs uppercase tracking-widest border-2 rounded" style="border-color:#C9960C;color:#2D5016;">Request Invite</a>
+  </div>
 </header>
-<main class="max-w-container_max_width mx-auto px-margin_mobile md:px-margin_desktop py-12 md:py-20 paisley-bg">
-<!-- Hero Branding Section -->
-<section class="text-center mb-16">
-<h2 class="font-section-title text-display-lg-mobile md:text-display-lg text-primary mb-4">Professional Verification Hub</h2>
-<div class="flex items-center justify-center gap-4 mb-8">
-<div class="h-1 w-24 bg-secondary"></div>
-<span class="text-secondary text-2xl">✦</span>
-<div class="h-1 w-24 bg-secondary"></div>
-</div>
-<p class="font-body-main text-on-surface-variant max-w-2xl mx-auto italic">
-                A sanctuary of modern autonomy. Authenticate your identity with absolute certainty through our curated vetting process.
-            </p>
+
+<!-- PAGE HEADER -->
+<section style="background:#EDF5E0;padding:100px 24px 48px;border-bottom:1px solid #D4C5A0;" class="mt-16">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="font-mono-s text-xs uppercase tracking-[0.3em] mb-3" style="color:#C9960C;">SWAYMVAR Trust Vault</p>
+    <h2 class="font-display font-bold text-4xl mb-4" style="color:#2D5016;">Professional Verification Hub</h2>
+    <div style="width:80px;height:4px;background:#C9960C;margin:0 auto 20px;"></div>
+    <p class="font-body text-base leading-relaxed" style="color:#5C5040;">Every profile on SWAYMVAR is verified by a peer from within the same organisation — not by an algorithm, not by a third party agency. This is the gold standard of matrimonial trust.</p>
+  </div>
 </section>
-<!-- Trust Score & Progress -->
-<div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-secondary shadow-sm mb-12">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-<div>
-<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Identity Trust Score</h3>
-<div class="flex items-baseline gap-2">
-<span class="text-4xl font-display-lg text-primary">65%</span>
-<span class="text-on-surface-variant">Authenticated</span>
+
+<!-- PROGRESS -->
+<div class="max-w-3xl mx-auto px-4 md:px-0 py-8">
+  <div class="flex justify-between items-center mb-2">
+    <p class="font-mono-s text-xs uppercase tracking-widest" style="color:#5C5040;">Verification Progress</p>
+    <p class="font-mono-s text-xs" style="color:#2D5016;" id="progress-label">Step 1 of 3</p>
+  </div>
+  <div style="height:8px;background:#EDE5D0;border-radius:4px;overflow:hidden;">
+    <div id="progress-bar" style="height:100%;background:#2D5016;border-radius:4px;width:33%;transition:width 0.8s ease;"></div>
+  </div>
 </div>
+
+<!-- PRIVACY BANNER -->
+<div class="max-w-3xl mx-auto px-4 md:px-0 mb-6">
+  <div class="rounded-xl p-5 flex items-start gap-4 card-accent" style="background:#EDF5E0;border:1px solid #D4C5A0;">
+    <span class="material-symbols-outlined text-2xl flex-shrink-0 mt-0.5" style="color:#2D5016;">lock_person</span>
+    <div>
+      <p class="font-mono-s text-xs font-bold mb-1" style="color:#2D5016;">Your privacy is our highest priority.</p>
+      <p class="font-body text-sm leading-relaxed" style="color:#5C5040;">Your documents are encrypted and used only for internal verification. We do not share your information with other members. We do not sell data. No religion, caste, or community information is ever collected or used for filtering.</p>
+    </div>
+  </div>
 </div>
-<div class="flex-grow md:max-w-md">
-<div class="h-3 w-full bg-surface-variant rounded-full overflow-hidden">
-<div class="h-full bg-primary-container" style="width: 65%"></div>
+
+<!-- STEPS -->
+<div class="max-w-3xl mx-auto px-4 md:px-0 pb-12 space-y-5">
+
+  <!-- STEP 1 — Official Email -->
+  <div class="step-card done rounded-xl p-6" style="background:#F9F5EC;border:1px solid #2D5016;" id="step1">
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center font-mono-s font-bold text-sm text-white" style="background:#2D5016;">1</div>
+        <h3 class="font-display font-semibold text-xl" style="color:#1C1A14;">Official Email Verification</h3>
+      </div>
+      <span class="material-symbols-outlined" style="color:#2D5016;font-variation-settings:'FILL' 1;">check_circle</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 opacity-75">
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <span class="material-symbols-outlined text-base" style="color:#2D5016;">mail</span>
+        <div><p class="font-mono-s text-xs uppercase mb-0.5" style="color:#5C5040;">Official Email</p><p class="font-body text-sm text-green-700">✓ name@rbi.org.in confirmed</p></div>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <span class="material-symbols-outlined text-base" style="color:#2D5016;">domain</span>
+        <div><p class="font-mono-s text-xs uppercase mb-0.5" style="color:#5C5040;">Domain Match</p><p class="font-body text-sm text-green-700">✓ rbi.org.in — verified RBI domain</p></div>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <span class="material-symbols-outlined text-base" style="color:#2D5016;">badge</span>
+        <div><p class="font-mono-s text-xs uppercase mb-0.5" style="color:#5C5040;">Employee ID</p><p class="font-body text-sm text-green-700">✓ Staff number validated</p></div>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <span class="material-symbols-outlined text-base" style="color:#2D5016;">link</span>
+        <div><p class="font-mono-s text-xs uppercase mb-0.5" style="color:#5C5040;">LinkedIn</p><p class="font-body text-sm text-green-700">✓ Profile matches designation</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 — Peer Verification -->
+  <div class="step-card active rounded-xl p-6" style="background:#F9F5EC;border:1px solid #D4C5A0;" id="step2">
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center font-mono-s font-bold text-sm text-white" style="background:#C9960C;color:#1C1A14;">2</div>
+        <h3 class="font-display font-semibold text-xl" style="color:#1C1A14;">Peer Verification</h3>
+      </div>
+      <span class="font-mono-s text-xs px-3 py-1 rounded-full" style="background:#FFF8E1;border:1px solid #C9960C;color:#A67C00;">In Progress</span>
+    </div>
+
+    <div class="rounded-xl p-5 mb-4" style="background:#2D5016;">
+      <p class="font-mono-s text-xs uppercase tracking-widest mb-3" style="color:#E8B84B;">What Makes This Unique</p>
+      <p class="font-body text-sm leading-relaxed text-white mb-3">A trusted colleague from within your own organisation confirms your professional standing. This is not a LinkedIn check. This is a real person who works alongside you vouching for your authenticity.</p>
+      <div class="grid grid-cols-3 gap-3 text-center">
+        <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;">
+          <p class="text-2xl mb-1">🏦</p>
+          <p class="font-mono-s text-xs text-white">RBI colleague verifies RBI profiles</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;">
+          <p class="text-2xl mb-1">📊</p>
+          <p class="font-mono-s text-xs text-white">SEBI colleague verifies SEBI profiles</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;">
+          <p class="text-2xl mb-1">🌾</p>
+          <p class="font-mono-s text-xs text-white">NABARD colleague verifies NABARD profiles</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simulate Peer Request -->
+    <div style="background:#FFF8E1;border:1px solid #D4C5A0;border-radius:12px;padding:20px;">
+      <p class="font-mono-s text-xs uppercase tracking-widest mb-3" style="color:#A67C00;">Peer Verification Request Sent</p>
+      <p class="font-body text-sm mb-4" style="color:#5C5040;">We have sent a confidential request to a verified peer from your organisation. Their identity is protected. They simply confirm: "Yes, this person works here in the stated role."</p>
+      <div class="flex items-center gap-3 p-3 rounded-lg mb-3" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm" style="background:#EDF5E0;">👤</div>
+        <div class="flex-1">
+          <p class="font-mono-s text-xs uppercase mb-0.5" style="color:#2D5016;">Peer Verifier (RBI, Identity Protected)</p>
+          <p class="font-body text-sm" style="color:#5C5040;">Request sent · Awaiting confirmation</p>
+        </div>
+        <div class="w-2 h-2 rounded-full animate-pulse" style="background:#C9960C;"></div>
+      </div>
+      <button onclick="simulatePeer()" class="w-full py-3 font-mono-s text-xs uppercase tracking-widest rounded-lg border" style="border-color:#2D5016;color:#2D5016;background:transparent;" onmouseover="this.style.background='#EDF5E0'" onmouseout="this.style.background='transparent'">
+        [ Simulate: Peer Confirms ] →
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 3 — Concierge Review -->
+  <div class="step-card rounded-xl p-6" style="background:#F9F5EC;border:1px solid #D4C5A0;opacity:0.7;" id="step3">
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center font-mono-s font-bold text-sm" style="background:#EDE5D0;color:#5C5040;border:2px solid #D4C5A0;">3</div>
+        <h3 class="font-display font-semibold text-xl" style="color:#5C5040;">Concierge Final Review</h3>
+      </div>
+      <span class="material-symbols-outlined" style="color:#D4C5A0;">pending</span>
+    </div>
+    <div class="text-center py-6">
+      <span class="material-symbols-outlined text-4xl mb-3 block" style="color:#D4C5A0;">history_edu</span>
+      <p class="font-body text-sm leading-relaxed max-w-md mx-auto" style="color:#5C5040;">Our concierge team does a final 10-minute review once peer verification is complete. Profile goes live within <span class="font-bold" style="color:#2D5016;">24–48 hours</span>. No interviews, no calls — we respect your time.</p>
+    </div>
+  </div>
+
+  <!-- SUCCESS STATE (hidden initially) -->
+  <div id="success-state" class="hidden rounded-xl p-8 text-center" style="background:#2D5016;">
+    <p class="text-4xl mb-4">✦</p>
+    <h3 class="font-display font-bold text-2xl text-white mb-2">Peer Verification Complete</h3>
+    <p class="font-body mb-6" style="color:rgba(255,255,255,0.75);">Your profile has been confirmed by a peer from your organisation. Concierge review in progress — you will hear from us at concierge@swaymvar.in within 24 hours.</p>
+    <a href="discover.html" class="inline-block px-8 py-3 font-mono-s text-xs uppercase tracking-widest rounded-lg" style="background:#C9960C;color:#1C1A14;">Explore the Vault →</a>
+  </div>
+
 </div>
-<p class="text-xs text-on-surface-variant mt-2 flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]" data-icon="info">info</span>
-                        Complete Government ID to reach 90% trust level.
-                    </p>
-</div>
-</div>
-</div>
-<!-- Privacy Assurance Banner -->
-<div class="bg-primary text-on-primary p-6 rounded-xl flex items-center gap-6 mb-16">
-<div class="bg-on-primary/10 p-4 rounded-full">
-<span class="material-symbols-outlined text-4xl" data-icon="lock_person">lock_person</span>
-</div>
-<div>
-<h4 class="font-section-title text-xl">Privacy is our highest priority</h4>
-<p class="text-on-primary-container text-sm opacity-90">Your data is secured with enterprise-grade AES-256 encryption. Only authorized vetting officers access your sensitive documentation during the review window.</p>
-</div>
-</div>
-<!-- Verification Steps (Bento Grid Style) -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Step 1: Completed -->
-<div class="md:col-span-12 lg:col-span-5 bg-surface-container-highest p-8 rounded-xl border-l-4 border-secondary relative overflow-hidden group">
-<div class="absolute top-4 right-4 bg-primary-container text-on-primary px-3 py-1 rounded-full flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<span class="text-[10px] font-label-caps">COMPLETED</span>
-</div>
-<h3 class="font-section-title text-2xl text-primary mb-6">Step 1: Professional Verification</h3>
-<div class="space-y-4">
-<div class="flex items-center gap-4 p-3 bg-surface/50 rounded-lg">
-<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
-<div>
-<p class="text-xs font-label-caps text-on-surface-variant">WORK EMAIL</p>
-<p class="font-body-main">v.sharma@niti.gov.in</p>
-</div>
-</div>
-<div class="flex items-center gap-4 p-3 bg-surface/50 rounded-lg">
-<span class="material-symbols-outlined text-primary" data-icon="share">share</span>
-<div>
-<p class="text-xs font-label-caps text-on-surface-variant">LINKEDIN PROFILE</p>
-<p class="font-body-main">ln/v-sharma-officer</p>
-</div>
-</div>
-<div class="flex items-center gap-4 p-3 bg-surface/50 rounded-lg">
-<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
-<div>
-<p class="text-xs font-label-caps text-on-surface-variant">UPSC GAZETTE DATA</p>
-<p class="font-body-main">Match Confirmed (2019 Batch)</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Step 2: In Progress -->
-<div class="md:col-span-12 lg:col-span-7 bg-surface-container p-8 rounded-xl border-l-4 border-secondary flex flex-col justify-between">
-<div>
-<div class="flex justify-between items-start mb-6">
-<h3 class="font-section-title text-2xl text-primary">Step 2: Government Identity</h3>
-<span class="bg-secondary-container text-secondary px-3 py-1 rounded-full text-[10px] font-label-caps animate-pulse">IN PROGRESS</span>
-</div>
-<div class="border-2 border-dashed border-secondary rounded-xl p-8 flex flex-col items-center justify-center bg-surface/30 group hover:bg-surface/50 transition-all cursor-pointer">
-<div class="relative w-full max-w-sm mb-6">
-<img class="w-full h-48 object-cover rounded-lg blur-md opacity-40 henna-filter" data-alt="A blurred close-up shot of a sophisticated identification card with holographic elements and official seals. The image is rendered with a warm henna-sepia filter that obscures personal details while maintaining a professional, secure aesthetic. Soft, diffuse lighting highlights the premium texture of the document surface against a minimalist digital parchment background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBJgYI0GzHqyutKQ1G59voY3uFY0Lnm4gFfEUzAEX69Oh8KYZa1PspmZ3yN0b8cbU0MLAXofQrl_-8CgQxYNnaGtoSOxykl3w_fTh6FfMns8nYWa9ZOAr1T2if73cHU5Yb_tqu7ncIQLyvR-WOIIvF8NFKmSdIlkCaYmeVG5PJ9eh1nllCisWxYxrtCzA5tVqlnwIU1TAGSfeJmXAemQwsZdrFN_htlaBvImYxH15QKNh1JoZ3Jz5kM2vXQFLZW3Bvul97ukOk4V8"/>
-<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-<span class="material-symbols-outlined text-4xl text-primary mb-2" data-icon="cloud_upload">cloud_upload</span>
-<p class="font-label-caps text-label-caps text-primary">UPLOAD CLEAR PASSPORT OR AADHAAR</p>
-<p class="text-xs text-on-surface-variant mt-1">PDF, JPG, or PNG (Max 10MB)</p>
-</div>
-</div>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant mt-4 italic">Note: Document is processed via automated OCR and then permanently deleted from temporary storage after manual review.</p>
-</div>
-<!-- Step 3: Pending -->
-<div class="md:col-span-12 bg-surface-container-low p-8 rounded-xl border-l-4 border-secondary flex flex-col md:flex-row items-center gap-8 bg-primary/5">
-<div class="w-32 h-32 flex-shrink-0 flex items-center justify-center border-2 border-primary-container/20 rounded-full relative">
-<span class="material-symbols-outlined text-6xl text-primary" data-icon="handshake">handshake</span>
-<div class="absolute inset-0 flex items-center justify-center opacity-10">
-<!-- Simplified Mandala Graphic via CSS or Icon -->
-<span class="material-symbols-outlined text-8xl" data-icon="token">token</span>
-</div>
-</div>
-<div class="flex-grow">
-<div class="flex items-center gap-4 mb-3">
-<h3 class="font-section-title text-2xl text-primary">Step 3: Manual Vetting</h3>
-<span class="bg-primary-container/20 text-primary px-3 py-1 rounded-full text-[10px] font-label-caps border border-primary/20">PEER VETTING</span>
-</div>
-<p class="font-body-main text-on-surface-variant">Our vetting goes beyond documents. For regulatory (RBI/SEBI), intelligence (IB), and corporate roles, we conduct discrete <strong class="text-primary">peer-to-peer verification</strong>. Your profile is vetted by retired seniors or peers from your specific institution (e.g., a retired RBI Director or Senior Lead at Samsung) to ensure absolute professional standing.</p>
-</div>
-</div>
-</div>
-<!-- Footer Actions -->
-<div class="mt-16 flex flex-col md:flex-row items-center justify-end gap-6">
-<button class="w-full md:w-auto px-8 py-3 rounded-lg border-2 border-primary-container text-primary-container font-label-caps text-label-caps hover:bg-primary-container/5 transition-all">
-                Save for later
-            </button>
-<button class="w-full md:w-auto bg-tertiary-container text-on-primary px-12 py-3 rounded-lg font-label-caps text-label-caps shadow-lg hover:brightness-110 active:scale-95 transition-all">
-                Submit for Review
-            </button>
-</div>
-</main>
-<!-- Footer Component -->
-<footer class="w-full pt-20 pb-10 px-margin_mobile md:px-margin_desktop flex flex-col items-center space-y-base text-center bg-primary border-t-4 border-secondary">
-<h2 class="font-display-lg text-secondary-container tracking-widest uppercase">SWAYMVAR</h2>
-<nav class="flex flex-wrap justify-center gap-8 my-6">
-<a class="font-body-main text-on-primary/80 hover:text-secondary-container transition-colors" href="index.html">Philosophy</a>
-<a class="font-body-main text-secondary-container font-bold" href="index.html">Verification</a>
-<a class="font-body-main text-on-primary/80 hover:text-secondary-container transition-colors" href="index.html">Concierge</a>
-<a class="font-body-main text-on-primary/80 hover:text-secondary-container transition-colors" href="index.html">Privacy</a>
-</nav>
-<p class="font-body-main text-on-primary/60 text-sm max-w-md mx-auto">
-            © 2026 Swaymvar.in. She Chooses. With Absolute Certainty.
-        </p>
+
+<!-- HOW IT WORKS FOR ALL -->
+<section style="background:#F9F5EC;padding:60px 24px;border-top:1px solid #D4C5A0;">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-10">
+      <p class="font-mono-s text-xs uppercase tracking-[0.3em] mb-3" style="color:#C9960C;">Open to Everyone</p>
+      <h3 class="font-display font-bold text-2xl" style="color:#2D5016;">Verification Across All Organisations</h3>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <p class="text-2xl mb-2">🏦</p>
+        <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">RBI</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">Grade B & above</p>
+      </div>
+      <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <p class="text-2xl mb-2">📊</p>
+        <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">SEBI</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">Grade A & above</p>
+      </div>
+      <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <p class="text-2xl mb-2">🌾</p>
+        <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">NABARD</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">Dev. Manager & above</p>
+      </div>
+      <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <p class="text-2xl mb-2">📈</p>
+        <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">PFRDA/IRDAI</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">Officers Grade A+</p>
+      </div>
+      <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <p class="text-2xl mb-2">🏛️</p>
+        <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">PSU Banks</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">Scale II & above</p>
+      </div>
+      <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <p class="text-2xl mb-2">🛡️</p>
+        <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">LIC / PSU Insure</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">Class I & above</p>
+      </div>
+      <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
+        <p class="text-2xl mb-2">🤝</p>
+        <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">EXIM/SIDBI</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">Officers & Senior</p>
+      </div>
+      <div class="p-4 rounded-xl text-center" style="background:#EDE5D0;border:1px solid #D4C5A0;opacity:0.7;position:relative;">
+        <p class="text-2xl mb-2">🔒</p>
+        <p class="font-mono-s text-xs uppercase" style="color:#5C5040;">IAS/IPS/IFS</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">Coming Soon</p>
+      </div>
+    </div>
+    <div class="mt-6 p-4 rounded-xl text-center" style="background:#EDF5E0;border:1px solid #D4C5A0;">
+      <p class="font-body text-sm" style="color:#2D5016;">🌍 <strong>No religion, caste, community, or regional filter.</strong> Swaymvar is for every accomplished professional woman in India — Hindu, Muslim, Christian, Sikh, Jain, Buddhist, or any other faith.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#1C1A14;border-top:4px solid #C9960C;padding:32px 24px;text-align:center;">
+  <p class="font-display font-bold text-xl tracking-[0.3em] uppercase mb-1" style="color:#E8B84B;">SWAYMVAR</p>
+  <p class="font-mono-s text-xs mb-2" style="color:#C9960C;">swaymvar.in · concierge@swaymvar.in</p>
+  <p class="font-mono-s text-xs" style="color:rgba(255,255,255,0.3);">© 2026 Swaymvar.in · All Religions Welcome · Peer Verified · She Chooses ✦</p>
 </footer>
-<!-- Mobile Navigation Shell -->
-<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-base px-margin_mobile md:hidden bg-surface-container shadow-[0_-4px_6px_-1px_rgba(92,80,64,0.1)] z-50 rounded-t-xl">
-<a class="flex flex-col items-center justify-center text-on-surface-variant" href="index.html">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span class="font-label-caps text-[10px]">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant" href="index.html">
-<span class="material-symbols-outlined" data-icon="search">search</span>
-<span class="font-label-caps text-[10px]">Discover</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-secondary-container text-primary rounded-full px-6 py-1" href="index.html">
-<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
-<span class="font-label-caps text-[10px]">Verify</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant" href="index.html">
-<span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="font-label-caps text-[10px]">Profile</span>
-</a>
+
+<!-- MOBILE NAV -->
+<nav class="md:hidden fixed bottom-0 w-full z-50" style="background:#FEFCF5;border-top:2px solid #C9960C;height:64px;">
+  <div class="flex justify-around items-center h-full">
+    <a href="index.html" class="flex flex-col items-center gap-0.5"><span class="material-symbols-outlined text-xl" style="color:#5C5040;">home</span><span class="font-mono-s text-[9px]" style="color:#5C5040;">Home</span></a>
+    <a href="discover.html" class="flex flex-col items-center gap-0.5"><span class="material-symbols-outlined text-xl" style="color:#5C5040;">explore</span><span class="font-mono-s text-[9px]" style="color:#5C5040;">Discover</span></a>
+    <a href="profile.html" class="flex flex-col items-center gap-0.5"><span class="material-symbols-outlined text-xl" style="color:#5C5040;">person</span><span class="font-mono-s text-[9px]" style="color:#5C5040;">Profile</span></a>
+    <a href="verify.html" class="flex flex-col items-center gap-0.5"><span class="material-symbols-outlined text-xl" style="color:#2D5016;">verified_user</span><span class="font-mono-s text-[9px]" style="color:#2D5016;">Verify</span></a>
+  </div>
 </nav>
+
 <script>
-        // Simple micro-interaction for upload zone
-        const uploadZone = document.querySelector('.border-dashed');
-        if (uploadZone) {
-            uploadZone.addEventListener('click', () => {
-                const input = document.createElement('input');
-                input.type = 'file';
-                input.click();
-                input.onchange = () => {
-                    alert('File selected. Verification engine processing...');
-                };
-            });
-        }
-    </script>
-</body></html>
+function simulatePeer() {
+  document.getElementById('step2').classList.remove('active');
+  document.getElementById('step2').classList.add('done');
+  document.getElementById('step2').style.borderColor = '#2D5016';
+  document.getElementById('step2').querySelector('.font-mono-s.text-xs').textContent = '✓ Peer Confirmed';
+  document.getElementById('step2').querySelector('.font-mono-s.text-xs').style.color = '#2D5016';
+  document.getElementById('step2').querySelector('.font-mono-s.text-xs').style.background = '#EDF5E0';
+  document.getElementById('step2').querySelector('.font-mono-s.text-xs').style.borderColor = '#2D5016';
+  document.querySelector('#step2 .material-symbols-outlined').textContent = 'check_circle';
+  document.querySelector('#step2 .material-symbols-outlined').style.color = '#2D5016';
+  document.querySelector('#step2 .material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+  document.getElementById('step3').style.opacity = '1';
+  document.getElementById('progress-bar').style.width = '85%';
+  document.getElementById('progress-label').textContent = 'Step 3 of 3 — Final Review';
+  setTimeout(() => {
+    document.getElementById('success-state').classList.remove('hidden');
+    document.getElementById('progress-bar').style.width = '100%';
+    document.getElementById('progress-label').textContent = '✓ Verification Complete';
+  }, 1500);
+}
+</script>
+</body>
+</html>

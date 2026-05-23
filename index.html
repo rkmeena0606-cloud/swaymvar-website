@@ -1,352 +1,570 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SWAYMVAR | Where Destiny Meets Choice</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-secondary-fixed-variant": "#2e4f00",
-                        "tertiary-container": "#cea700",
-                        "secondary-fixed": "#c5f090",
-                        "on-error-container": "#93000a",
-                        "tertiary-fixed-dim": "#eec200",
-                        "surface-container": "#e9edff",
-                        "primary-fixed": "#ffdad6",
-                        "on-primary": "#ffffff",
-                        "surface-bright": "#f9f9ff",
-                        "on-error": "#ffffff",
-                        "on-tertiary-fixed-variant": "#574500",
-                        "inverse-on-surface": "#edf0ff",
-                        "surface-container-low": "#f1f3ff",
-                        "secondary": "#456818",
-                        "secondary-fixed-dim": "#a9d477",
-                        "on-surface": "#141b2b",
-                        "inverse-surface": "#293040",
-                        "on-secondary": "#ffffff",
-                        "on-tertiary-container": "#4e3e00",
-                        "surface-dim": "#d3daef",
-                        "outline-variant": "#e1bfbb",
-                        "on-primary-fixed-variant": "#8e1214",
-                        "inverse-primary": "#ffb4ac",
-                        "secondary-container": "#c2ed8d",
-                        "surface-tint": "#b02d29",
-                        "surface-container-highest": "#dce2f7",
-                        "on-surface-variant": "#59413e",
-                        "on-primary-container": "#ffaaa1",
-                        "tertiary": "#735c00",
-                        "on-secondary-container": "#496d1c",
-                        "tertiary-fixed": "#ffe083",
-                        "outline": "#8d706d",
-                        "surface-variant": "#dce2f7",
-                        "on-background": "#141b2b",
-                        "error": "#ba1a1a",
-                        "on-tertiary-fixed": "#231b00",
-                        "surface": "#f9f9ff",
-                        "primary": "#760009",
-                        "surface-container-high": "#e1e8fd",
-                        "on-tertiary": "#ffffff",
-                        "background": "#f9f9ff",
-                        "primary-container": "#991b1b",
-                        "error-container": "#ffdad6",
-                        "primary-fixed-dim": "#ffb4ac",
-                        "on-secondary-fixed": "#102000",
-                        "on-primary-fixed": "#410002",
-                        "surface-container-lowest": "#ffffff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "margin-desktop": "64px",
-                        "gutter": "24px",
-                        "container-max": "1280px",
-                        "margin-mobile": "16px",
-                        "unit": "8px"
-                    },
-                    "fontFamily": {
-                        "body-lg": ["Inter"],
-                        "label-md": ["Inter"],
-                        "display-lg-mobile": ["Playfair Display"],
-                        "headline-md": ["Playfair Display"],
-                        "display-lg": ["Playfair Display"],
-                        "headline-lg": ["Playfair Display"],
-                        "body-md": ["Inter"],
-                        "label-lg": ["Inter"]
-                    },
-                    "fontSize": {
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
-                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
-                    }
-                }
-            }
-        }
-    </script>
-<style>.glass-nav {
-    backdrop-filter: blur(12px);
-    background: rgba(249, 249, 255, 0.8)
-    }
-.paisley-pattern {
-    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAWmkg6dNj9jWK1hkGmjYTvdJE32dp8pqSIN_Y5dnnU9qyLDIjzNGy8CcaUGC9OXvXy20ofFQFO5rZ1hXBeygdFUq8sFcU8LvOXhFGNKGubHwFw135SmW7Z0G58ppgns3QxlzebktmxxvX9wNMsanI8AX6aLOyX1M7a7RT7lbmHpQs_dpUb-2qinVXqkCFPPoaZLHrGj2XQ3wgmzSOrSbUjtAZ16t1v5QPCRYGxkPA4KrT5yePhFivxoL9cc2kaURFkKh2ZhjLGNRk);
-    background-blend-mode: overlay
-    }
-.gold-border {
-    border-top: 4px solid #cea700
-    }
-.mandala-bullet::before {
-    content: "✦";
-    color: #cea700;
-    margin-right: 12px;
-    font-size: 0.8em
-    }
-.hero-gradient {
-    background: linear-gradient(to top, rgba(20, 27, 43, 0.9) 0%, rgba(20, 27, 43, 0.2) 50%, rgba(20, 27, 43, 0.1) 100%)
-    }</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWAYMVAR | She Chooses. With Absolute Certainty.</title>
+<meta name="description" content="India's first matrimonial platform for all public sector employees — RBI, SEBI, SBI, IOCL, AAI, BPCL and more. Free. Peer verified. Career compatible."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-mono { font-family: 'Space Mono', monospace; }
+  .glass-nav { backdrop-filter: blur(12px); background: rgba(254,252,245,0.93); }
+  .gold-rule { border: none; height: 4px; background: linear-gradient(90deg, transparent, #C9960C, transparent); }
+  .card-accent { border-left: 4px solid #C9960C; }
+  .hero-overlay { background: linear-gradient(to top, rgba(45,80,22,0.95) 0%, rgba(45,80,22,0.4) 50%, rgba(0,0,0,0.1) 100%); }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  .trait-pill { display: inline-block; padding: 6px 14px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.05em; border: 1px solid #D4C5A0; background: #F9F5EC; color: #5C5040; cursor: pointer; transition: all 0.2s; }
+  .trait-pill:hover, .trait-pill.selected { background: #EDF5E0; border-color: #2D5016; color: #2D5016; }
+  .org-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+  section { padding: 72px 24px; }
+</style>
 </head>
-<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
-<!-- Top Navigation Bar -->
-<header class="fixed top-0 w-full z-50 shadow-sm glass-nav border-b border-outline-variant">
-<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
-<h1 class="font-headline-lg text-headline-lg font-bold text-primary uppercase tracking-[0.2em]">SWAYMVAR</h1>
-</div>
-<nav class="hidden md:flex space-x-8">
-<a class="font-headline-md text-body-md text-primary font-semibold hover:opacity-80 transition-all uppercase tracking-widest" href="index.html">Philosophy</a>
-<a class="font-headline-md text-body-md text-on-surface-variant hover:text-primary transition-all uppercase tracking-widest" href="index.html">Rituals</a>
-<a class="font-headline-md text-body-md text-on-surface-variant hover:text-primary transition-all uppercase tracking-widest" href="index.html">The Circle</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="hidden md:block px-6 py-2 border border-tertiary-container text-tertiary font-label-lg uppercase tracking-widest hover:bg-tertiary-container/10 transition-colors">Concierge</button>
-<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden">
-<img alt="Elite Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC23cR8r-NYJYzL0XnUufeZxRHUWkZLqDeA1YwXfVg2xxPj5AE7DuI7y5IRRtvZypVqNxhUWZCnv2E8IMsdeWWQyONsD8knvyJ3R4TRdTehvrfJt4VsFsFhD8Ft4iT-3FP9nSOEQuRK-jz4g9nzP0Ow5usMjqVkVJODGqQtqqjcQ0efJjWMkK8m4Kz-lme1etYtSjqMKcFGTiF3hsLgU6rkTSQH_nII_ia3yj0nGyQ4RiGtF5gAXD354L0ILqaliQyhPryuMKnZn38"/>
-</div>
-</div>
-</div>
-</header>
-<main class="mt-16">
-<!-- Hero Section -->
-<section class="relative h-[90vh] w-full overflow-hidden">
-<img alt="Majestic Couple" class="absolute inset-0 w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0t8wM_CHyCtW5X9EtWQ8XlwV8BSXHF01BWHFz-AMlZldund-T5wW09ZpXRv8Dne8wt0O631MVZGz9qtILuoIqHNnMzpHFmOf2pyiijFVlaXp2EVvVhIU0I6b7h9Uztg_gTQhXBssj6a-8G8Vv_oWA2L13h3HvGOFqfKCFYsV-jDPfm6lkqYE7YZ2x7Z-XKn5U8TAd9MOaaRU9m7Z58xUyCZW5sXTeBtwf-iIcsfIiIgWw9f4gyYqrtrkO8E4KcYHYOSQWCz2yZx4"/>
-<div class="absolute inset-0 hero-gradient"></div>
-<div class="absolute inset-0 flex flex-col justify-end items-center pb-24 px-margin-mobile text-center">
-<p class="text-tertiary-fixed font-label-lg uppercase tracking-[0.3em] mb-4">A Sacred Tradition Reimagined</p>
-<h2 class="text-white font-display-lg-mobile md:text-display-lg mb-6 max-w-4xl leading-tight">Where Destiny Meets Choice: The Modern Swaymvar</h2>
-<div class="flex gap-6 mt-4">
-<button class="bg-primary text-white px-8 py-4 font-body-md font-bold uppercase tracking-widest rounded-lg shadow-lg hover:scale-95 transition-transform">Begin Your Journey</button>
-<button class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 font-body-md font-bold uppercase tracking-widest rounded-lg hover:bg-white/20 transition-all">Our Philosophy</button>
-</div>
-</div>
-</section>
-<!-- The Pillars of Virtue (Bento Grid) -->
-<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<div class="text-center mb-16">
-<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2 uppercase tracking-widest">The Pillars of Virtue</h3>
-<div class="w-24 h-1 bg-tertiary-container mx-auto"></div>
-<p class="mt-6 text-on-surface-variant font-body-lg max-w-2xl mx-auto italic">Drawing inspiration from the dignity of Sita and the agency of Draupadi, we uphold the sacred standards of union.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Pillar 1 -->
-<div class="group relative bg-surface-container-lowest p-8 gold-border shadow-sm paisley-pattern hover:shadow-xl transition-all duration-500 overflow-hidden">
-<div class="absolute -right-8 -top-8 text-surface-container-highest opacity-20 transform rotate-45">
-<span class="material-symbols-outlined text-[120px]">verified_user</span>
-</div>
-<div class="relative z-10">
-<div class="w-16 h-16 bg-secondary-container/20 rounded-full flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-secondary text-3xl">shield_person</span>
-</div>
-<h4 class="font-headline-md text-headline-md text-on-surface mb-4">Ram's Integrity</h4>
-<p class="text-on-surface-variant font-body-md leading-relaxed mb-6">Professional Verification at the highest level. We ensure every suitor meets the rigorous standards of character and achievement required for a noble alliance.</p>
-<span class="text-secondary font-label-lg uppercase tracking-widest group-hover:translate-x-2 inline-block transition-transform">Verification Protocol →</span>
-</div>
-</div>
-<!-- Pillar 2 -->
-<div class="group relative bg-surface-container-lowest p-8 gold-border shadow-sm paisley-pattern hover:shadow-xl transition-all duration-500 overflow-hidden">
-<div class="absolute -right-8 -top-8 text-surface-container-highest opacity-20 transform rotate-45">
-<span class="material-symbols-outlined text-[120px]">lock</span>
-</div>
-<div class="relative z-10">
-<div class="w-16 h-16 bg-primary-container/10 rounded-full flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-primary text-3xl">privacy_tip</span>
-</div>
-<h4 class="font-headline-md text-headline-md text-on-surface mb-4">Draupadi's Grace</h4>
-<p class="text-on-surface-variant font-body-md leading-relaxed mb-6">Privacy First. Your lineage and presence are guarded with the utmost sanctity. Information is shared only when the ritual of introduction is mutual.</p>
-<span class="text-primary font-label-lg uppercase tracking-widest group-hover:translate-x-2 inline-block transition-transform">Privacy Vault →</span>
-</div>
-</div>
-<!-- Pillar 3 -->
-<div class="group relative bg-surface-container-lowest p-8 gold-border shadow-sm paisley-pattern hover:shadow-xl transition-all duration-500 overflow-hidden">
-<div class="absolute -right-8 -top-8 text-surface-container-highest opacity-20 transform rotate-45">
-<span class="material-symbols-outlined text-[120px]">groups</span>
-</div>
-<div class="relative z-10">
-<div class="w-16 h-16 bg-tertiary-container/10 rounded-full flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-tertiary text-3xl">eye_tracking</span>
-</div>
-<h4 class="font-headline-md text-headline-md text-on-surface mb-4">The Sacred Circle</h4>
-<p class="text-on-surface-variant font-body-md leading-relaxed mb-6">Women-Controlled Visibility. You define who enters your orbit. Complete autonomy over your profile's reach ensures you remain the architect of your destiny.</p>
-<span class="text-tertiary font-label-lg uppercase tracking-widest group-hover:translate-x-2 inline-block transition-transform">Control Settings →</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Editorial Section -->
-<section class="bg-surface-dim/30 py-24">
-<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-16">
-<div class="w-full md:w-1/2 relative">
-<div class="aspect-[4/5] bg-surface-container-high rounded-xl overflow-hidden shadow-2xl">
-<img alt="Traditional Ritual" class="w-full h-full object-cover" data-alt="A close-up, high-fashion editorial photograph of a traditional Indian wedding ritual. Golden sunlight streams onto hands adorned with intricate henna (Mehendi) holding a garland of jasmine and marigolds. The scene is shot in a minimalist luxury aesthetic with a soft-focus background of ancient stone architecture. The color palette emphasizes warm golds, deep reds (Sindoor), and organic greens (Mehendi), creating a mood of sacredness and professional elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyuA14uL89UPHnGEhqL7qqcJQOKIg6dXbARY1vWhCRSnE_NHo8G3M4xMKsGTdk4mTiHSPP29mY5z4TwdGgSdhSXzzcVnpMuW0423JqOHvuQVLdfcatUDbI9I2wOi3Y29kJChZIrcz9Piw0A_xaibDU5hff-m3bkn8NClw90enKpANevG_o-zMPWBq4KlJvkcoMkIAMNBFxDHcHzhQwAeloMcLFALkG_PTx4_UpcKfdAgFoSeQ4Qg-K_QqLMJyx__OjiPjJI4ZkCYI"/>
-</div>
-<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-white p-4 shadow-xl hidden md:block">
-<div class="w-full h-full border border-tertiary-container flex flex-col items-center justify-center text-center p-4">
-<span class="text-tertiary font-display-lg text-4xl mb-2">108</span>
-<p class="text-on-surface-variant font-label-md uppercase tracking-widest">Ritual Checkpoints</p>
-</div>
-</div>
-</div>
-<div class="w-full md:w-1/2">
-<h3 class="font-headline-lg text-display-lg-mobile md:text-headline-lg text-on-surface mb-8 leading-tight">A Protocol Designed for the Extraordinary</h3>
-<p class="text-on-surface-variant font-body-lg mb-8 leading-relaxed">SWAYMVAR is not an application; it is a concierge-led sanctuary for high-net-worth professionals who value heritage as much as modern success. Our process filters for virtue, ambition, and cultural alignment.</p>
-<ul class="space-y-6">
-<li class="mandala-bullet font-body-md text-on-surface">Psychometric alignment based on ancestral values.</li>
-<li class="mandala-bullet font-body-md text-on-surface">Income and asset verification for lifestyle compatibility.</li>
-<li class="mandala-bullet font-body-md text-on-surface">Exclusive introduction rituals via our Concierge.</li>
-<li class="mandala-bullet font-body-md text-on-surface">Strict 1:1 interaction model to prevent "profile fatigue".</li>
-</ul>
-<button class="mt-10 px-10 py-5 bg-tertiary text-white font-label-lg uppercase tracking-[0.2em] hover:bg-tertiary/90 transition-all rounded-sm shadow-md">Apply for Membership</button>
-</div>
-</div>
-</section>
-<!-- Success Stories Carousel Placeholder -->
-<section class="py-24 overflow-hidden">
-<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-12">
-<h3 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-widest text-center">Modern Legacies</h3>
-</div>
-<div class="flex gap-8 px-margin-mobile md:px-margin-desktop overflow-x-auto pb-12 snap-x no-scrollbar">
-<!-- Success Card 1 -->
-<div class="min-w-[320px] md:min-w-[400px] snap-center bg-white p-8 border border-outline-variant relative group">
-<div class="absolute top-0 left-0 w-full h-1 bg-tertiary-container"></div>
-<p class="italic text-on-surface-variant font-body-md mb-8">"The privacy standards at SWAYMVAR allowed me to find a partner who respected my professional boundaries while sharing my cultural roots."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
-<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwNodePmCwIZgye24bZX8VRBHdOc44SXyz-ZOak7Bbbkwt7Dfa_6B_H-g3svNEPKF2NwDpZjTLF-10775VgN6DcBuFmlen67NLWDUN3lB7z83EetnTZTGmU5KX1McbtpOozNg6zOlt2RmXH3XKhLs7xv6rP03aZfhMvxErt8j3qyCHiH1d7UR3zBu22EvUVju-Y8cYbPx_qtx6AoSzdjRORew_ikeuCyml_SzVQNp_KyILU5LVEShwAqOu7sC-fmEAvW2k61GvTcU"/>
-</div>
-<div>
-<p class="font-bold text-on-surface">Ananya V.</p>
-<p class="text-label-md text-tertiary uppercase">CEO, FinTech Global</p>
-</div>
-</div>
-</div>
-<!-- Success Card 2 -->
-<div class="min-w-[320px] md:min-w-[400px] snap-center bg-white p-8 border border-outline-variant relative group">
-<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
-<p class="italic text-on-surface-variant font-body-md mb-8">"Verification was rigorous, but it gave me the peace of mind that every connection was genuine. It truly felt like a sacred space."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
-<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz8qRhTsMsyu6szQZK1m0gBPt1EeZLHiovgwSrQ1H8TgbkHDD_GPCU85wv_jHeaZHW85kjsIELryJdRDOF1nYh18_YUHnz_PqQRQvMFw2ztOnSM2uIFddZVlCDlZ955ik7SZ-OdRJZS36Uqv7w8mcKbqR0AMlzZxmTZH5AnbtHAN5XmYdOtqGB75nSqEjHCl1v8c7n6N-0lE8xnrFuOvsLbTyS2j1fQ7WQ5-EhpT95sY9DvPxTmyjWJTGMeauPXleN18WannL5UCk"/>
-</div>
-<div>
-<p class="font-bold text-on-surface">Vikram R.</p>
-<p class="text-label-md text-tertiary uppercase">Senior Surgeon, London</p>
-</div>
-</div>
-</div>
-<!-- Success Card 3 -->
-<div class="min-w-[320px] md:min-w-[400px] snap-center bg-white p-8 border border-outline-variant relative group">
-<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
-<p class="italic text-on-surface-variant font-body-md mb-8">"I chose my destiny with the same agency as the queens of our past. The Sacred Circle put me in total control."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
-<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_9tgy4QXupasgKirvFK89G8oee3bk6VumhHEEja8FqIdHfucCo6BEDsZmCsvvhUwM_Vi2DaPaBhdZNeLXGzRd1wTzd6dTIQfB_-FtLZq6VBzc5lIc_YywHTWDnZPEtGdL2oiiK2Oi9ZCyrjTIMNV7LuaFKqUgQdtEmgjb9iAStY4-TChAQ_GJHdum74QYBMwvbRvD2qUHfIsxAnaSiFCtEqXC-a8DHJLN9PAsL_W8G47iFJn7D3iO90hfGERt9fjHjcVOhR6Vu94"/>
-</div>
-<div>
-<p class="font-bold text-on-surface">Meera S.</p>
-<p class="text-label-md text-tertiary uppercase">Humanitarian Law Expert</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- CTA Section -->
-<section class="bg-inverse-surface py-24 text-center px-margin-mobile">
-<h3 class="text-white font-display-lg-mobile md:text-headline-lg mb-6 uppercase tracking-[0.3em]">Your Seat Awaits</h3>
-<p class="text-surface-variant font-body-lg max-w-2xl mx-auto mb-12">Applications for the Autumn cohort are now being reviewed by the Concierge. Embark on the path where tradition meets your ambition.</p>
-<form class="max-w-md mx-auto flex flex-col gap-6">
-<input class="bg-transparent border-0 border-b border-outline-variant text-white focus:ring-0 focus:border-tertiary-container text-center placeholder:text-surface-variant font-label-lg uppercase tracking-widest" placeholder="YOUR ELITE EMAIL ADDRESS" type="email"/>
-<button class="bg-primary text-white py-5 px-12 font-label-lg uppercase tracking-[0.3em] hover:bg-primary-container transition-all shadow-lg">Request Invite</button>
-</form>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-inverse-surface dark:bg-on-surface w-full py-16 border-t-2 border-secondary">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop space-y-8 md:space-y-0">
-<div class="text-center md:text-left">
-<h2 class="font-headline-md text-headline-md text-secondary-fixed uppercase tracking-widest mb-2">Swaymvar</h2>
-<p class="text-surface-variant font-label-lg opacity-80">© 2026 Swaymvar.in. Exclusivity &amp; Verification Guaranteed.</p>
-</div>
-<div class="flex flex-wrap justify-center gap-8">
-<a class="text-surface-variant font-label-lg uppercase tracking-widest hover:text-secondary-fixed transition-opacity" href="index.html">Exclusivity Protocol</a>
-<a class="text-surface-variant font-label-lg uppercase tracking-widest hover:text-secondary-fixed transition-opacity" href="index.html">Verification Standards</a>
-<a class="text-surface-variant font-label-lg uppercase tracking-widest hover:text-secondary-fixed transition-opacity" href="index.html">Privacy Policy</a>
-<a class="text-surface-variant font-label-lg uppercase tracking-widest hover:text-secondary-fixed transition-opacity" href="index.html">Contact Concierge</a>
-</div>
-</div>
-</footer>
-<!-- Mobile Bottom Navigation Shell -->
-<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container dark:bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_20px_rgba(118,0,9,0.05)] flex justify-around items-center h-20 pb-safe px-4">
-<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-transform active:scale-95">
-<span class="material-symbols-outlined" data-icon="explore">explore</span>
-<span class="font-label-sm text-label-sm">Discover</span>
-</div>
-<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-transform active:scale-95">
-<span class="material-symbols-outlined" data-icon="groups">groups</span>
-<span class="font-label-sm text-label-sm">Circle</span>
-</div>
-<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-transform active:scale-95">
-<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
-<span class="font-label-sm text-label-sm">Messages</span>
-</div>
-<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-transform active:scale-95">
-<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
-<span class="font-label-sm text-label-sm">Account</span>
-</div>
-</nav>
-<script>
-        // Micro-interactions and subtle effects
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('shadow-md');
-                header.classList.remove('shadow-sm');
-            } else {
-                header.classList.add('shadow-sm');
-                header.classList.remove('shadow-md');
-            }
-        });
+<body>
 
-        // Simple parallax for hero image
-        const heroImg = document.querySelector('.hero-gradient').previousElementSibling;
-        window.addEventListener('scroll', () => {
-            const speed = 0.5;
-            const yPos = -(window.scrollY * speed);
-            heroImg.style.transform = `translateY(${yPos}px)`;
-        });
-    </script>
-</body></html>
+<!-- ═══ NAVIGATION ═══ -->
+<header class="fixed top-0 w-full z-50 glass-nav" style="border-bottom:1px solid #D4C5A0;" id="main-nav">
+  <div style="max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <div>
+      <h1 class="font-display" style="font-size:24px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;">SWAYMVAR</h1>
+      <p class="font-mono" style="font-size:9px;color:#A67C00;letter-spacing:0.2em;">swaymvar.in · She Chooses</p>
+    </div>
+    <nav style="display:flex;gap:28px;align-items:center;" class="hidden md:flex">
+      <a href="index.html" class="font-mono" style="font-size:11px;color:#2D5016;text-transform:uppercase;letter-spacing:0.15em;border-bottom:2px solid #C9960C;padding-bottom:2px;">Home</a>
+      <a href="discover.html" class="font-mono" style="font-size:11px;color:#5C5040;text-transform:uppercase;letter-spacing:0.15em;">Discover</a>
+      <a href="verify.html" class="font-mono" style="font-size:11px;color:#5C5040;text-transform:uppercase;letter-spacing:0.15em;">Verification</a>
+      <a href="profile.html" class="font-mono" style="font-size:11px;color:#5C5040;text-transform:uppercase;letter-spacing:0.15em;">Profiles</a>
+    </nav>
+    <a href="#invite" style="padding:10px 20px;border:2px solid #C9960C;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;text-decoration:none;border-radius:4px;" class="hidden md:block">Request Invite</a>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section style="padding:0;position:relative;height:100vh;overflow:hidden;margin-top:64px;">
+  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1400&fit=crop" alt="Accomplished Woman" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" id="hero-img"/>
+  <div class="hero-overlay" style="position:absolute;inset:0;"></div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:80px;text-align:center;padding-left:24px;padding-right:24px;">
+    <div class="font-mono" style="display:inline-block;padding:8px 20px;margin-bottom:20px;background:rgba(201,150,12,0.2);border:1px solid #C9960C;color:#E8B84B;font-size:10px;letter-spacing:0.3em;border-radius:4px;">✦ INVITE-ONLY · SWAYMVAR.IN · FREE FOR ALL MEMBERS ✦</div>
+    <h2 class="font-display" style="font-size:clamp(36px,6vw,64px);font-weight:700;color:white;line-height:1.1;margin-bottom:16px;">She Chooses.<br/>At Her Own Pace.</h2>
+    <p style="color:rgba(255,255,255,0.8);max-width:600px;font-size:18px;line-height:1.7;margin-bottom:32px;">India's matrimonial platform for public sector employees — where your job, your transfer schedule, and your personality are matched before anything else. For everyone, from every background.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+      <a href="#invite" style="padding:16px 36px;background:#8B1A1A;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;border-radius:8px;text-decoration:none;font-weight:700;">Begin Your Journey</a>
+      <a href="#how-it-works" style="padding:16px 36px;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.4);color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;border-radius:8px;text-decoration:none;">How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECULAR STATEMENT ═══ -->
+<section style="background:#2D5016;padding:56px 24px;text-align:center;">
+  <div style="max-width:900px;margin:0 auto;">
+    <p class="font-mono" style="font-size:10px;color:#E8B84B;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;">Our Core Belief</p>
+    <h3 class="font-display" style="font-size:clamp(24px,4vw,36px);color:white;font-weight:700;margin-bottom:16px;line-height:1.3;">One Platform. Every Employee. Every Faith. Every Background.</h3>
+    <p style="color:rgba(255,255,255,0.8);font-size:16px;line-height:1.8;margin-bottom:12px;">SWAYMVAR is not about your rank, your religion, your caste, or your community. It is about one belief: every woman in a public sector job deserves to find a partner who understands her career, her transfer schedule, and her life — without putting either career on hold.</p>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;">A clerk at SBI. An officer at RBI. An engineer at IOCL. A controller at AAI. You all belong here equally. Completely free. Always.</p>
+    <hr style="border:none;height:1px;background:rgba(201,150,12,0.3);margin:28px auto;max-width:400px;"/>
+    <p class="font-mono" style="font-size:12px;color:#C9960C;letter-spacing:0.2em;">✦ No rank filter · No religion filter · No caste filter · No community filter ✦</p>
+  </div>
+</section>
+
+<!-- ═══ WHO WE SERVE — ALL EMPLOYEES ═══ -->
+<section style="background:#FEFCF5;" id="organisations">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px;">Now Enrolling</p>
+      <h3 class="font-display" style="font-size:clamp(24px,3.5vw,36px);color:#2D5016;font-weight:700;">Every Employee of These Organisations</h3>
+      <hr class="gold-rule" style="max-width:200px;margin:20px auto;"/>
+      <p style="color:#5C5040;font-size:15px;">From clerk to officer to director — if you work here, you belong on SWAYMVAR.</p>
+    </div>
+
+    <!-- ORG GRID -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px;">
+
+      <!-- Financial Regulators -->
+      <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-left:4px solid #C9960C;border-radius:12px;padding:20px;">
+        <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">🏦 Financial Regulators</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Reserve Bank of India (RBI)</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All employees — Clerks, Officers, Grade A/B/C · Transfer: 5 yrs regional, 10 yrs Mumbai</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">SEBI</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All staff — Grade A & above · Mumbai HQ, Delhi secondary</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">NABARD</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All employees · State office pan-India posting</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">PFRDA · IRDAI · NaBFID</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All grades welcome</p></div>
+        </div>
+      </div>
+
+      <!-- PSU Banks -->
+      <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-left:4px solid #C9960C;border-radius:12px;padding:20px;">
+        <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">🏛️ PSU Banks</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">State Bank of India (SBI)</p><p class="font-mono" style="font-size:10px;color:#5C5040;">Clerks, POs, Scale I–VII · Pan-India transfer every 2–3 yrs</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">PNB, BOB, Canara, Union Bank</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All employees · Nationalised bank posting rules</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Bank of India, Indian Bank, UCO</p><p class="font-mono" style="font-size:10px;color:#5C5040;">Clerks to GMs · Spouse same-city request possible</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">EXIM Bank · SIDBI · NHB</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All staff grades welcome</p></div>
+        </div>
+      </div>
+
+      <!-- Insurance -->
+      <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-left:4px solid #C9960C;border-radius:12px;padding:20px;">
+        <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">🛡️ Public Insurance</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Life Insurance Corporation (LIC)</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All employees — Dev. Officers, Class I, II, III · Pan-India divisional posting</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">GIC Re · National Insurance</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All grades · Transfer every 3 years</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">New India · Oriental · United India</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All staff categories</p></div>
+        </div>
+      </div>
+
+      <!-- Oil & Energy PSUs -->
+      <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-left:4px solid #C9960C;border-radius:12px;padding:20px;">
+        <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">⚡ Oil, Energy & PSUs</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Indian Oil Corporation (IOCL)</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All employees · Refinery, pipeline, retail posting · Pan-India</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">BPCL · HPCL · Coal India</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All grades · Transfer varies by division</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">ONGC · GAIL · NTPC · BHEL</p><p class="font-mono" style="font-size:10px;color:#5C5040;">Engineers, officers, support staff</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Power Grid · NHPC · SAIL</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All employee categories</p></div>
+        </div>
+      </div>
+
+      <!-- Aviation & Transport -->
+      <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-left:4px solid #C9960C;border-radius:12px;padding:20px;">
+        <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">✈️ Aviation & Transport</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Airports Authority of India (AAI)</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All staff — ATC, engineers, admin · Airport-based posting</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Air Traffic Controllers (ATC)</p><p class="font-mono" style="font-size:10px;color:#5C5040;">Unique posting at airports only · Critical transfer compatibility</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Air India · Pawan Hans</p><p class="font-mono" style="font-size:10px;color:#5C5040;">Operations and support staff</p></div>
+          <div><p style="font-weight:600;color:#1C1A14;font-size:14px;">Indian Railways · IRCTC</p><p class="font-mono" style="font-size:10px;color:#5C5040;">All railway employees · Zone-based posting</p></div>
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div style="background:#EDE5D0;border:1px solid #D4C5A0;border-left:4px solid #D4C5A0;border-radius:12px;padding:20px;opacity:0.75;">
+        <p class="font-mono" style="font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">🔒 Coming Soon</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div><p style="font-weight:600;color:#5C5040;font-size:14px;">IAS / IPS / IFS Officers</p><p class="font-mono" style="font-size:10px;color:#8C7B6B;">All India Services — Register interest</p></div>
+          <div><p style="font-weight:600;color:#5C5040;font-size:14px;">AIIMS & Medical Staff</p><p class="font-mono" style="font-size:10px;color:#8C7B6B;">Doctors, nurses, paramedical</p></div>
+          <div><p style="font-weight:600;color:#5C5040;font-size:14px;">Defence Officers</p><p class="font-mono" style="font-size:10px;color:#8C7B6B;">Army, Navy, Air Force</p></div>
+          <div><p style="font-weight:600;color:#5C5040;font-size:14px;">State Government Employees</p><p class="font-mono" style="font-size:10px;color:#8C7B6B;">PWD, electricity boards, state PSUs</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section style="background:#EDF5E0;" id="how-it-works">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px;">The Matching System</p>
+      <h3 class="font-display" style="font-size:clamp(24px,3.5vw,36px);color:#2D5016;font-weight:700;">We Match Three Things First</h3>
+      <hr class="gold-rule" style="max-width:200px;margin:20px auto;"/>
+      <p style="color:#5C5040;max-width:600px;margin:0 auto;font-size:15px;line-height:1.7;">Before personality, before photos, before anything else — we check that both careers can actually coexist after marriage. Nobody should put their career on hold for love.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+
+      <div style="background:#F9F5EC;border-radius:16px;padding:32px;border-left:4px solid #C9960C;">
+        <div style="width:48px;height:48px;border-radius:50%;background:#EDF5E0;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">🗺️</div>
+        <h4 class="font-display" style="font-size:20px;color:#2D5016;margin-bottom:12px;font-weight:700;">1. Transfer Compatibility</h4>
+        <p style="color:#5C5040;font-size:14px;line-height:1.75;margin-bottom:16px;">RBI transfers every 5 years at regional offices, 10 years in Mumbai. SBI transfers every 2–3 years anywhere in India. AAI posts at specific airports. We show transfer windows for every organisation so you know upfront if your careers can stay in the same city.</p>
+        <div style="background:#EDF5E0;border-radius:8px;padding:12px;">
+          <p class="font-mono" style="font-size:10px;color:#2D5016;letter-spacing:0.1em;">REAL EXAMPLE</p>
+          <p style="font-size:13px;color:#5C5040;margin-top:6px;">RBI employee in Mumbai + SBI employee in Mumbai = high transfer compatibility. RBI employee in Chennai + AAI controller in Delhi = low compatibility without relocation discussion.</p>
+        </div>
+      </div>
+
+      <div style="background:#FFF8E1;border-radius:16px;padding:32px;border-left:4px solid #C9960C;">
+        <div style="width:48px;height:48px;border-radius:50%;background:#FFF8E1;border:1px solid #C9960C;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">🧠</div>
+        <h4 class="font-display" style="font-size:20px;color:#2D5016;margin-bottom:12px;font-weight:700;">2. Personality Traits</h4>
+        <p style="color:#5C5040;font-size:14px;line-height:1.75;margin-bottom:16px;">Based on the Big Five personality model used by psychologists worldwide. We ask simple questions to understand who you really are — not just what you do.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="trait-pill">Introvert</span>
+          <span class="trait-pill">Extrovert</span>
+          <span class="trait-pill">Agreeable</span>
+          <span class="trait-pill">Conscientious</span>
+          <span class="trait-pill">Curious</span>
+          <span class="trait-pill">Calm</span>
+          <span class="trait-pill">Ambitious</span>
+          <span class="trait-pill">Empathetic</span>
+        </div>
+      </div>
+
+      <div style="background:#F9F5EC;border-radius:16px;padding:32px;border-left:4px solid #C9960C;">
+        <div style="width:48px;height:48px;border-radius:50%;background:#EDF5E0;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">❤️</div>
+        <h4 class="font-display" style="font-size:20px;color:#2D5016;margin-bottom:12px;font-weight:700;">3. Life Preferences</h4>
+        <p style="color:#5C5040;font-size:14px;line-height:1.75;margin-bottom:16px;">The little things that actually make or break a marriage — do you cook together or eat out? Beach holiday or mountains? Close to parents or independent household? Party animal or home person?</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="trait-pill">🏔️ Mountain Person</span>
+          <span class="trait-pill">🏖️ Beach Person</span>
+          <span class="trait-pill">🏠 Homebody</span>
+          <span class="trait-pill">🎉 Party Animal</span>
+          <span class="trait-pill">👨‍👩‍👧 Close Family</span>
+          <span class="trait-pill">🍳 Loves Cooking</span>
+          <span class="trait-pill">✈️ Frequent Traveller</span>
+          <span class="trait-pill">👶 Wants Kids</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PERSONALITY TRAITS DEEP SECTION ═══ -->
+<section style="background:#FEFCF5;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px;">Personality Matching</p>
+      <h3 class="font-display" style="font-size:clamp(24px,3.5vw,36px);color:#2D5016;font-weight:700;">Because Who You Are Matters More Than What You Earn</h3>
+      <hr class="gold-rule" style="max-width:200px;margin:20px auto;"/>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:40px;">
+
+      <div style="background:#F9F5EC;border-radius:12px;padding:20px;border:1px solid #D4C5A0;">
+        <p style="font-size:28px;margin-bottom:10px;">🧘</p>
+        <p style="font-weight:700;color:#1C1A14;margin-bottom:6px;font-size:15px;">Introvert vs Extrovert</p>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;">Do you recharge alone or with people? A homebody married to a social butterfly can work — but only if both know it upfront and respect it.</p>
+      </div>
+
+      <div style="background:#FFF8E1;border-radius:12px;padding:20px;border:1px solid #D4C5A0;">
+        <p style="font-size:28px;margin-bottom:10px;">🤝</p>
+        <p style="font-weight:700;color:#1C1A14;margin-bottom:6px;font-size:15px;">Agreeable vs Assertive</p>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;">Do you naturally compromise or do you hold your ground? Neither is wrong — but two very assertive people need to know they are choosing that dynamic.</p>
+      </div>
+
+      <div style="background:#F9F5EC;border-radius:12px;padding:20px;border:1px solid #D4C5A0;">
+        <p style="font-size:28px;margin-bottom:10px;">📋</p>
+        <p style="font-weight:700;color:#1C1A14;margin-bottom:6px;font-size:15px;">Organised vs Spontaneous</p>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;">One person plans holidays six months ahead. The other books a train the night before. This causes real friction. We surface it early.</p>
+      </div>
+
+      <div style="background:#FFF8E1;border-radius:12px;padding:20px;border:1px solid #D4C5A0;">
+        <p style="font-size:28px;margin-bottom:10px;">🌱</p>
+        <p style="font-weight:700;color:#1C1A14;margin-bottom:6px;font-size:15px;">Curious vs Practical</p>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;">One always wants to try new things. The other trusts what already works. Complementary — but needs to be understood before marriage, not after.</p>
+      </div>
+
+      <div style="background:#F9F5EC;border-radius:12px;padding:20px;border:1px solid #D4C5A0;">
+        <p style="font-size:28px;margin-bottom:10px;">😌</p>
+        <p style="font-weight:700;color:#1C1A14;margin-bottom:6px;font-size:15px;">Calm vs Emotional</p>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;">How you handle stress, arguments, and bad days matters enormously in marriage. We measure emotional stability honestly and respectfully.</p>
+      </div>
+
+      <div style="background:#FFF8E1;border-radius:12px;padding:20px;border:1px solid #D4C5A0;">
+        <p style="font-size:28px;margin-bottom:10px;">👨‍👩‍👧‍👦</p>
+        <p style="font-weight:700;color:#1C1A14;margin-bottom:6px;font-size:15px;">Family Closeness</p>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;">Do you want to live near parents? Visit every weekend? Or have an independent household? This is one of the biggest sources of conflict in marriages. We ask it directly.</p>
+      </div>
+
+    </div>
+
+    <!-- LIFE PREFERENCES GRID -->
+    <div style="background:#2D5016;border-radius:20px;padding:36px;">
+      <p class="font-mono" style="font-size:10px;color:#E8B84B;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:20px;text-align:center;">Life Preference Matching</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+          <p style="font-size:24px;margin-bottom:8px;">🍳</p>
+          <p style="color:white;font-weight:600;font-size:13px;margin-bottom:4px;">Cooking Style</p>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;">Home cook vs eating out vs both</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+          <p style="font-size:24px;margin-bottom:8px;">🏔️</p>
+          <p style="color:white;font-weight:600;font-size:13px;margin-bottom:4px;">Travel Style</p>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;">Mountains, beach, city, heritage</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+          <p style="font-size:24px;margin-bottom:8px;">🎉</p>
+          <p style="color:white;font-weight:600;font-size:13px;margin-bottom:4px;">Social Life</p>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;">Party animal vs quiet evenings</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+          <p style="font-size:24px;margin-bottom:8px;">👶</p>
+          <p style="color:white;font-weight:600;font-size:13px;margin-bottom:4px;">Children</p>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;">Timing, number, priorities</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+          <p style="font-size:24px;margin-bottom:8px;">👵</p>
+          <p style="color:white;font-weight:600;font-size:13px;margin-bottom:4px;">Parents Relation</p>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;">Joint family, independent, nearby</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+          <p style="font-size:24px;margin-bottom:8px;">👫</p>
+          <p style="color:white;font-weight:600;font-size:13px;margin-bottom:4px;">Siblings Bond</p>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;">How close, involvement in life</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+          <p style="font-size:24px;margin-bottom:8px;">💰</p>
+          <p style="color:white;font-weight:600;font-size:13px;margin-bottom:4px;">Money Approach</p>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;">Saver vs spender vs investor</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+          <p style="font-size:24px;margin-bottom:8px;">🏠</p>
+          <p style="color:white;font-weight:600;font-size:13px;margin-bottom:4px;">Home Style</p>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;">Neat freak vs relaxed, decor taste</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRANSFER POLICY TABLE ═══ -->
+<section style="background:#EDF5E0;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px;">Transfer Policy Reference</p>
+      <h3 class="font-display" style="font-size:clamp(22px,3vw,32px);color:#2D5016;font-weight:700;">No Career Should Be Put On Hold For Love</h3>
+      <hr class="gold-rule" style="max-width:200px;margin:20px auto;"/>
+      <p style="color:#5C5040;font-size:14px;max-width:600px;margin:0 auto;">We show real transfer policies for every organisation so you can make an informed decision together — before engagement, not after.</p>
+    </div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;background:#F9F5EC;border-radius:12px;overflow:hidden;">
+        <thead>
+          <tr style="background:#2D5016;color:white;">
+            <th style="padding:14px 16px;text-align:left;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;">Organisation</th>
+            <th style="padding:14px 16px;text-align:left;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;">Transfer Cycle</th>
+            <th style="padding:14px 16px;text-align:left;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;">Posting Area</th>
+            <th style="padding:14px 16px;text-align:left;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;">Spouse Request?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #D4C5A0;">
+            <td style="padding:14px 16px;font-weight:600;font-size:14px;">RBI</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">5 yrs regional · 10 yrs Mumbai</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">4 circles: Mumbai, Delhi, Chennai, Kolkata</td>
+            <td style="padding:14px 16px;"><span style="background:#EDF5E0;color:#2D5016;padding:3px 8px;border-radius:4px;font-size:11px;font-family:'Space Mono',monospace;">✓ Applicable</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #D4C5A0;background:#FEFCF5;">
+            <td style="padding:14px 16px;font-weight:600;font-size:14px;">SEBI</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">3–5 yrs typical</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">Mumbai HQ primarily, Delhi secondary</td>
+            <td style="padding:14px 16px;"><span style="background:#EDF5E0;color:#2D5016;padding:3px 8px;border-radius:4px;font-size:11px;font-family:'Space Mono',monospace;">✓ Limited</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #D4C5A0;">
+            <td style="padding:14px 16px;font-weight:600;font-size:14px;">SBI</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">2–3 yrs</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">Pan-India — any state or city</td>
+            <td style="padding:14px 16px;"><span style="background:#EDF5E0;color:#2D5016;padding:3px 8px;border-radius:4px;font-size:11px;font-family:'Space Mono',monospace;">✓ Same circle possible</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #D4C5A0;background:#FEFCF5;">
+            <td style="padding:14px 16px;font-weight:600;font-size:14px;">PSU Banks</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">2–3 yrs</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">Pan-India — zone/region based</td>
+            <td style="padding:14px 16px;"><span style="background:#EDF5E0;color:#2D5016;padding:3px 8px;border-radius:4px;font-size:11px;font-family:'Space Mono',monospace;">✓ Policy varies</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #D4C5A0;">
+            <td style="padding:14px 16px;font-weight:600;font-size:14px;">LIC / Insurance</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">3 yrs divisional</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">Pan-India — divisional offices</td>
+            <td style="padding:14px 16px;"><span style="background:#EDF5E0;color:#2D5016;padding:3px 8px;border-radius:4px;font-size:11px;font-family:'Space Mono',monospace;">✓ Applicable</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #D4C5A0;background:#FEFCF5;">
+            <td style="padding:14px 16px;font-weight:600;font-size:14px;">IOCL / BPCL / HPCL</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">3–5 yrs</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">Refineries, depots, offices — pan-India</td>
+            <td style="padding:14px 16px;"><span style="background:#FFF8E1;color:#A67C00;padding:3px 8px;border-radius:4px;font-size:11px;font-family:'Space Mono',monospace;">◐ Limited</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #D4C5A0;">
+            <td style="padding:14px 16px;font-weight:600;font-size:14px;">AAI / ATC</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">3–5 yrs</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">Airport-specific — 137 airports in India</td>
+            <td style="padding:14px 16px;"><span style="background:#FFF8E1;color:#A67C00;padding:3px 8px;border-radius:4px;font-size:11px;font-family:'Space Mono',monospace;">◐ Airport availability</span></td>
+          </tr>
+          <tr style="background:#FEFCF5;">
+            <td style="padding:14px 16px;font-weight:600;font-size:14px;">ONGC / Coal India</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">3–5 yrs</td>
+            <td style="padding:14px 16px;font-size:13px;color:#5C5040;">Oilfields, mines, offices — remote possible</td>
+            <td style="padding:14px 16px;"><span style="background:#FFF8E1;color:#A67C00;padding:3px 8px;border-radius:4px;font-size:11px;font-family:'Space Mono',monospace;">◐ Limited</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section style="background:#F9F5EC;overflow:hidden;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px;">Member Voices</p>
+      <h3 class="font-display" style="font-size:clamp(22px,3vw,32px);color:#2D5016;font-weight:700;">Real Stories. Real Careers. Real Choices.</h3>
+    </div>
+    <div style="display:flex;gap:20px;overflow-x:auto;padding-bottom:20px;" class="no-scrollbar">
+
+      <div style="min-width:320px;background:#FEFCF5;border-radius:16px;padding:28px;border:1px solid #D4C5A0;border-top:4px solid #C9960C;flex-shrink:0;">
+        <p class="font-display" style="font-style:italic;color:#5C5040;font-size:15px;line-height:1.7;margin-bottom:20px;">"I am a clerk at SBI. I was not sure if this platform was for me — it seemed like only officers would be welcome. But SWAYMVAR made it very clear: every employee, every level. That meant a lot to me."</p>
+        <div><p style="font-weight:700;color:#1C1A14;">Sunita R.</p><p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;">Clerk · SBI, Lucknow</p></div>
+      </div>
+
+      <div style="min-width:320px;background:#FEFCF5;border-radius:16px;padding:28px;border:1px solid #D4C5A0;border-top:4px solid #2D5016;flex-shrink:0;">
+        <p class="font-display" style="font-style:italic;color:#5C5040;font-size:15px;line-height:1.7;margin-bottom:20px;">"I am Muslim and was worried this might be another platform only for one community. Swaymvar does not ask about religion at all. It asks where I am posted, when I might transfer, and what kind of person I am. That is exactly right."</p>
+        <div><p style="font-weight:700;color:#1C1A14;">Fatima A.</p><p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;">Development Officer · LIC, Mumbai</p></div>
+      </div>
+
+      <div style="min-width:320px;background:#FEFCF5;border-radius:16px;padding:28px;border:1px solid #D4C5A0;border-top:4px solid #8B1A1A;flex-shrink:0;">
+        <p class="font-display" style="font-style:italic;color:#5C5040;font-size:15px;line-height:1.7;margin-bottom:20px;">"As an ATC at a regional airport, transfer matching was critical for me. Very few platforms understand that I cannot just move anywhere — I move to airports. Swaymvar was the only one that asked the right questions."</p>
+        <div><p style="font-weight:700;color:#1C1A14;">Priya M.</p><p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;">Air Traffic Controller · AAI, Nagpur</p></div>
+      </div>
+
+      <div style="min-width:320px;background:#FEFCF5;border-radius:16px;padding:28px;border:1px solid #D4C5A0;border-top:4px solid #C9960C;flex-shrink:0;">
+        <p class="font-display" style="font-style:italic;color:#5C5040;font-size:15px;line-height:1.7;margin-bottom:20px;">"I am posted at an IOCL refinery in Gujarat. Other matrimony sites did not understand what that means for my transfer schedule. Swaymvar showed my posting type and transfer window on my profile card. Completely honest."</p>
+        <div><p style="font-weight:700;color:#1C1A14;">Deepa S.</p><p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;">Junior Engineer · IOCL, Koyali Refinery</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INVITE FORM ═══ -->
+<section style="background:#2D5016;" id="invite">
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <p class="font-mono" style="font-size:10px;color:#E8B84B;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;">Founding Batch — Open to All</p>
+    <h3 class="font-display" style="font-size:clamp(28px,4vw,44px);color:white;font-weight:700;margin-bottom:16px;">Request Your Invitation</h3>
+    <div style="width:80px;height:4px;background:#C9960C;margin:0 auto 20px;"></div>
+    <p style="color:rgba(255,255,255,0.7);font-size:15px;line-height:1.7;margin-bottom:36px;">Open to all public sector employees — every grade, every organisation, every faith. Completely free. Reviewed personally. Confidential always.</p>
+
+    <form id="invite-form" style="display:flex;flex-direction:column;gap:14px;text-align:left;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="grid-cols-2">
+        <div>
+          <label class="font-mono" style="font-size:10px;color:#E8B84B;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;">Full Name</label>
+          <input type="text" placeholder="As in official ID" required style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(201,150,12,0.4);border-radius:8px;color:white;font-size:13px;font-family:'DM Sans',sans-serif;" />
+        </div>
+        <div>
+          <label class="font-mono" style="font-size:10px;color:#E8B84B;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;">Official Email</label>
+          <input type="email" placeholder="name@rbi.org.in" required style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(201,150,12,0.4);border-radius:8px;color:white;font-size:13px;" />
+        </div>
+        <div>
+          <label class="font-mono" style="font-size:10px;color:#E8B84B;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;">Phone</label>
+          <input type="tel" placeholder="+91" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(201,150,12,0.4);border-radius:8px;color:white;font-size:13px;" />
+        </div>
+        <div>
+          <label class="font-mono" style="font-size:10px;color:#E8B84B;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;">Organisation</label>
+          <select style="width:100%;padding:12px 14px;background:#1a3a0a;border:1px solid rgba(201,150,12,0.4);border-radius:8px;color:white;font-size:13px;" required>
+            <option value="">Select organisation</option>
+            <optgroup label="Financial Regulators">
+              <option>RBI</option><option>SEBI</option><option>NABARD</option>
+              <option>PFRDA</option><option>IRDAI</option><option>NaBFID</option>
+            </optgroup>
+            <optgroup label="PSU Banks">
+              <option>SBI</option><option>PNB</option><option>Bank of Baroda</option>
+              <option>Canara Bank</option><option>Union Bank</option>
+              <option>Bank of India</option><option>Indian Bank</option>
+              <option>UCO Bank</option><option>Other PSU Bank</option>
+            </optgroup>
+            <optgroup label="Insurance">
+              <option>LIC</option><option>GIC Re</option>
+              <option>National Insurance</option><option>New India</option>
+              <option>Oriental Insurance</option><option>United India</option>
+            </optgroup>
+            <optgroup label="Oil & Energy">
+              <option>IOCL</option><option>BPCL</option><option>HPCL</option>
+              <option>ONGC</option><option>GAIL</option><option>Coal India</option>
+              <option>NTPC</option><option>Power Grid</option><option>BHEL</option>
+            </optgroup>
+            <optgroup label="Aviation & Transport">
+              <option>AAI (Airports Authority)</option>
+              <option>Air Traffic Control (ATC)</option>
+              <option>Air India</option><option>Indian Railways</option>
+            </optgroup>
+            <optgroup label="Other PSUs">
+              <option>SAIL</option><option>NHPC</option><option>EXIM Bank</option>
+              <option>SIDBI</option><option>Other PSU</option>
+            </optgroup>
+          </select>
+        </div>
+        <div>
+          <label class="font-mono" style="font-size:10px;color:#E8B84B;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;">Designation / Grade</label>
+          <input type="text" placeholder="e.g. Clerk, PO, Scale II, Engineer" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(201,150,12,0.4);border-radius:8px;color:white;font-size:13px;" />
+        </div>
+        <div>
+          <label class="font-mono" style="font-size:10px;color:#E8B84B;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;">Current Posting City</label>
+          <input type="text" placeholder="e.g. Mumbai, Kanpur, Chennai" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(201,150,12,0.4);border-radius:8px;color:white;font-size:13px;" />
+        </div>
+      </div>
+
+      <button type="submit" style="width:100%;padding:16px;background:#C9960C;color:#1C1A14;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:8px;font-weight:700;cursor:pointer;margin-top:8px;">
+        Dispatch Application →
+      </button>
+      <p class="font-mono" style="font-size:10px;color:rgba(255,255,255,0.35);text-align:center;letter-spacing:0.05em;">No religion filter · No caste filter · No rank minimum · Always free · concierge@swaymvar.in</p>
+    </form>
+
+    <div id="success-msg" style="display:none;padding:40px 0;text-align:center;">
+      <p style="font-size:40px;margin-bottom:12px;">✦</p>
+      <h4 class="font-display" style="font-size:28px;color:white;font-weight:700;margin-bottom:8px;">Application Received</h4>
+      <p style="color:rgba(255,255,255,0.7);font-size:15px;">Our team will reach you at concierge@swaymvar.in within 48 hours. Welcome to the circle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="background:#1C1A14;border-top:4px solid #C9960C;padding:48px 24px;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px;margin-bottom:32px;">
+    <div>
+      <h2 class="font-display" style="font-size:22px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin-bottom:4px;">SWAYMVAR</h2>
+      <p class="font-mono" style="font-size:10px;color:#C9960C;letter-spacing:0.2em;margin-bottom:12px;">swaymvar.in</p>
+      <p style="color:rgba(255,255,255,0.45);font-size:13px;max-width:280px;line-height:1.7;">India's matrimonial platform for all public sector employees. Every faith. Every grade. Every organisation.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:32px;">
+      <div>
+        <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">Navigate</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="index.html" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;">Home</a>
+          <a href="discover.html" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;">Discover</a>
+          <a href="verify.html" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;">Verification</a>
+          <a href="profile.html" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;">Profile View</a>
+        </div>
+      </div>
+      <div>
+        <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">Contact</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="mailto:concierge@swaymvar.in" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;">concierge@swaymvar.in</a>
+          <a href="#" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;">Privacy Policy</a>
+          <a href="#" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(201,150,12,0.2);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+    <p class="font-mono" style="font-size:10px;color:rgba(255,255,255,0.3);">© 2026 Swaymvar.in · All Religions Welcome · All Grades Welcome · Peer Verified</p>
+    <p class="font-mono" style="font-size:10px;color:rgba(201,150,12,0.5);">✦ She Chooses. With Absolute Certainty. ✦</p>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav style="display:none;" class="md:hidden" id="mobile-nav" style="position:fixed;bottom:0;width:100%;background:#FEFCF5;border-top:2px solid #C9960C;height:64px;z-index:50;">
+  <div style="display:flex;justify-content:space-around;align-items:center;height:100%;">
+    <a href="index.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;"><span class="material-symbols-outlined" style="color:#2D5016;font-size:20px;">home</span><span class="font-mono" style="font-size:9px;color:#2D5016;">Home</span></a>
+    <a href="discover.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;"><span class="material-symbols-outlined" style="color:#5C5040;font-size:20px;">explore</span><span class="font-mono" style="font-size:9px;color:#5C5040;">Discover</span></a>
+    <a href="profile.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;"><span class="material-symbols-outlined" style="color:#5C5040;font-size:20px;">person</span><span class="font-mono" style="font-size:9px;color:#5C5040;">Profile</span></a>
+    <a href="verify.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;"><span class="material-symbols-outlined" style="color:#5C5040;font-size:20px;">verified_user</span><span class="font-mono" style="font-size:9px;color:#5C5040;">Verify</span></a>
+  </div>
+</nav>
+
+<script>
+// Nav shadow on scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(45,80,22,0.12)' : 'none';
+  document.getElementById('hero-img').style.transform = `translateY(${window.scrollY * 0.35}px)`;
+});
+
+// Show mobile nav
+document.addEventListener('DOMContentLoaded', () => {
+  const mn = document.getElementById('mobile-nav');
+  if (window.innerWidth < 768) { mn.style.display = 'flex'; document.body.style.paddingBottom = '64px'; }
+});
+
+// Invite form
+document.getElementById('invite-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  this.style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+});
+
+// Trait pill toggle
+document.querySelectorAll('.trait-pill').forEach(pill => {
+  pill.addEventListener('click', () => pill.classList.toggle('selected'));
+});
+</script>
+</body>
+</html>

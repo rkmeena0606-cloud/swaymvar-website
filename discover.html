@@ -1,360 +1,314 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SWAYMVAR | Seek Your Equal</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-secondary-fixed-variant": "#2e4f00",
-                        "tertiary-container": "#cea700",
-                        "secondary-fixed": "#c5f090",
-                        "on-error-container": "#93000a",
-                        "tertiary-fixed-dim": "#eec200",
-                        "surface-container": "#e9edff",
-                        "primary-fixed": "#ffdad6",
-                        "on-primary": "#ffffff",
-                        "surface-bright": "#f9f9ff",
-                        "on-error": "#ffffff",
-                        "on-tertiary-fixed-variant": "#574500",
-                        "inverse-on-surface": "#edf0ff",
-                        "surface-container-low": "#f1f3ff",
-                        "secondary": "#456818",
-                        "secondary-fixed-dim": "#a9d477",
-                        "on-surface": "#141b2b",
-                        "inverse-surface": "#293040",
-                        "on-secondary": "#ffffff",
-                        "on-tertiary-container": "#4e3e00",
-                        "surface-dim": "#d3daef",
-                        "outline-variant": "#e1bfbb",
-                        "on-primary-fixed-variant": "#8e1214",
-                        "inverse-primary": "#ffb4ac",
-                        "secondary-container": "#c2ed8d",
-                        "surface-tint": "#b02d29",
-                        "surface-container-highest": "#dce2f7",
-                        "on-surface-variant": "#59413e",
-                        "on-primary-container": "#ffaaa1",
-                        "tertiary": "#735c00",
-                        "on-secondary-container": "#496d1c",
-                        "tertiary-fixed": "#ffe083",
-                        "outline": "#8d706d",
-                        "surface-variant": "#dce2f7",
-                        "on-background": "#141b2b",
-                        "error": "#ba1a1a",
-                        "on-tertiary-fixed": "#231b00",
-                        "surface": "#f9f9ff",
-                        "primary": "#760009",
-                        "surface-container-high": "#e1e8fd",
-                        "on-tertiary": "#ffffff",
-                        "background": "#f9f9ff",
-                        "primary-container": "#991b1b",
-                        "error-container": "#ffdad6",
-                        "primary-fixed-dim": "#ffb4ac",
-                        "on-secondary-fixed": "#102000",
-                        "on-primary-fixed": "#410002",
-                        "surface-container-lowest": "#ffffff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "margin-desktop": "64px",
-                        "gutter": "24px",
-                        "container-max": "1280px",
-                        "margin-mobile": "16px",
-                        "unit": "8px"
-                    },
-                    "fontFamily": {
-                        "body-lg": ["Inter"],
-                        "label-md": ["Inter"],
-                        "display-lg-mobile": ["Playfair Display"],
-                        "headline-md": ["Playfair Display"],
-                        "display-lg": ["Playfair Display"],
-                        "headline-lg": ["Playfair Display"],
-                        "body-md": ["Inter"],
-                        "label-lg": ["Inter"]
-                    },
-                    "fontSize": {
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
-                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
-                    }
-                }
-            }
-        }
-    </script>
+<title>SWAYMVAR | Discover Verified Professionals</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .paisley-bg {
-            background-image: radial-gradient(circle at 2px 2px, rgba(142, 18, 20, 0.03) 1px, transparent 0);
-            background-size: 24px 24px;
-        }
-        .gold-foil-border {
-            border-top: 4px solid #cea700;
-        }
-        .manuscript-card {
-            border: 1px solid #e1bfbb;
-            transition: all 0.3s ease;
-        }
-        .manuscript-card:hover {
-            box-shadow: 0 10px 30px -10px rgba(118, 0, 9, 0.1);
-            transform: translateY(-4px);
-        }
-        .glass-nav {
-            backdrop-filter: blur(12px);
-            background-color: rgba(249, 249, 255, 0.8);
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background text-on-surface font-body-md paisley-bg min-h-screen">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 shadow-sm glass-nav border-b border-outline-variant">
-<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
-<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full">
-<span class="material-symbols-outlined text-primary">menu</span>
-</button>
-<h1 class="font-headline-lg text-headline-lg font-bold text-primary uppercase tracking-[0.2em]">SWAYMVAR</h1>
-<div class="flex items-center gap-4">
-<div class="hidden md:flex gap-6 items-center mr-8">
-<a class="font-label-lg text-label-lg text-primary font-bold" href="index.html">Discover</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="index.html">Circle</a>
-<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="index.html">Messages</a>
-</div>
-<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden ring-2 ring-outline-variant">
-<img alt="Elite Professional User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an elite male user in his early 30s, wearing a tailored charcoal suit. The lighting is sophisticated and cinematic, with a soft gold rim light reflecting off his shoulder. The background is a blurred high-end lounge with warm wood and brass accents, conveying success and refinement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Z572LrJSrcwOrWlfOKz51x0NqSFD7hLZDAGOS4oTaHFQ1J9hYN54k9YB4qQfBSLDmkPCWJqlSHHt8XXATfkLOb3YsfX9_MOzOc07tFC7wZVLtYa_dK1wXNp99OuW8O2ewisI1_waRUfi5nS5-HkiLzQOP5EJ68rkID4FE2oRSJzCFk5N6em6-LMgr8zOTzSEflKn_la63GMn3LlT0d2g5E8R_P3qVjWy1ohLCeCre6jO3VaxH5DSogWVWbQEJ6ctireEdF9uA54"/>
-</div>
-</div>
-</div>
-</header>
-<main class="pt-24 pb-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<!-- Hero Section: Seek Your Equal -->
-<section class="mb-12 text-center md:text-left py-12 relative overflow-hidden">
-<div class="relative z-10">
-<div class="flex items-center justify-center md:justify-start gap-3 mb-4">
-<span class="w-12 h-[1px] bg-tertiary-container"></span>
-<span class="text-tertiary font-label-lg tracking-widest uppercase">The Quest for Excellence</span>
-<span class="w-12 h-[1px] bg-tertiary-container"></span>
-</div>
-<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6">Seek Your Equal</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                    Inspired by the Bow of Janaka, we curate a sanctuary where only the most distinguished intentions meet. True merit requires no introduction, only recognition.
-                </p>
-</div>
-<!-- Decorative Element -->
-<div class="absolute -right-20 top-0 opacity-10 pointer-events-none select-none">
-<span class="material-symbols-outlined text-[300px] text-primary" style="font-variation-settings: 'wght' 100;">architecture</span>
-</div>
-</section>
-<!-- Discovery Feed: Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Profile Card 1: IAS Officer -->
-<div class="md:col-span-8 group">
-<div class="manuscript-card bg-surface-container-lowest gold-foil-border rounded-xl overflow-hidden flex flex-col md:flex-row h-full">
-<div class="w-full md:w-1/2 relative h-80 md:h-auto overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter blur-[2px] hover:blur-0" data-alt="A dignified female professional in a silk saree, standing in front of a colonial-style government building with large white pillars. The image is artistically blurred around the edges with a soft-focus lens, focusing slightly more on her silhouette. The lighting is bright morning sun, casting long, elegant shadows and emphasizing a golden, traditional-modern fusion aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp9VHJdIrnyL38mzXQHlxY_KJGjORz_-P9uJppvxQZ9e7njrV00djm5Hqz9J3UOaLy41jeORb_3g_VuOrtJ_ihl3q6yByWN9nqEfQ28ADi3hG9ZmiOdXp2yXfRklPiz7gv-CBIQi7K28hsIYwtDz6Xzr4WbBVbaLvCIb3pXobHNpQy12yl_ympIytVomgYvPPtkm-h4vKDfC4H4GAClCwKAVzKHEKkDR7a63FTGgbC7VASo3cF_8AG3oU92CnbcQcBfrVy_2X1YSE"/>
-<div class="absolute top-4 left-4 bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
-<span class="text-label-md font-bold">Verified Seekrit</span>
-</div>
-</div>
-<div class="w-full md:w-1/2 p-8 flex flex-col justify-between">
-<div>
-<div class="flex items-center gap-2 mb-2">
-<span class="bg-secondary-container/20 text-on-secondary-container px-2 py-0.5 rounded text-label-md uppercase tracking-wider font-bold">Elite Circle</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Ananya S.</h3>
-<p class="text-primary font-bold tracking-wide uppercase text-label-lg mb-4">IAS Officer • UPSC Rank 12</p>
-<p class="font-body-md text-on-surface-variant mb-6 italic border-l-2 border-outline-variant pl-4">
-                                "Seeking a partner who understands the weight of service and the luxury of intellectual stillness."
-                            </p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-label-md">Public Policy</span>
-<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-label-md">Classical Dance</span>
-<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-label-md">Philosophy</span>
-</div>
-</div>
-<button class="w-full bg-secondary text-on-secondary py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-on-secondary-container transition-all active:scale-95">
-<span class="material-symbols-outlined">favorite</span>
-                            Show Mutual Interest
-                        </button>
-</div>
-</div>
-</div>
-<!-- Profile Card 2: IIT Founder (Vertical) -->
-<div class="md:col-span-4 group">
-<div class="manuscript-card bg-surface-container-lowest gold-foil-border rounded-xl overflow-hidden flex flex-col h-full">
-<div class="relative h-64 overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter blur-[4px]" data-alt="A charismatic male entrepreneur in a navy blue blazer, leaning against a glass balcony overlooking a modern cityscape at dusk. The city lights create a bokeh effect of golden and white circles. His face is intentionally softened with a high-end blur for privacy, leaving a sense of his confident posture and elite lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfKTESac2480Gu9iAt0JJQ6I5xyyX_dztmt3WLAVshEpNbGpghnHb_9REWQWx7Woj5kbGaqUdQHNKf2tV83TKV_dNLVGRLlQb-yWuK905mF3M5Aq5bOdirXmVLYBp-U59Gkjp_AC2SgzZDdsnC88flXCwYIqAmdalbTq6qa4z8QozrtJ8y5GzOwlYKuBiwklk3hTzGBfDRDTERO7Nq_E2rsRf1p6laAvJRjUmWnSD4BDSPTTD3r75j63XMT8bC7kuwN25yVdMUtdU"/>
-<div class="absolute bottom-4 left-4 flex gap-2">
-<span class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-1 rounded text-[10px] font-bold uppercase">Haldi Certified</span>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Rohan M.</h3>
-<p class="text-primary font-bold tracking-wide uppercase text-label-md mb-4">IIT Founder • Forbes 30u30</p>
-<p class="font-body-md text-on-surface-variant mb-6 text-sm line-clamp-3">
-                            Building the future by day, exploring ancient temples by night. Looking for a co-founder for life's greatest venture.
-                        </p>
-<div class="mt-auto">
-<button class="w-full border border-secondary text-secondary py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-secondary-container/20 transition-all active:scale-95">
-<span class="material-symbols-outlined">colors_spark</span>
-                                Express Interest
-                            </button>
-</div>
-</div>
-</div>
-</div>
-<!-- Profile Card 3: Neurosurgeon -->
-<div class="md:col-span-4 group">
-<div class="manuscript-card bg-surface-container-lowest gold-foil-border rounded-xl overflow-hidden flex flex-col h-full">
-<div class="relative h-64 overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter blur-[3px]" data-alt="A female neurosurgeon in professional medical attire but with a touch of traditional gold jewelry, standing in a brightly lit modern hospital corridor. The lighting is sterile yet warm, with high-key whites and deep shadows. The privacy blur is applied elegantly across the middle of the frame, focusing on her composed hands and the texture of her silk scarf." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRlxx59AtpcmkcjtU9_qt7NUlaVrvUpDOu11cnCCofznqHwgAv-eCpI3IbuSKx-OWcWto1lb8tKSbjWf6hXrmIBE41hlOIurDqDiEBMFYvlkRHvWCBB7cPM97sfmsRZzBbgjhLKTmiaVjurxZhFiFZxtMnlVrRL6CVKwSjuE7j4CLka5LtGysgoUx9k9uN2PQzKGmxrFpVqP3u-2EgqghUImVfqbfPpIgMuNJKibySEAcnG_KkqDoHXFUGnGDjBpal9ICTpY1fxt0"/>
-<div class="absolute top-4 right-4 bg-white/80 backdrop-blur-md p-2 rounded-full">
-<span class="material-symbols-outlined text-primary">verified</span>
-</div>
-</div>
-<div class="p-6">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Dr. Ishani V.</h3>
-<p class="text-primary font-bold tracking-wide uppercase text-label-md mb-4">Neurosurgeon • MS, Stanford</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px]">Medicine</span>
-<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px]">Sitarist</span>
-</div>
-<button class="w-full bg-secondary text-on-secondary py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-on-secondary-container transition-all">
-<span class="material-symbols-outlined">favorite</span>
-                            Connect
-                        </button>
-</div>
-</div>
-</div>
-<!-- Profile Card 4: Architect -->
-<div class="md:col-span-8 group">
-<div class="manuscript-card bg-surface-container-lowest gold-foil-border rounded-xl overflow-hidden flex flex-col md:flex-row h-full">
-<div class="w-full md:w-1/2 p-8 flex flex-col justify-between order-2 md:order-1">
-<div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Kabir K.</h3>
-<p class="text-primary font-bold tracking-wide uppercase text-label-lg mb-4">Global Architect • RIBA Awardee</p>
-<p class="font-body-md text-on-surface-variant mb-6 leading-relaxed">
-                                Designing spaces that breathe and relationships that endure. A traveler of both worlds—modern minimalism and heritage richness.
-                            </p>
-<ul class="space-y-2 mb-6">
-<li class="flex items-center gap-2 text-label-md text-on-surface-variant">
-<span class="material-symbols-outlined text-tertiary-container text-sm">circle</span>
-                                    Lives in London / Mumbai
-                                </li>
-<li class="flex items-center gap-2 text-label-md text-on-surface-variant">
-<span class="material-symbols-outlined text-tertiary-container text-sm">circle</span>
-                                    Loves Brutalist Design &amp; Sufi Music
-                                </li>
-</ul>
-</div>
-<div class="flex gap-4">
-<button class="flex-1 bg-secondary text-on-secondary py-3 rounded-lg font-bold hover:bg-on-secondary-container transition-all">Connect</button>
-<button class="w-12 h-12 border border-outline flex items-center justify-center rounded-lg text-primary hover:bg-primary-container/10 transition-colors">
-<span class="material-symbols-outlined">bookmark</span>
-</button>
-</div>
-</div>
-<div class="w-full md:w-1/2 relative h-80 md:h-auto overflow-hidden order-1 md:order-2">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter blur-[5px]" data-alt="A tall, athletic man standing in a modern art gallery with concrete walls and large-scale abstract paintings. He is dressed in a crisp white linen shirt and dark trousers. The lighting is soft and diffuse, highlighting the textures of the space. A vertical gold-tinted privacy veil is applied to the image, creating a sophisticated editorial look while maintaining user anonymity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAuc7E0SL-v4XAlbM-6NAa85L0vuNoJvUTArMMYyuaQSpQQidpGIZJgjA0N2SThqy8Kpdt_lUPnGP17aeEmTvgBDN5caEGC3lRmtmIzQ3uAji-vR9xHgqudadL_0KURRhsD48f3gMp0QctrbOj2xVbTqQb567yiJnLoACeAVyg4OKv_AMDk14xqSfcnX3usE8MfcgwdDKPksOwUXqFGp2Fk-Uj25agA0JsSUJjtkEac64-kbiOnwTzYth0ZTtvqlfx8NrQHT6hb6o"/>
-</div>
-</div>
-</div>
-</div>
-<!-- Call to Action -->
-<div class="mt-20 p-12 bg-inverse-surface rounded-xl text-center relative overflow-hidden">
-<div class="relative z-10">
-<h3 class="font-headline-lg text-headline-lg text-inverse-on-surface mb-4">Your SWAYMVAR Awaits</h3>
-<p class="text-surface-variant mb-8 max-w-xl mx-auto">Complete your verification to access the Full Circle and interact with these modern-day seekers.</p>
-<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-bold text-label-lg uppercase tracking-widest hover:bg-primary-container transition-all">Verify Your Lineage</button>
-</div>
-<!-- Background Decoration -->
-<div class="absolute inset-0 opacity-10 paisley-bg"></div>
-</div>
-</main>
-<!-- Navigation Shells -->
-<!-- BottomNavBar (Mobile) -->
-<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container border-t border-outline-variant shadow-[0_-4px_20px_rgba(118,0,9,0.05)] h-20 pb-safe px-4 flex justify-around items-center">
-<button class="flex flex-col items-center justify-center text-primary font-bold transition-transform active:scale-95">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
-<span class="font-label-sm text-label-sm">Discover</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-secondary-container/20 transition-all p-2 rounded-lg">
-<span class="material-symbols-outlined">groups</span>
-<span class="font-label-sm text-label-sm">Circle</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-secondary-container/20 transition-all p-2 rounded-lg">
-<span class="material-symbols-outlined">chat_bubble</span>
-<span class="font-label-sm text-label-sm">Messages</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-secondary-container/20 transition-all p-2 rounded-lg">
-<span class="material-symbols-outlined">account_circle</span>
-<span class="font-label-sm text-label-sm">Account</span>
-</button>
-</nav>
-<!-- Footer (Desktop) -->
-<footer class="hidden md:block w-full py-16 bg-inverse-surface border-t-2 border-secondary">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop space-y-8 md:space-y-0 max-w-container-max mx-auto">
-<div class="flex flex-col items-center md:items-start">
-<span class="font-headline-md text-headline-md text-secondary-fixed mb-2">SWAYMVAR</span>
-<p class="font-label-lg text-label-lg text-surface-variant opacity-80">© 2026 Swaymvar.in. Exclusivity &amp; Verification Guaranteed.</p>
-</div>
-<div class="flex gap-8">
-<a class="font-label-lg text-label-lg text-surface-variant hover:text-secondary-fixed transition-all" href="index.html">Exclusivity Protocol</a>
-<a class="font-label-lg text-label-lg text-surface-variant hover:text-secondary-fixed transition-all" href="index.html">Privacy Policy</a>
-<a class="font-label-lg text-label-lg text-surface-variant hover:text-secondary-fixed transition-all" href="index.html">Contact Concierge</a>
-</div>
-</div>
-</footer>
-<script>
-        // Simple interaction for profile image hover effect
-        document.querySelectorAll('.manuscript-card').forEach(card => {
-            const img = card.querySelector('img');
-            card.addEventListener('mouseenter', () => {
-                if(img.classList.contains('filter')) {
-                    img.style.filter = 'blur(0px)';
-                }
-            });
-            card.addEventListener('mouseleave', () => {
-                if(img.dataset.originalBlur) {
-                    img.style.filter = img.dataset.originalBlur;
-                } else {
-                    // For demo, reset to a generic blur if needed
-                }
-            });
-        });
+  * { box-sizing: border-box; }
+  body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-mono { font-family: 'Space Mono', monospace; }
+  .glass-nav { backdrop-filter: blur(12px); background: rgba(254,252,245,0.92); }
+  .card-accent { border-left: 4px solid #C9960C; }
+  .profile-img { filter: blur(14px) sepia(0.5) saturate(0.3); transition: all 0.7s ease; }
+  .profile-img.revealed { filter: none; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  .filter-btn { cursor: pointer; transition: all 0.2s; }
+  .filter-btn.active { background: #E8B84B; color: #2D5016; border-color: #C9960C; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="pb-20 md:pb-0">
 
-        // Store original blur values
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('img[class*="blur"]').forEach(img => {
-                const blurMatch = img.className.match(/blur-\[(\d+)px\]/);
-                if (blurMatch) {
-                    img.dataset.originalBlur = `blur(${blurMatch[1]}px)`;
-                }
-            });
-        });
-    </script>
-</body></html>
+<!-- NAV -->
+<header class="fixed top-0 w-full z-50 glass-nav border-b" style="border-color:#D4C5A0;">
+  <div class="max-w-6xl mx-auto px-4 md:px-12 py-4 flex justify-between items-center">
+    <a href="index.html">
+      <h1 class="font-display font-bold text-2xl tracking-[0.3em] uppercase" style="color:#2D5016;">SWAYMVAR</h1>
+      <p class="font-mono text-[9px] tracking-[0.2em]" style="color:#A67C00;">swaymvar.in</p>
+    </a>
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="font-mono text-xs uppercase tracking-widest" style="color:#5C5040;">Home</a>
+      <a href="discover.html" class="font-mono text-xs uppercase tracking-widest font-bold" style="color:#2D5016;border-bottom:2px solid #C9960C;padding-bottom:2px;">Discover</a>
+      <a href="verify.html" class="font-mono text-xs uppercase tracking-widest" style="color:#5C5040;">Verification</a>
+      <a href="profile.html" class="font-mono text-xs uppercase tracking-widest" style="color:#5C5040;">Profile</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <span class="font-mono text-xs hidden md:block" style="color:#5C5040;">Portraits:</span>
+      <button onclick="togglePrivacy()" id="privacy-btn" class="font-mono text-xs px-3 py-1.5 rounded-full border" style="background:#EDF5E0;border-color:#2D5016;color:#2D5016;">🔒 Masked</button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section style="background:#EDF5E0;padding:100px 24px 48px;border-bottom:1px solid #D4C5A0;" class="mt-16">
+  <div class="max-w-5xl mx-auto">
+    <p class="font-mono text-xs uppercase tracking-[0.3em] mb-3" style="color:#C9960C;">✦ The Quest for Excellence</p>
+    <h2 class="font-display font-bold text-4xl mb-4" style="color:#2D5016;">Seek Your Equal</h2>
+    <p class="font-body text-base max-w-2xl leading-relaxed" style="color:#5C5040;">All profiles peer verified. Transfer posting shown on every card. Portraits are private until mutual interest — hover to preview, click to reveal. Open to all religions and backgrounds.</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div style="background:#FEFCF5;border-bottom:1px solid #D4C5A0;padding:16px 24px;position:sticky;top:72px;z-index:40;">
+  <div class="max-w-5xl mx-auto flex flex-wrap gap-2 items-center">
+    <span class="font-mono text-xs uppercase tracking-widest mr-2" style="color:#5C5040;">Filter:</span>
+    <button onclick="filterCards('all')" class="filter-btn active font-mono text-xs px-4 py-1.5 rounded-full border" style="border-color:#C9960C;" data-filter="all">All</button>
+    <button onclick="filterCards('rbi')" class="filter-btn font-mono text-xs px-4 py-1.5 rounded-full border" style="border-color:#D4C5A0;color:#5C5040;" data-filter="rbi">RBI</button>
+    <button onclick="filterCards('sebi')" class="filter-btn font-mono text-xs px-4 py-1.5 rounded-full border" style="border-color:#D4C5A0;color:#5C5040;" data-filter="sebi">SEBI</button>
+    <button onclick="filterCards('nabard')" class="filter-btn font-mono text-xs px-4 py-1.5 rounded-full border" style="border-color:#D4C5A0;color:#5C5040;" data-filter="nabard">NABARD</button>
+    <button onclick="filterCards('bank')" class="filter-btn font-mono text-xs px-4 py-1.5 rounded-full border" style="border-color:#D4C5A0;color:#5C5040;" data-filter="bank">PSU Banks</button>
+    <button onclick="filterCards('insurance')" class="filter-btn font-mono text-xs px-4 py-1.5 rounded-full border" style="border-color:#D4C5A0;color:#5C5040;" data-filter="insurance">Insurance</button>
+  </div>
+</div>
+
+<!-- PROFILE GRID -->
+<main class="max-w-5xl mx-auto px-4 md:px-12 py-10 space-y-6">
+
+  <!-- CARD 1 — RBI Wide -->
+  <div class="profile-card grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden border card-accent" style="border-color:#D4C5A0;background:#F9F5EC;" data-org="rbi">
+    <div class="relative h-72 md:h-auto overflow-hidden" style="background:#2D5016;">
+      <img class="profile-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&fit=crop" alt="RBI Officer"/>
+      <div class="absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(45,80,22,0.55);" id="mask-1">
+        <span class="text-3xl mb-2">🔒</span>
+        <p class="font-mono text-xs uppercase tracking-widest text-white">Dignity Masked</p>
+        <p class="font-body text-xs mt-1 italic" style="color:rgba(255,255,255,0.6);">Hover to preview</p>
+      </div>
+      <div class="absolute top-3 left-3">
+        <span class="font-mono text-xs px-2 py-1 rounded" style="background:#E8B84B;color:#2D5016;">✓ RBI Peer Verified</span>
+      </div>
+      <div class="absolute bottom-3 right-3 font-mono text-xs px-2 py-1 rounded" style="background:rgba(28,26,20,0.8);color:rgba(255,255,255,0.8);">29 yrs · 5'5"</div>
+    </div>
+    <div class="p-6 flex flex-col justify-between">
+      <div>
+        <span class="font-mono text-xs uppercase tracking-widest" style="color:#C9960C;">Reserve Bank of India</span>
+        <h3 class="font-display font-bold text-xl mt-1 mb-1" style="color:#1C1A14;">Priya K.</h3>
+        <p class="font-mono text-xs mb-3" style="color:#2D5016;">Grade B Officer · Department of Economic & Policy Research</p>
+        <div class="rounded-lg p-3 mb-4" style="background:#FFF8E1;border:1px solid #D4C5A0;">
+          <p class="font-mono text-xs uppercase mb-1" style="color:#A67C00;">🗺️ Transfer Policy</p>
+          <p class="font-body text-xs leading-relaxed" style="color:#5C5040;">RBI Circle posting — Mumbai/Delhi/Chennai/Kolkata only. Transfer every 3 years within circles.</p>
+        </div>
+        <p class="font-display italic text-sm leading-relaxed mb-4" style="color:#5C5040;border-left:3px solid #C9960C;padding-left:12px;">"Seeking someone who finds deep conversation as energising as a policy brief."</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">Introvert</span>
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">Classical Music</span>
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">Solo Traveller</span>
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">MA Economics JNU</span>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-4">
+        <a href="profile.html" class="flex-1 py-2.5 text-center font-mono text-xs uppercase tracking-widest rounded-lg text-white transition-all" style="background:#2D5016;" onmouseover="this.style.background='#3D6B1C'" onmouseout="this.style.background='#2D5016'">View Dossier</a>
+        <button class="w-10 h-10 rounded-lg border flex items-center justify-center" style="border-color:#C9960C;color:#C9960C;" onclick="toggleHeart(this)">
+          <span class="material-symbols-outlined text-lg">favorite_border</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS ROW — SEBI + NABARD -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- SEBI Card -->
+    <div class="profile-card rounded-xl overflow-hidden border card-accent" style="border-color:#D4C5A0;background:#F9F5EC;" data-org="sebi">
+      <div class="relative h-56 overflow-hidden" style="background:#1C1A14;">
+        <img class="profile-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&fit=crop" alt="SEBI Officer"/>
+        <div class="absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(28,26,20,0.55);">
+          <span class="text-2xl mb-1">🔒</span>
+          <p class="font-mono text-xs text-white uppercase tracking-widest">Dignity Masked</p>
+        </div>
+        <div class="absolute top-3 left-3">
+          <span class="font-mono text-xs px-2 py-1 rounded" style="background:#E8B84B;color:#2D5016;">✓ SEBI Peer Verified</span>
+        </div>
+      </div>
+      <div class="p-5">
+        <span class="font-mono text-xs uppercase" style="color:#C9960C;">SEBI · Mumbai</span>
+        <h3 class="font-display font-bold text-lg mt-1" style="color:#1C1A14;">Radhika S.</h3>
+        <p class="font-mono text-xs mb-3" style="color:#2D5016;">Officer Grade A · Enforcement Dept.</p>
+        <div class="rounded p-2 mb-3 text-xs" style="background:#FFF8E1;border:1px solid #D4C5A0;">
+          <span class="font-mono" style="color:#A67C00;">Transfer: </span>
+          <span class="font-body" style="color:#5C5040;">Mumbai HQ fixed. Very stable posting.</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-4">
+          <span class="font-mono text-xs px-2 py-0.5 rounded-full" style="background:#EDF5E0;color:#2D5016;">Ambivert</span>
+          <span class="font-mono text-xs px-2 py-0.5 rounded-full" style="background:#EDF5E0;color:#2D5016;">Law Graduate</span>
+          <span class="font-mono text-xs px-2 py-0.5 rounded-full" style="background:#EDF5E0;color:#2D5016;">Carnatic Vocalist</span>
+        </div>
+        <a href="profile.html" class="block w-full py-2.5 text-center font-mono text-xs uppercase tracking-widest rounded-lg border" style="border-color:#2D5016;color:#2D5016;" onmouseover="this.style.background='#EDF5E0'" onmouseout="this.style.background='transparent'">View Profile</a>
+      </div>
+    </div>
+
+    <!-- NABARD Card -->
+    <div class="profile-card rounded-xl overflow-hidden border card-accent" style="border-color:#D4C5A0;background:#F9F5EC;" data-org="nabard">
+      <div class="relative h-56 overflow-hidden" style="background:#3D6B1C;">
+        <img class="profile-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&fit=crop" alt="NABARD Officer"/>
+        <div class="absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(45,80,22,0.55);">
+          <span class="text-2xl mb-1">🔒</span>
+          <p class="font-mono text-xs text-white uppercase tracking-widest">Dignity Masked</p>
+        </div>
+        <div class="absolute top-3 left-3">
+          <span class="font-mono text-xs px-2 py-1 rounded" style="background:#E8B84B;color:#2D5016;">✓ NABARD Peer Verified</span>
+        </div>
+      </div>
+      <div class="p-5">
+        <span class="font-mono text-xs uppercase" style="color:#C9960C;">NABARD · Pune</span>
+        <h3 class="font-display font-bold text-lg mt-1" style="color:#1C1A14;">Anita D.</h3>
+        <p class="font-mono text-xs mb-3" style="color:#2D5016;">Development Manager · Agricultural Finance</p>
+        <div class="rounded p-2 mb-3 text-xs" style="background:#FFF8E1;border:1px solid #D4C5A0;">
+          <span class="font-mono" style="color:#A67C00;">Transfer: </span>
+          <span class="font-body" style="color:#5C5040;">State office posting. Transfer every 2–3 yrs.</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-4">
+          <span class="font-mono text-xs px-2 py-0.5 rounded-full" style="background:#EDF5E0;color:#2D5016;">Family-First</span>
+          <span class="font-mono text-xs px-2 py-0.5 rounded-full" style="background:#EDF5E0;color:#2D5016;">MBA IRMA</span>
+          <span class="font-mono text-xs px-2 py-0.5 rounded-full" style="background:#EDF5E0;color:#2D5016;">Homebody</span>
+        </div>
+        <a href="profile.html" class="block w-full py-2.5 text-center font-mono text-xs uppercase tracking-widest rounded-lg border" style="border-color:#2D5016;color:#2D5016;" onmouseover="this.style.background='#EDF5E0'" onmouseout="this.style.background='transparent'">View Profile</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BANK CARD — Wide -->
+  <div class="profile-card grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden border card-accent" style="border-color:#D4C5A0;background:#F9F5EC;" data-org="bank">
+    <div class="p-6 flex flex-col justify-between order-2 md:order-1">
+      <div>
+        <span class="font-mono text-xs uppercase" style="color:#C9960C;">State Bank of India</span>
+        <h3 class="font-display font-bold text-xl mt-1 mb-1" style="color:#1C1A14;">Meera P.</h3>
+        <p class="font-mono text-xs mb-3" style="color:#2D5016;">Scale III Officer · Corporate Banking · Delhi</p>
+        <div class="rounded-lg p-3 mb-4" style="background:#FFF8E1;border:1px solid #D4C5A0;">
+          <p class="font-mono text-xs uppercase mb-1" style="color:#A67C00;">🗺️ Transfer Policy</p>
+          <p class="font-body text-xs leading-relaxed" style="color:#5C5040;">SBI pan-India posting. Transfer every 2–3 years. Spouse same-city request possible under staff policy.</p>
+        </div>
+        <p class="font-display italic text-sm leading-relaxed mb-4" style="color:#5C5040;border-left:3px solid #C9960C;padding-left:12px;">"Corporate finance by day, mountain trekking by weekend. Looking for a partner who values both ambition and stillness."</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">Extrovert</span>
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">Adventure Traveller</span>
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">CA + MBA IIM-C</span>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-4">
+        <a href="profile.html" class="flex-1 py-2.5 text-center font-mono text-xs uppercase tracking-widest rounded-lg text-white" style="background:#2D5016;">View Dossier</a>
+        <button class="w-10 h-10 rounded-lg border flex items-center justify-center" style="border-color:#C9960C;color:#C9960C;" onclick="toggleHeart(this)">
+          <span class="material-symbols-outlined text-lg">favorite_border</span>
+        </button>
+      </div>
+    </div>
+    <div class="relative h-72 md:h-auto overflow-hidden order-1 md:order-2" style="background:#2D5016;">
+      <img class="profile-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&fit=crop" alt="SBI Officer"/>
+      <div class="absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(45,80,22,0.55);">
+        <span class="text-3xl mb-2">🔒</span>
+        <p class="font-mono text-xs uppercase tracking-widest text-white">Dignity Masked</p>
+      </div>
+      <div class="absolute top-3 left-3">
+        <span class="font-mono text-xs px-2 py-1 rounded" style="background:#E8B84B;color:#2D5016;">✓ SBI Peer Verified</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSURANCE CARD -->
+  <div class="profile-card grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden border card-accent" style="border-color:#D4C5A0;background:#F9F5EC;" data-org="insurance">
+    <div class="relative h-72 md:h-auto overflow-hidden" style="background:#1C1A14;">
+      <img class="profile-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&fit=crop" alt="LIC Officer"/>
+      <div class="absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(28,26,20,0.55);">
+        <span class="text-3xl mb-2">🔒</span>
+        <p class="font-mono text-xs uppercase tracking-widest text-white">Dignity Masked</p>
+      </div>
+      <div class="absolute top-3 left-3">
+        <span class="font-mono text-xs px-2 py-1 rounded" style="background:#E8B84B;color:#2D5016;">✓ LIC Peer Verified</span>
+      </div>
+      <div class="absolute bottom-3 right-3 font-mono text-xs px-2 py-1 rounded" style="background:rgba(28,26,20,0.8);color:rgba(255,255,255,0.8);">32 yrs · 5'4"</div>
+    </div>
+    <div class="p-6 flex flex-col justify-between">
+      <div>
+        <span class="font-mono text-xs uppercase" style="color:#C9960C;">Life Insurance Corporation of India</span>
+        <h3 class="font-display font-bold text-xl mt-1 mb-1" style="color:#1C1A14;">Fatima A.</h3>
+        <p class="font-mono text-xs mb-3" style="color:#2D5016;">Class I Officer · Actuary Division · Mumbai</p>
+        <div class="rounded-lg p-3 mb-4" style="background:#FFF8E1;border:1px solid #D4C5A0;">
+          <p class="font-mono text-xs uppercase mb-1" style="color:#A67C00;">🗺️ Transfer Policy</p>
+          <p class="font-body text-xs" style="color:#5C5040;">LIC Divisional office posting. Pan-India transfer every 3 years. Stable career trajectory.</p>
+        </div>
+        <p class="font-display italic text-sm leading-relaxed mb-4" style="color:#5C5040;border-left:3px solid #C9960C;padding-left:12px;">"Numbers are my language but poetry is my heart. Looking for someone who appreciates both."</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">Introvert</span>
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">B.Stat ISI Kolkata</span>
+          <span class="font-mono text-xs px-2 py-1 rounded-full" style="background:#EDF5E0;color:#2D5016;">Urdu Poetry</span>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-4">
+        <a href="profile.html" class="flex-1 py-2.5 text-center font-mono text-xs uppercase tracking-widest rounded-lg text-white" style="background:#2D5016;">View Dossier</a>
+        <button class="w-10 h-10 rounded-lg border flex items-center justify-center" style="border-color:#C9960C;color:#C9960C;" onclick="toggleHeart(this)">
+          <span class="material-symbols-outlined text-lg">favorite_border</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- CTA -->
+<div style="background:#2D5016;margin:0 24px 40px;border-radius:16px;padding:48px 24px;text-align:center;" class="max-w-5xl mx-auto">
+  <h3 class="font-display font-bold text-2xl text-white mb-3">Your Profile Belongs Here</h3>
+  <p class="font-body mb-6" style="color:rgba(255,255,255,0.7);">Complete verification to join the founding batch of 50 members. Free forever.</p>
+  <a href="verify.html" class="inline-block px-8 py-3 font-mono text-xs uppercase tracking-widest rounded-lg" style="background:#C9960C;color:#1C1A14;">Verify Your Profile →</a>
+</div>
+
+<!-- FOOTER -->
+<footer style="background:#1C1A14;border-top:4px solid #C9960C;padding:32px 24px;text-align:center;">
+  <p class="font-display font-bold text-xl tracking-[0.3em] uppercase mb-1" style="color:#E8B84B;">SWAYMVAR</p>
+  <p class="font-mono text-xs mb-4" style="color:#C9960C;">swaymvar.in</p>
+  <p class="font-mono text-xs" style="color:rgba(255,255,255,0.3);">© 2026 Swaymvar.in · All Religions Welcome · Peer Verified · She Chooses ✦</p>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav class="md:hidden fixed bottom-0 w-full z-50" style="background:#FEFCF5;border-top:2px solid #C9960C;height:64px;">
+  <div class="flex justify-around items-center h-full">
+    <a href="index.html" class="flex flex-col items-center gap-0.5"><span class="material-symbols-outlined text-xl" style="color:#5C5040;">home</span><span class="font-mono text-[9px]" style="color:#5C5040;">Home</span></a>
+    <a href="discover.html" class="flex flex-col items-center gap-0.5"><span class="material-symbols-outlined text-xl" style="color:#2D5016;">explore</span><span class="font-mono text-[9px]" style="color:#2D5016;">Discover</span></a>
+    <a href="profile.html" class="flex flex-col items-center gap-0.5"><span class="material-symbols-outlined text-xl" style="color:#5C5040;">person</span><span class="font-mono text-[9px]" style="color:#5C5040;">Profile</span></a>
+    <a href="verify.html" class="flex flex-col items-center gap-0.5"><span class="material-symbols-outlined text-xl" style="color:#5C5040;">verified_user</span><span class="font-mono text-[9px]" style="color:#5C5040;">Verify</span></a>
+  </div>
+</nav>
+
+<script>
+let privacyOn = true;
+function togglePrivacy() {
+  privacyOn = !privacyOn;
+  const imgs = document.querySelectorAll('.profile-img');
+  const masks = document.querySelectorAll('[id^="mask-"]');
+  const btn = document.getElementById('privacy-btn');
+  imgs.forEach(img => img.classList.toggle('revealed', !privacyOn));
+  btn.textContent = privacyOn ? '🔒 Masked' : '🔓 Revealed';
+  btn.style.background = privacyOn ? '#EDF5E0' : '#FFF8E1';
+  btn.style.color = privacyOn ? '#2D5016' : '#A67C00';
+}
+function filterCards(org) {
+  document.querySelectorAll('.profile-card').forEach(card => {
+    card.style.display = (org === 'all' || card.dataset.org === org) ? '' : 'none';
+  });
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    const active = btn.dataset.filter === org;
+    btn.style.background = active ? '#E8B84B' : 'transparent';
+    btn.style.color = active ? '#2D5016' : '#5C5040';
+    btn.style.borderColor = active ? '#C9960C' : '#D4C5A0';
+  });
+}
+function toggleHeart(btn) {
+  const icon = btn.querySelector('.material-symbols-outlined');
+  const filled = icon.textContent.trim() === 'favorite';
+  icon.textContent = filled ? 'favorite_border' : 'favorite';
+  icon.style.color = filled ? '#C9960C' : '#8B1A1A';
+  icon.style.fontVariationSettings = filled ? "'FILL' 0" : "'FILL' 1";
+}
+// Hover to preview on desktop
+document.querySelectorAll('.profile-img').forEach(img => {
+  img.addEventListener('mouseenter', () => { if(privacyOn) img.style.filter = 'blur(4px) sepia(0.2)'; });
+  img.addEventListener('mouseleave', () => { if(privacyOn) img.style.filter = 'blur(14px) sepia(0.5) saturate(0.3)'; });
+  img.addEventListener('click', () => { if(privacyOn) img.classList.toggle('revealed'); });
+});
+</script>
+</body>
+</html>
