@@ -23,6 +23,7 @@
   .tab-btn { padding: 8px 20px; border-radius: 6px; font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border: 1px solid rgba(201,150,12,0.3); color: rgba(245,240,232,0.5); background: transparent; transition: all 0.2s; }
   .tab-btn.active { background: rgba(201,150,12,0.15); color: #C9960C; border-color: #C9960C; }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -280,13 +281,73 @@ function renderProfiles(data) {
   `).join('')
 }
 
+// EmailJS config
+const EJS_SERVICE  = 'service_6afrwok'
+const EJS_APPROVED = 'template_uxxfogi'
+const EJS_REJECTED = 'template_9ogopnl'
+const EJS_KEY      = 'cR50IzzbCLgCPfR7-'
+emailjs.init(EJS_KEY)
+
 async function updateStatus(table, id, status) {
+  // Update status in Supabase
   const { error } = await db.from(table).update({ status }).eq('id', id)
-  if (!error) {
-    loadData()
-  } else {
+  
+  if (error) {
     alert('Error updating: ' + error.message)
+    return
   }
+
+  // Get the record to send email
+  const { data: record } = await db
+    .from(table)
+    .select('*')
+    .eq('id', id)
+    .single()
+
+  if (record && record.email) {
+    const templateId = status === 'approved' ? EJS_APPROVED : EJS_REJECTED
+
+    const templateParams = {
+      to_email:  record.email,
+      full_name: record.full_name || 'Member',
+      org:       record.org || '',
+      city:      record.city || '',
+    }
+
+    try {
+      await emailjs.send(EJS_SERVICE, templateId, templateParams)
+      console.log('Email sent to', record.email)
+    } catch (emailErr) {
+      console.error('Email error:', emailErr)
+      alert('Status updated but email failed: ' + JSON.stringify(emailErr))
+    }
+  }
+
+  // Reload table
+  loadData()
+
+  // Show confirmation
+  const msg = status === 'approved'
+    ? '✓ Approved and email sent to ' + (record?.email || 'member')
+    : '✗ Rejected and email sent to ' + (record?.email || 'member')
+  
+  showToast(msg, status)
+}
+
+function showToast(message, type) {
+  const toast = document.createElement('div')
+  toast.style.cssText = \`
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    padding: 14px 20px; border-radius: 10px; font-family: 'Space Mono', monospace;
+    font-size: 12px; letter-spacing: 0.05em; max-width: 380px;
+    background: \${type === 'approved' ? 'rgba(34,197,94,0.15)' : 'rgba(139,26,44,0.15)'};
+    border: 1px solid \${type === 'approved' ? 'rgba(34,197,94,0.4)' : 'rgba(139,26,44,0.4)'};
+    color: \${type === 'approved' ? '#22c55e' : '#f87171'};
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  \`
+  toast.textContent = message
+  document.body.appendChild(toast)
+  setTimeout(() => toast.remove(), 4000)
 }
 
 function showDetail(record) {
