@@ -14,8 +14,8 @@
   .font-mono { font-family: 'Space Mono', monospace; }
   .glass-nav { backdrop-filter: blur(12px); background: rgba(254,252,245,0.92); }
   .card-accent { border-left: 4px solid #C9960C; }
-  .profile-img { filter: blur(14px) sepia(0.5) saturate(0.3); transition: all 0.7s ease; }
-  .profile-img.revealed { filter: none; }
+  .profile-img { filter: blur(14px) sepia(0.5) saturate(0.3); }
+  /* Photos never revealed on discover page — only after mutual interest */
   .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
   .filter-btn { cursor: pointer; transition: all 0.2s; }
   .filter-btn.active { background: #E8B84B; color: #2D5016; border-color: #C9960C; }
@@ -274,17 +274,8 @@
 </nav>
 
 <script>
-let privacyOn = true;
-function togglePrivacy() {
-  privacyOn = !privacyOn;
-  const imgs = document.querySelectorAll('.profile-img');
-  const masks = document.querySelectorAll('[id^="mask-"]');
-  const btn = document.getElementById('privacy-btn');
-  imgs.forEach(img => img.classList.toggle('revealed', !privacyOn));
-  btn.textContent = privacyOn ? '🔒 Masked' : '🔓 Revealed';
-  btn.style.background = privacyOn ? '#EDF5E0' : '#FFF8E1';
-  btn.style.color = privacyOn ? '#2D5016' : '#A67C00';
-}
+// Privacy is always ON — no toggle allowed
+// Photos only revealed after mutual interest confirmed
 function filterCards(org) {
   document.querySelectorAll('.profile-card').forEach(card => {
     card.style.display = (org === 'all' || card.dataset.org === org) ? '' : 'none';
@@ -303,12 +294,7 @@ function toggleHeart(btn) {
   icon.style.color = filled ? '#C9960C' : '#8B1A1A';
   icon.style.fontVariationSettings = filled ? "'FILL' 0" : "'FILL' 1";
 }
-// Hover to preview on desktop
-document.querySelectorAll('.profile-img').forEach(img => {
-  img.addEventListener('mouseenter', () => { if(privacyOn) img.style.filter = 'blur(4px) sepia(0.2)'; });
-  img.addEventListener('mouseleave', () => { if(privacyOn) img.style.filter = 'blur(14px) sepia(0.5) saturate(0.3)'; });
-  img.addEventListener('click', () => { if(privacyOn) img.classList.toggle('revealed'); });
-});
+// No hover reveal — privacy is always protected on discover page
 </script>
 </body>
 </html>
