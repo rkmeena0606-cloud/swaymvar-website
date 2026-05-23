@@ -539,3 +539,46 @@ document.querySelectorAll('.trait-pill').forEach(pill => {
 </script>
 </body>
 </html>
+
+<!-- SUPABASE CONNECTION -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL = 'https://cwfihdkooygavqalwcdj.supabase.co'
+const SUPA_KEY = 'sb_publishable_YM2zudWxNSqOK7NnRanilA_MiczDJ8V'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+document.getElementById('invite-form').addEventListener('submit', async function(e) {
+  e.preventDefault()
+  
+  const btn = this.querySelector('button[type="submit"]')
+  btn.textContent = 'Saving...'
+  btn.disabled = true
+
+  // Collect all form values
+  const inputs = this.querySelectorAll('input, select')
+  const vals = {}
+  inputs.forEach(i => { if(i.value) vals[i.id || i.type] = i.value })
+
+  const data = {
+    full_name:   this.querySelector('input[type="text"]').value || '',
+    email:       this.querySelector('input[type="email"]').value || '',
+    phone:       this.querySelector('input[type="tel"]').value || '',
+    org:         this.querySelector('select[required]').value || '',
+    designation: this.querySelectorAll('input[type="text"]')[1]?.value || '',
+    city:        this.querySelectorAll('input[type="text"]')[2]?.value || '',
+    status:      'pending'
+  }
+
+  const { error } = await db.from('invite_requests').insert(data)
+
+  if (!error) {
+    this.style.display = 'none'
+    document.getElementById('success-msg').style.display = 'block'
+  } else {
+    console.error(error)
+    btn.textContent = 'Dispatch Application →'
+    btn.disabled = false
+    alert('Something went wrong. Please email concierge@swaymvar.in directly.')
+  }
+})
+</script>

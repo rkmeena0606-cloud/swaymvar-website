@@ -703,3 +703,86 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
+<!-- SUPABASE CONNECTION -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL = 'https://cwfihdkooygavqalwcdj.supabase.co'
+const SUPA_KEY = 'sb_publishable_YM2zudWxNSqOK7NnRanilA_MiczDJ8V'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+// Override submitProfile to save to Supabase
+async function submitProfile() {
+  const consent = document.getElementById('consent-check')
+  if (!consent.checked) {
+    consent.parentElement.parentElement.style.border = '2px solid #8B1A1A'
+    consent.parentElement.parentElement.style.background = '#FDF0F0'
+    setTimeout(() => {
+      consent.parentElement.parentElement.style.border = '1px solid #D4C5A0'
+      consent.parentElement.parentElement.style.background = '#F9F5EC'
+    }, 2000)
+    return
+  }
+
+  const btn = document.querySelector('#step-5 button:last-child')
+  btn.textContent = 'Saving your profile...'
+  btn.disabled = true
+
+  // Collect selected traits
+  const selectedTraits = Array.from(
+    document.querySelectorAll('#trait-container .trait-btn.selected')
+  ).map(b => b.textContent).join(', ')
+
+  // Collect personality sliders
+  const personality = [
+    'Introvert-Extrovert: ' + document.getElementById('intro-extro-label').textContent,
+    'Calm-Emotional: ' + document.getElementById('calm-emo-label').textContent,
+    'Organised-Spontaneous: ' + document.getElementById('org-spon-label').textContent,
+    'Agreeable-Assertive: ' + document.getElementById('agree-assert-label').textContent
+  ].join(' | ')
+
+  // Collect selected life preferences
+  function getSelected(id) {
+    const btn = document.querySelector('#' + id + ' .trait-btn.selected')
+    return btn ? btn.textContent.trim() : ''
+  }
+
+  const data = {
+    full_name:   (document.getElementById('fname')?.value || '') + ' ' + (document.getElementById('lname')?.value || ''),
+    email:       document.getElementById('age')?.closest('form')?.querySelector('input[type="email"]')?.value || '',
+    phone:       '',
+    org:         document.getElementById('org')?.value || '',
+    designation: document.getElementById('designation')?.value || '',
+    city:        document.getElementById('city')?.value || '',
+    state:       document.getElementById('state')?.value || '',
+    relocation:  document.querySelector('input[name="relocation"]:checked')?.value || '',
+    about:       document.getElementById('about')?.value || '',
+    education:   (document.getElementById('qualification')?.value || '') + ' ' + (document.getElementById('college')?.value || ''),
+    diet:        getSelected('diet-options'),
+    travel:      getSelected('travel-options'),
+    social_life: getSelected('social-options'),
+    cooking:     getSelected('cook-options'),
+    children:    getSelected('kids-options'),
+    parents:     getSelected('parents-options'),
+    traits:      selectedTraits,
+    personality: personality,
+    verified:    false,
+    status:      'pending'
+  }
+
+  const { error } = await db.from('profiles').insert(data)
+
+  if (!error) {
+    document.getElementById('step-5').style.display = 'none'
+    document.getElementById('step-success').style.display = 'block'
+    document.getElementById('progress-fill').style.width = '100%'
+    document.getElementById('progress-pct').textContent = '100%'
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  } else {
+    console.error(error)
+    btn.textContent = 'Submit Profile for Verification →'
+    btn.disabled = false
+    alert('Something went wrong. Please email concierge@swaymvar.in directly.')
+  }
+}
+</script>
