@@ -219,7 +219,11 @@ async function loadProfiles() {
     .select('*')
     .order('created_at', { ascending: false })
 
-  if (error) return
+  if (error) {
+    document.getElementById('profiles-tbody').innerHTML =
+      '<tr><td colspan="10" style="text-align:center;color:#f87171;padding:40px;">Error: ' + error.message + '</td></tr>'
+    return
+  }
   allProfiles = data || []
   renderProfiles(allProfiles)
   updateStats()
@@ -237,8 +241,14 @@ function updateStats() {
 
 function renderInvites(data) {
   const tbody = document.getElementById('invites-tbody')
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:rgba(245,240,232,0.3);padding:40px;">No applications yet.</td></tr>'
+  if (!data || !data.length) {
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:60px;">
+      <div style="color:rgba(245,240,232,0.3);font-family:'Space Mono',monospace;font-size:12px;">
+        <div style="font-size:32px;margin-bottom:12px;">📋</div>
+        <div>No applications yet.</div>
+        <div style="font-size:10px;margin-top:8px;color:rgba(245,240,232,0.2);">Applications appear here when someone fills the waitlist form on swaymvar.in</div>
+      </div>
+    </td></tr>`
     return
   }
   tbody.innerHTML = data.map(r => `
@@ -264,8 +274,14 @@ function renderInvites(data) {
 
 function renderProfiles(data) {
   const tbody = document.getElementById('profiles-tbody')
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:rgba(245,240,232,0.3);padding:40px;">No profiles yet.</td></tr>'
+  if (!data || !data.length) {
+    tbody.innerHTML = `<tr><td colspan="10" style="text-align:center;padding:60px;">
+      <div style="color:rgba(245,240,232,0.3);font-family:'Space Mono',monospace;font-size:12px;">
+        <div style="font-size:32px;margin-bottom:12px;">👤</div>
+        <div>No profiles submitted yet.</div>
+        <div style="font-size:10px;margin-top:8px;color:rgba(245,240,232,0.2);">Profiles appear here after members complete the create-profile form using their invitation code.</div>
+      </div>
+    </td></tr>`
     return
   }
   tbody.innerHTML = data.map(r => `
