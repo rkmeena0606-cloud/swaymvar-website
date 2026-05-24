@@ -44,16 +44,22 @@
 <body style="padding-bottom:80px;">
 
 <!-- NAV -->
-<header class="fixed top-0 w-full z-50 glass-nav" style="border-bottom:1px solid #D4C5A0;">
-  <div style="max-width:1000px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;">
+<header style="position:fixed;top:0;width:100%;z-index:50;backdrop-filter:blur(12px);background:rgba(254,252,245,0.93);border-bottom:1px solid #D4C5A0;" id="main-nav">
+  <div style="max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;">
+    
+    <!-- Logo -->
     <a href="index.html" style="text-decoration:none;">
-      <h1 class="font-display" style="font-size:20px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;">SWAYMVAR</h1>
-      <p class="font-mono" style="font-size:9px;color:#A67C00;letter-spacing:0.2em;">swaymvar.in</p>
+      <h1 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:2px 0 0;">swaymvar.in</p>
     </a>
-    <div style="display:flex;align-items:center;gap:16px;">
-      <span class="font-mono" style="font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;" id="step-label">Step 1 of 5</span>
-      <a href="discover.html" class="font-mono" style="font-size:11px;color:#2D5016;text-decoration:none;border-bottom:1px solid #C9960C;padding-bottom:1px;">View Profiles</a>
-    </div>
+
+    <!-- Hamburger button — always visible -->
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;" aria-label="Open menu">
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+    </button>
+
   </div>
 </header>
 
@@ -719,92 +725,71 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
-<!-- MOBILE SIDEBAR OVERLAY -->
-<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:998;backdrop-filter:blur(4px);"></div>
+
+
+<!-- OVERLAY -->
+<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
 
 <!-- SIDEBAR -->
-<div id="sidebar" style="position:fixed;top:0;left:-280px;width:280px;height:100vh;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:auto;border-right:1px solid rgba(201,150,12,0.2);">
+<div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:auto;box-shadow:4px 0 20px rgba(0,0,0,0.3);">
   
-  <!-- Sidebar Header -->
-  <div style="padding:24px 20px 20px;border-bottom:1px solid rgba(201,150,12,0.15);display:flex;justify-content:space-between;align-items:center;">
+  <!-- Header -->
+  <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
     <div>
-      <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;">SWAYMVAR</h2>
-      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin-top:2px;">swaymvar.in</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2>
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p>
     </div>
-    <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">✕</button>
+    <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">✕</button>
   </div>
 
-  <!-- Nav Links -->
-  <nav style="padding:16px 0;">
-    
-    <a href="index.html" style="display:flex;align-items:center;gap:14px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;" onmouseover="this.style.background='rgba(201,150,12,0.08)'" onmouseout="this.style.background='transparent'">
-      <span style="width:36px;height:36px;border-radius:8px;background:rgba(201,150,12,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;">🏠</span>
+  <!-- Links -->
+  <nav style="padding:8px 0;">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
+      <span style="font-size:20px;">🏠</span>
       <div>
-        <p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;letter-spacing:0.1em;margin:0;">Home</p>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p>
         <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p>
       </div>
     </a>
-
-    <a href="discover.html" style="display:flex;align-items:center;gap:14px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;" onmouseover="this.style.background='rgba(201,150,12,0.08)'" onmouseout="this.style.background='transparent'">
-      <span style="width:36px;height:36px;border-radius:8px;background:rgba(201,150,12,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;">💎</span>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
+      <span style="font-size:20px;">💎</span>
       <div>
-        <p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;letter-spacing:0.1em;margin:0;">Discover</p>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p>
         <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p>
       </div>
     </a>
-
-    <a href="create-profile.html" style="display:flex;align-items:center;gap:14px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;" onmouseover="this.style.background='rgba(201,150,12,0.08)'" onmouseout="this.style.background='transparent'">
-      <span style="width:36px;height:36px;border-radius:8px;background:rgba(45,80,22,0.4);display:flex;align-items:center;justify-content:center;font-size:18px;">✨</span>
+    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);">
+      <span style="font-size:20px;">✨</span>
       <div>
-        <p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;letter-spacing:0.1em;margin:0;">Create Profile</p>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">Create Profile</p>
         <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p>
       </div>
     </a>
-
-    <a href="verify.html" style="display:flex;align-items:center;gap:14px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;" onmouseover="this.style.background='rgba(201,150,12,0.08)'" onmouseout="this.style.background='transparent'">
-      <span style="width:36px;height:36px;border-radius:8px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;">🛡️</span>
+    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
+      <span style="font-size:20px;">🛡️</span>
       <div>
-        <p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;letter-spacing:0.1em;margin:0;">Verification</p>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Verification</p>
         <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Peer verification process</p>
       </div>
     </a>
-
-    <a href="profile.html" style="display:flex;align-items:center;gap:14px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;" onmouseover="this.style.background='rgba(201,150,12,0.08)'" onmouseout="this.style.background='transparent'">
-      <span style="width:36px;height:36px;border-radius:8px;background:rgba(201,150,12,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;">👤</span>
+    <a href="profile.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
+      <span style="font-size:20px;">👤</span>
       <div>
-        <p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;letter-spacing:0.1em;margin:0;">Profile View</p>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Profile View</p>
         <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">See a sample profile</p>
       </div>
     </a>
-
   </nav>
 
-  <!-- Trust badges in sidebar -->
-  <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.15);margin-top:8px;">
-    <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:10px;">Our Promise</p>
-    <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span style="color:#22c55e;font-size:12px;">✓</span>
-        <span style="font-size:12px;color:rgba(255,255,255,0.6);">Peer Verified Only</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span style="color:#22c55e;font-size:12px;">✓</span>
-        <span style="font-size:12px;color:rgba(255,255,255,0.6);">All Religions Welcome</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span style="color:#22c55e;font-size:12px;">✓</span>
-        <span style="font-size:12px;color:rgba(255,255,255,0.6);">Privacy Protected</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span style="color:#C9960C;font-size:12px;">✦</span>
-        <span style="font-size:12px;color:rgba(255,255,255,0.6);">First 100 Free for Life</span>
-      </div>
-    </div>
+  <!-- Promise -->
+  <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);margin-top:8px;">
+    <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:10px;">Our Promise</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">✓ Peer Verified Only<br/>✓ All Religions Welcome<br/>✓ Privacy Protected<br/>✦ First 100 Free for Life</p>
   </div>
 
-  <!-- Contact -->
-  <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.15);">
-    <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-decoration:none;letter-spacing:0.05em;">concierge@swaymvar.in</a>
+  <!-- Email -->
+  <div style="padding:12px 20px;border-top:1px solid rgba(201,150,12,0.15);">
+    <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
   </div>
 
 </div>
@@ -816,11 +801,10 @@ function openSidebar() {
   document.body.style.overflow = 'hidden'
 }
 function closeSidebar() {
-  document.getElementById('sidebar').style.left = '-280px'
+  document.getElementById('sidebar').style.left = '-300px'
   document.getElementById('sidebar-overlay').style.display = 'none'
   document.body.style.overflow = ''
 }
-// Close on escape key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeSidebar()
 })
