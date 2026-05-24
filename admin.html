@@ -304,30 +304,54 @@ function initEmailJS() {
   }
 }
 
-async function updateStatus(table, id, status) {
-  // Update status in Supabase
-  const { error } = await db.from(table).update({ status }).eq('id', id)
-  
-  if (error) {
-    alert('Error updating: ' + error.message)
-    return
-  }
+// Generate unique invitation code
+function generateInviteCode(org, id) {
+  const orgCode = (org || 'SV').replace(/[^A-Z]/gi, '').toUpperCase().substring(0, 4)
+  const year = new Date().getFullYear()
+  const num = String(Math.floor(Math.random() * 9000) + 1000)
+  return 'SV-' + orgCode + '-' + year + '-' + num
+}
 
-  // Get the record to send email
-  const { data: record } = await db
+async function updateStatus(table, id, status) {
+  // Get the record first
+  const { data: record, error: fetchErr } = await db
     .from(table)
     .select('*')
     .eq('id', id)
     .single()
 
-  if (record && record.email) {
+  if (fetchErr || !record) {
+    alert('Error fetching record: ' + (fetchErr?.message || 'not found'))
+    return
+  }
+
+  // Generate invite code if approving
+  let inviteCode = null
+  let updateData = { status }
+
+  if (status === 'approved' && table === 'invite_requests') {
+    inviteCode = generateInviteCode(record.org, id)
+    updateData.invite_code = inviteCode
+  }
+
+  // Update status in Supabase
+  const { error } = await db.from(table).update(updateData).eq('id', id)
+
+  if (error) {
+    alert('Error updating: ' + error.message)
+    return
+  }
+
+  // Send email
+  if (record.email) {
     const templateId = status === 'approved' ? EJS_APPROVED : EJS_REJECTED
 
     const templateParams = {
-      to_email:  record.email,
-      full_name: record.full_name || 'Member',
-      org:       record.org || '',
-      city:      record.city || '',
+      to_email:    record.email,
+      full_name:   record.full_name || 'Member',
+      org:         record.org || '',
+      city:        record.city || '',
+      invite_code: inviteCode || 'N/A'
     }
 
     try {
@@ -339,14 +363,12 @@ async function updateStatus(table, id, status) {
     }
   }
 
-  // Reload table
   loadData()
 
-  // Show confirmation
   const msg = status === 'approved'
-    ? '✓ Approved and email sent to ' + (record?.email || 'member')
-    : '✗ Rejected and email sent to ' + (record?.email || 'member')
-  
+    ? '✓ Approved · Code: ' + (inviteCode || 'sent') + ' · Email sent to ' + (record.email || 'member')
+    : '✗ Rejected · Email sent to ' + (record.email || 'member')
+
   showToast(msg, status)
 }
 

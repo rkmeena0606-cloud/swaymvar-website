@@ -44,19 +44,19 @@
 <body style="padding-bottom:80px;">
 
 <!-- NAV -->
-<header style="position:fixed;top:0;width:100%;z-index:50;backdrop-filter:blur(12px);background:rgba(254,252,245,0.93);border-bottom:1px solid #D4C5A0;" id="main-nav">
-  <div style="max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;">
+<header style="position:fixed;top:0;left:0;right:0;width:100%;z-index:50;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background:rgba(254,252,245,0.93);border-bottom:1px solid #D4C5A0;" id="main-nav">
+  <div style="max-width:1200px;margin:0 auto;padding:12px 16px;display:flex;flex-direction:row;justify-content:space-between;align-items:center;width:100%;box-sizing:border-box;">
     
-    <!-- Logo -->
-    <a href="index.html" style="text-decoration:none;">
-      <h1 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
-      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:2px 0 0;">swaymvar.in</p>
+    <!-- Logo LEFT -->
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <h1 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.25em;color:#2D5016;text-transform:uppercase;margin:0;line-height:1.2;">SWAYMVAR</h1>
+      <p style="font-family:'Space Mono',monospace;font-size:8px;color:#A67C00;letter-spacing:0.15em;margin:2px 0 0;">swaymvar.in</p>
     </a>
 
-    <!-- Hamburger button — always visible -->
-    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;" aria-label="Open menu">
+    <!-- Hamburger RIGHT -->
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;flex-shrink:0;display:flex;flex-direction:column;gap:5px;align-items:flex-end;justify-content:center;-webkit-tap-highlight-color:transparent;" aria-label="Open menu">
       <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
-      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:20px;height:2px;background:#2D5016;border-radius:2px;"></span>
       <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
     </button>
 
@@ -65,6 +65,34 @@
 
 <!-- MAIN -->
 <main style="max-width:800px;margin:0 auto;padding:100px 24px 40px;">
+
+  <!-- INVITATION CODE GATE -->
+  <div id="code-gate" style="min-height:60vh;display:flex;align-items:center;justify-content:center;">
+    <div style="max-width:480px;width:100%;text-align:center;">
+      <div style="width:72px;height:72px;border-radius:50%;background:#EDF5E0;border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px;">🔒</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:28px;color:#2D5016;font-weight:700;margin-bottom:12px;">Invitation Required</h2>
+      <p style="color:#5C5040;font-size:14px;line-height:1.75;margin-bottom:8px;">Profile creation on SWAYMVAR is by invitation only. You must first apply on the waitlist and receive approval from our Concierge team.</p>
+      <p style="color:#5C5040;font-size:14px;line-height:1.75;margin-bottom:24px;">Upon approval you will receive a <strong style="color:#2D5016;">unique invitation code</strong> at your official email address. Enter it below to proceed.</p>
+      
+      <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-radius:12px;padding:24px;text-align:left;margin-bottom:20px;">
+        <label style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:8px;">Your Invitation Code *</label>
+        <input type="text" id="invite-code-input" placeholder="e.g. SV-RBI-2026-0047" style="width:100%;padding:14px;border:2px solid #D4C5A0;border-radius:8px;font-family:'Space Mono',monospace;font-size:14px;color:#1C1A14;outline:none;letter-spacing:0.1em;background:white;" oninput="this.value=this.value.toUpperCase()"/>
+        <p id="code-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:8px;">❌ Invalid or expired invitation code. Please check your approval email.</p>
+      </div>
+
+      <button onclick="verifyInviteCode()" style="width:100%;padding:14px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;margin-bottom:16px;">
+        Verify & Continue →
+      </button>
+
+      <div style="background:#EDF5E0;border:1px solid #2D5016;border-radius:8px;padding:12px 16px;text-align:left;">
+        <p style="font-family:'Space Mono',monospace;font-size:9px;color:#2D5016;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Don't have an invitation code?</p>
+        <p style="font-size:13px;color:#5C5040;line-height:1.6;">Apply on our <a href="index.html#invite" style="color:#2D5016;font-weight:700;text-decoration:underline;">waitlist page</a> first. Our Concierge team reviews applications personally within 48 hours. Upon approval your unique code is sent to your official email.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE FORM — hidden until code verified -->
+  <div id="profile-form-container" style="display:none;">
 
   <!-- PAGE HEADER -->
   <div style="text-align:center;margin-bottom:40px;">
@@ -612,6 +640,7 @@
     </div>
   </div>
 
+  </div><!-- end profile-form-container -->
 </main>
 
 <!-- MOBILE NAV -->
