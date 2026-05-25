@@ -1,354 +1,557 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SWAYMVAR - My Professional Identity</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
-<!-- Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-error": "#ffffff",
-                    "primary-fixed-dim": "#b7c7eb",
-                    "primary-fixed": "#d7e2ff",
-                    "on-surface-variant": "#44474d",
-                    "on-secondary-container": "#715300",
-                    "on-tertiary-container": "#769d5a",
-                    "secondary": "#7a5900",
-                    "tertiary": "#071b00",
-                    "saffron-gold": "#E8B84B",
-                    "on-tertiary-fixed-variant": "#2c4f15",
-                    "surface-container-high": "#e7e8e9",
-                    "background": "#f8f9fa",
-                    "surface-dim": "#d9dadb",
-                    "on-tertiary": "#ffffff",
-                    "error-container": "#ffdad6",
-                    "surface-container-lowest": "#ffffff",
-                    "outline": "#75777e",
-                    "midnight-indigo": "#1C1A14",
-                    "inverse-surface": "#2e3132",
-                    "tertiary-fixed": "#c4efa3",
-                    "inverse-primary": "#b7c7eb",
-                    "secondary-fixed": "#ffdea1",
-                    "on-secondary-fixed-variant": "#5c4300",
-                    "surface-bright": "#f8f9fa",
-                    "on-tertiary-fixed": "#0a2100",
-                    "on-primary": "#ffffff",
-                    "secondary-container": "#ffc645",
-                    "on-primary-fixed": "#091b37",
-                    "error": "#ba1a1a",
-                    "on-error-container": "#93000a",
-                    "surface-container": "#edeeef",
-                    "surface": "#f8f9fa",
-                    "on-primary-container": "#8393b5",
-                    "inverse-on-surface": "#f0f1f2",
-                    "primary-container": "#1b2b48",
-                    "emerald-success": "#2D5016",
-                    "surface-variant": "#e1e3e4",
-                    "surface-tint": "#4f5e7e",
-                    "tertiary-fixed-dim": "#a8d38a",
-                    "on-secondary": "#ffffff",
-                    "secondary-fixed-dim": "#f6be3c",
-                    "on-primary-fixed-variant": "#374765",
-                    "primary": "#041632",
-                    "on-secondary-fixed": "#261900",
-                    "on-background": "#191c1d",
-                    "on-surface": "#191c1d",
-                    "tertiary-container": "#133200",
-                    "surface-container-highest": "#e1e3e4",
-                    "surface-container-low": "#f3f4f5",
-                    "outline-variant": "#c5c6ce",
-                    "heritage-cream": "#FEFCF5"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "margin-desktop": "64px",
-                    "max-width": "1200px",
-                    "unit": "4px",
-                    "margin-mobile": "16px",
-                    "gutter": "24px"
-            },
-            "fontFamily": {
-                    "body-md": ["DM Sans"],
-                    "body-lg": ["DM Sans"],
-                    "headline-md": ["Playfair Display"],
-                    "label-sm": ["DM Sans"],
-                    "label-md": ["DM Sans"],
-                    "display-lg": ["Playfair Display"],
-                    "headline-lg-mobile": ["Playfair Display"],
-                    "headline-lg": ["Playfair Display"]
-            },
-            "fontSize": {
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
-                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      .glass-card {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-      }
-      .profile-mask-gradient {
-        mask-image: radial-gradient(circle, black 30%, transparent 70%);
-        -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
-      }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  <link rel="manifest" href="/manifest.json"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWAYMVAR | My Profile</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#2D5016"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; padding-bottom: 80px; }
+.font-display { font-family: 'Playfair Display', serif; }
+.font-mono { font-family: 'Space Mono', monospace; }
+.glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(254,252,245,0.93); }
+.section-card { background: white; border: 1px solid #D4C5A0; border-left: 4px solid #C9960C; border-radius: 14px; padding: 24px; margin-bottom: 20px; }
+.form-label { font-family: 'Space Mono', monospace; font-size: 10px; color: #A67C00; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 6px; }
+.form-input { width: 100%; padding: 12px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-size: 14px; color: #1C1A14; outline: none; transition: border-color 0.2s; font-family: 'DM Sans', sans-serif; }
+.form-input:focus { border-color: #C9960C; }
+.form-select { width: 100%; padding: 12px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-size: 14px; color: #1C1A14; outline: none; font-family: 'DM Sans', sans-serif; }
+.form-textarea { width: 100%; padding: 12px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-size: 14px; color: #1C1A14; outline: none; resize: vertical; min-height: 90px; font-family: 'DM Sans', sans-serif; }
+.trait-btn { padding: 8px 14px; border-radius: 999px; border: 1.5px solid #D4C5A0; background: white; color: #5C5040; font-family: 'Space Mono', monospace; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+.trait-btn.selected { background: #EDF5E0; border-color: #2D5016; color: #2D5016; }
+.tab-btn { padding: 10px 16px; border-radius: 8px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border: 1.5px solid #D4C5A0; background: white; color: #5C5040; white-space: nowrap; transition: all 0.2s; }
+.tab-btn.active { background: #2D5016; color: white; border-color: #2D5016; }
+.badge-verified { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.4); color: #16a34a; padding: 4px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; }
+.badge-pending { background: rgba(201,150,12,0.1); border: 1px solid rgba(201,150,12,0.4); color: #A67C00; padding: 4px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; }
+</style>
 </head>
-<body class="bg-heritage-cream text-on-surface font-body-md antialiased pb-24">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-heritage-cream/90 dark:bg-midnight-indigo/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm flex items-center justify-between px-4 md:px-margin-desktop h-16">
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/50 transition-colors rounded-full">menu</button>
-<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">SWAYMVAR</h1>
-</div>
-<div class="flex items-center gap-2">
-<span class="font-label-md text-label-md text-primary hidden md:block">My Professional Identity</span>
-<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/50 transition-colors rounded-full">notifications</button>
-</div>
-</header>
-<main class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mt-24 mb-12">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Left Column: Media & Status -->
-<div class="md:col-span-5 lg:col-span-4 flex flex-col gap-6">
-<!-- Profile Media Card -->
-<section class="bg-white rounded-xl border border-outline-variant/30 shadow-[0_4px_24px_0_rgba(27,43,72,0.08)] overflow-hidden">
-<div class="p-6 space-y-6">
-<h2 class="font-headline-md text-headline-md text-primary">Profile Visibility</h2>
-<!-- Primary Photo -->
-<div class="space-y-3">
-<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Primary Photo</label>
-<div class="relative group aspect-square rounded-xl overflow-hidden bg-surface-container border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="A professional headshot of a confident female official in a modern corporate setting. She is wearing a sophisticated navy blazer over a light cream blouse. The background is a softly blurred high-end office interior with warm lighting. The overall mood is authoritative and prestigious, maintaining a clean and minimalist corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdJOuZKjAi4Iut8qGRKI6jBHDM6qhntTRQqu6Xm0BTm0YCar-TSzn8oNG73nfDB-vPhS8BU2CM8wYu7_U1ezALkhLvehWKqCcKOCGw7TspdTld9DJqrKolxACg4qbxZ5W0kX4fbApqETL-GkzkgeeBPH8nCj98r1D4uDuz_Uop49ROyiUho9rhinvbSP_YcFB5oTU_VnugJwYu-ruf-dV71FZrwrJen1TxaJ63jDlp2dah8p1TKmfrvU1gVHtvzQCCLZ48cZ6NFg2B"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-<button class="bg-white text-primary px-4 py-2 rounded-lg font-label-md flex items-center gap-2 shadow-lg">
-<span class="material-symbols-outlined text-[20px]">photo_camera</span>
-                                        Change Photo
-                                    </button>
-</div>
-</div>
-</div>
-<!-- Masked Preview -->
-<div class="space-y-3">
-<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Masked Preview (Privacy Mode)</label>
-<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container border border-outline-variant">
-<img class="w-full h-full object-cover blur-2xl profile-mask-gradient opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYpaIvjhdKRKmvEltW1icEq-GwisPu_5MAllURfbLsheq4_Sbmi76z-Fl170TXO1-qyZbMYp6H5dr_uXfRo4z8_s0RLnaUq_XE6DoVUPls3_Kb4rlvY__wQfIpIShMUVcFth7866HB-efFT7DLz-HcxV0xRiJw7Zh-AqMjpctnQxhb-Cbif7HXw4DtQXUfrMB8zTiEttUJxmF5rEjBS7CWmHrSOJfpT5fhodsUk59PNLv_BAukwYsfYsX_JzHTCMfuklY_8_xahuLn"/>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary/40 text-4xl">visibility_off</span>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant italic">This is how non-verified members view your profile when privacy mode is active.</p>
-</div>
-</div>
-</section>
-<!-- Peer Verification Badge -->
-<div class="bg-emerald-success/10 border border-emerald-success/20 rounded-xl p-6 flex items-center gap-4">
-<div class="bg-emerald-success text-white p-3 rounded-full">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
-</div>
-<div>
-<h3 class="font-headline-md text-headline-md text-emerald-success leading-tight">Peer Verified</h3>
-<p class="font-body-md text-on-surface-variant">Credentials confirmed by 5+ Senior Officers.</p>
-</div>
-</div>
-</div>
-<!-- Right Column: Forms -->
-<div class="md:col-span-7 lg:col-span-8 space-y-8">
-<!-- Career Section -->
-<div class="bg-white rounded-xl border border-outline-variant/30 shadow-[0_4px_24px_0_rgba(27,43,72,0.08)] p-6 md:p-8">
-<div class="flex items-center gap-3 mb-8">
-<span class="material-symbols-outlined text-primary">business_center</span>
-<h2 class="font-headline-md text-headline-md text-primary">Career Information</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-on-surface-variant">Organisation</label>
-<select class="w-full bg-surface-container-low border-b border-outline focus:border-primary outline-none py-3 px-1 transition-all rounded-t-lg">
-<option>Indian Administrative Service (IAS)</option>
-<option>Indian Police Service (IPS)</option>
-<option>Indian Foreign Service (IFS)</option>
-<option>Central Public Sector Enterprises (CPSE)</option>
-</select>
-</div>
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-on-surface-variant">Designation</label>
-<input class="w-full bg-surface-container-low border-b border-outline focus:border-primary outline-none py-3 px-1 transition-all rounded-t-lg" type="text" value="Deputy Commissioner"/>
-</div>
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-on-surface-variant">Grade / Batch</label>
-<div class="flex flex-wrap gap-2 pt-2">
-<button class="px-4 py-1.5 rounded-full border border-primary bg-primary text-white text-label-md">Grade A</button>
-<button class="px-4 py-1.5 rounded-full border border-outline text-on-surface-variant text-label-md hover:bg-surface-variant transition-colors">Grade B</button>
-<button class="px-4 py-1.5 rounded-full border border-outline text-on-surface-variant text-label-md hover:bg-surface-variant transition-colors">Special Class</button>
-</div>
-</div>
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-on-surface-variant">Current Posting City</label>
-<input class="w-full bg-surface-container-low border-b border-outline focus:border-primary outline-none py-3 px-1 transition-all rounded-t-lg" type="text" value="New Delhi"/>
-</div>
-</div>
-</div>
-<!-- Personal Section -->
-<div class="bg-white rounded-xl border border-outline-variant/30 shadow-[0_4px_24px_0_rgba(27,43,72,0.08)] p-6 md:p-8">
-<div class="flex items-center gap-3 mb-8">
-<span class="material-symbols-outlined text-primary">person</span>
-<h2 class="font-headline-md text-headline-md text-primary">Personal Details</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-on-surface-variant">Age</label>
-<input class="w-full bg-surface-container-low border-b border-outline focus:border-primary outline-none py-3 px-1 transition-all rounded-t-lg" type="number" value="32"/>
-</div>
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-on-surface-variant">Religion (Optional)</label>
-<select class="w-full bg-surface-container-low border-b border-outline focus:border-primary outline-none py-3 px-1 transition-all rounded-t-lg">
-<option>Hinduism</option>
-<option>Sikhism</option>
-<option>Buddhism</option>
-<option>Jainism</option>
-<option>Christianity</option>
-<option>Islam</option>
-<option>Prefer not to say</option>
-</select>
-</div>
-<div class="md:col-span-2 space-y-2">
-<label class="font-label-md text-label-md text-on-surface-variant">Hobbies &amp; Interests</label>
-<div class="flex flex-wrap gap-2 pt-2">
-<span class="bg-surface-container px-3 py-1 rounded-lg text-label-md text-primary flex items-center gap-1">Golf <button class="material-symbols-outlined text-[14px]">close</button></span>
-<span class="bg-surface-container px-3 py-1 rounded-lg text-label-md text-primary flex items-center gap-1">Classical Music <button class="material-symbols-outlined text-[14px]">close</button></span>
-<span class="bg-surface-container px-3 py-1 rounded-lg text-label-md text-primary flex items-center gap-1">Equestrian <button class="material-symbols-outlined text-[14px]">close</button></span>
-<button class="text-primary-container font-label-md flex items-center gap-1 px-3 py-1 border border-dashed border-primary-container rounded-lg">+ Add New</button>
-</div>
-</div>
-<div class="md:col-span-2 space-y-2">
-<label class="font-label-md text-label-md text-on-surface-variant">Personality Traits</label>
-<textarea class="w-full bg-surface-container-low border-b border-outline focus:border-primary outline-none py-3 px-1 transition-all rounded-t-lg resize-none" placeholder="Describe your professional and personal temperament..." rows="3">Disciplined, analytical, and enjoys intellectual discourse on public policy.</textarea>
-</div>
-</div>
-</div>
-<!-- Privacy Settings Section -->
-<div class="bg-primary text-on-primary rounded-xl p-6 md:p-8 shadow-xl">
-<div class="flex items-center gap-3 mb-8">
-<span class="material-symbols-outlined text-saffron-gold">lock_person</span>
-<h2 class="font-headline-md text-headline-md text-white">Privacy &amp; She Chooses</h2>
-</div>
-<div class="space-y-6">
-<div class="flex items-center justify-between group cursor-pointer" onclick="toggleSwitch('mask-toggle')">
-<div>
-<h4 class="font-label-md text-label-md text-primary-fixed">Active Photo Masking</h4>
-<p class="text-sm text-primary-fixed-dim">Hide your face from non-verified or non-interest matches.</p>
-</div>
-<div class="w-12 h-6 bg-saffron-gold rounded-full relative transition-colors p-1" id="mask-toggle">
-<div class="w-4 h-4 bg-primary rounded-full absolute right-1"></div>
-</div>
-</div>
-<div class="h-[1px] bg-white/10"></div>
-<div class="flex items-center justify-between group cursor-pointer" onclick="toggleSwitch('peers-toggle')">
-<div>
-<h4 class="font-label-md text-label-md text-primary-fixed">Visible to Organisation Peers Only</h4>
-<p class="text-sm text-primary-fixed-dim">Limit profile discovery to colleagues within your service.</p>
-</div>
-<div class="w-12 h-6 bg-white/20 rounded-full relative transition-colors p-1" id="peers-toggle">
-<div class="w-4 h-4 bg-white rounded-full absolute left-1"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- Sticky Bottom Actions -->
-<div class="fixed bottom-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-t border-outline-variant/20 px-4 py-4 md:px-margin-desktop flex justify-center items-center gap-4">
-<button class="flex-1 md:flex-none md:min-w-[200px] border border-primary text-primary px-8 py-3 rounded-lg font-label-md hover:bg-surface-variant transition-all">
-            Discard Changes
-        </button>
-<button class="flex-1 md:flex-none md:min-w-[240px] bg-primary text-white px-8 py-3 rounded-lg font-label-md shadow-lg flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all">
-<span class="material-symbols-outlined text-[20px]">save</span>
-            Save Professional Identity
-        </button>
-</div>
-<!-- Mobile Navigation (JSON Component Implementation) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-[60] flex justify-around items-center px-4 pb-safe pt-2 bg-white/80 dark:bg-midnight-indigo/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_24px_0_rgba(27,43,72,0.08)]">
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-primary-container/10 transition-all p-2" href="#">
-<span class="material-symbols-outlined">explore</span>
-<span class="font-label-sm text-label-sm">Discover</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-primary-container/10 transition-all p-2" href="#">
-<span class="material-symbols-outlined">manage_search</span>
-<span class="font-label-sm text-label-sm">Search</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-primary-container/10 transition-all p-2" href="#">
-<span class="material-symbols-outlined">chat_bubble</span>
-<span class="font-label-sm text-label-sm">Messages</span>
-</a>
-<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-bold hover:bg-primary-container/10 transition-all p-2 scale-90" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
-<span class="font-label-sm text-label-sm">Profile</span>
-</a>
-</nav>
-<script>
-        function toggleSwitch(id) {
-            const toggle = document.getElementById(id);
-            const dot = toggle.querySelector('div');
-            const isActive = toggle.classList.contains('bg-saffron-gold');
-            
-            if (isActive) {
-                toggle.classList.remove('bg-saffron-gold');
-                toggle.classList.add('bg-white/20');
-                dot.classList.remove('right-1');
-                dot.classList.add('left-1');
-            } else {
-                toggle.classList.add('bg-saffron-gold');
-                toggle.classList.remove('bg-white/20');
-                dot.classList.remove('left-1');
-                dot.classList.add('right-1');
-            }
-        }
-    </script>
+<body>
 
-<!-- SWAYMVAR: Supabase Connection -->
+<!-- NAV -->
+<header class="glass-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;border-bottom:1px solid #D4C5A0;">
+  <div style="max-width:1000px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+    <a href="index.html" style="text-decoration:none;">
+      <h1 class="font-display" style="font-size:20px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
+      <p class="font-mono" style="font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:2px 0 0;">swaymvar.in</p>
+    </a>
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;" aria-label="Menu">
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:20px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══ LOGIN GATE ═══ -->
+<div id="login-gate" style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 40px;">
+  <div style="max-width:420px;width:100%;text-align:center;">
+    <div style="width:64px;height:64px;border-radius:50%;background:#EDF5E0;border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;">🔐</div>
+    <h2 class="font-display" style="font-size:26px;color:#2D5016;font-weight:700;margin-bottom:6px;">My Profile</h2>
+    <p style="color:#5C5040;font-size:14px;line-height:1.7;margin-bottom:20px;">Sign in securely to view and edit your profile.</p>
+
+    <!-- Auth tabs -->
+    <div style="display:flex;background:#F0EDE6;border-radius:10px;padding:4px;margin-bottom:20px;">
+      <button onclick="switchTab('login')" id="tab-login" style="flex:1;padding:10px;border:none;border-radius:8px;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;background:#2D5016;color:white;font-weight:700;">Sign In</button>
+      <button onclick="switchTab('register')" id="tab-register" style="flex:1;padding:10px;border:none;border-radius:8px;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;background:transparent;color:#5C5040;">Set Password</button>
+    </div>
+
+    <!-- Sign In -->
+    <div id="form-login" style="background:#F9F5EC;border:1px solid #D4C5A0;border-radius:12px;padding:20px;text-align:left;margin-bottom:14px;">
+      <div style="margin-bottom:14px;">
+        <label class="form-label">Official Email</label>
+        <input type="email" id="login-email" class="form-input" placeholder="name@rbi.org.in"/>
+      </div>
+      <div style="margin-bottom:10px;">
+        <label class="form-label">Password</label>
+        <div style="position:relative;">
+          <input type="password" id="login-pwd" class="form-input" placeholder="Your password" style="padding-right:44px;"/>
+          <button onclick="togglePwd('login-pwd')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">👁️</button>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#5C5040;"><a href="javascript:void(0)" onclick="switchTab('forgot')" style="color:#2D5016;font-weight:700;">Forgot password?</a></p>
+      <p id="login-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:8px;font-weight:600;"></p>
+    </div>
+
+    <!-- Set Password (first time) -->
+    <div id="form-register" style="display:none;background:#F9F5EC;border:1px solid #D4C5A0;border-radius:12px;padding:20px;text-align:left;margin-bottom:14px;">
+      <p style="color:#5C5040;font-size:13px;line-height:1.6;margin-bottom:14px;">First time? Set a password. Your email must already be on our approved list.</p>
+      <div style="margin-bottom:14px;">
+        <label class="form-label">Official Email</label>
+        <input type="email" id="reg-email" class="form-input" placeholder="name@rbi.org.in"/>
+      </div>
+      <div style="margin-bottom:14px;">
+        <label class="form-label">Create Password (min 8 chars)</label>
+        <div style="position:relative;">
+          <input type="password" id="reg-pwd" class="form-input" placeholder="Create password" style="padding-right:44px;"/>
+          <button onclick="togglePwd('reg-pwd')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">👁️</button>
+        </div>
+      </div>
+      <div style="margin-bottom:6px;">
+        <label class="form-label">Confirm Password</label>
+        <div style="position:relative;">
+          <input type="password" id="reg-confirm" class="form-input" placeholder="Repeat password" style="padding-right:44px;"/>
+          <button onclick="togglePwd('reg-confirm')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">👁️</button>
+        </div>
+      </div>
+      <p id="reg-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:8px;font-weight:600;"></p>
+    </div>
+
+    <!-- Forgot Password -->
+    <div id="form-forgot" style="display:none;background:#F9F5EC;border:1px solid #D4C5A0;border-radius:12px;padding:20px;text-align:left;margin-bottom:14px;">
+      <p style="color:#5C5040;font-size:13px;line-height:1.6;margin-bottom:14px;">Enter your official email. A reset link will be sent to your inbox.</p>
+      <div style="margin-bottom:6px;">
+        <label class="form-label">Official Email</label>
+        <input type="email" id="forgot-email" class="form-input" placeholder="name@rbi.org.in"/>
+      </div>
+      <p id="forgot-msg" style="display:none;font-size:12px;margin-top:8px;font-weight:600;"></p>
+    </div>
+
+    <button onclick="handleAuth()" id="auth-btn" style="width:100%;padding:14px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;margin-bottom:14px;">Sign In →</button>
+    <p style="color:#5C5040;font-size:12px;">No profile yet? <a href="index.html#invite" style="color:#2D5016;font-weight:700;">Apply for waitlist →</a></p>
+  </div>
+</div>
+
+<!-- ═══ PROFILE DASHBOARD ═══ -->
+<div id="profile-dashboard" style="display:none;max-width:900px;margin:0 auto;padding:90px 20px 40px;">
+
+  <!-- Header -->
+  <div style="background:#2D5016;border-radius:16px;padding:24px;margin-bottom:20px;">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,150,12,0.2);border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">👤</div>
+        <div>
+          <h2 class="font-display" style="font-size:20px;color:white;font-weight:700;margin:0 0 4px;" id="header-name">—</h2>
+          <p class="font-mono" style="font-size:10px;color:#E8B84B;margin:0 0 6px;" id="header-org">—</p>
+          <span id="status-badge" class="badge-pending">Pending Review</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button onclick="saveAllChanges()" id="save-btn" style="padding:10px 18px;background:#C9960C;color:#1C1A14;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">💾 Save</button>
+        <button onclick="signOut()" style="padding:10px 14px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.2);border-radius:8px;cursor:pointer;">Sign Out</button>
+        <button onclick="confirmDelete()" style="padding:10px 14px;background:rgba(139,26,26,0.2);color:#f87171;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border:1px solid rgba(139,26,26,0.4);border-radius:8px;cursor:pointer;">🗑️</button>
+      </div>
+    </div>
+    <!-- Completeness -->
+    <div style="margin-top:16px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+        <span class="font-mono" style="font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Profile Completeness</span>
+        <span class="font-mono" style="font-size:11px;color:#E8B84B;font-weight:700;" id="complete-pct">0%</span>
+      </div>
+      <div style="height:5px;background:rgba(255,255,255,0.15);border-radius:3px;overflow:hidden;">
+        <div id="complete-bar" style="height:100%;background:#C9960C;border-radius:3px;width:0%;transition:width 0.8s ease;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div style="display:flex;gap:8px;margin-bottom:20px;overflow-x:auto;padding-bottom:4px;">
+    <button class="tab-btn active" onclick="switchSection('photos')" id="sec-photos">📷 Photos</button>
+    <button class="tab-btn" onclick="switchSection('basic')" id="sec-basic">👤 Basic</button>
+    <button class="tab-btn" onclick="switchSection('work')" id="sec-work">🏛️ Work</button>
+    <button class="tab-btn" onclick="switchSection('personality')" id="sec-personality">🧠 Personality</button>
+    <button class="tab-btn" onclick="switchSection('life')" id="sec-life">❤️ Life</button>
+    <button class="tab-btn" onclick="switchSection('privacy')" id="sec-privacy">🔒 Privacy</button>
+  </div>
+
+  <!-- PHOTOS -->
+  <div id="sec-content-photos" class="section-card">
+    <p class="form-label" style="margin-bottom:6px;">Your Photos</p>
+    <p style="color:#5C5040;font-size:13px;margin-bottom:16px;">1 to 5 photos. All <strong style="color:#2D5016;">blurred by default</strong> until mutual interest. Max 5MB each.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:14px;">
+      <div id="pslot-0" onclick="triggerPhoto(0)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;position:relative;overflow:hidden;">
+        <span style="font-size:26px;margin-bottom:4px;">📷</span><span class="font-mono" style="font-size:8px;color:#A67C00;text-transform:uppercase;">Main Photo</span>
+      </div>
+      <div id="pslot-1" onclick="triggerPhoto(1)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;position:relative;overflow:hidden;"><span style="font-size:22px;">+</span><span class="font-mono" style="font-size:8px;color:#5C5040;">Photo 2</span></div>
+      <div id="pslot-2" onclick="triggerPhoto(2)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;position:relative;overflow:hidden;"><span style="font-size:22px;">+</span><span class="font-mono" style="font-size:8px;color:#5C5040;">Photo 3</span></div>
+      <div id="pslot-3" onclick="triggerPhoto(3)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;position:relative;overflow:hidden;"><span style="font-size:22px;">+</span><span class="font-mono" style="font-size:8px;color:#5C5040;">Photo 4</span></div>
+      <div id="pslot-4" onclick="triggerPhoto(4)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;position:relative;overflow:hidden;"><span style="font-size:22px;">+</span><span class="font-mono" style="font-size:8px;color:#5C5040;">Photo 5</span></div>
+    </div>
+    <input type="file" id="pfile-0" accept="image/*" style="display:none;" onchange="handlePhoto(0,this)"/>
+    <input type="file" id="pfile-1" accept="image/*" style="display:none;" onchange="handlePhoto(1,this)"/>
+    <input type="file" id="pfile-2" accept="image/*" style="display:none;" onchange="handlePhoto(2,this)"/>
+    <input type="file" id="pfile-3" accept="image/*" style="display:none;" onchange="handlePhoto(3,this)"/>
+    <input type="file" id="pfile-4" accept="image/*" style="display:none;" onchange="handlePhoto(4,this)"/>
+    <div style="background:#EDF5E0;border:1px solid #2D5016;border-radius:8px;padding:10px 14px;">
+      <p style="color:#2D5016;font-size:12px;line-height:1.6;"><strong>🔒 Privacy:</strong> Photos blurred for all members until mutual interest confirmed.</p>
+    </div>
+  </div>
+
+  <!-- BASIC INFO -->
+  <div id="sec-content-basic" class="section-card" style="display:none;">
+    <p class="form-label" style="margin-bottom:16px;">Basic Information</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div><label class="form-label">First Name</label><input type="text" class="form-input" id="f-fname" placeholder="First name"/></div>
+      <div><label class="form-label">Last Name</label><input type="text" class="form-input" id="f-lname" placeholder="Last name"/></div>
+      <div><label class="form-label">Age</label><input type="number" class="form-input" id="f-age" placeholder="e.g. 28" min="21" max="55"/></div>
+      <div><label class="form-label">Height</label>
+        <select class="form-select" id="f-height"><option value="">Select</option><option>4'10"</option><option>4'11"</option><option>5'0"</option><option>5'1"</option><option>5'2"</option><option>5'3"</option><option>5'4"</option><option>5'5"</option><option>5'6"</option><option>5'7"</option><option>5'8"</option><option>5'9"</option><option>5'10"</option><option>5'11"</option><option>6'0"</option><option>6'1"+</option></select>
+      </div>
+      <div><label class="form-label">Mother Tongue</label><input type="text" class="form-input" id="f-language" placeholder="e.g. Hindi, Tamil"/></div>
+      <div><label class="form-label">Qualification</label>
+        <select class="form-select" id="f-qualification"><option value="">Select</option><option>Class 12</option><option>Diploma</option><option>Bachelor's Degree</option><option>Master's Degree</option><option>MBA / PGDM</option><option>CA / CFA / CMA</option><option>LLB / LLM</option><option>MBBS / MD</option><option>PhD</option><option>Other</option></select>
+      </div>
+      <div style="grid-column:1/-1;"><label class="form-label">College / University</label><input type="text" class="form-input" id="f-college" placeholder="e.g. Delhi University, IIT Bombay"/></div>
+    </div>
+    <div style="margin-top:14px;"><label class="form-label">About Yourself</label><textarea class="form-textarea" id="f-about" placeholder="Write about yourself — who you are, what you value."></textarea></div>
+  </div>
+
+  <!-- WORK -->
+  <div id="sec-content-work" class="section-card" style="display:none;">
+    <p class="form-label" style="margin-bottom:16px;">Work & Posting</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="grid-column:1/-1;">
+        <label class="form-label">Organisation</label>
+        <select class="form-select" id="f-org">
+          <option value="">Select your organisation</option>
+          <optgroup label="Financial Regulators"><option>RBI</option><option>SEBI</option><option>NABARD</option><option>PFRDA</option><option>IRDAI</option><option>NaBFID</option><option>EXIM Bank</option><option>SIDBI</option></optgroup>
+          <optgroup label="PSU Banks"><option>SBI</option><option>PNB</option><option>Bank of Baroda</option><option>Canara Bank</option><option>Union Bank</option><option>Bank of India</option><option>Indian Bank</option><option>Other PSU Bank</option></optgroup>
+          <optgroup label="Insurance"><option>LIC</option><option>GIC Re</option><option>National Insurance</option><option>New India Assurance</option><option>Oriental Insurance</option></optgroup>
+          <optgroup label="Aviation & Transport"><option>AAI</option><option>Air Traffic Control (ATC)</option><option>Air India</option><option>Indian Railways</option></optgroup>
+          <optgroup label="Oil, Energy & PSUs"><option>IOCL</option><option>BPCL</option><option>HPCL</option><option>ONGC</option><option>GAIL</option><option>Coal India</option><option>NTPC</option><option>Power Grid</option><option>BHEL</option></optgroup>
+          <optgroup label="Coming Soon"><option disabled>IAS / IPS / IFS</option><option disabled>Defence Officers</option><option disabled>State Government</option></optgroup>
+        </select>
+      </div>
+      <div><label class="form-label">Designation / Grade</label><input type="text" class="form-input" id="f-designation" placeholder="e.g. Officer, Scale II"/></div>
+      <div><label class="form-label">Years of Service</label>
+        <select class="form-select" id="f-years"><option value="">Select</option><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>5–10 years</option><option>10–15 years</option><option>15+ years</option></select>
+      </div>
+      <div><label class="form-label">Current Posting City</label><input type="text" class="form-input" id="f-city" placeholder="e.g. Mumbai, Kanpur"/></div>
+      <div><label class="form-label">State</label><input type="text" class="form-input" id="f-state" placeholder="e.g. Maharashtra, UP"/></div>
+      <div style="grid-column:1/-1;">
+        <label class="form-label" style="margin-bottom:10px;">Relocation Openness</label>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <label style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:1.5px solid #D4C5A0;border-radius:10px;cursor:pointer;background:white;"><input type="radio" name="reloc" value="flexible" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;"/><div><p style="font-weight:600;font-size:14px;color:#1C1A14;margin:0 0 2px;">Fully flexible</p><p style="color:#5C5040;font-size:13px;margin:0;">Open to anywhere in India</p></div></label>
+          <label style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:1.5px solid #D4C5A0;border-radius:10px;cursor:pointer;background:white;"><input type="radio" name="reloc" value="zone" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;"/><div><p style="font-weight:600;font-size:14px;color:#1C1A14;margin:0 0 2px;">Flexible within a region</p><p style="color:#5C5040;font-size:13px;margin:0;">Can move within a few states</p></div></label>
+          <label style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:1.5px solid #D4C5A0;border-radius:10px;cursor:pointer;background:white;"><input type="radio" name="reloc" value="city" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;"/><div><p style="font-weight:600;font-size:14px;color:#1C1A14;margin:0 0 2px;">Prefer current city</p><p style="color:#5C5040;font-size:13px;margin:0;">Want partner based here</p></div></label>
+          <label style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:1.5px solid #D4C5A0;border-radius:10px;cursor:pointer;background:white;"><input type="radio" name="reloc" value="discuss" style="margin-top:3px;accent-color:#2D5016;flex-shrink:0;"/><div><p style="font-weight:600;font-size:14px;color:#1C1A14;margin:0 0 2px;">Open to discussion</p><p style="color:#5C5040;font-size:13px;margin:0;">Figure it out together</p></div></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONALITY -->
+  <div id="sec-content-personality" class="section-card" style="display:none;">
+    <p class="form-label" style="margin-bottom:6px;">Your Personality</p>
+    <p style="color:#5C5040;font-size:13px;margin-bottom:16px;">Be honest — these help find someone truly compatible.</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px;">
+      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">🧘 Introvert</span><span style="font-weight:600;font-size:13px;">Extrovert 🎉</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-1" oninput="updateLabel('lb-1',this.value,['Strongly Introvert','More Introvert','Ambivert','More Extrovert','Strongly Extrovert'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-1">Ambivert</p></div>
+      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">😌 Very Calm</span><span style="font-weight:600;font-size:13px;">Very Emotional 💭</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-2" oninput="updateLabel('lb-2',this.value,['Very calm','Generally calm','Balanced','Emotionally expressive','Deeply feeling'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-2">Balanced</p></div>
+      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">📋 Organised</span><span style="font-weight:600;font-size:13px;">Spontaneous ✨</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-3" oninput="updateLabel('lb-3',this.value,['Very structured','Mostly organised','Mix of both','Generally spontaneous','Very spontaneous'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-3">Mix of both</p></div>
+      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">🤝 Agreeable</span><span style="font-weight:600;font-size:13px;">Assertive 💪</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-4" oninput="updateLabel('lb-4',this.value,['Very collaborative','Mostly agreeable','Balanced','Mostly assertive','Very assertive'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-4">Balanced</p></div>
+    </div>
+    <p class="form-label" style="margin-bottom:8px;">Select Traits (up to 8)</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;" id="trait-container">
+      <button class="trait-btn" onclick="toggleTrait(this)">Honest</button><button class="trait-btn" onclick="toggleTrait(this)">Loyal</button><button class="trait-btn" onclick="toggleTrait(this)">Ambitious</button><button class="trait-btn" onclick="toggleTrait(this)">Empathetic</button><button class="trait-btn" onclick="toggleTrait(this)">Curious</button><button class="trait-btn" onclick="toggleTrait(this)">Creative</button><button class="trait-btn" onclick="toggleTrait(this)">Disciplined</button><button class="trait-btn" onclick="toggleTrait(this)">Optimistic</button><button class="trait-btn" onclick="toggleTrait(this)">Humorous</button><button class="trait-btn" onclick="toggleTrait(this)">Patient</button><button class="trait-btn" onclick="toggleTrait(this)">Independent</button><button class="trait-btn" onclick="toggleTrait(this)">Family-oriented</button><button class="trait-btn" onclick="toggleTrait(this)">Adventurous</button><button class="trait-btn" onclick="toggleTrait(this)">Practical</button><button class="trait-btn" onclick="toggleTrait(this)">Generous</button><button class="trait-btn" onclick="toggleTrait(this)">Intellectual</button><button class="trait-btn" onclick="toggleTrait(this)">Calm</button><button class="trait-btn" onclick="toggleTrait(this)">Caring</button><button class="trait-btn" onclick="toggleTrait(this)">Determined</button><button class="trait-btn" onclick="toggleTrait(this)">Principled</button>
+    </div>
+  </div>
+
+  <!-- LIFE -->
+  <div id="sec-content-life" class="section-card" style="display:none;">
+    <p class="form-label" style="margin-bottom:6px;">Life Preferences</p>
+    <p style="color:#5C5040;font-size:13px;margin-bottom:20px;">These matter in daily married life.</p>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div><label class="form-label">Diet</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="diet-opts"><button class="trait-btn" onclick="selectOne('diet-opts',this)">Vegetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Jain</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Eggetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Non-Vegetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Vegan</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">No preference</button></div></div>
+      <div><label class="form-label">Travel</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="travel-opts"><button class="trait-btn" onclick="selectOne('travel-opts',this)">🏔️ Mountains</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">🏖️ Beaches</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">🏛️ Heritage</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">🌍 International</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">🏠 Homebody</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">Mix of everything</button></div></div>
+      <div><label class="form-label">Social Life</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="social-opts"><button class="trait-btn" onclick="selectOne('social-opts',this)">🎉 Love parties</button><button class="trait-btn" onclick="selectOne('social-opts',this)">🍽️ Small dinners</button><button class="trait-btn" onclick="selectOne('social-opts',this)">🏠 Quiet evenings</button><button class="trait-btn" onclick="selectOne('social-opts',this)">Mix of both</button></div></div>
+      <div><label class="form-label">Cooking</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="cook-opts"><button class="trait-btn" onclick="selectOne('cook-opts',this)">🍳 Love cooking</button><button class="trait-btn" onclick="selectOne('cook-opts',this)">🍽️ Prefer eating out</button><button class="trait-btn" onclick="selectOne('cook-opts',this)">Mix of both</button></div></div>
+      <div><label class="form-label">Children</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="kids-opts"><button class="trait-btn" onclick="selectOne('kids-opts',this)">👶 Want children</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">🚫 Do not want</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">⏳ Open, not urgent</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">Prefer not to say</button></div></div>
+      <div><label class="form-label">Living with Parents</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="parents-opts"><button class="trait-btn" onclick="selectOne('parents-opts',this)">🏠 Joint family</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">🏘️ Same city</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">✈️ Independent</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">Open to discussion</button></div></div>
+      <div><label class="form-label">Money</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="money-opts"><button class="trait-btn" onclick="selectOne('money-opts',this)">💰 Saver</button><button class="trait-btn" onclick="selectOne('money-opts',this)">💳 Spender on experiences</button><button class="trait-btn" onclick="selectOne('money-opts',this)">📈 Investor</button><button class="trait-btn" onclick="selectOne('money-opts',this)">Balanced</button></div></div>
+    </div>
+  </div>
+
+  <!-- PRIVACY -->
+  <div id="sec-content-privacy" class="section-card" style="display:none;">
+    <p class="form-label" style="margin-bottom:16px;">Privacy Settings</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="padding:14px;background:#F9F5EC;border-radius:10px;border:1px solid #D4C5A0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div><p style="font-weight:600;color:#1C1A14;font-size:14px;margin-bottom:3px;">Photo Visibility</p><p style="color:#5C5040;font-size:13px;">Who sees your photos</p></div>
+        <select class="form-select" style="width:auto;" id="f-photo-privacy"><option value="blurred">🔒 Blurred for everyone</option><option value="mutual">🔑 On mutual interest</option><option value="visible">👁️ Visible to all verified</option></select>
+      </div>
+      <div style="padding:14px;background:#F9F5EC;border-radius:10px;border:1px solid #D4C5A0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div><p style="font-weight:600;color:#1C1A14;font-size:14px;margin-bottom:3px;">Name Visibility</p><p style="color:#5C5040;font-size:13px;">Show first name or full name</p></div>
+        <select class="form-select" style="width:auto;" id="f-name-privacy"><option value="first">First name only</option><option value="full">Full name visible</option></select>
+      </div>
+      <div style="padding:14px;background:#FDF0F0;border-radius:10px;border:1px solid rgba(139,26,26,0.3);">
+        <p style="font-weight:700;color:#8B1A1A;font-size:14px;margin-bottom:6px;">⚠️ Delete My Profile</p>
+        <p style="color:#5C5040;font-size:13px;line-height:1.6;margin-bottom:12px;">Permanently deletes all your data. Cannot be undone.</p>
+        <button onclick="confirmDelete()" style="padding:10px 20px;background:#8B1A1A;color:white;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;">Delete My Profile</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save bar -->
+  <div style="position:sticky;bottom:16px;background:white;border:1px solid #D4C5A0;border-radius:12px;padding:14px 20px;box-shadow:0 4px 20px rgba(45,80,22,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:8px;">
+    <p style="color:#5C5040;font-size:13px;" id="save-status">Make changes in any tab then save.</p>
+    <button onclick="saveAllChanges()" style="padding:12px 28px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Save All Changes ✓</button>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
+<div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.3);">
+  <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
+    <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2><p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
+    <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">✕</button>
+  </div>
+  <nav style="padding:8px 0;">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🏠</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💎</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
+    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);"><span style="font-size:18px;">👤</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
+    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💬</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
+    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">✨</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
+    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🛡️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
+    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">❓</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
+    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🗺️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
+  </nav>
+  <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);">
+    <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">✓ Peer Verified Only<br/>✓ All Religions Welcome<br/>✓ Privacy Protected<br/>✦ First 100 Free for Life</p>
+  </div>
+  <div style="padding:12px 20px;border-top:1px solid rgba(201,150,12,0.15);">
+    <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
 const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+let currentRecord = null
+let currentTable = 'profiles'
+let currentAuthTab = 'login'
+
+// ── AUTH TABS ──
+function switchTab(tab) {
+  currentAuthTab = tab
+  document.getElementById('form-login').style.display = tab === 'login' ? 'block' : 'none'
+  document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none'
+  document.getElementById('form-forgot').style.display = tab === 'forgot' ? 'block' : 'none'
+  const tl = document.getElementById('tab-login')
+  const tr = document.getElementById('tab-register')
+  if (tab === 'login') {
+    tl.style.background='#2D5016'; tl.style.color='white'
+    tr.style.background='transparent'; tr.style.color='#5C5040'
+    document.getElementById('auth-btn').textContent = 'Sign In →'
+  } else if (tab === 'register') {
+    tr.style.background='#2D5016'; tr.style.color='white'
+    tl.style.background='transparent'; tl.style.color='#5C5040'
+    document.getElementById('auth-btn').textContent = 'Set Password & Sign In →'
+  } else {
+    document.getElementById('auth-btn').textContent = 'Send Reset Link →'
+  }
+}
+
+function togglePwd(id) {
+  const el = document.getElementById(id)
+  el.type = el.type === 'password' ? 'text' : 'password'
+}
+
+async function handleAuth() {
+  const btn = document.getElementById('auth-btn')
+  btn.textContent = 'Please wait...'
+  btn.disabled = true
+  if (currentAuthTab === 'login') await doLogin()
+  else if (currentAuthTab === 'register') await doRegister()
+  else await doForgot()
+  btn.disabled = false
+}
+
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase()
+  const pwd = document.getElementById('login-pwd').value
+  const err = document.getElementById('login-error')
+  err.style.display = 'none'
+  if (!email || !pwd) { err.style.display='block'; err.textContent='❌ Enter email and password.'; document.getElementById('auth-btn').textContent='Sign In →'; return }
+  const { error } = await db.auth.signInWithPassword({ email, password: pwd })
+  if (error) { err.style.display='block'; err.textContent='❌ Wrong email or password. Try again.'; document.getElementById('auth-btn').textContent='Sign In →'; return }
+  await loadProfileForUser(email)
+}
+
+async function doRegister() {
+  const email = document.getElementById('reg-email').value.trim().toLowerCase()
+  const pwd = document.getElementById('reg-pwd').value
+  const confirm = document.getElementById('reg-confirm').value
+  const err = document.getElementById('reg-error')
+  err.style.display = 'none'
+  if (!email || !pwd) { err.style.display='block'; err.textContent='❌ Fill all fields.'; document.getElementById('auth-btn').textContent='Set Password & Sign In →'; return }
+  if (pwd.length < 8) { err.style.display='block'; err.textContent='❌ Password must be at least 8 characters.'; document.getElementById('auth-btn').textContent='Set Password & Sign In →'; return }
+  if (pwd !== confirm) { err.style.display='block'; err.textContent='❌ Passwords do not match.'; document.getElementById('auth-btn').textContent='Set Password & Sign In →'; return }
+  // Check approved member
+  const { data: inv } = await db.from('invite_requests').select('status').ilike('email', email)
+  const { data: prof } = await db.from('profiles').select('email').ilike('email', email)
+  const approved = (inv && inv.some(function(i){return i.status==='approved'})) || (prof && prof.length>0)
+  if (!approved) { err.style.display='block'; err.textContent='❌ This email is not on our approved list. Apply on the waitlist first.'; document.getElementById('auth-btn').textContent='Set Password & Sign In →'; return }
+  const { error } = await db.auth.signUp({ email, password: pwd })
+  if (error && !error.message.includes('already')) { err.style.display='block'; err.textContent='❌ '+error.message; document.getElementById('auth-btn').textContent='Set Password & Sign In →'; return }
+  await db.auth.signInWithPassword({ email, password: pwd })
+  await loadProfileForUser(email)
+}
+
+async function doForgot() {
+  const email = document.getElementById('forgot-email').value.trim().toLowerCase()
+  const msg = document.getElementById('forgot-msg')
+  msg.style.display = 'none'
+  const { error } = await db.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + '/my-profile.html' })
+  msg.style.display = 'block'
+  if (!error) { msg.style.color='#2D5016'; msg.textContent='✓ Reset link sent to '+email+'. Check your inbox.' }
+  else { msg.style.color='#8B1A1A'; msg.textContent='❌ '+error.message }
+  document.getElementById('auth-btn').textContent = 'Send Reset Link →'
+}
+
+async function loadProfileForUser(email) {
+  const { data: profiles } = await db.from('profiles').select('*').ilike('email', email)
+  const { data: invites } = await db.from('invite_requests').select('*').ilike('email', email)
+  if (profiles && profiles.length > 0) {
+    currentRecord = profiles[0]; currentTable = 'profiles'; loadDashboard(); return
+  }
+  if (invites && invites.length > 0 && invites[0].status === 'approved') {
+    const err = document.getElementById('login-error')
+    err.style.display='block'; err.style.color='#2D5016'
+    err.textContent='✓ Account verified. Please create your profile using your invitation code.'
+    document.getElementById('auth-btn').textContent='Sign In →'; return
+  }
+  const err = document.getElementById('login-error')
+  err.style.display='block'; err.textContent='❌ No profile found. Please create your profile first.'
+  document.getElementById('auth-btn').textContent='Sign In →'
+}
+
+async function signOut() {
+  await db.auth.signOut()
+  location.reload()
+}
+
+// Check session on load
+document.addEventListener('DOMContentLoaded', async function() {
+  const { data: { session } } = await db.auth.getSession()
+  if (session && session.user) { await loadProfileForUser(session.user.email) }
+})
+
+// ── LOAD DASHBOARD ──
+function loadDashboard() {
+  const d = currentRecord
+  document.getElementById('login-gate').style.display = 'none'
+  document.getElementById('profile-dashboard').style.display = 'block'
+  const name = d.full_name || '—'
+  document.getElementById('header-name').textContent = name
+  document.getElementById('header-org').textContent = (d.org||'—') + (d.city ? ' · '+d.city : '')
+  const badge = document.getElementById('status-badge')
+  if (d.status==='approved'||d.verified) { badge.className='badge-verified'; badge.textContent='✓ Verified Member' }
+  else { badge.className='badge-pending'; badge.textContent='⏳ Pending Review' }
+  const parts = (name).split(' ')
+  setVal('f-fname', parts[0]||''); setVal('f-lname', parts.slice(1).join(' ')||'')
+  setVal('f-about', d.about||''); setVal('f-city', d.city||''); setVal('f-state', d.state||'')
+  setVal('f-designation', d.designation||'')
+  setSelect('f-org', d.org); setSelect('f-qualification', d.education?d.education.split(' ')[0]:'')
+  if (d.relocation) { const r=document.querySelector('input[name="reloc"][value="'+d.relocation+'"]'); if(r) r.checked=true }
+  if (d.traits) { const sel=d.traits.split(', '); document.querySelectorAll('#trait-container .trait-btn').forEach(function(b){if(sel.includes(b.textContent.trim()))b.classList.add('selected')}) }
+  function selPref(id,val) { if(!val) return; document.querySelectorAll('#'+id+' .trait-btn').forEach(function(b){if(b.textContent.trim().includes(val)||val.includes(b.textContent.trim()))b.classList.add('selected')}) }
+  selPref('diet-opts',d.diet); selPref('travel-opts',d.travel); selPref('social-opts',d.social_life)
+  selPref('cook-opts',d.cooking); selPref('kids-opts',d.children); selPref('parents-opts',d.parents)
+  const fields=['full_name','org','designation','city','about','diet','travel','traits']
+  const filled=fields.filter(function(f){return d[f]&&d[f].toString().trim()}).length
+  const pct=Math.round((filled/fields.length)*100)
+  document.getElementById('complete-pct').textContent=pct+'%'
+  document.getElementById('complete-bar').style.width=pct+'%'
+  window.scrollTo({top:0,behavior:'smooth'})
+}
+
+function setVal(id,val) { const el=document.getElementById(id); if(el&&val) el.value=val }
+function setSelect(id,val) {
+  const el=document.getElementById(id); if(!el||!val) return
+  for(let i=0;i<el.options.length;i++){if(el.options[i].value===val||el.options[i].text===val){el.selectedIndex=i;return}}
+}
+
+// ── SAVE ──
+async function saveAllChanges() {
+  if (!currentRecord) return
+  const btn = document.getElementById('save-btn')
+  btn.textContent='💾 Saving..'; btn.disabled=true
+  const fname=document.getElementById('f-fname').value.trim()
+  const lname=document.getElementById('f-lname').value.trim()
+  function getSel(id){const b=document.querySelector('#'+id+' .trait-btn.selected');return b?b.textContent.trim():''}
+  const traits=Array.from(document.querySelectorAll('#trait-container .trait-btn.selected')).map(function(b){return b.textContent.trim()}).join(', ')
+  const updates = {
+    full_name: fname+(lname?' '+lname:''), org: document.getElementById('f-org').value,
+    designation: document.getElementById('f-designation').value, city: document.getElementById('f-city').value,
+    state: document.getElementById('f-state').value, relocation: document.querySelector('input[name="reloc"]:checked')?.value||'',
+    about: document.getElementById('f-about').value, diet: getSel('diet-opts'), travel: getSel('travel-opts'),
+    social_life: getSel('social-opts'), cooking: getSel('cook-opts'), children: getSel('kids-opts'),
+    parents: getSel('parents-opts'), traits: traits
+  }
+  const { error } = await db.from(currentTable).update(updates).eq('id', currentRecord.id)
+  btn.textContent='💾 Save'; btn.disabled=false
+  if (!error) {
+    currentRecord={...currentRecord,...updates}
+    document.getElementById('save-status').textContent='✓ Saved successfully'
+    document.getElementById('save-status').style.color='#2D5016'
+    document.getElementById('header-name').textContent=updates.full_name
+    document.getElementById('header-org').textContent=(updates.org||'—')+(updates.city?' · '+updates.city:'')
+    setTimeout(function(){document.getElementById('save-status').textContent='Make changes in any tab then save.';document.getElementById('save-status').style.color='#5C5040'},3000)
+  } else { alert('Error: '+error.message) }
+}
+
+// ── DELETE ──
+async function confirmDelete() {
+  if (!confirm('Delete your profile permanently? This cannot be undone.')) return
+  if (!currentRecord) return
+  await db.from('profiles').delete().eq('id', currentRecord.id)
+  await db.from('invite_requests').delete().eq('email', currentRecord.email||'')
+  await db.auth.signOut()
+  document.getElementById('profile-dashboard').innerHTML='<div style="text-align:center;padding:60px 24px;"><p style="font-size:40px;margin-bottom:16px;">🗑️</p><h3 style="font-family:Playfair Display,serif;font-size:24px;color:#2D5016;font-weight:700;margin-bottom:12px;">Profile Deleted</h3><p style="color:#5C5040;font-size:14px;margin-bottom:24px;">All your data has been permanently removed.</p><a href="index.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:Space Mono,monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">Back to Home</a></div>'
+}
+
+// ── SECTIONS ──
+function switchSection(name) {
+  const secs=['photos','basic','work','personality','life','privacy']
+  secs.forEach(function(s){
+    document.getElementById('sec-content-'+s).style.display=s===name?'block':'none'
+    document.getElementById('sec-'+s).className='tab-btn'+(s===name?' active':'')
+  })
+}
+
+// ── PHOTOS ──
+function triggerPhoto(i){document.getElementById('pfile-'+i).click()}
+function handlePhoto(i,input){
+  if(!input.files||!input.files[0]) return
+  if(input.files[0].size>5*1024*1024){alert('Max 5MB per photo.');return}
+  const reader=new FileReader()
+  reader.onload=function(e){
+    const slot=document.getElementById('pslot-'+i)
+    slot.style.padding='0'; slot.style.border='2px solid #2D5016'; slot.innerHTML=''
+    const img=document.createElement('img'); img.src=e.target.result
+    img.style.cssText='width:100%;height:100%;object-fit:cover;filter:blur(8px);transform:scale(1.1);'
+    slot.appendChild(img)
+    const rm=document.createElement('button'); rm.innerHTML='✕'
+    rm.style.cssText='position:absolute;top:4px;right:4px;background:#8B1A1A;color:white;border:none;border-radius:50%;width:20px;height:20px;font-size:11px;cursor:pointer;z-index:1;'
+    rm.onclick=function(ev){ev.stopPropagation();removePhoto(i)}; slot.appendChild(rm)
+    const badge=document.createElement('div')
+    badge.style.cssText='position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:8px;color:rgba(255,255,255,0.8);background:rgba(0,0,0,0.5);padding:2px;font-family:Space Mono,monospace;'
+    badge.textContent='🔒 Blurred'; slot.appendChild(badge)
+  }
+  reader.readAsDataURL(input.files[0])
+}
+function removePhoto(i){
+  const slot=document.getElementById('pslot-'+i)
+  slot.style.padding=''; slot.style.border='2px dashed #D4C5A0'
+  slot.innerHTML=i===0?'<span style="font-size:26px;margin-bottom:4px;">📷</span><span style="font-family:Space Mono,monospace;font-size:8px;color:#A67C00;text-transform:uppercase;">Main Photo</span>':'<span style="font-size:22px;">+</span><span style="font-family:Space Mono,monospace;font-size:8px;color:#5C5040;">Photo '+(i+1)+'</span>'
+}
+
+// ── HELPERS ──
+function toggleTrait(btn){const sel=document.querySelectorAll('#trait-container .trait-btn.selected');if(!btn.classList.contains('selected')&&sel.length>=8)return;btn.classList.toggle('selected')}
+function selectOne(id,btn){document.querySelectorAll('#'+id+' .trait-btn').forEach(function(b){b.classList.remove('selected')});btn.classList.add('selected')}
+function updateLabel(id,val,labels){document.getElementById(id).textContent=labels[parseInt(val)-1]}
+
+// ── SIDEBAR ──
+function openSidebar(){document.getElementById('sidebar').style.left='0px';document.getElementById('sidebar-overlay').style.display='block';document.body.style.overflow='hidden';document.body.style.position='fixed';document.body.style.width='100%'}
+function closeSidebar(){document.getElementById('sidebar').style.left='-300px';document.getElementById('sidebar-overlay').style.display='none';document.body.style.overflow='';document.body.style.position='';document.body.style.width=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSidebar()})
 </script>
-</body></html>
+</body>
+</html>
