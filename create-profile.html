@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SWAYMVAR | Create Your Profile</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { corePlugins: { preflight: false } }</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="manifest" href="/manifest.json"/>
@@ -34,6 +35,28 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
 .step-dot.pending { background: #EDE5D0; color: #5C5040; border: 2px solid #D4C5A0; }
 </style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<style>.__tailwind_warning__{display:none!important;}[data-test="tailwind-warning"]{display:none!important;}</style>
+<script>
+// Remove Tailwind CDN development warning
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var tw = document.querySelector('.__tailwind_dev_warning__,tw-warning,#tailwind-dev-warning')
+    if (tw) tw.remove()
+    // Also check shadow roots
+    document.querySelectorAll('*').forEach(function(el) {
+      if (el.shadowRoot) {
+        var w = el.shadowRoot.querySelector('div')
+        if (w && w.style && w.style.zIndex === '9999') w.remove()
+      }
+    })
+  }, 100)
+})
+</script>
+<style>
+/* Hide Tailwind CDN warning badge */
+body > div[style*="z-index: 9999"]:not([id]),
+body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
+</style>
 </head>
 <body>
 

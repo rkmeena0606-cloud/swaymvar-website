@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SWAYMVAR | How Verification Works</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { corePlugins: { preflight: false } }</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#2D5016"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <style>
@@ -18,6 +20,29 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
 .font-mono { font-family: 'Space Mono', monospace; }
 .glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(254,252,245,0.93); }
 .card { background: white; border: 1px solid #D4C5A0; border-left: 4px solid #C9960C; border-radius: 12px; padding: 24px; }
+</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<style>.__tailwind_warning__{display:none!important;}[data-test="tailwind-warning"]{display:none!important;}</style>
+<script>
+// Remove Tailwind CDN development warning
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var tw = document.querySelector('.__tailwind_dev_warning__,tw-warning,#tailwind-dev-warning')
+    if (tw) tw.remove()
+    // Also check shadow roots
+    document.querySelectorAll('*').forEach(function(el) {
+      if (el.shadowRoot) {
+        var w = el.shadowRoot.querySelector('div')
+        if (w && w.style && w.style.zIndex === '9999') w.remove()
+      }
+    })
+  }, 100)
+})
+</script>
+<style>
+/* Hide Tailwind CDN warning badge */
+body > div[style*="z-index: 9999"]:not([id]),
+body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
 </style>
 </head>
 <body style="padding-bottom:80px;">

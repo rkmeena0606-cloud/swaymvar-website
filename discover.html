@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.tailwindcss.com,container-queries"></script>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -134,6 +134,28 @@
 <meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<style>.__tailwind_warning__{display:none!important;}[data-test="tailwind-warning"]{display:none!important;}</style>
+<script>
+// Remove Tailwind CDN development warning
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var tw = document.querySelector('.__tailwind_dev_warning__,tw-warning,#tailwind-dev-warning')
+    if (tw) tw.remove()
+    // Also check shadow roots
+    document.querySelectorAll('*').forEach(function(el) {
+      if (el.shadowRoot) {
+        var w = el.shadowRoot.querySelector('div')
+        if (w && w.style && w.style.zIndex === '9999') w.remove()
+      }
+    })
+  }, 100)
+})
+</script>
+<style>
+/* Hide Tailwind CDN warning badge */
+body > div[style*="z-index: 9999"]:not([id]),
+body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
+</style>
 </head>
 <body class="bg-background font-body-md text-on-background min-h-screen pb-24">
 <!-- Top Navigation Shell -->
