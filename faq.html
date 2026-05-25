@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SWAYMVAR | Support &amp; FAQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fcf9f2",
+                    "on-surface-variant": "#42493e",
+                    "secondary-container": "#fecb32",
+                    "tertiary-container": "#843b00",
+                    "surface-dim": "#dcdad3",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f6f3ec",
+                    "tertiary": "#612900",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#002201",
+                    "primary": "#164212",
+                    "secondary-fixed-dim": "#f2c025",
+                    "on-tertiary-container": "#ffb184",
+                    "on-primary-container": "#9ed090",
+                    "surface-container-highest": "#e5e2db",
+                    "secondary-fixed": "#ffdf92",
+                    "inverse-primary": "#a1d493",
+                    "surface-variant": "#e5e2db",
+                    "outline-variant": "#c2c9bb",
+                    "background": "#fcf9f2",
+                    "on-secondary-fixed-variant": "#594400",
+                    "on-primary-fixed-variant": "#24501e",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary-fixed": "#ffdbc9",
+                    "primary-container": "#2e5a27",
+                    "primary-fixed-dim": "#a1d493",
+                    "on-background": "#1c1c18",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#31312c",
+                    "outline": "#72796d",
+                    "on-error": "#ffffff",
+                    "surface-container": "#f0eee7",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#705600",
+                    "on-surface": "#1c1c18",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb68c",
+                    "on-tertiary-fixed-variant": "#763400",
+                    "secondary": "#755b00",
+                    "on-tertiary-fixed": "#321200",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container-high": "#ebe8e1",
+                    "surface-bright": "#fcf9f2",
+                    "primary-fixed": "#bdf0ad",
+                    "surface-tint": "#3c6934"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "md": "24px",
+                    "xs": "4px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "lg": "48px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Playfair Display"],
+                    "label-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .faq-accordion[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+        .marigold-glow {
+            box-shadow: 0 4px 20px -2px rgba(254, 203, 50, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#2D5016"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-heritage-cream/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/50 transition-colors rounded-full" data-icon="menu">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">SWAYMVAR</h1>
+</div>
+<div class="flex items-center gap-4">
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Discover</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Messages</a>
+<a class="font-label-md text-label-md text-primary font-semibold" href="#">Help Center</a>
+</nav>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/50 transition-colors rounded-full" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile max-w-container-max mx-auto md:px-gutter">
+<!-- Hero Section -->
+<section class="mb-lg text-center">
+<div class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-md text-label-md mb-4">
+                SUPPORT &amp; GUIDANCE
+            </div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-sm">How can we assist your journey?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Explore our comprehensive guide to the SWAYMVAR experience, crafted for distinguished professionals seeking lifelong unions.
+            </p>
+</section>
+<!-- Search Bar -->
+<div class="relative max-w-xl mx-auto mb-xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm" placeholder="Search for questions..." type="text"/>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Sidebar Categories -->
+<aside class="lg:col-span-3 hidden lg:block">
+<nav class="sticky top-24 flex flex-col gap-2">
+<a class="flex items-center gap-3 p-4 rounded-lg bg-secondary-container text-on-secondary-container font-semibold transition-all" href="#account">
+<span class="material-symbols-outlined" data-icon="lock">lock</span> Account &amp; Privacy
+                    </a>
+<a class="flex items-center gap-3 p-4 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#matches">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span> Matches &amp; Messaging
+                    </a>
+<a class="flex items-center gap-3 p-4 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#verification">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span> Peer Verification
+                    </a>
+<a class="flex items-center gap-3 p-4 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#settings">
+<span class="material-symbols-outlined" data-icon="published_with_changes">published_with_changes</span> Transfer Fit Settings
+                    </a>
+</nav>
+</aside>
+<!-- FAQ Accordions -->
+<div class="lg:col-span-9 space-y-lg">
+<!-- Category: Account & Privacy -->
+<section id="account">
+<div class="flex items-center gap-2 mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider text-sm">Account &amp; Privacy</h3>
+</div>
+<div class="space-y-4">
+<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+<span class="font-body-md font-semibold text-on-surface">How is my official email kept private?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
+                                We utilize a proprietary "Blind Relay" system for all official communications. Your professional email address is never visible to other members. Correspondence is routed through our secure servers, ensuring your identity remains protected until you explicitly choose to share personal contact details.
+                            </div>
+</details>
+<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+<span class="font-body-md font-semibold text-on-surface">Can I hide my profile from specific organizations?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
+                                Yes. Under 'Privacy &amp; Security' in your settings, you can define 'Visibility Filters'. You may block your profile from being seen by employees of specific companies or government departments to maintain workplace discretion.
+                            </div>
+</details>
+</div>
+</section>
+<!-- Category: Verification -->
+<section id="verification">
+<div class="flex items-center gap-2 mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider text-sm">Verification</h3>
+</div>
+<div class="space-y-4">
+<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+<span class="font-body-md font-semibold text-on-surface">What does a Peer Verification check involve?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
+                                Peer Verification is a gold-standard trust mechanism. It involves an anonymous cross-reference of your professional standing with at least three other verified members within your industry. This process confirms your professional identity and grade without revealing specific salary or role data.
+                            </div>
+</details>
+<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+<span class="font-body-md font-semibold text-on-surface">How long does the verification process take?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
+                                Verification typically takes 48 to 72 business hours. Our dedicated concierge team manually reviews documentation to ensure the highest standards of integrity within the Circle.
+                            </div>
+</details>
+</div>
+</section>
+<!-- Category: Settings -->
+<section id="settings">
+<div class="flex items-center gap-2 mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="published_with_changes" style="font-variation-settings: 'FILL' 1;">published_with_changes</span>
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider text-sm">Logistics &amp; Fit</h3>
+</div>
+<div class="space-y-4">
+<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+<span class="font-body-md font-semibold text-on-surface">How do I manage my transfer compatibility settings?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
+                                Navigate to 'Transfer Fit Settings' in your dashboard. Here, you can specify your openness to relocation based on career opportunities, state preferences, or government cadre requirements. This helps our algorithm match you with professionals whose career trajectories align with yours.
+                            </div>
+</details>
+</div>
+</section>
+</div>
+</div>
+<!-- CTA Footer Section -->
+<section class="mt-xl p-md md:p-lg bg-primary rounded-2xl text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary-fixed via-transparent to-transparent"></div>
+<div class="relative z-10">
+<h4 class="font-headline-md text-white mb-base">Still have questions?</h4>
+<p class="text-on-primary-container font-body-md mb-lg max-w-lg mx-auto">Our dedicated Concierge team is available 24/7 to assist you with any inquiries or bespoke requirements.</p>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-10 py-4 rounded-full marigold-glow hover:scale-105 active:scale-95 transition-all">
+                    Chat with Concierge
+                </button>
+</div>
+</section>
+</main>
+<!-- Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 bg-white/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_24px_0_rgba(27,43,72,0.08)]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all p-2">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-sm text-label-sm">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all p-2">
+<span class="material-symbols-outlined" data-icon="manage_search">manage_search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary font-bold hover:bg-primary-container/10 transition-all p-2">
+<span class="material-symbols-outlined" data-icon="chat_bubble" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Help</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all p-2">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<!-- Visual Accents -->
+<div class="fixed top-20 right-[-10%] w-[40%] h-[40%] bg-secondary-fixed/10 blur-[120px] rounded-full -z-10"></div>
+<div class="fixed bottom-0 left-[-10%] w-[30%] h-[30%] bg-primary-fixed/10 blur-[100px] rounded-full -z-10"></div>
+<script>
+        // Micro-interaction for smooth scrolling to sections
+        document.querySelectorAll('aside nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+
+                // Update active state
+                document.querySelectorAll('aside nav a').forEach(a => {
+                    a.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'font-semibold');
+                    a.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+                });
+                this.classList.add('bg-secondary-container', 'text-on-secondary-container', 'font-semibold');
+                this.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+            });
+        });
+
+        // Simple search filter interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        const faqItems = document.querySelectorAll('.faq-accordion');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            faqItems.forEach(item => {
+                const question = item.querySelector('summary').textContent.toLowerCase();
+                const answer = item.querySelector('div').textContent.toLowerCase();
+                if (question.includes(term) || answer.includes(term)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+<!-- SWAYMVAR: Supabase Connection -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+</script>
+</body></html>

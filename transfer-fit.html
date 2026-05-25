@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transfer Fit Analysis | SWAYMVAR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .heritage-gradient {
+            background: linear-gradient(135deg, #164212 0%, #2e5a27 100%);
+        }
+        .marigold-glow {
+            box-shadow: 0 10px 25px -5px rgba(242, 192, 37, 0.3);
+        }
+        .mehendi-blur {
+            backdrop-filter: blur(8px);
+            background-color: rgba(22, 66, 18, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1c1c18",
+                        "on-primary-fixed-variant": "#24501e",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#594400",
+                        "on-error": "#ffffff",
+                        "surface": "#fcf9f2",
+                        "surface-container": "#f0eee7",
+                        "on-primary-container": "#9ed090",
+                        "secondary-container": "#fecb32",
+                        "error": "#ba1a1a",
+                        "secondary": "#755b00",
+                        "on-tertiary-fixed": "#321200",
+                        "on-background": "#1c1c18",
+                        "surface-container-low": "#f6f3ec",
+                        "outline": "#72796d",
+                        "on-tertiary-container": "#ffb184",
+                        "tertiary-container": "#843b00",
+                        "on-tertiary-fixed-variant": "#763400",
+                        "primary-container": "#2e5a27",
+                        "on-secondary-fixed": "#241a00",
+                        "primary-fixed-dim": "#a1d493",
+                        "on-surface-variant": "#42493e",
+                        "inverse-surface": "#31312c",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fcf9f2",
+                        "inverse-on-surface": "#f3f0ea",
+                        "surface-tint": "#3c6934",
+                        "secondary-fixed": "#ffdf92",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#002201",
+                        "primary-fixed": "#bdf0ad",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-highest": "#e5e2db",
+                        "surface-dim": "#dcdad3",
+                        "outline-variant": "#c2c9bb",
+                        "tertiary-fixed-dim": "#ffb68c",
+                        "on-secondary-container": "#705600",
+                        "surface-container-high": "#ebe8e1",
+                        "secondary-fixed-dim": "#f2c025",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#164212",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#a1d493",
+                        "surface-variant": "#e5e2db",
+                        "on-primary": "#ffffff",
+                        "background": "#fcf9f2",
+                        "tertiary": "#612900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "xl": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#2D5016"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-24 md:pb-0">
+<!-- Top App Bar -->
+<header class="bg-surface shadow-sm w-full top-0 sticky z-50">
+<div class="flex items-center justify-between px-md py-base w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-base">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high transition-colors rounded-full active:scale-95 duration-150">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">SWAYMVAR</h1>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<nav class="flex gap-md">
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">Discover</a>
+<a class="text-primary font-label-md font-bold" href="#">Search</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">Messages</a>
+</nav>
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+<img alt="Executive User Profile" data-alt="A professional headshot of a distinguished Indian executive in his late 30s wearing a tailored charcoal suit. He is posed against a warm, softly blurred office background with subtle golden lighting accents. The image conveys an aura of success, tradition, and reliability, perfectly matching the Heritage Executive brand aesthetic. High-end portrait photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2FEfFmqeCF2nvr0iAXmWz2AHwlN5QLMNW9iQdW6ll1tMoUkl-TDp51hLEU8CkIlH744_79azCXkSjgU-1PDcSahkey0h2F6OMmPzm2cUjqyU56PT6_MGMdtwA00OxJMd5e3jhVaFt3rrAJnNaZJmEtalOlVH9IN9yThSdnjsczZOs9Uw-gIe9PFBqPFZpHVuvoz5lw4mZJ_1l3JQAXq0k2zDGGKymwUcyzlKglIGwNR1CkPdi5FOVlR7jaCCsuxRpg4stbd5-wFNQ"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-lg grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Hero Section / Title -->
+<section class="lg:col-span-12 mb-base">
+<span class="text-secondary font-label-md uppercase tracking-widest block mb-xs">Professional Analysis</span>
+<h2 class="font-display-lg text-display-lg text-primary mb-md">Transfer Fit Calculation</h2>
+<p class="text-on-surface-variant max-w-2xl font-body-lg">A sophisticated assessment of logistical synergy between high-ranking professionals, ensuring long-term domestic stability alongside career growth.</p>
+</section>
+<!-- Main Breakdown Card (Asymmetric Design) -->
+<section class="lg:col-span-8">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md md:p-lg shadow-sm relative overflow-hidden">
+<!-- Decorative Accent -->
+<div class="absolute top-0 right-0 w-32 h-32 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px] text-primary">verified_user</span>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md mb-lg">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Compatibility Score</h3>
+<p class="text-on-surface-variant font-label-sm">Based on official service records and career trajectories.</p>
+</div>
+<div class="flex items-center gap-md bg-secondary-container text-on-secondary-container px-lg py-sm rounded-full marigold-glow">
+<span class="font-display-lg text-headline-md">87</span>
+<div class="leading-tight">
+<span class="block font-bold text-label-md uppercase">Elite Fit</span>
+<span class="text-label-sm opacity-80">Tier 1 Synergy</span>
+</div>
+</div>
+</div>
+<!-- Criteria Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-lg">
+<!-- Zone Alignment -->
+<div class="p-md rounded-lg bg-surface-container border-l-4 border-primary">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">map</span>
+<span class="font-label-md font-bold">Zone Alignment</span>
+</div>
+<span class="text-primary font-bold">92%</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full mb-xs">
+<div class="bg-primary h-full rounded-full" style="width: 92%"></div>
+</div>
+<p class="text-label-sm text-on-surface-variant">Weight: 40% — Shared administrative cadred and geographic clusters.</p>
+</div>
+<!-- Transfer Cycle Sync -->
+<div class="p-md rounded-lg bg-surface-container border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">sync_alt</span>
+<span class="font-label-md font-bold">Transfer Cycle Sync</span>
+</div>
+<span class="text-secondary font-bold">78%</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full mb-xs">
+<div class="bg-secondary h-full rounded-full" style="width: 78%"></div>
+</div>
+<p class="text-label-sm text-on-surface-variant">Weight: 30% — Frequency and timing of posting rotations.</p>
+</div>
+<!-- Posting Tenure Overlap -->
+<div class="p-md rounded-lg bg-surface-container border-l-4 border-primary">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<span class="font-label-md font-bold">Posting Tenure Overlap</span>
+</div>
+<span class="text-primary font-bold">85%</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full mb-xs">
+<div class="bg-primary h-full rounded-full" style="width: 85%"></div>
+</div>
+<p class="text-label-sm text-on-surface-variant">Weight: 20% — Estimated duration of co-location in major hubs.</p>
+</div>
+<!-- Career Progression Grade -->
+<div class="p-md rounded-lg bg-surface-container border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+<span class="font-label-md font-bold">Career Progression Grade</span>
+</div>
+<span class="text-secondary font-bold">95%</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full mb-xs">
+<div class="bg-secondary h-full rounded-full" style="width: 95%"></div>
+</div>
+<p class="text-label-sm text-on-surface-variant">Weight: 10% — Matching seniority and promotion schedules.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar / Secondary Content -->
+<aside class="lg:col-span-4 space-y-gutter">
+<!-- Verified Data Confidence -->
+<div class="bg-primary text-on-primary rounded-xl p-md shadow-lg heritage-gradient">
+<div class="flex items-center gap-sm mb-base">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h4 class="font-headline-sm text-label-md font-bold uppercase tracking-widest text-primary-fixed">Verified Data Confidence</h4>
+</div>
+<p class="text-primary-fixed-dim text-body-md mb-md leading-relaxed">
+                    This analysis is synthesized using the SWAYMVAR Verification Engine, which cross-references peer-reviewed service records, department history, and public sector disclosures. 
+                </p>
+<div class="bg-white/10 p-sm rounded-lg border border-white/20">
+<div class="flex justify-between text-label-sm mb-xs">
+<span>Confidence Level</span>
+<span class="font-bold">Very High</span>
+</div>
+<div class="w-full bg-white/20 h-1 rounded-full">
+<div class="bg-secondary-container h-full rounded-full" style="width: 98%"></div>
+</div>
+</div>
+</div>
+<!-- Preference CTA -->
+<div class="bg-surface-container-high rounded-xl p-md border-2 border-dashed border-outline-variant flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-base">tune</span>
+<h5 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Need specific criteria?</h5>
+<p class="text-on-surface-variant text-label-sm mb-md">Adjust the weight of each factor to prioritize what matters most in your professional union.</p>
+<button class="w-full bg-secondary text-on-secondary font-label-md py-md rounded-lg marigold-glow active:scale-95 transition-all duration-150 flex items-center justify-center gap-base">
+                    Adjust Preferences
+                    <span class="material-symbols-outlined text-sm">settings_suggest</span>
+</button>
+</div>
+<!-- Peer Insights -->
+<div class="bg-white rounded-xl p-md border border-outline-variant">
+<h5 class="font-label-md font-bold text-primary mb-md border-b border-outline-variant pb-base">Service Cluster Context</h5>
+<div class="space-y-sm">
+<div class="flex justify-between items-center py-xs">
+<span class="text-on-surface-variant text-label-sm">Primary Cluster</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed text-label-sm px-base py-xs rounded">New Delhi / NCR</span>
+</div>
+<div class="flex justify-between items-center py-xs">
+<span class="text-on-surface-variant text-label-sm">Next Cycle</span>
+<span class="text-on-surface font-bold text-label-sm">July 2025</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Visual Contextual Section -->
+<section class="lg:col-span-12 mt-lg">
+<div class="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group">
+<img alt="Executive Boardroom" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A luxurious and modern executive boardroom with polished dark wood tables and deep green leather chairs. Large floor-to-ceiling windows reveal a blurred cityscape at twilight with golden lights. The atmosphere is quiet, professional, and prestigious, embodying the life of a high-ranking public sector official. Professional architectural photography style with warm, sophisticated tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBo6mgW0WagFtBF3SMafHDeVqlPufw1zmwiRYcXTmDYf4qLBAPR3wiPQPxiC1EeFtLH5a-d7KiflDHprAkUZuMe-AJPtN5WmG097QN9b84TD9lRzHXtqVMbbY_2phTxqnDNvy6zcSIBvJfZSYVlZZAN4PQlmTW5dhGcimlz7MbqL71E7PJAdpd-oQEBMGO3ENjn7EOTAgm_NUuSjsCf8P3STBn8B953efYKQHJaYiT1U4r8WK9EEyZbz1-DufSt-VJdSM59rY75gRn"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-lg">
+<div class="text-white max-w-xl">
+<h3 class="font-headline-md text-headline-md mb-xs">Professional Heritage</h3>
+<p class="opacity-90 font-body-md">We understand the unique demands of executive life in India. Our algorithms are designed by career consultants to mirror the complexities of service life.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-40 rounded-t-xl bg-surface border-t border-outline-variant shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<div class="flex justify-around items-center w-full px-base py-xs pb-safe-offset">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-4 py-1 active:scale-90 duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm">Verification</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</div>
+</nav>
+<script>
+        // Micro-interaction for score animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const scoreElement = document.querySelector('.font-display-lg');
+            let currentScore = 0;
+            const targetScore = parseInt(scoreElement.innerText);
+            
+            const interval = setInterval(() => {
+                if (currentScore >= targetScore) {
+                    clearInterval(interval);
+                } else {
+                    currentScore++;
+                    scoreElement.innerText = currentScore;
+                }
+            }, 20);
+
+            // Subtle parallax for the hero image on mouse move
+            const heroImage = document.querySelector('section img[data-alt*="boardroom"]');
+            window.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 1024) {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+                    heroImage.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+                }
+            });
+        });
+    </script>
+
+<!-- SWAYMVAR: Supabase Connection -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+</script>
+</body></html>

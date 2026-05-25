@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Profile | SWAYMVAR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#ebe8e1",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#bdf0ad",
+                    "outline-variant": "#c2c9bb",
+                    "surface-container": "#f0eee7",
+                    "primary-container": "#2e5a27",
+                    "on-secondary-fixed-variant": "#594400",
+                    "on-primary-fixed": "#002201",
+                    "surface-container-highest": "#e5e2db",
+                    "on-error": "#ffffff",
+                    "surface": "#fcf9f2",
+                    "inverse-primary": "#a1d493",
+                    "secondary-container": "#fecb32",
+                    "surface-dim": "#dcdad3",
+                    "secondary-fixed-dim": "#f2c025",
+                    "on-primary-container": "#9ed090",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f3f0ea",
+                    "surface-variant": "#e5e2db",
+                    "surface-container-low": "#f6f3ec",
+                    "secondary": "#755b00",
+                    "on-secondary-container": "#705600",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#612900",
+                    "secondary-fixed": "#ffdf92",
+                    "on-tertiary-container": "#ffb184",
+                    "on-primary-fixed-variant": "#24501e",
+                    "on-tertiary-fixed": "#321200",
+                    "inverse-surface": "#31312c",
+                    "tertiary-fixed": "#ffdbc9",
+                    "on-surface": "#1c1c18",
+                    "on-surface-variant": "#42493e",
+                    "tertiary-fixed-dim": "#ffb68c",
+                    "surface-tint": "#3c6934",
+                    "on-error-container": "#93000a",
+                    "primary": "#164212",
+                    "on-background": "#1c1c18",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#763400",
+                    "on-secondary": "#ffffff",
+                    "background": "#fcf9f2",
+                    "tertiary-container": "#843b00",
+                    "on-secondary-fixed": "#241a00",
+                    "outline": "#72796d",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fcf9f2",
+                    "primary-fixed-dim": "#a1d493"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "container-max": "1200px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "display-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom range slider styling for Mehendi Green/Heritage theme */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #c2c9bb; /* outline-variant */
+            border-radius: 2px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #164212; /* primary */
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -8px;
+            box-shadow: 0 0 10px rgba(22, 66, 18, 0.2);
+        }
+        
+        .chip-active {
+            background-color: #fecb32 !important; /* secondary-container */
+            color: #705600 !important; /* on-secondary-container */
+            border-color: #755b00 !important; /* secondary */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#2D5016"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-fixed-dim/30">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm w-full top-0 sticky z-50">
+<div class="flex items-center justify-between px-md py-base w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-base cursor-pointer hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">menu</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">SWAYMVAR</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant bg-surface-container-high active:scale-95 duration-150 cursor-pointer">
+<img alt="Profile" data-alt="A professional close-up portrait of a high-achieving Indian executive in a sharp navy blue suit. He has a warm, confident expression, set against a softly blurred background of a modern architectural office with warm wooden accents. The lighting is bright and prestigious, aligning with a high-end heritage corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqgq6_3C6FNhLh7_HKU-bsybOrLM1FwgIcqVAvaU3vhNPJJ4TUbBlyZbWTfavW5tllGl0JqpCTC5IioXp3GDF1ZTM-ZsHVnJ3zhKpdVfC8sQftdKuaslGOv-saKBJX7otZZAaXnhlsnCbVqFnRO3NhXUvoF4aXw1Sed-Pi8V7R8UrNbHSnumASu3TWYVUf8wouzp1Pzs3oYW4ZWyBAKpkX5hFEm9rqDakMfSBJYJIupT4jCdZFm802tmiIvb1EzISjOdN9IjIXLzJa"/>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-lg min-h-[calc(100vh-140px)]">
+<!-- Progress Indicator -->
+<div class="w-full max-w-2xl mx-auto mb-xl">
+<div class="flex justify-between items-center mb-base">
+<span class="font-label-md text-label-md text-primary uppercase">Step 2 of 2: Personality &amp; Values</span>
+<span class="font-label-md text-label-md text-on-surface-variant">80% Complete</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-4/5 rounded-full shadow-[0_0_8px_rgba(22,66,18,0.4)] transition-all duration-700 ease-out"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md items-start">
+<!-- Left Column: Instructional / Atmospheric -->
+<div class="lg:col-span-4 space-y-md">
+<div class="bg-white p-md rounded-xl border border-outline-variant shadow-sm">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-base">Define Your Essence</h2>
+<p class="text-on-surface-variant font-body-md mb-md leading-relaxed">
+                        In the Heritage Executive circle, character is the cornerstone of connection. Be authentic—your true traits help us find a partner who complements your lifestyle and values.
+                    </p>
+<div class="space-y-sm">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-label-md font-label-md">Verified Character Insights</span>
+</div>
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
+<span class="text-label-md font-label-md">Cultural Resonance Match</span>
+</div>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden shadow-xl aspect-[4/5] relative group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An elegant, atmospheric shot of an upscale traditional Indian ceremony setting. Rich textures of Mehendi Green silks and Marigold Orange florals are bathed in warm, candlelit ambiance. The scene evokes a sense of prestigious heritage, calm and celebratory, perfect for a high-end matrimonial application that values deep-rooted traditions and professional success." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2m_UjRcXQLHve9djlf7YsSiRuAhmWj0uCMgxd9jnJZ_QFnqewFJjJV7954rluStlFZZqmcttrFpN7uTnIlaYKUt7GECeBsVCB5C5jtvz8hInWGq4kKRWixU6FmZL96izH2N-2vjG04crJXJaHWFc7o5BFwDPWMIJoX-3p8GjRFwdmkToWalf-e82Rz071t7gWttuHmTUpfvbEQLXLgfSuFwvdpXpR7u44mXUaXZfakOHl5TS2jUpekVm8FWKDMo1h-TVG6ifyvSmM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-md">
+<p class="text-white font-headline-sm text-headline-sm leading-tight italic">"Character is the beauty that never fades."</p>
+</div>
+</div>
+</div>
+<!-- Right Column: The Form -->
+<div class="lg:col-span-8 bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-md md:p-lg space-y-xl">
+<!-- Personality Spectrums Section -->
+<section>
+<div class="flex items-center gap-base mb-md">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">1</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Personality Spectrums</h3>
+</div>
+<div class="space-y-lg px-xs md:px-base">
+<!-- Spectrum 1 -->
+<div class="space-y-sm">
+<div class="flex justify-between items-end"><span class="text-label-md font-label-md uppercase text-on-surface-variant">Solitary</span><span class="font-label-md text-label-md text-primary">SOCIAL ENERGY</span><span class="text-label-md font-label-md uppercase text-on-surface-variant">Social</span></div>
+<input class="w-full" max="100" min="0" type="range" value="45"/>
+<p class="text-center text-label-sm font-label-sm text-outline italic">Balanced &amp; Adaptable</p>
+</div>
+<!-- Spectrum 2 -->
+<div class="space-y-sm">
+<div class="flex justify-between items-end"><span class="text-label-md font-label-md uppercase text-on-surface-variant">Traditional</span><span class="font-label-md text-label-md text-primary">CULTURAL VALUES</span><span class="text-label-md font-label-md uppercase text-on-surface-variant">Progressive</span></div>
+<input class="w-full" max="100" min="0" type="range" value="30"/>
+<p class="text-center text-label-sm font-label-sm text-outline italic">Respectfully Cultural</p>
+</div>
+<!-- Spectrum 3 -->
+<div class="space-y-sm">
+<div class="flex justify-between items-end"><span class="text-label-md font-label-md uppercase text-on-surface-variant">Fluid</span><span class="font-label-md text-label-md text-primary">LIFE RHYTHM</span><span class="text-label-md font-label-md uppercase text-on-surface-variant">Structured</span></div>
+<input class="w-full" max="100" min="0" type="range" value="85"/>
+<p class="text-center text-label-sm font-label-sm text-outline italic">Methodical &amp; Strategic</p>
+</div><div class="space-y-sm">
+<div class="flex justify-between items-end">
+<span class="text-label-md font-label-md uppercase text-on-surface-variant">Intuitive</span>
+<span class="font-label-md text-label-md text-primary">DECISION MAKING</span>
+<span class="text-label-md font-label-md uppercase text-on-surface-variant">Analytical</span>
+</div>
+<input class="w-full" max="100" min="0" type="range" value="50"/>
+<p class="text-center text-label-sm font-label-sm text-outline italic">Balanced &amp; Fact-Based</p>
+</div>
+</div>
+</section>
+<!-- Key Traits Chips Section -->
+<section>
+<div class="flex items-center gap-base mb-md">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">2</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Core Character Traits</h3>
+</div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-base px-base">SELECT UP TO 5 TRAITS THAT DEFINE YOU:</p>
+<div class="flex flex-wrap gap-sm px-base">
+<!-- Traits with interactive click -->
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95 chip-active" onclick="toggleChip(this)">Ambitious</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Family-Oriented</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95 chip-active" onclick="toggleChip(this)">Intellectual</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Compassionate</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95 chip-active" onclick="toggleChip(this)">Witty</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Adventurous</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Spiritually Rooted</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Calm</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Pragmatic</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Life of the Party</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Disciplined</button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Diplomatic</button><button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Strategic</button><button class="px-md py-sm rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md hover:border-secondary transition-all active:scale-95" onclick="toggleChip(this)">Community-Oriented</button></div>
+</section>
+<!-- Professional Summary / Personal Pitch -->
+<section>
+<div class="flex items-center gap-base mb-md">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">3</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Your Personal Pitch</h3>
+</div>
+<div class="px-base">
+<label class="block text-label-md font-label-md text-on-surface-variant mb-xs uppercase">A BRIEF NOTE ON YOUR LIFE VISION</label>
+<textarea class="w-full bg-surface-bright border border-outline-variant rounded-xl p-md focus:ring-2 focus:ring-primary focus:border-primary transition-all text-body-md" placeholder="e.g., Balancing a high-stakes career in finance with a deep appreciation for classical music and weekend culinary experiments..." rows="4"></textarea>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<div class="p-md md:p-lg bg-surface-container-low border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<button class="flex items-center gap-xs text-primary font-label-md hover:bg-surface-container-high px-md py-sm rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Back to Basics
+                    </button>
+<div class="flex gap-md w-full md:w-auto">
+<button class="flex-1 md:flex-none px-xl py-md bg-primary text-on-primary rounded-full font-label-md shadow-[0_4px_12px_rgba(22,66,18,0.3)] hover:shadow-[0_6px_20px_rgba(22,66,18,0.4)] active:scale-95 transition-all">
+                            Complete Profile
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Shadow Element (Subtle Bottom Nav for Mobile context) -->
+<footer class="md:hidden fixed bottom-0 w-full z-40 bg-surface dark:bg-inverse-surface border-t border-outline-variant shadow-[0_-4px_10px_rgba(0,0,0,0.05)] rounded-t-xl">
+<div class="flex justify-around items-center w-full px-base py-xs pb-safe-offset">
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-4 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-weight="fill">account_circle</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+</div>
+</footer>
+<script>
+        function toggleChip(button) {
+            button.classList.toggle('chip-active');
+            
+            // Interaction effect
+            if (button.classList.contains('chip-active')) {
+                // Potential logic to limit selection to 5
+                const activeChips = document.querySelectorAll('.chip-active');
+                if (activeChips.length > 5) {
+                    button.classList.remove('chip-active');
+                    alert('As an executive, focus is key. Please select up to 5 core traits.');
+                }
+            }
+        }
+
+        // Ambient shadow pulse for the primary button
+        const mainBtn = document.querySelector('button.bg-primary');
+        if(mainBtn) {
+            setInterval(() => {
+                mainBtn.classList.toggle('shadow-[0_4px_12px_rgba(22,66,18,0.3)]');
+                mainBtn.classList.toggle('shadow-[0_4px_20px_rgba(254,203,50,0.3)]');
+            }, 2000);
+        }
+    </script>
+
+<!-- SWAYMVAR: Supabase Connection -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+</script>
+</body></html>

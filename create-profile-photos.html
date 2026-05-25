@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Profile | SWAYMVAR</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#ebe8e1",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#bdf0ad",
+                        "outline-variant": "#c2c9bb",
+                        "surface-container": "#f0eee7",
+                        "primary-container": "#2e5a27",
+                        "on-secondary-fixed-variant": "#594400",
+                        "on-primary-fixed": "#002201",
+                        "surface-container-highest": "#e5e2db",
+                        "on-error": "#ffffff",
+                        "surface": "#fcf9f2",
+                        "inverse-primary": "#a1d493",
+                        "secondary-container": "#fecb32",
+                        "surface-dim": "#dcdad3",
+                        "secondary-fixed-dim": "#f2c025",
+                        "on-primary-container": "#9ed090",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f3f0ea",
+                        "surface-variant": "#e5e2db",
+                        "surface-container-low": "#f6f3ec",
+                        "secondary": "#755b00",
+                        "on-secondary-container": "#705600",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#612900",
+                        "secondary-fixed": "#ffdf92",
+                        "on-tertiary-container": "#ffb184",
+                        "on-primary-fixed-variant": "#24501e",
+                        "on-tertiary-fixed": "#321200",
+                        "inverse-surface": "#31312c",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-surface": "#1c1c18",
+                        "on-surface-variant": "#42493e",
+                        "tertiary-fixed-dim": "#ffb68c",
+                        "surface-tint": "#3c6934",
+                        "on-error-container": "#93000a",
+                        "primary": "#164212",
+                        "on-background": "#1c1c18",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#763400",
+                        "on-secondary": "#ffffff",
+                        "background": "#fcf9f2",
+                        "tertiary-container": "#843b00",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#72796d",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fcf9f2",
+                        "primary-fixed-dim": "#a1d493"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "container-max": "1200px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .marigold-glow {
+            box-shadow: 0 10px 15px -3px rgba(254, 203, 50, 0.2), 0 4px 6px -4px rgba(254, 203, 50, 0.2);
+        }
+        .step-gradient {
+            background: linear-gradient(90deg, #164212 0%, #2e5a27 100%);
+        }
+        .blurred-preview {
+            filter: blur(8px);
+            transition: filter 0.3s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#2D5016"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-secondary-container">
+<!-- Top AppBar (Simplified for Transactional Flow) -->
+<header class="w-full top-0 sticky bg-surface shadow-sm z-50">
+<div class="flex items-center justify-between px-md py-base w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">SWAYMVAR</h1>
+</div>
+<div class="hidden md:flex gap-md items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">STEP 1 OF 4</span>
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-1/4 h-full bg-primary rounded-full"></div>
+</div>
+</div>
+<button class="font-label-md text-label-md text-primary hover:bg-surface-container-high px-md py-base rounded-full transition-colors">
+                Save &amp; Exit
+            </button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-lg md:py-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Form Content -->
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<section>
+<h2 class="font-headline-md text-headline-md text-primary mb-xs">Begin Your Heritage Journey</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">The first step to finding a prestigious match is sharing a glimpse of yourself. Professional integrity begins with transparency.</p>
+</section>
+<form class="flex flex-col gap-md">
+<!-- Photo Upload Section -->
+<div class="bg-white p-md rounded-xl border border-outline-variant/30 shadow-sm flex flex-col gap-base">
+<div class="flex justify-between items-end">
+<div>
+<label class="font-label-md text-label-md text-on-surface block uppercase">Profile Gallery</label>
+<p class="text-sm text-on-surface-variant italic mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="visibility_off">visibility_off</span>
+                                    Photos are blurred by default for executive privacy.
+                                </p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1-5 Photos Required</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-sm mt-base">
+<!-- Main Slot -->
+<div class="col-span-2 md:col-span-2 aspect-square relative group cursor-pointer border-2 border-dashed border-outline-variant rounded-xl overflow-hidden bg-surface-container-low hover:border-primary transition-all">
+<img alt="Primary Profile Image" class="w-full h-full object-cover blurred-preview" data-alt="A professional studio portrait of a sophisticated person in elegant Indian ethnic wear, captured with warm soft-key lighting against a minimalist cream background. The image has a subtle blur filter applied to maintain privacy while hinting at the premium quality of the photography and style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQFJxz0xfYeqJ_pfe2ckB89zXRB83LC-lNhyNZqov924yrmRrr_s-zmTpn_6TlN4OO2OeYH6fZ4WX8oAKxnJxo_XJPN_BmjW9IhEVgs5irxW-VL0OlOY6_4iZ_1dfwV9vw7MrK0wHKMXRldFkc_zL8kI_b9jGtx0q4w14iccF6FYcdzNzphsyGIS463LDzuUc2m25q59FKYnps9Nw4Y_PCspyduI8f1GvJsnjHoFCTRaqkHXUAiI1wWQJTNnjUxndsREV5zlOXLBAx"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-headline-md" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<div class="absolute bottom-2 left-2 bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase">Primary</div>
+</div>
+<!-- Slot 2 -->
+<div class="aspect-square border-2 border-dashed border-outline-variant rounded-xl flex items-center justify-center bg-surface-container-lowest hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="add">add</span>
+</div>
+<!-- Slot 3 -->
+<div class="aspect-square border-2 border-dashed border-outline-variant rounded-xl flex items-center justify-center bg-surface-container-lowest hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="add">add</span>
+</div>
+<!-- Slot 4 -->
+<div class="aspect-square border-2 border-dashed border-outline-variant rounded-xl flex items-center justify-center bg-surface-container-lowest hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="add">add</span>
+</div>
+</div>
+</div>
+<!-- Personal Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="full_name">Full Name</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-md py-base focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="full_name" placeholder="As per official documents" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="dob">Date of Birth</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-md py-base focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="dob" type="date"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="bio">Executive Summary</label>
+<textarea class="w-full bg-white border border-outline-variant rounded-lg px-md py-base focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="bio" placeholder="Briefly describe your heritage, profession, and life philosophy..." rows="4"></textarea>
+</div>
+<!-- CTA -->
+<div class="pt-md mt-md border-t border-outline-variant flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user" data-weight="fill">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Information is verified by Heritage Peers</span>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary font-label-md text-label-md py-md px-xl rounded-full marigold-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-base" type="submit">
+                            Continue
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Right Column: Visual Inspiration/Guide -->
+<div class="lg:col-span-5 hidden lg:block">
+<div class="sticky top-32 flex flex-col gap-md">
+<div class="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-xl group">
+<img class="w-full h-full object-cover" data-alt="A luxurious lifestyle scene in a high-end Indian residence, featuring detailed mahogany furniture, warm marigold floral arrangements, and soft sunlight streaming through large windows. The atmosphere is quiet, prestigious, and deeply rooted in heritage, utilizing a rich palette of deep greens and golden ambers to evoke a sense of affluent tradition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO7y9sty2L8D37AHnbOMMp5YrefvHIK_nXdf5ddecM1wJRRb2qj6__QqRYp9R2ot51kbrQafblZPSa_d9YImVKTbPpGCoUivZgSyEu5h2nvlsscDrYzWktu61mGBrHd2VHeHOMHD3BXBnYVsNrMTVnvq1oZ5aOHBOUYexjnYsy16ep3nTobz7qvJ_8O5aIlWTsiq9Lu8MZP-YIO0XKHxNKHBeUH62_wTxOeh76vY4mpofBSTpD2uGp8-7bFO9_Gq1R7kicpNWc3qd0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-lg">
+<div class="text-on-primary">
+<h3 class="font-headline-sm text-headline-sm mb-xs">Professional Integrity</h3>
+<p class="font-body-md text-body-md opacity-90">"A marriage of traditions begins with the honesty of an executive profile."</p>
+</div>
+</div>
+</div>
+<!-- Progress Tips -->
+<div class="bg-surface-container-high/50 p-md rounded-2xl flex flex-col gap-sm">
+<div class="flex items-center gap-base">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="lightbulb">lightbulb</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Tips for Success</span>
+</div>
+<ul class="flex flex-col gap-xs">
+<li class="flex items-start gap-xs text-on-surface-variant text-sm">
+<span class="text-secondary mt-1">◆</span> Use high-resolution, professional portraits.
+                            </li>
+<li class="flex items-start gap-xs text-on-surface-variant text-sm">
+<span class="text-secondary mt-1">◆</span> Avoid group photos or busy backgrounds.
+                            </li>
+<li class="flex items-start gap-xs text-on-surface-variant text-sm">
+<span class="text-secondary mt-1">◆</span> Verification is 40% faster with clear primary photos.
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Navigation Shell (BottomNavBar Logic) -->
+<nav class="md:hidden fixed bottom-0 w-full z-40 bg-surface border-t border-outline-variant shadow-[0_-4px_10px_rgba(0,0,0,0.05)] px-base py-xs flex justify-around items-center">
+<div class="flex flex-col items-center justify-center text-on-surface-variant py-1">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-4 py-1">
+<span class="material-symbols-outlined" data-icon="edit_square">edit_square</span>
+<span class="font-label-sm text-label-sm">Create</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant py-1">
+<span class="material-symbols-outlined" data-icon="lock_reset">lock_reset</span>
+<span class="font-label-sm text-label-sm">Privacy</span>
+</div>
+</nav>
+<script>
+        // Simple Interaction for photo slot selection (visual only)
+        document.querySelectorAll('.aspect-square').forEach(slot => {
+            slot.addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => this.classList.remove('scale-95'), 150);
+            });
+        });
+
+        // Sticky progress indicator micro-interaction
+        window.addEventListener('scroll', () => {
+            const progress = document.querySelector('.w-1/4.h-full');
+            if (progress) {
+                const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+                // Just a subtle nudge for demo purposes
+                progress.style.opacity = 0.8 + (scrolled * 0.2);
+            }
+        });
+    </script>
+
+<!-- SWAYMVAR: Supabase Connection -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+</script>
+</body></html>
