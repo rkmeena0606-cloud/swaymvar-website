@@ -256,26 +256,6 @@
   <button onclick="resetFilters()" style="margin-top:10px;padding:8px 16px;background:white;border:1px solid #D4C5A0;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;cursor:pointer;text-transform:uppercase;letter-spacing:0.1em;">Reset All Filters</button>
 </div>
 
-<!-- Sort and Summary Section -->
-<div class="flex justify-between items-center mb-6">
-<p class="font-label-md text-on-surface-variant">Showing Verified Profiles</p>
-<div class="relative group">
-<button class="flex items-center gap-1 font-label-md text-primary bg-white px-3 py-1.5 rounded-lg border border-outline-variant/50 shadow-sm">
-                    
-                    <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
-</button>
-<!-- Tooltip / Dropdown simulated -->
-<div class="absolute right-0 top-full mt-1 w-48 bg-white rounded-xl shadow-xl border border-outline-variant/20 hidden group-hover:block z-40 overflow-hidden">
-<div class="p-2 flex flex-col">
-<span class="px-3 py-2 font-label-md hover:bg-surface-container-high rounded-lg cursor-pointer">Designation</span>
-<span class="px-3 py-2 font-label-md bg-surface-container-high rounded-lg cursor-pointer">Organisation</span>
-<span class="px-3 py-2 font-label-md hover:bg-surface-container-high rounded-lg cursor-pointer">Age</span>
-<span class="px-3 py-2 font-label-md hover:bg-surface-container-high rounded-lg cursor-pointer">Current Posting</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Discover Feed / Profile Cards -->
 <div id="cards-container" style="display:flex;flex-direction:column;gap:14px;padding-bottom:80px;">
 
 
@@ -2328,24 +2308,10 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
 let activeOrgFilter = 'all'
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Add data attributes to sample cards
-  const cards = document.querySelectorAll('#cards-container > div[data-org]')
-  const data = [
-    { org:'RBI', city:'Mumbai', age:29, transfer:88, diet:'Vegetarian', reloc:'flexible', personality:'Introvert' },
-    { org:'SEBI', city:'Mumbai', age:31, transfer:82, diet:'Vegetarian', reloc:'zone', personality:'Ambivert' },
-    { org:'LIC', city:'Lucknow', age:27, transfer:79, diet:'Non-Vegetarian', reloc:'flexible', personality:'Extrovert' }
-  ]
-  cards.forEach(function(card, i) {
-    if (data[i]) {
-      card.setAttribute('data-org', data[i].org)
-      card.setAttribute('data-city', data[i].city)
-      card.setAttribute('data-age', data[i].age)
-      card.setAttribute('data-transfer', data[i].transfer)
-      card.setAttribute('data-diet', data[i].diet)
-      card.setAttribute('data-reloc', data[i].reloc)
-      card.setAttribute('data-personality', data[i].personality)
-    }
-  })
+  // Update count on load
+  var total = document.querySelectorAll('#cards-container > div[data-org]').length
+  var countEl = document.getElementById('profile-count')
+  if (countEl) countEl.textContent = total + ' Profiles'
 })
 
 function toggleFilters() {
