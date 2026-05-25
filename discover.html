@@ -139,8 +139,8 @@
 <!-- Top Navigation Shell -->
 <header class="fixed top-0 w-full z-50 glass-header border-b border-outline-variant/30 shadow-sm flex items-center justify-between px-margin-mobile h-16">
 <div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
-<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">Swaymvar</h1>
+<span class="material-symbols-outlined text-primary" data-icon="menu" onclick="openSidebar()" style="cursor:pointer;">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary" onclick="window.location='index.html'" style="cursor:pointer;">SWAYMVAR</h1>
 </div>
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary" data-icon="filter_list">filter_list</span>
@@ -206,7 +206,7 @@
 <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
 <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
 <div class="text-white">
-<h2 class="font-headline-md text-white mb-0.5">Priya K.</h2>
+<h2 class="font-headline-md text-white mb-0.5" onclick="window.location='profile.html'" style="cursor:pointer;">Priya K.</h2>
 <p class="font-label-md opacity-90">29 Years • 5'4"</p>
 </div>
 <div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 text-white font-label-md">
@@ -276,22 +276,22 @@
 </main>
 <!-- Bottom Navigation Shell -->
 <nav class="fixed bottom-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-t border-outline-variant/20 flex justify-around items-center px-4 pb-safe pt-2 h-16 shadow-[0_-4px_24px_0_rgba(27,43,72,0.08)]">
-<a class="flex flex-col items-center justify-center text-secondary font-bold scale-90 transition-transform duration-150" href="#">
+<a class="flex flex-col items-center justify-center text-secondary font-bold scale-90 transition-transform duration-150" href="discover.html">
 <span class="material-symbols-outlined" data-icon="explore" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
 <span class="font-label-sm text-label-sm">Discover</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all px-4 py-1 rounded-lg" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all px-4 py-1 rounded-lg" href="index.html">
 <span class="material-symbols-outlined" data-icon="manage_search">manage_search</span>
 <span class="font-label-sm text-label-sm">Search</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all px-4 py-1 rounded-lg relative" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all px-4 py-1 rounded-lg relative" href="messages.html">
 <span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
 <span class="font-label-sm text-label-sm">Messages</span>
 <div class="absolute top-1 right-3 w-2 h-2 bg-error rounded-full"></div>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all px-4 py-1 rounded-lg" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all px-4 py-1 rounded-lg" href="my-profile.html">
 <span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="font-label-sm text-label-sm">Profile</span>
+<span class="font-label-sm text-label-sm">My Profile</span>
 </a>
 </nav>
 <!-- Contextual FAB - Suppression Logic: Shown only for "Add Post" or similar in Discover -->
