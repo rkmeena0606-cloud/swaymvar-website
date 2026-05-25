@@ -31,19 +31,19 @@
 <body class="pb-20 md:pb-0">
 
 <!-- NAV -->
-<header style="position:fixed;top:0;width:100%;z-index:50;backdrop-filter:blur(12px);background:rgba(254,252,245,0.93);border-bottom:1px solid #D4C5A0;" id="main-nav">
-  <div style="max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;">
+<header style="position:fixed;top:0;left:0;right:0;width:100%;z-index:50;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background:rgba(254,252,245,0.93);border-bottom:1px solid #D4C5A0;" id="main-nav">
+  <div style="max-width:1200px;margin:0 auto;padding:12px 16px;display:flex;flex-direction:row;justify-content:space-between;align-items:center;width:100%;box-sizing:border-box;">
     
-    <!-- Logo -->
-    <a href="index.html" style="text-decoration:none;">
-      <h1 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
-      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:2px 0 0;">swaymvar.in</p>
+    <!-- Logo LEFT -->
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <h1 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.25em;color:#2D5016;text-transform:uppercase;margin:0;line-height:1.2;">SWAYMVAR</h1>
+      <p style="font-family:'Space Mono',monospace;font-size:8px;color:#A67C00;letter-spacing:0.15em;margin:2px 0 0;">swaymvar.in</p>
     </a>
 
-    <!-- Hamburger button — always visible -->
-    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;" aria-label="Open menu">
+    <!-- Hamburger RIGHT -->
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;flex-shrink:0;display:flex;flex-direction:column;gap:5px;align-items:flex-end;justify-content:center;-webkit-tap-highlight-color:transparent;" aria-label="Open menu">
       <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
-      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:20px;height:2px;background:#2D5016;border-radius:2px;"></span>
       <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
     </button>
 
@@ -197,37 +197,37 @@
       <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
         <p class="text-2xl mb-2">🏦</p>
         <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">RBI</p>
-        <p class="font-body text-xs mt-1" style="color:#5C5040;">Grade B & above</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">All employees</p>
       </div>
       <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
         <p class="text-2xl mb-2">📊</p>
         <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">SEBI</p>
-        <p class="font-body text-xs mt-1" style="color:#5C5040;">Grade A & above</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">All staff</p>
       </div>
       <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
         <p class="text-2xl mb-2">🌾</p>
         <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">NABARD</p>
-        <p class="font-body text-xs mt-1" style="color:#5C5040;">Dev. Manager & above</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">All employees</p>
       </div>
       <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
         <p class="text-2xl mb-2">📈</p>
         <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">PFRDA/IRDAI</p>
-        <p class="font-body text-xs mt-1" style="color:#5C5040;">Officers Grade A+</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">All officers</p>
       </div>
       <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
         <p class="text-2xl mb-2">🏛️</p>
         <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">PSU Banks</p>
-        <p class="font-body text-xs mt-1" style="color:#5C5040;">Scale II & above</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">All grades</p>
       </div>
       <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
         <p class="text-2xl mb-2">🛡️</p>
         <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">LIC / PSU Insure</p>
-        <p class="font-body text-xs mt-1" style="color:#5C5040;">Class I & above</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">All staff</p>
       </div>
       <div class="p-4 rounded-xl text-center" style="background:#FEFCF5;border:1px solid #D4C5A0;">
         <p class="text-2xl mb-2">🤝</p>
         <p class="font-mono-s text-xs uppercase" style="color:#2D5016;">EXIM/SIDBI</p>
-        <p class="font-body text-xs mt-1" style="color:#5C5040;">Officers & Senior</p>
+        <p class="font-body text-xs mt-1" style="color:#5C5040;">All employees</p>
       </div>
       <div class="p-4 rounded-xl text-center" style="background:#EDE5D0;border:1px solid #D4C5A0;opacity:0.7;position:relative;">
         <p class="text-2xl mb-2">🔒</p>
