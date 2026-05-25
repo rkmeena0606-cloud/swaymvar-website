@@ -439,5 +439,39 @@ function closeSidebar() {
   document.body.style.width = ''
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
+
+// ── LOGIN GATE FOR DISCOVER PAGE ──
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+document.addEventListener('DOMContentLoaded', async function() {
+  const { data: { session } } = await db.auth.getSession()
+  if (!session || !session.user) {
+    // Show login gate overlay
+    const gate = document.getElementById('discover-gate')
+    if (gate) gate.style.display = 'flex'
+    // Blur the content behind
+    const main = document.querySelector('main')
+    if (main) main.style.filter = 'blur(4px)'
+    const nav = document.querySelector('nav.fixed')
+    if (nav) nav.style.filter = 'blur(4px)'
+  }
+})
 </script>
+
+<!-- DISCOVER LOGIN GATE -->
+<div id="discover-gate" style="display:none;position:fixed;inset:0;z-index:997;background:rgba(15,15,13,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;">
+    <p style="font-size:36px;margin-bottom:16px;">🔒</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:white;font-weight:700;margin-bottom:10px;">Members Only</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.75;margin-bottom:24px;">Verified profiles are only visible to SWAYMVAR members. Sign in to browse, or apply for the waitlist to join.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <a href="my-profile.html" style="display:block;padding:14px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
+      <a href="index.html#invite" style="display:block;padding:13px 24px;background:rgba(201,150,12,0.1);color:#E8B84B;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:1px solid rgba(201,150,12,0.3);border-radius:8px;text-decoration:none;">Apply for Waitlist →</a>
+      <a href="index.html" style="display:block;padding:10px;color:rgba(255,255,255,0.3);font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;text-decoration:none;">Back to Home</a>
+    </div>
+  </div>
+</div>
+
 </body></html>

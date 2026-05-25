@@ -121,6 +121,25 @@ body { background: #0f0f0d; color: white; font-family: 'DM Sans', sans-serif; pa
     </div>
   </div>
 
+  <!-- LOGIN REQUIRED -->
+  <div id="login-required" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:14px;padding:20px;margin-bottom:16px;text-align:center;">
+    <p style="font-size:28px;margin-bottom:12px;">🔐</p>
+    <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:white;font-weight:700;margin-bottom:8px;">Sign In Required</h3>
+    <p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7;margin-bottom:16px;">You need to be signed in with a verified member account to express interest in profiles.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <a href="my-profile.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
+      <a href="index.html#invite" style="padding:12px 20px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);border-radius:8px;text-decoration:none;">Apply for Waitlist</a>
+    </div>
+  </div>
+
+  <!-- NO PROFILE REQUIRED -->
+  <div id="no-profile-required" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:14px;padding:20px;margin-bottom:16px;text-align:center;">
+    <p style="font-size:28px;margin-bottom:12px;">👤</p>
+    <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:white;font-weight:700;margin-bottom:8px;">Create Your Profile First</h3>
+    <p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7;margin-bottom:16px;">You need a complete profile before expressing interest in others. Use your invitation code to create your profile.</p>
+    <a href="create-profile.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;">Create Profile →</a>
+  </div>
+
   <!-- ACTION BUTTONS -->
   <div id="action-section">
     <button onclick="expressInterest()" id="interest-btn" style="width:100%;padding:16px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:10px;cursor:pointer;font-weight:700;margin-bottom:10px;">❤️ Express Interest</button>
@@ -180,7 +199,38 @@ const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
 const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
 
-function expressInterest() {
+async function expressInterest() {
+  // Check if logged in first
+  const { data: { session } } = await db.auth.getSession()
+  
+  if (!session || !session.user) {
+    // Not logged in — show login required message
+    const btn = document.getElementById('interest-btn')
+    btn.textContent = '🔒 Sign in to Express Interest'
+    btn.style.background = '#5C5040'
+    
+    // Show login prompt
+    document.getElementById('login-required').style.display = 'block'
+    document.getElementById('login-required').scrollIntoView({ behavior: 'smooth' })
+    return
+  }
+
+  // Also check they have a profile
+  const { data: profiles } = await db
+    .from('profiles')
+    .select('id')
+    .eq('email', session.user.email)
+
+  if (!profiles || profiles.length === 0) {
+    const btn = document.getElementById('interest-btn')
+    btn.textContent = '⚠️ Create Profile First'
+    btn.style.background = '#5C5040'
+    document.getElementById('no-profile-required').style.display = 'block'
+    document.getElementById('no-profile-required').scrollIntoView({ behavior: 'smooth' })
+    return
+  }
+
+  // Logged in with profile — show interest form
   document.getElementById('interest-form').style.display = 'block'
   document.getElementById('interest-btn').style.display = 'none'
   document.getElementById('interest-form').scrollIntoView({ behavior: 'smooth' })
@@ -192,11 +242,9 @@ async function submitInterest() {
   btn.textContent = 'Sending...'
   btn.disabled = true
 
-  // Get current user
   const { data: { session } } = await db.auth.getSession()
-  
+
   if (session && session.user) {
-    // Save interest to Supabase
     const { data: profile } = await db
       .from('profiles')
       .select('full_name, org, designation')
@@ -207,13 +255,12 @@ async function submitInterest() {
       from_email: session.user.email,
       from_org: profile?.org || '',
       from_designation: profile?.designation || '',
-      to_email: 'priya@rbi.org.in', // sample profile email
+      to_email: 'sample@rbi.org.in',
       message: msg,
       status: 'pending'
     })
   }
 
-  // Show success
   document.getElementById('action-section').style.display = 'none'
   document.getElementById('success-section').style.display = 'block'
   document.getElementById('success-section').scrollIntoView({ behavior: 'smooth' })
