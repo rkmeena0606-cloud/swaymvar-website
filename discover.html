@@ -152,7 +152,7 @@
 
 <!-- Filter Toggle Button -->
 <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 8px;">
-  <p style="font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;">Showing Verified Profiles</p>
+  <p style="font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;">Showing <span id="profile-count">49</span> Profiles</p>
   <button onclick="toggleFilters()" id="filter-toggle-btn" style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:white;border:1.5px solid #D4C5A0;border-radius:8px;font-family:'Space Mono',monospace;font-size:10px;color:#2D5016;cursor:pointer;text-transform:uppercase;letter-spacing:0.1em;">
     ⚙️ Filters
   </button>
@@ -2197,41 +2197,11 @@
 <button class="fixed bottom-20 right-6 w-14 h-14 bg-saffron-gold text-primary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform z-40">
 <span class="material-symbols-outlined text-[28px]" data-icon="bolt">bolt</span>
 </button>
-<script>
-        // Micro-interactions
-        document.querySelectorAll('button, a').forEach(el => {
-            el.addEventListener('mousedown', () => {
-                el.classList.add('opacity-80');
-            });
-            el.addEventListener('mouseup', () => {
-                el.classList.remove('opacity-80');
-            });
-            el.addEventListener('mouseleave', () => {
-                el.classList.remove('opacity-80');
-            });
-        });
 
-        // Simple Tab active simulation
-        const navItems = document.querySelectorAll('nav a');
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                navItems.forEach(i => {
-                    i.classList.remove('text-secondary', 'font-bold', 'scale-90');
-                    i.classList.add('text-on-surface-variant');
-                });
-                item.classList.add('text-secondary', 'font-bold', 'scale-90');
-                item.classList.remove('text-on-surface-variant');
-            });
-        });
-    </script>
 
 <!-- SWAYMVAR: Supabase Connection -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
-const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
-</script>
+
 
 <!-- SIDEBAR OVERLAY -->
 <div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
@@ -2287,7 +2257,28 @@ const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
   </div>
 </div>
 
+
+
+<!-- DISCOVER LOGIN GATE -->
+<div id="discover-gate" style="display:none;position:fixed;inset:0;z-index:997;background:rgba(15,15,13,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;">
+    <p style="font-size:36px;margin-bottom:16px;">🔒</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:white;font-weight:700;margin-bottom:10px;">Members Only</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.75;margin-bottom:24px;">Verified profiles are only visible to SWAYMVAR members. Sign in to browse, or apply for the waitlist to join.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <a href="my-profile.html" style="display:block;padding:14px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
+      <a href="index.html#invite" style="display:block;padding:13px 24px;background:rgba(201,150,12,0.1);color:#E8B84B;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:1px solid rgba(201,150,12,0.3);border-radius:8px;text-decoration:none;">Apply for Waitlist →</a>
+      <a href="index.html" style="display:block;padding:10px;color:rgba(255,255,255,0.3);font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;text-decoration:none;">Back to Home</a>
+    </div>
+  </div>
+</div>
+
 <script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+
 function openSidebar() {
   document.getElementById('sidebar').style.left = '0px'
   document.getElementById('sidebar-overlay').style.display = 'block'
@@ -2410,9 +2401,6 @@ function resetFilters() {
 }
 
 // ── LOGIN GATE FOR DISCOVER PAGE ──
-const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
-const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
 
 // Transfer Fit calculation logic
 const ORG_TYPE = {
@@ -2564,20 +2552,6 @@ function updateTransferFitScores() {
     card.setAttribute('data-transfer', score)
   })
 }
+
 </script>
-
-<!-- DISCOVER LOGIN GATE -->
-<div id="discover-gate" style="display:none;position:fixed;inset:0;z-index:997;background:rgba(15,15,13,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
-  <div style="background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:16px;padding:32px 24px;max-width:420px;width:100%;text-align:center;">
-    <p style="font-size:36px;margin-bottom:16px;">🔒</p>
-    <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:white;font-weight:700;margin-bottom:10px;">Members Only</h2>
-    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.75;margin-bottom:24px;">Verified profiles are only visible to SWAYMVAR members. Sign in to browse, or apply for the waitlist to join.</p>
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      <a href="my-profile.html" style="display:block;padding:14px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
-      <a href="index.html#invite" style="display:block;padding:13px 24px;background:rgba(201,150,12,0.1);color:#E8B84B;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:1px solid rgba(201,150,12,0.3);border-radius:8px;text-decoration:none;">Apply for Waitlist →</a>
-      <a href="index.html" style="display:block;padding:10px;color:rgba(255,255,255,0.3);font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;text-decoration:none;">Back to Home</a>
-    </div>
-  </div>
-</div>
-
 </body></html>
