@@ -1,388 +1,224 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SWAYMVAR | Profile View</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "on-error": "#ffffff",
-                      "primary-fixed-dim": "#b7c7eb",
-                      "primary-fixed": "#d7e2ff",
-                      "on-surface-variant": "#44474d",
-                      "on-secondary-container": "#715300",
-                      "on-tertiary-container": "#769d5a",
-                      "secondary": "#7a5900",
-                      "tertiary": "#071b00",
-                      "saffron-gold": "#E8B84B",
-                      "on-tertiary-fixed-variant": "#2c4f15",
-                      "surface-container-high": "#e7e8e9",
-                      "background": "#f8f9fa",
-                      "surface-dim": "#d9dadb",
-                      "on-tertiary": "#ffffff",
-                      "error-container": "#ffdad6",
-                      "surface-container-lowest": "#ffffff",
-                      "outline": "#75777e",
-                      "midnight-indigo": "#1C1A14",
-                      "inverse-surface": "#2e3132",
-                      "tertiary-fixed": "#c4efa3",
-                      "inverse-primary": "#b7c7eb",
-                      "secondary-fixed": "#ffdea1",
-                      "on-secondary-fixed-variant": "#5c4300",
-                      "surface-bright": "#f8f9fa",
-                      "on-tertiary-fixed": "#0a2100",
-                      "on-primary": "#ffffff",
-                      "secondary-container": "#ffc645",
-                      "on-primary-fixed": "#091b37",
-                      "error": "#ba1a1a",
-                      "on-error-container": "#93000a",
-                      "surface-container": "#edeeef",
-                      "surface": "#f8f9fa",
-                      "on-primary-container": "#8393b5",
-                      "inverse-on-surface": "#f0f1f2",
-                      "primary-container": "#1b2b48",
-                      "emerald-success": "#2D5016",
-                      "surface-variant": "#e1e3e4",
-                      "surface-tint": "#4f5e7e",
-                      "tertiary-fixed-dim": "#a8d38a",
-                      "on-secondary": "#ffffff",
-                      "secondary-fixed-dim": "#f6be3c",
-                      "on-primary-fixed-variant": "#374765",
-                      "primary": "#041632",
-                      "on-secondary-fixed": "#261900",
-                      "on-background": "#191c1d",
-                      "on-surface": "#191c1d",
-                      "tertiary-container": "#133200",
-                      "surface-container-highest": "#e1e3e4",
-                      "surface-container-low": "#f3f4f5",
-                      "outline-variant": "#c5c6ce",
-                      "heritage-cream": "#FEFCF5"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "margin-desktop": "64px",
-                      "max-width": "1200px",
-                      "unit": "4px",
-                      "margin-mobile": "16px",
-                      "gutter": "24px"
-              },
-              "fontFamily": {
-                      "body-md": ["DM Sans"],
-                      "body-lg": ["DM Sans"],
-                      "headline-md": ["Playfair Display"],
-                      "label-sm": ["DM Sans"],
-                      "label-md": ["DM Sans"],
-                      "display-lg": ["Playfair Display"],
-                      "headline-lg-mobile": ["Playfair Display"],
-                      "headline-lg": ["Playfair Display"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
-                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
-                      "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
-              }
-            },
-          },
-        }
-      </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .profile-mask {
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  <link rel="manifest" href="/manifest.json"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#2D5016"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0f0f0d; color: white; font-family: 'DM Sans', sans-serif; padding-bottom: 100px; }
+.glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(15,15,13,0.95); border-bottom: 1px solid rgba(201,150,12,0.2); }
+.info-box { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px 14px; }
+.trait-chip { background: rgba(201,150,12,0.15); border: 1px solid rgba(201,150,12,0.25); color: #E8B84B; padding: 6px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 11px; display: inline-block; }
+</style>
 </head>
-<body class="bg-heritage-cream text-on-background font-body-md overflow-x-hidden">
-<!-- Top Navigation -->
-<header class="fixed top-0 w-full z-50 bg-heritage-cream/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16">
-<div class="flex items-center gap-4">
-<button class="p-2 hover:bg-surface-variant/50 transition-colors rounded-full active:opacity-80 active:scale-95">
-<span class="material-symbols-outlined text-primary">arrow_back</span>
-</button>
-<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary" onclick="window.location='index.html'" style="cursor:pointer;">SWAYMVAR</span>
-</div>
-<div class="flex items-center gap-2">
-<button class="p-2 hover:bg-surface-variant/50 transition-colors rounded-full">
-<span class="material-symbols-outlined text-primary">share</span>
-</button>
-<button class="p-2 hover:bg-surface-variant/50 transition-colors rounded-full">
-<span class="material-symbols-outlined text-primary">more_vert</span>
-</button>
-</div>
+<body>
+
+<!-- NAV -->
+<header class="glass-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;">
+  <div style="max-width:700px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button onclick="history.back()" style="background:rgba(255,255,255,0.08);border:none;border-radius:50%;width:36px;height:36px;color:white;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">←</button>
+      <a href="index.html" style="text-decoration:none;">
+        <h1 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
+      </a>
+    </div>
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;">
+      <span style="display:block;width:22px;height:2px;background:#E8B84B;border-radius:2px;"></span>
+      <span style="display:block;width:18px;height:2px;background:#E8B84B;border-radius:2px;"></span>
+      <span style="display:block;width:22px;height:2px;background:#E8B84B;border-radius:2px;"></span>
+    </button>
+  </div>
 </header>
-<main class="pt-16 pb-24 max-w-[1200px] mx-auto">
-<!-- Hero Section -->
-<section class="relative w-full h-[530px] md:h-[618px] overflow-hidden">
-<div class="absolute inset-0 bg-cover bg-center" data-alt="A sophisticated professional woman in her early 30s, dressed in a sharp charcoal grey corporate blazer, standing in a brightly lit modern office with floor-to-ceiling windows. The image is artistically blurred with a frosted glass effect that partially obscures her facial features to maintain privacy. The lighting is soft and high-key, reflecting a premium, professional, and secure environment consistent with a heritage-cream and navy color palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvK5ENOEZ8w0h0lC3IT7i4_wkpA_EBGuDPwY6tHlE380FkFiCZ6ER3cu27qwZvW5eNIcqGdEDhQ_pqGW9gLEmzPpIgcB9kGjHEU0INpofvI2eXMjMs8SraetiRj2kaUyt3-yq9urMox8AWQFp0tfVmdtvVO6WLQomUAQwqUO2JOZ1C5ajjjCht3tO3sYUA_xVajiCcpolz5Yy7YURPXgxd1XiYpvMrXNNj7iIpPddw02YcdrUYbYcpK0_41kmuULkjSSkhV26uYUpX')"></div>
-<!-- Privacy Overlay -->
-<div class="absolute inset-0 profile-mask bg-primary/20 flex flex-col items-center justify-center text-center p-6">
-<div class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 shadow-2xl">
-<span class="material-symbols-outlined text-white text-5xl mb-4" style="font-variation-settings: 'FILL' 1;">lock</span>
-<h1 class="font-headline-lg text-headline-lg text-white mb-2">Professional Profile</h1>
-<p class="text-white/80 font-label-md mb-6 max-w-xs mx-auto">This profile is restricted to verified grade-A officers. Verify your identity to reveal full details.</p>
-<button class="bg-saffron-gold text-primary font-bold px-8 py-3 rounded-lg shadow-lg hover:scale-105 transition-transform active:scale-95 flex items-center gap-2 mx-auto">
-<span class="material-symbols-outlined">verified_user</span>
-                        Request to Unmask
-                    </button>
-</div>
-</div>
-<!-- Floating Quick Bio -->
-<div class="absolute bottom-0 left-0 w-full p-margin-mobile md:p-margin-desktop bg-gradient-to-t from-midnight-indigo/80 to-transparent">
-<div class="flex items-end justify-between">
-<div>
-<div class="flex items-center gap-2 mb-2">
-<span class="bg-emerald-success text-white px-3 py-1 rounded-full text-label-sm flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">shield</span>
-                                Peer Verified
-                            </span>
-<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm">Class I Officer</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-white">Ananya S., 29</h2>
-<p class="text-white/90 text-body-md">IAS | Ministry of Finance</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Bento Layout Content -->
-<div class="px-margin-mobile md:px-margin-desktop mt-8 grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Compatibility Score (Left / Full Width on Mobile) -->
-<div class="md:col-span-4 glass-card p-6 rounded-xl shadow-[0_4px_24px_0_rgba(27,43,72,0.08)] flex flex-col justify-center items-center text-center">
-<div class="relative w-32 h-32 flex items-center justify-center mb-4">
-<svg class="w-full h-full -rotate-90">
-<circle class="text-outline-variant/30" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
-<circle class="text-secondary" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="43.7" stroke-width="8"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="font-headline-lg text-headline-lg text-primary">88%</span>
-<span class="font-label-sm text-label-sm text-outline">Match</span>
-</div>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary mb-4">Exceptional Compatibility</h3>
-<div class="w-full space-y-3">
-<div class="flex justify-between items-center text-label-md">
-<span class="text-on-surface-variant">Transfer Fit</span>
-<span class="text-secondary font-bold">94%</span>
-</div>
-<div class="w-full bg-outline-variant/30 h-1.5 rounded-full">
-<div class="bg-secondary h-full rounded-full w-[94%]"></div>
-</div>
-<div class="flex justify-between items-center text-label-md mt-2">
-<span class="text-on-surface-variant">Personality</span>
-<span class="text-secondary font-bold">82%</span>
-</div>
-<div class="w-full bg-outline-variant/30 h-1.5 rounded-full">
-<div class="bg-secondary h-full rounded-full w-[82%]"></div>
-</div>
-</div>
-</div>
-<!-- Organisation Info (Right / Full Width on Mobile) -->
-<div class="md:col-span-8 glass-card p-8 rounded-xl shadow-[0_4px_24px_0_rgba(27,43,72,0.08)]">
-<div class="flex items-center gap-3 mb-6">
-<span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
-<h3 class="font-headline-md text-headline-md text-primary">Professional Tenure</h3>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-<div class="space-y-4">
-<div>
-<p class="font-label-sm text-outline uppercase tracking-wider">Current Posting</p>
-<p class="font-body-lg text-body-lg text-primary font-semibold">Deputy Secretary, New Delhi</p>
-</div>
-<div>
-<p class="font-label-sm text-outline uppercase tracking-wider">Cadre</p>
-<p class="font-body-lg text-body-lg text-primary">AGMUT (Central Deputation)</p>
-</div>
-</div>
-<div class="space-y-4">
-<div>
-<p class="font-label-sm text-outline uppercase tracking-wider">Transfer Cycle</p>
-<p class="font-body-lg text-body-lg text-primary">Next expected: June 2026</p>
-</div>
-<div class="flex items-center gap-2 p-3 bg-tertiary-fixed/30 rounded-lg border border-tertiary-fixed">
-<span class="material-symbols-outlined text-emerald-success">verified</span>
-<span class="font-label-md text-emerald-success">3 Peers have verified this posting</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Biography (Full Width) -->
-<div class="md:col-span-12 glass-card p-8 md:p-12 rounded-xl shadow-[0_4px_24px_0_rgba(27,43,72,0.08)] border-l-4 border-l-saffron-gold">
-<h3 class="font-headline-md text-headline-md text-primary mb-6 italic">"A balance of rigorous public service and a quiet love for classical Indian arts."</h3>
-<div class="prose prose-slate max-w-none text-on-surface-variant font-body-lg leading-relaxed">
-<p class="mb-4">
-                        A dedicated civil servant with a background in Economics from SRCC and a Master's from LSE. I value intellectual depth, integrity, and a shared understanding of the unique lifestyle that comes with serving the nation.
-                    </p>
-<p>
-                        Beyond the office, I am an avid reader of post-colonial literature and a trained Kathak dancer. Looking for a partner who is grounded, ambitious, and appreciates the nuance of balancing high-stakes professional responsibilities with a nurturing home life.
-                    </p>
-</div>
-<div class="mt-8 flex flex-wrap gap-2">
-<span class="px-4 py-2 bg-surface-container rounded-full text-label-md text-primary">Classical Music</span>
-<span class="px-4 py-2 bg-surface-container rounded-full text-label-md text-primary">Philosophy</span>
-<span class="px-4 py-2 bg-surface-container rounded-full text-label-md text-primary">Weekend Retreats</span>
-<span class="px-4 py-2 bg-surface-container rounded-full text-label-md text-primary">Gourmet Cooking</span>
-</div>
-</div>
-<!-- Interests & Personal Life (Details) -->
-<div class="md:col-span-6 glass-card p-8 rounded-xl shadow-[0_4px_24px_0_rgba(27,43,72,0.08)]">
-<h4 class="font-headline-md text-headline-md text-primary mb-4">Lifestyle &amp; Preferences</h4>
-<ul class="space-y-4">
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary">church</span>
-<div>
-<p class="font-label-md text-primary font-bold">Traditional Values</p>
-<p class="text-label-sm text-outline">Balance of modern outlook and deep-rooted heritage.</p>
-</div>
-</li>
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary">fitness_center</span>
-<div>
-<p class="font-label-md text-primary font-bold">Health Conscious</p>
-<p class="text-label-sm text-outline">Regular yoga and mindful living practices.</p>
-</div>
-</li>
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary">travel_explore</span>
-<div>
-<p class="font-label-md text-primary font-bold">Transfer Flexibility</p>
-<p class="text-label-sm text-outline">Open to major metropolitan postings or central deputations.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="md:col-span-6 glass-card p-8 rounded-xl shadow-[0_4px_24px_0_rgba(27,43,72,0.08)] flex flex-col justify-center items-center">
-<div class="w-full p-6 bg-secondary-container/20 rounded-xl border border-secondary-container/30 text-center">
-<h4 class="font-label-md text-secondary font-extrabold uppercase mb-2">Privacy Shield Active</h4>
-<p class="text-body-md text-on-secondary-fixed-variant mb-4">Detailed family information and direct contact methods are only visible after both parties show interest.</p>
-<div class="flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-secondary">verified_user</span>
-<span class="font-label-md text-secondary">100% Confidential</span>
-</div>
-</div>
-</div>
-</div>
+
+<main style="max-width:700px;margin:0 auto;padding:80px 16px 20px;">
+
+  <!-- PROFILE HEADER -->
+  <div style="background:#1C1A14;border-radius:16px;padding:24px;margin-bottom:16px;border:1px solid rgba(201,150,12,0.2);">
+
+    <!-- Photo + Name -->
+    <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;">
+      <div style="width:80px;height:80px;border-radius:14px;background:rgba(201,150,12,0.1);border:2px solid rgba(201,150,12,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;filter:blur(6px);">
+        <span style="font-size:36px;">👩</span>
+      </div>
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+          <h2 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;">Priya K.</h2>
+          <span style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#4ade80;padding:3px 10px;border-radius:999px;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;">✓ Peer Verified</span>
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;margin-bottom:4px;">RBI · Grade B Officer</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.5);">29 yrs · 5'4" · Mumbai · Economic Research</p>
+      </div>
+    </div>
+
+    <!-- Photo blur notice -->
+    <div style="background:rgba(139,26,26,0.1);border:1px solid rgba(139,26,26,0.2);border-radius:10px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+      <span style="font-size:18px;flex-shrink:0;">🔒</span>
+      <div>
+        <p style="font-weight:600;color:rgba(255,255,255,0.8);font-size:14px;margin-bottom:2px;">Photo visible after mutual interest</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);">Express your interest below. If the other person also expresses interest, photos become visible to both.</p>
+      </div>
+    </div>
+
+    <!-- Key info grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Organisation</p><p style="font-size:14px;color:white;font-weight:600;">RBI</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Posting City</p><p style="font-size:14px;color:white;font-weight:600;">Mumbai</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Designation</p><p style="font-size:14px;color:white;font-weight:600;">Grade B Officer</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Relocation</p><p style="font-size:14px;color:white;font-weight:600;">Flexible</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Diet</p><p style="font-size:14px;color:white;font-weight:600;">Vegetarian</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Transfer Fit</p><p style="font-size:14px;color:#E8B84B;font-weight:700;">88%</p></div>
+    </div>
+
+    <!-- Personality traits -->
+    <div style="margin-bottom:16px;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Personality & Interests</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span class="trait-chip">Introvert</span>
+        <span class="trait-chip">Disciplined</span>
+        <span class="trait-chip">Solo Traveller</span>
+        <span class="trait-chip">Vegetarian</span>
+        <span class="trait-chip">Intellectuall</span>
+        <span class="trait-chip">Calm</span>
+      </div>
+    </div>
+
+    <!-- Hidden section notice -->
+    <div style="background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">🔒 Visible after mutual interest</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.35);line-height:1.6;">About section · Education · Full photo · Life preferences details</p>
+    </div>
+  </div>
+
+  <!-- TRANSFER INFO -->
+  <div style="background:#1C1A14;border-radius:14px;padding:20px;margin-bottom:16px;border:1px solid rgba(201,150,12,0.15);">
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:14px;">🗺️ Transfer Compatibility</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Organisation Type</p><p style="font-size:13px;color:white;font-weight:600;">Financial Regulator</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Transfer Cycle</p><p style="font-size:13px;color:white;font-weight:600;">Every 3 years</p></div>
+      <div class="info-box" style="grid-column:1/-1;"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Posting Cities</p><p style="font-size:13px;color:white;font-weight:600;">Metro cities only — Mumbai, Delhi, Chennai, Kolkata, Bengaluru</p></div>
+    </div>
+    <div style="margin-top:12px;background:rgba(45,80,22,0.2);border:1px solid rgba(45,80,22,0.3);border-radius:8px;padding:10px 14px;">
+      <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">RBI postings are metro-only with predictable 3-year cycles. Good compatibility with other financial regulators and metro-based PSU professionals. <a href="transfer-fit.html" style="color:#E8B84B;text-decoration:underline;">Learn more →</a></p>
+    </div>
+  </div>
+
+  <!-- PRIVACY NOTICE -->
+  <div style="background:#1C1A14;border-radius:14px;padding:20px;margin-bottom:20px;border:1px solid rgba(201,150,12,0.15);">
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">🔒 Privacy Promise</p>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:14px;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">Contact details never shown to any member</p></div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:14px;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">Photo visible only after mutual interest</p></div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:14px;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">No direct messaging — introductions only</p></div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:14px;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">She controls who can see her full profile</p></div>
+    </div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div id="action-section">
+    <button onclick="expressInterest()" id="interest-btn" style="width:100%;padding:16px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:10px;cursor:pointer;font-weight:700;margin-bottom:10px;">❤️ Express Interest</button>
+
+    <!-- Interest form (hidden initially) -->
+    <div id="interest-form" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.2);border-radius:12px;padding:18px;margin-bottom:10px;">
+      <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Optional Message</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;line-height:1.6;">You can express interest without a message. If you want to add a brief introduction you may do so below.</p>
+      <textarea id="interest-msg" placeholder="Brief introduction (optional)..." style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:white;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical;min-height:80px;outline:none;margin-bottom:12px;"></textarea>
+      <div style="display:flex;gap:10px;">
+        <button onclick="submitInterest()" style="flex:1;padding:13px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Send Interest →</button>
+        <button onclick="document.getElementById('interest-form').style.display='none'" style="padding:13px 20px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;">Cancel</button>
+      </div>
+    </div>
+
+    <button onclick="history.back()" style="width:100%;padding:14px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:1px solid rgba(255,255,255,0.1);border-radius:10px;cursor:pointer;">← Back to Discover</button>
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div id="success-section" style="display:none;background:#1C1A14;border:1px solid rgba(45,80,22,0.5);border-radius:14px;padding:24px;text-align:center;">
+    <p style="font-size:36px;margin-bottom:14px;">✦</p>
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:white;font-weight:700;margin-bottom:10px;">Interest Expressed</h3>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;margin-bottom:20px;">If this person also expresses interest in you, both of you will be notified. No contact details are shared until both parties consent.</p>
+    <a href="discover.html" style="display:inline-block;padding:13px 28px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Back to Discover →</a>
+  </div>
+
 </main>
-<!-- Fixed Action Bar (Bottom) -->
-<div class="fixed bottom-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_24px_0_rgba(27,43,72,0.08)]">
-<div class="max-w-[1200px] mx-auto px-4 py-4 flex items-center justify-between gap-4">
-<button class="flex-1 bg-surface-container text-primary font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-surface-variant transition-colors active:scale-[0.98]">
-<span class="material-symbols-outlined">favorite</span>
-                Show Interest
-            </button>
-<button class="flex-1 bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 active:scale-[0.98]">
-<span class="material-symbols-outlined">chat_bubble</span>
-                Message
-            </button>
-</div>
-</div>
-<!-- Mobile Bottom Nav Spacer -->
-<div class="h-20 md:hidden"></div>
-<script>
-        // Micro-interactions for buttons
-        document.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.classList.add('scale-95');
-                setTimeout(() => this.classList.remove('scale-95'), 150);
-            });
-        });
-
-        // Simple scroll reveal for glass cards
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-8');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out');
-            observer.observe(card);
-        });
-    </script>
-
-<!-- SWAYMVAR: Supabase Connection -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
-const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
-</script>
-
-<!-- SIDEBAR OVERLAY -->
-<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
 
 <!-- SIDEBAR -->
-<div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.3);">
+<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:998;"></div>
+<div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.5);">
   <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
-    <div><h2 style="font-family:serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;" onclick="window.location='index.html'" style="cursor:pointer;">SWAYMVAR</h2><p style="font-family:monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
+    <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2><p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
     <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">✕</button>
   </div>
   <nav style="padding:8px 0;">
-    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🏠</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
-    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💎</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
-    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">👤</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
-    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💬</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
-    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">✨</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
-    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🛡️</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
-    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">❓</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
-    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🗺️</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🏠</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💎</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
+    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">👤</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
+    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💬</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
+    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">✨</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
+    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🛡️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
+    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">❓</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
+    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🗺️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
   </nav>
   <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);">
     <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">✓ Peer Verified Only<br/>✓ All Religions Welcome<br/>✓ Privacy Protected<br/>✦ First 100 Free for Life</p>
   </div>
   <div style="padding:12px 20px;border-top:1px solid rgba(201,150,12,0.15);">
-    <a href="mailto:concierge@swaymvar.in" style="font-family:monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
+    <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+function expressInterest() {
+  document.getElementById('interest-form').style.display = 'block'
+  document.getElementById('interest-btn').style.display = 'none'
+  document.getElementById('interest-form').scrollIntoView({ behavior: 'smooth' })
+}
+
+async function submitInterest() {
+  const msg = document.getElementById('interest-msg').value.trim()
+  const btn = document.querySelector('#interest-form button')
+  btn.textContent = 'Sending...'
+  btn.disabled = true
+
+  // Get current user
+  const { data: { session } } = await db.auth.getSession()
+  
+  if (session && session.user) {
+    // Save interest to Supabase
+    const { data: profile } = await db
+      .from('profiles')
+      .select('full_name, org, designation')
+      .eq('email', session.user.email)
+      .single()
+
+    await db.from('interests').insert({
+      from_email: session.user.email,
+      from_org: profile?.org || '',
+      from_designation: profile?.designation || '',
+      to_email: 'priya@rbi.org.in', // sample profile email
+      message: msg,
+      status: 'pending'
+    })
+  }
+
+  // Show success
+  document.getElementById('action-section').style.display = 'none'
+  document.getElementById('success-section').style.display = 'block'
+  document.getElementById('success-section').scrollIntoView({ behavior: 'smooth' })
+}
+
 function openSidebar() {
   document.getElementById('sidebar').style.left = '0px'
   document.getElementById('sidebar-overlay').style.display = 'block'
@@ -399,4 +235,5 @@ function closeSidebar() {
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
 </script>
-</body></html>
+</body>
+</html>
