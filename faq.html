@@ -1,370 +1,229 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SWAYMVAR | Support &amp; FAQ</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface": "#fcf9f2",
-                    "on-surface-variant": "#42493e",
-                    "secondary-container": "#fecb32",
-                    "tertiary-container": "#843b00",
-                    "surface-dim": "#dcdad3",
-                    "error": "#ba1a1a",
-                    "surface-container-low": "#f6f3ec",
-                    "tertiary": "#612900",
-                    "on-tertiary": "#ffffff",
-                    "on-primary-fixed": "#002201",
-                    "primary": "#164212",
-                    "secondary-fixed-dim": "#f2c025",
-                    "on-tertiary-container": "#ffb184",
-                    "on-primary-container": "#9ed090",
-                    "surface-container-highest": "#e5e2db",
-                    "secondary-fixed": "#ffdf92",
-                    "inverse-primary": "#a1d493",
-                    "surface-variant": "#e5e2db",
-                    "outline-variant": "#c2c9bb",
-                    "background": "#fcf9f2",
-                    "on-secondary-fixed-variant": "#594400",
-                    "on-primary-fixed-variant": "#24501e",
-                    "inverse-on-surface": "#f3f0ea",
-                    "tertiary-fixed": "#ffdbc9",
-                    "primary-container": "#2e5a27",
-                    "primary-fixed-dim": "#a1d493",
-                    "on-background": "#1c1c18",
-                    "on-secondary": "#ffffff",
-                    "on-primary": "#ffffff",
-                    "surface-container-lowest": "#ffffff",
-                    "inverse-surface": "#31312c",
-                    "outline": "#72796d",
-                    "on-error": "#ffffff",
-                    "surface-container": "#f0eee7",
-                    "on-error-container": "#93000a",
-                    "on-secondary-container": "#705600",
-                    "on-surface": "#1c1c18",
-                    "error-container": "#ffdad6",
-                    "tertiary-fixed-dim": "#ffb68c",
-                    "on-tertiary-fixed-variant": "#763400",
-                    "secondary": "#755b00",
-                    "on-tertiary-fixed": "#321200",
-                    "on-secondary-fixed": "#241a00",
-                    "surface-container-high": "#ebe8e1",
-                    "surface-bright": "#fcf9f2",
-                    "primary-fixed": "#bdf0ad",
-                    "surface-tint": "#3c6934"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "xl": "80px",
-                    "md": "24px",
-                    "xs": "4px",
-                    "base": "8px",
-                    "sm": "12px",
-                    "gutter": "24px",
-                    "container-max": "1200px",
-                    "lg": "48px",
-                    "margin-mobile": "16px",
-                    "margin-desktop": "48px"
-            },
-            "fontFamily": {
-                    "headline-sm": ["Playfair Display"],
-                    "display-lg-mobile": ["Playfair Display"],
-                    "display-lg": ["Playfair Display"],
-                    "body-lg": ["Plus Jakarta Sans"],
-                    "label-sm": ["Plus Jakarta Sans"],
-                    "body-md": ["Plus Jakarta Sans"],
-                    "headline-md": ["Playfair Display"],
-                    "label-md": ["Plus Jakarta Sans"]
-            },
-            "fontSize": {
-                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
-                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
-                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .faq-accordion[open] .faq-icon {
-            transform: rotate(180deg);
-        }
-        .marigold-glow {
-            box-shadow: 0 4px 20px -2px rgba(254, 203, 50, 0.3);
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  <link rel="manifest" href="/manifest.json"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWAYMVAR | Frequently Asked Questions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#2D5016"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; padding-bottom: 80px; }
+.glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(254,252,245,0.95); }
+.faq-item { background: white; border: 1px solid #D4C5A0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+.faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-weight: 600; font-size: 15px; color: #1C1A14; }
+.faq-question:hover { background: #F9F5EC; }
+.faq-answer { display: none; padding: 0 20px 16px; color: #5C5040; font-size: 14px; line-height: 1.75; border-top: 1px solid #EDE5D0; padding-top: 14px; }
+.faq-answer.open { display: block; }
+.faq-icon { font-size:18px; flex-shrink:0; transition: transform 0.2s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.section-label { font-family: 'Space Mono', monospace; font-size: 10px; color: #A67C00; text-transform: uppercase; letter-spacing: 0.2em; margin: 32px 0 14px; display: flex; align-items: center; gap: 10px; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: #D4C5A0; }
+</style>
 </head>
-<body class="bg-surface text-on-surface font-body-md min-h-screen">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-heritage-cream/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop">
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/50 transition-colors rounded-full" data-icon="menu">menu</button>
-<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary" onclick="window.location='index.html'" style="cursor:pointer;">SWAYMVAR</h1>
-</div>
-<div class="flex items-center gap-4">
-<nav class="hidden md:flex gap-6 items-center">
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="discover.html">Discover</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="messages.html">Messages</a>
-<a class="font-label-md text-label-md text-primary font-semibold" href="#">Help Center</a>
-</nav>
-<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/50 transition-colors rounded-full" data-icon="notifications">notifications</button>
-</div>
+<body>
+
+<!-- NAV -->
+<header class="glass-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;border-bottom:1px solid #D4C5A0;">
+  <div style="max-width:800px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+    <a href="index.html" style="text-decoration:none;">
+      <h1 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:2px 0 0;">swaymvar.in</p>
+    </a>
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;">
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:20px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+    </button>
+  </div>
 </header>
-<main class="pt-24 pb-32 px-margin-mobile max-w-container-max mx-auto md:px-gutter">
-<!-- Hero Section -->
-<section class="mb-lg text-center">
-<div class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-md text-label-md mb-4">
-                SUPPORT &amp; GUIDANCE
-            </div>
-<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-sm">How can we assist your journey?</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-                Explore our comprehensive guide to the SWAYMVAR experience, crafted for distinguished professionals seeking lifelong unions.
-            </p>
-</section>
-<!-- Search Bar -->
-<div class="relative max-w-xl mx-auto mb-xl">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full pl-12 pr-4 py-4 rounded-xl border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm" placeholder="Search for questions..." type="text"/>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<!-- Sidebar Categories -->
-<aside class="lg:col-span-3 hidden lg:block">
-<nav class="sticky top-24 flex flex-col gap-2">
-<a class="flex items-center gap-3 p-4 rounded-lg bg-secondary-container text-on-secondary-container font-semibold transition-all" href="#account">
-<span class="material-symbols-outlined" data-icon="lock">lock</span> Account &amp; Privacy
-                    </a>
-<a class="flex items-center gap-3 p-4 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#matches">
-<span class="material-symbols-outlined" data-icon="favorite">favorite</span> Matches &amp; Messaging
-                    </a>
-<a class="flex items-center gap-3 p-4 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#verification">
-<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span> Peer Verification
-                    </a>
-<a class="flex items-center gap-3 p-4 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#settings">
-<span class="material-symbols-outlined" data-icon="published_with_changes">published_with_changes</span> Transfer Fit Settings
-                    </a>
-</nav>
-</aside>
-<!-- FAQ Accordions -->
-<div class="lg:col-span-9 space-y-lg">
-<!-- Category: Account & Privacy -->
-<section id="account">
-<div class="flex items-center gap-2 mb-md">
-<span class="material-symbols-outlined text-secondary" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
-<h3 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider text-sm">Account &amp; Privacy</h3>
-</div>
-<div class="space-y-4">
-<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
-<span class="font-body-md font-semibold text-on-surface">How is my official email kept private?</span>
-<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
-                                We utilize a proprietary "Blind Relay" system for all official communications. Your professional email address is never visible to other members. Correspondence is routed through our secure servers, ensuring your identity remains protected until you explicitly choose to share personal contact details.
-                            </div>
-</details>
-<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
-<span class="font-body-md font-semibold text-on-surface">Can I hide my profile from specific organizations?</span>
-<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
-                                Yes. Under 'Privacy &amp; Security' in your settings, you can define 'Visibility Filters'. You may block your profile from being seen by employees of specific companies or government departments to maintain workplace discretion.
-                            </div>
-</details>
-</div>
-</section>
-<!-- Category: Verification -->
-<section id="verification">
-<div class="flex items-center gap-2 mb-md">
-<span class="material-symbols-outlined text-secondary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
-<h3 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider text-sm">Verification</h3>
-</div>
-<div class="space-y-4">
-<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
-<span class="font-body-md font-semibold text-on-surface">What does a Peer Verification check involve?</span>
-<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
-                                Peer Verification is a gold-standard trust mechanism. It involves an anonymous cross-reference of your professional standing with at least three other verified members within your industry. This process confirms your professional identity and grade without revealing specific salary or role data.
-                            </div>
-</details>
-<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
-<span class="font-body-md font-semibold text-on-surface">How long does the verification process take?</span>
-<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
-                                Verification typically takes 48 to 72 business hours. Our dedicated concierge team manually reviews documentation to ensure the highest standards of integrity within the Circle.
-                            </div>
-</details>
-</div>
-</section>
-<!-- Category: Settings -->
-<section id="settings">
-<div class="flex items-center gap-2 mb-md">
-<span class="material-symbols-outlined text-secondary" data-icon="published_with_changes" style="font-variation-settings: 'FILL' 1;">published_with_changes</span>
-<h3 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider text-sm">Logistics &amp; Fit</h3>
-</div>
-<div class="space-y-4">
-<details class="faq-accordion group bg-white border border-outline-variant/30 rounded-xl overflow-hidden transition-all duration-300">
-<summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
-<span class="font-body-md font-semibold text-on-surface">How do I manage my transfer compatibility settings?</span>
-<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-outline">expand_more</span>
-</summary>
-<div class="px-6 pb-6 pt-2 text-on-surface-variant leading-relaxed">
-                                Navigate to 'Transfer Fit Settings' in your dashboard. Here, you can specify your openness to relocation based on career opportunities, state preferences, or government cadre requirements. This helps our algorithm match you with professionals whose career trajectories align with yours.
-                            </div>
-</details>
-</div>
-</section>
-</div>
-</div>
-<!-- CTA Footer Section -->
-<section class="mt-xl p-md md:p-lg bg-primary rounded-2xl text-center relative overflow-hidden">
-<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary-fixed via-transparent to-transparent"></div>
-<div class="relative z-10">
-<h4 class="font-headline-md text-white mb-base">Still have questions?</h4>
-<p class="text-on-primary-container font-body-md mb-lg max-w-lg mx-auto">Our dedicated Concierge team is available 24/7 to assist you with any inquiries or bespoke requirements.</p>
-<button class="bg-secondary text-on-secondary font-label-md text-label-md px-10 py-4 rounded-full marigold-glow hover:scale-105 active:scale-95 transition-all">
-                    Chat with Concierge
-                </button>
-</div>
-</section>
-</main>
-<!-- Navigation Bar (Mobile) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 bg-white/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_24px_0_rgba(27,43,72,0.08)]">
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all p-2">
-<span class="material-symbols-outlined" data-icon="explore">explore</span>
-<span class="font-label-sm text-label-sm">Discover</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all p-2">
-<span class="material-symbols-outlined" data-icon="manage_search">manage_search</span>
-<span class="font-label-sm text-label-sm">Search</span>
-</button>
-<button class="flex flex-col items-center justify-center text-secondary font-bold hover:bg-primary-container/10 transition-all p-2">
-<span class="material-symbols-outlined" data-icon="chat_bubble" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
-<span class="font-label-sm text-label-sm">Help</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 transition-all p-2">
-<span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="font-label-sm text-label-sm">Profile</span>
-</button>
-</nav>
-<!-- Visual Accents -->
-<div class="fixed top-20 right-[-10%] w-[40%] h-[40%] bg-secondary-fixed/10 blur-[120px] rounded-full -z-10"></div>
-<div class="fixed bottom-0 left-[-10%] w-[30%] h-[30%] bg-primary-fixed/10 blur-[100px] rounded-full -z-10"></div>
-<script>
-        // Micro-interaction for smooth scrolling to sections
-        document.querySelectorAll('aside nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
-                });
 
-                // Update active state
-                document.querySelectorAll('aside nav a').forEach(a => {
-                    a.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'font-semibold');
-                    a.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
-                });
-                this.classList.add('bg-secondary-container', 'text-on-secondary-container', 'font-semibold');
-                this.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
-            });
-        });
+<!-- HERO -->
+<section style="background:#2D5016;padding:96px 24px 48px;text-align:center;">
+  <p style="font-family:'Space Mono',monospace;font-size:10px;color:#E8B84B;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:14px;">Honest Answers</p>
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,38px);color:white;font-weight:700;margin-bottom:14px;">Frequently Asked Questions</h2>
+  <div style="width:60px;height:3px;background:#C9960C;margin:0 auto 18px;"></div>
+  <p style="color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto;font-size:15px;line-height:1.75;">Everything you want to know about SWAYMVAR — how it works, what we do, and what we promise.</p>
+</section>
 
-        // Simple search filter interaction
-        const searchInput = document.querySelector('input[type="text"]');
-        const faqItems = document.querySelectorAll('.faq-accordion');
+<!-- FAQ CONTENT -->
+<section style="padding:48px 24px;max-width:800px;margin:0 auto;">
 
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            faqItems.forEach(item => {
-                const question = item.querySelector('summary').textContent.toLowerCase();
-                const answer = item.querySelector('div').textContent.toLowerCase();
-                if (question.includes(term) || answer.includes(term)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    </script>
+  <!-- GETTING STARTED -->
+  <div class="section-label">Getting Started</div>
 
-<!-- SWAYMVAR: Supabase Connection -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
-const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
-</script>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">What is SWAYMVAR?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">SWAYMVAR is India's first invite-only matrimonial platform built specifically for women working in the public sector — banks, insurance companies, financial regulators, oil PSUs, aviation, and railways. Every profile is peer verified by a colleague from the same organisation. The woman creates her own profile, on her own terms. No family submissions. No caste filters. No religion filters.</div>
+  </div>
 
-<!-- SIDEBAR OVERLAY -->
-<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Who can join SWAYMVAR?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Any employee — woman or man — working in an Indian public sector organisation on our active list. This includes RBI, SEBI, NABARD, PFRDA, IRDAI, all PSU banks, LIC and public insurance companies, AAI, Air India, Indian Railways, and Oil PSUs like IOCL, BPCL, ONGC, NTPC, Coal India and others. Every grade from clerk to director is welcome. All religions. No minimum rank requirement.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Is it really free?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">The first 100 founding members get lifetime access at no charge. SWAYMVAR may introduce a subscription plan after the founding batch is full. Founding members will never be charged retroactively. We will give at least 30 days notice before any pricing changes.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">How do I apply to join?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Fill the waitlist form on our homepage with your name, official email, organisation, designation, and posting city. Our Concierge team reviews every application personally within 48 hours. If approved, you receive a unique invitation code at your official email. Use that code to create your profile.</div>
+  </div>
+
+  <!-- VERIFICATION -->
+  <div class="section-label">Verification</div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">What does peer verification mean?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">When you apply, our Concierge team contacts a trusted colleague from your organisation to confirm one simple thing: "Does this person work here in the stated role?" The verifier's identity is never disclosed to you and your details are never shared with the verifier beyond what is necessary. This is not a LinkedIn check or an algorithm — it is a real person from your workplace confirming your professional standing.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">How long does verification take?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">We review every application within 48 hours. Peer verification happens during the invite approval process — you do not need to do any separate verification step. Once approved, your unique invitation code is emailed to you and you can create your profile immediately.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">What documents are required?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Your official email address is the primary verification method. In some cases we may ask for your employee ID or appointment letter for additional confirmation. Any documents shared are used only for verification and deleted from our systems once confirmed. They are never shared with other members.</div>
+  </div>
+
+  <!-- PRIVACY -->
+  <div class="section-label">Privacy & Safety</div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Who can see my profile?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Only verified SWAYMVAR members can browse profiles. Your photos are blurred by default and only visible after mutual interest is confirmed. You can choose to keep your photo permanently blurred if you prefer. Your contact details — email, phone, workplace address — are never shown to any member at any time.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Can I hide my profile from colleagues?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Currently all verified members can see all profiles. If you are concerned about a specific colleague seeing your profile, write to concierge@swaymvar.in and we will handle it personally. This is a human concierge service — not an algorithm.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Is my data safe? Do you sell it?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">We never sell your data. We never share it with advertisers or third parties. Your data is stored on encrypted servers and used only to run the platform. You can request complete deletion of all your data at any time by writing to concierge@swaymvar.in. We comply with India's DPDP Act 2023.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Can I delete my profile?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Yes. Go to My Profile → Privacy tab → Delete My Profile. All your data is permanently deleted within 72 hours. Alternatively write to concierge@swaymvar.in with subject "Data Deletion Request".</div>
+  </div>
+
+  <!-- MATCHMAKING -->
+  <div class="section-label">Matches & Introductions</div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">How does expressing interest work?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">On any profile you can tap "Express Interest". The other person never knows unless they also express interest in you. When both members express interest, both parties receive a notification and can choose to proceed. No cold messages. No unsolicited contact. You are always in control.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Can members message each other directly?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">No. SWAYMVAR does not have a direct messaging system. This is intentional. Direct messaging on matrimonial platforms leads to spam, harassment, and unsolicited contact — exactly what women in professional roles want to avoid. Introductions only happen when both parties have independently expressed interest. Your messages and interests are private.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">How are matches suggested?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">We do not use a secret algorithm. Profiles in the Discover feed are shown based on your organisation, posting city, and relocation openness. You browse profiles and express interest in whoever appeals to you. We believe you are better placed to decide who is right for you — not an algorithm.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Is there a filter for religion or caste?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">No. SWAYMVAR has absolutely no religion filter, caste filter, community filter, or regional filter. We never collect caste information. Religion is an optional field and is never used for filtering or sorting. SWAYMVAR is for every accomplished public sector professional — Hindu, Muslim, Christian, Sikh, Jain, Buddhist, or any other faith.</div>
+  </div>
+
+  <!-- TRANSFER FIT -->
+  <div class="section-label">Transfer Compatibility</div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">What is Transfer Fit?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Transfer Fit is our way of showing career compatibility honestly. Every profile shows the member's current posting city and relocation openness. We also provide a guide explaining transfer patterns for each organisation — frequency, cities covered, and spouse posting policies — so members can have informed conversations before proceeding.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">My organisation is not on the list. Can I still join?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Write to concierge@swaymvar.in with your organisation name. We review new organisations regularly. IAS, IPS, IFS and defence are coming soon — we are building the verification infrastructure for those cadres.</div>
+  </div>
+
+  <!-- CONCIERGE -->
+  <div class="section-label">Concierge Team</div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">What does the Concierge team do?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">The Concierge team reviews every waitlist application personally, coordinates peer verification, approves profiles, and responds to any member queries. When both members express mutual interest, both receive a notification to proceed. We are a small team. Every interaction is personal. We are not a chatbot.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">How do I contact the Concierge team?<span class="faq-icon">+</span></div>
+    <div class="faq-answer">Email us at concierge@swaymvar.in. We respond within 48 hours on working days. For urgent matters related to privacy or profile safety, mark your subject line "URGENT".</div>
+  </div>
+
+  <!-- CONTACT BOX -->
+  <div style="background:#2D5016;border-radius:14px;padding:28px 24px;text-align:center;margin-top:32px;">
+    <p style="font-size:26px;margin-bottom:12px;">💬</p>
+    <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:white;font-weight:700;margin-bottom:8px;">Still have a question?</h3>
+    <p style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:20px;line-height:1.7;">Write to our Concierge team. Real people. Real answers. Within 48 hours.</p>
+    <a href="mailto:concierge@swaymvar.in" style="display:inline-block;padding:13px 28px;background:#C9960C;color:#1C1A14;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">concierge@swaymvar.in</a>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#1C1A14;border-top:4px solid #C9960C;padding:28px 24px;text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin-bottom:4px;">SWAYMVAR</h2>
+  <p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin-bottom:14px;">swaymvar.in · concierge@swaymvar.in</p>
+  <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.25);">© 2026 Swaymvar.in · All Religions Welcome · Peer Verified · She Chooses ✦</p>
+</footer>
 
 <!-- SIDEBAR -->
+<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
 <div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.3);">
   <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
-    <div><h2 style="font-family:serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;" onclick="window.location='index.html'" style="cursor:pointer;">SWAYMVAR</h2><p style="font-family:monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
+    <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2><p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
     <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">✕</button>
   </div>
   <nav style="padding:8px 0;">
-    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🏠</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
-    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💎</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
-    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">👤</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
-    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💬</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
-    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">✨</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
-    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🛡️</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
-    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">❓</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
-    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🗺️</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🏠</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💎</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
+    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">👤</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
+    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💬</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
+    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">✨</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
+    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🛡️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
+    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);"><span style="font-size:18px;">❓</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
+    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🗺️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
   </nav>
   <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);">
     <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">✓ Peer Verified Only<br/>✓ All Religions Welcome<br/>✓ Privacy Protected<br/>✦ First 100 Free for Life</p>
   </div>
   <div style="padding:12px 20px;border-top:1px solid rgba(201,150,12,0.15);">
-    <a href="mailto:concierge@swaymvar.in" style="font-family:monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
+    <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
   </div>
 </div>
 
 <script>
+function toggleFaq(item) {
+  const answer = item.querySelector('.faq-answer')
+  const isOpen = item.classList.contains('open')
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(function(el) {
+    el.classList.remove('open')
+    el.querySelector('.faq-answer').classList.remove('open')
+  })
+  // Open clicked if was closed
+  if (!isOpen) {
+    item.classList.add('open')
+    answer.classList.add('open')
+  }
+}
 function openSidebar() {
   document.getElementById('sidebar').style.left = '0px'
   document.getElementById('sidebar-overlay').style.display = 'block'
@@ -381,4 +240,5 @@ function closeSidebar() {
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
 </script>
-</body></html>
+</body>
+</html>
