@@ -142,7 +142,7 @@ body { background: #0f0f0d; color: white; font-family: 'DM Sans', sans-serif; pa
 
   <!-- ACTION BUTTONS -->
   <div id="action-section">
-    <button onclick="expressInterest()" id="interest-btn" disabled style="width:100%;padding:16px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:10px;cursor:pointer;font-weight:700;margin-bottom:10px;" id="interest-btn-inner">❤️ Express Interest</button>
+    <button onclick="expressInterest()" id="interest-btn" style="width:100%;padding:16px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:10px;cursor:pointer;font-weight:700;margin-bottom:10px;" id="interest-btn-inner">❤️ Express Interest</button>
 
     <!-- Interest form (hidden initially) -->
     <div id="interest-form" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.2);border-radius:12px;padding:18px;margin-bottom:10px;">
@@ -215,40 +215,24 @@ document.addEventListener('DOMContentLoaded', async function() {
 })
 
 async function expressInterest() {
-  // Check if logged in first
-  const { data: { session } } = await db.auth.getSession()
-  
-  if (!session || !session.user) {
-    // Not logged in — show login required message
-    const btn = document.getElementById('interest-btn')
-    btn.textContent = '🔒 Sign in to Express Interest'
-    btn.style.background = '#5C5040'
+  try {
+    var result = await db.auth.getSession()
+    var session = result.data.session
     
-    // Show login prompt
-    document.getElementById('login-required').style.display = 'block'
-    document.getElementById('login-required').scrollIntoView({ behavior: 'smooth' })
-    return
+    if (!session || !session.user) {
+      document.getElementById('login-required').style.display = 'block'
+      document.getElementById('login-required').scrollIntoView({ behavior: 'smooth' })
+      return
+    }
+
+    document.getElementById('interest-form').style.display = 'block'
+    document.getElementById('interest-btn').style.display = 'none'
+    document.getElementById('interest-form').scrollIntoView({ behavior: 'smooth' })
+    
+  } catch(err) {
+    document.getElementById('interest-form').style.display = 'block'
+    document.getElementById('interest-btn').style.display = 'none'
   }
-
-  // Also check they have a profile
-  const { data: profiles } = await db
-    .from('profiles')
-    .select('id')
-    .eq('email', session.user.email)
-
-  if (!profiles || profiles.length === 0) {
-    const btn = document.getElementById('interest-btn')
-    btn.textContent = '⚠️ Create Profile First'
-    btn.style.background = '#5C5040'
-    document.getElementById('no-profile-required').style.display = 'block'
-    document.getElementById('no-profile-required').scrollIntoView({ behavior: 'smooth' })
-    return
-  }
-
-  // Logged in with profile — show interest form
-  document.getElementById('interest-form').style.display = 'block'
-  document.getElementById('interest-btn').style.display = 'none'
-  document.getElementById('interest-form').scrollIntoView({ behavior: 'smooth' })
 }
 
 async function submitInterest() {
