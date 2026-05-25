@@ -159,25 +159,34 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
 </head>
 <body class="bg-background font-body-md text-on-background min-h-screen pb-24">
 <!-- Top Navigation Shell -->
-<header class="fixed top-0 w-full z-50 glass-header border-b border-outline-variant/30 shadow-sm flex items-center justify-between px-margin-mobile h-16">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary" data-icon="menu" onclick="openSidebar()" style="cursor:pointer;">menu</span>
-<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary" onclick="window.location='index.html'" style="cursor:pointer;">SWAYMVAR</h1>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" data-icon="filter_list">filter_list</span>
-<span class="material-symbols-outlined text-primary" data-icon="notifications" onclick="window.location='messages.html'" style="cursor:pointer;">notifications</span>
-</div>
+<header style="position:fixed;top:0;left:0;right:0;width:100%;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(254,252,245,0.95);border-bottom:1px solid #D4C5A0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;">
+  <a href="index.html" style="text-decoration:none;">
+    <h1 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
+    <p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:0;">swaymvar.in</p>
+  </a>
+  <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;" aria-label="Menu">
+    <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+    <span style="display:block;width:20px;height:2px;background:#2D5016;border-radius:2px;"></span>
+    <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+  </button>
 </header>
 <main class="mt-16 px-margin-mobile">
 <!-- Filter Bar Section -->
 
 <!-- Filter Toggle Button -->
-<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 8px;">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 8px;gap:8px;flex-wrap:wrap;">
   <p style="font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;">Showing <span id="profile-count">49</span> Profiles</p>
-  <button onclick="toggleFilters()" id="filter-toggle-btn" style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:white;border:1.5px solid #D4C5A0;border-radius:8px;font-family:'Space Mono',monospace;font-size:10px;color:#2D5016;cursor:pointer;text-transform:uppercase;letter-spacing:0.1em;">
-    ⚙️ Filters
-  </button>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <select onchange="sortCards(this.value)" style="padding:7px 12px;border:1.5px solid #D4C5A0;border-radius:8px;font-family:'Space Mono',monospace;font-size:10px;color:#2D5016;background:white;cursor:pointer;outline:none;">
+      <option value="">Sort By</option>
+      <option value="transfer">Transfer Fit ↓</option>
+      <option value="age">Age ↑</option>
+      <option value="org">Organisation A-Z</option>
+    </select>
+    <button onclick="toggleFilters()" id="filter-toggle-btn" style="display:flex;align-items:center;gap:6px;padding:7px 14px;background:white;border:1.5px solid #D4C5A0;border-radius:8px;font-family:'Space Mono',monospace;font-size:10px;color:#2D5016;cursor:pointer;text-transform:uppercase;letter-spacing:0.1em;">
+      ⚙️ Filters
+    </button>
+  </div>
 </div>
 
 <!-- Org chips - always visible -->
@@ -264,18 +273,10 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
 
   </div>
 
-  <!-- Sort -->
-  <div style="margin-top:12px;padding-top:12px;border-top:1px solid #EDE5D0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-    <label style="font-family:'Space Mono',monospace;font-size:9px;color:#5C5040;text-transform:uppercase;letter-spacing:0.1em;">Sort By</label>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;">
-      <button onclick="sortCards('transfer')" style="padding:6px 12px;background:#EDF5E0;border:1px solid #2D5016;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;color:#2D5016;cursor:pointer;">Transfer Fit ↓</button>
-      <button onclick="sortCards('age')" style="padding:6px 12px;background:white;border:1px solid #D4C5A0;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;cursor:pointer;">Age ↑</button>
-      <button onclick="sortCards('org')" style="padding:6px 12px;background:white;border:1px solid #D4C5A0;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;cursor:pointer;">Organisation A-Z</button>
-    </div>
-  </div>
-
   <!-- Reset -->
-  <button onclick="resetFilters()" style="margin-top:10px;padding:8px 16px;background:white;border:1px solid #D4C5A0;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;cursor:pointer;text-transform:uppercase;letter-spacing:0.1em;">Reset All Filters</button>
+  <div style="margin-top:12px;padding-top:12px;border-top:1px solid #EDE5D0;display:flex;justify-content:flex-end;">
+    <button onclick="resetFilters()" style="padding:8px 16px;background:white;border:1px solid #D4C5A0;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;color:#8B1A1A;cursor:pointer;text-transform:uppercase;letter-spacing:0.1em;">✕ Reset Filters</button>
+  </div>
 </div>
 
 <div id="cards-container" style="display:flex;flex-direction:column;gap:14px;padding-bottom:80px;">
