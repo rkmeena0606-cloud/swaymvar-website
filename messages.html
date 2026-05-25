@@ -1,501 +1,297 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Messages &amp; Notifications | SWAYMVAR</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(194, 201, 187, 0.3);
-        }
-        .marigold-glow {
-            box-shadow: 0 4px 20px -5px rgba(254, 203, 50, 0.4);
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f6f3ec;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #c2c9bb;
-            border-radius: 10px;
-        }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-variant": "#e5e2db",
-                        "on-secondary-container": "#705600",
-                        "on-tertiary": "#ffffff",
-                        "surface-container-lowest": "#ffffff",
-                        "on-secondary": "#ffffff",
-                        "on-secondary-fixed-variant": "#594400",
-                        "primary-container": "#2e5a27",
-                        "surface": "#fcf9f2",
-                        "tertiary-container": "#843b00",
-                        "secondary-fixed": "#ffdf92",
-                        "inverse-on-surface": "#f3f0ea",
-                        "surface-container-high": "#ebe8e1",
-                        "error-container": "#ffdad6",
-                        "surface-tint": "#3c6934",
-                        "on-tertiary-fixed": "#321200",
-                        "background": "#fcf9f2",
-                        "on-primary-fixed-variant": "#24501e",
-                        "on-primary-fixed": "#002201",
-                        "on-primary-container": "#9ed090",
-                        "inverse-surface": "#31312c",
-                        "surface-container-low": "#f6f3ec",
-                        "on-tertiary-fixed-variant": "#763400",
-                        "surface-bright": "#fcf9f2",
-                        "tertiary-fixed-dim": "#ffb68c",
-                        "tertiary-fixed": "#ffdbc9",
-                        "primary": "#164212",
-                        "surface-container": "#f0eee7",
-                        "secondary-container": "#fecb32",
-                        "on-primary": "#ffffff",
-                        "on-tertiary-container": "#ffb184",
-                        "on-background": "#1c1c18",
-                        "on-surface": "#1c1c18",
-                        "on-secondary-fixed": "#241a00",
-                        "surface-dim": "#dcdad3",
-                        "secondary": "#755b00",
-                        "on-error-container": "#93000a",
-                        "error": "#ba1a1a",
-                        "outline": "#72796d",
-                        "primary-fixed": "#bdf0ad",
-                        "surface-container-highest": "#e5e2db",
-                        "primary-fixed-dim": "#a1d493",
-                        "outline-variant": "#c2c9bb",
-                        "tertiary": "#612900",
-                        "on-error": "#ffffff",
-                        "secondary-fixed-dim": "#f2c025",
-                        "on-surface-variant": "#42493e",
-                        "inverse-primary": "#a1d493"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "xs": "4px",
-                        "lg": "48px",
-                        "xl": "80px",
-                        "md": "24px",
-                        "container-max": "1200px",
-                        "sm": "12px",
-                        "gutter": "24px",
-                        "base": "8px"
-                    },
-                    "fontFamily": {
-                        "display-lg": ["Playfair Display"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "headline-sm": ["Playfair Display"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "headline-md": ["Playfair Display"],
-                        "label-sm": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
-                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
-                    }
-                },
-            },
-        }
-    </script>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  <link rel="manifest" href="/manifest.json"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWAYMVAR | Messages & Notifications</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#2D5016"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; padding-bottom: 40px; }
+.glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(254,252,245,0.95); }
+.card { background: white; border: 1px solid #D4C5A0; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+.card-urgent { border-left: 4px solid #C9960C; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; }
+.badge-gold { background: rgba(201,150,12,0.1); color: #A67C00; border: 1px solid rgba(201,150,12,0.3); }
+.badge-green { background: rgba(34,197,94,0.1); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
+.badge-red { background: rgba(239,68,68,0.1); color: #dc2626; border: 1px solid rgba(239,68,68,0.3); }
+.tab-btn { padding: 10px 20px; border-radius: 8px; font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border: 1.5px solid #D4C5A0; background: white; color: #5C5040; transition: all 0.2s; }
+.tab-btn.active { background: #2D5016; color: white; border-color: #2D5016; }
+</style>
 </head>
-<body class="bg-surface text-on-surface font-body-md min-h-screen">
-<!-- TopAppBar -->
-<header class="bg-surface shadow-sm w-full top-0 sticky z-50">
-<div class="flex items-center justify-between px-md py-base w-full max-w-container-max mx-auto">
-<div class="flex items-center gap-base">
-<button class="p-2 hover:bg-surface-container-high transition-colors rounded-full active:scale-95 duration-150">
-<span class="material-symbols-outlined text-primary">menu</span>
-</button>
-<h1 class="font-headline-md text-headline-md font-bold text-primary" onclick="window.location='index.html'" style="cursor:pointer;">SWAYMVAR</h1>
-</div>
-<div class="flex items-center gap-md">
-<div class="hidden md:flex gap-md items-center">
-<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors" href="discover.html">Discover</a>
-<a class="font-label-md text-primary font-bold" href="messages.html">Messages</a>
-<a class="font-label-md text-on-surface-variant hover:text-primary transition-colors" href="verify.html">Verification</a>
-</div>
-<img alt="Executive Profile" class="w-10 h-10 rounded-full border-2 border-secondary-container object-cover" data-alt="A professional headshot of a distinguished Indian male in his late 30s, wearing a crisp formal Nehru jacket. He has a warm yet authoritative expression, set against a softly blurred background of a high-end corporate library. The lighting is soft and golden, echoing the heritage executive brand aesthetic with a prestigious and successful mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB75jyfLhQdN0N1piQGr9lPCmvl7iCqgSHfPQ0_nZ4emt99pfC6QhEOkdQAPFLMdCrxhbqJBYbRdfUGKgPpvdpT0Jo2B28V-yDmJSdxoA8QdAscPORSUsBmNfcKqzicYn5k6664Zgp2ImzXvT39jN3-sLnK9HIhwoHi1b-9_tOOssLK8oQNPR1HBeBG_SdFtJsuKGVyFQK3NPAQnoBy0qmzGzMmj-vGIwOHByKinXHSmoS-aaGXvmsINT6fl8hNBkqepoxOxn7tQLm0"/>
-</div>
-</div>
+<body>
+
+<!-- NAV -->
+<header class="glass-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;border-bottom:1px solid #D4C5A0;">
+  <div style="max-width:800px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+    <a href="index.html" style="text-decoration:none;">
+      <h1 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:2px 0 0;">swaymvar.in</p>
+    </a>
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;">
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:20px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+    </button>
+  </div>
 </header>
-<main class="max-w-container-max mx-auto px-md py-lg grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Left Column: Navigation/Tabs Sidebar -->
-<aside class="md:col-span-3 space-y-md">
-<div class="bg-white rounded-xl p-md border border-outline-variant/30 shadow-sm">
-<h2 class="font-headline-sm text-headline-sm text-primary mb-md">Officer Hub</h2>
-<nav class="space-y-base">
-<button class="w-full flex items-center justify-between p-sm rounded-lg bg-secondary-container text-on-secondary-container font-bold transition-all" id="tab-btn-messages" onclick="switchTab('messages')">
-<div class="flex items-center gap-sm">
-<span class="material-symbols-outlined" data-weight="fill">chat</span>
-<span class="font-label-md">Messages</span>
-</div>
-<span class="bg-primary text-white text-[10px] px-2 py-0.5 rounded-full">3</span>
-</button>
-<button class="w-full flex items-center justify-between p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all" id="tab-btn-notifications" onclick="switchTab('notifications')">
-<div class="flex items-center gap-sm">
-<span class="material-symbols-outlined">notifications</span>
-<span class="font-label-md">Notifications</span>
-</div>
-<span class="bg-secondary text-white text-[10px] px-2 py-0.5 rounded-full">12</span>
-</button>
-<div class="pt-base border-t border-outline-variant mt-base">
-<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all" href="verify.html">
-<span class="material-symbols-outlined">verified_user</span>
-<span class="font-label-md text-label-md">Peer Verification</span>
-</a>
-<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-label-md text-label-md">Privacy Settings</span>
-</a>
-</div>
-</nav>
-</div>
-<!-- Profile Summary Card -->
-<div class="bg-primary-container text-on-primary-container rounded-xl p-md shadow-lg overflow-hidden relative">
-<div class="absolute top-0 right-0 p-xs bg-secondary text-on-secondary font-label-sm rounded-bl-lg">PREMIUM</div>
-<p class="font-label-sm uppercase tracking-wider mb-xs">Profile Status</p>
-<div class="flex items-center gap-sm mb-md">
-<span class="material-symbols-outlined text-secondary-container" data-weight="fill">verified</span>
-<span class="font-headline-sm">Grade A Verified</span>
-</div>
-<p class="font-body-md opacity-90 leading-snug">Verification ensures 100% genuine executive connections.</p>
-</div>
-</aside>
-<!-- Right Column: Main Content Area -->
-<div class="md:col-span-9">
-<!-- Messages Section -->
-<section class="block animate-in fade-in duration-500" id="section-messages">
-<div class="bg-white rounded-xl border border-outline-variant/30 shadow-sm flex flex-col h-[700px]">
-<!-- Chat Header -->
-<div class="p-md border-b border-outline-variant flex items-center justify-between">
-<div>
-<h3 class="font-headline-sm text-primary">Conversations</h3>
-<p class="font-label-sm text-on-surface-variant">Confidential communication channel</p>
-</div>
-<button class="bg-primary text-white px-md py-sm rounded-full font-label-md hover:bg-opacity-90 transition-all marigold-glow flex items-center gap-sm">
-<span class="material-symbols-outlined text-[18px]">search</span>
-                            Search Threads
-                        </button>
-</div>
-<div class="flex flex-1 overflow-hidden">
-<!-- Thread List -->
-<div class="w-full md:w-80 border-r border-outline-variant overflow-y-auto custom-scrollbar">
-<!-- Thread 1: Blurred (No Interest Yet) -->
-<div class="p-md border-b border-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors relative">
-<div class="flex gap-md">
-<div class="relative">
-<img class="w-14 h-14 rounded-full object-cover blur-md grayscale" data-alt="A blurred portrait of a professional woman, showing only soft shapes and muted colors. The blurring effect maintains privacy while suggesting a high-status individual in professional attire. The background is a clean, modern corporate environment in a light-mode color scheme with warm undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2hxLo0FL9LGITVwxeTfgRFrvAlgKEnEQ23iaOufrmnCHB_NErXi6QVDaCYUhHJbLFCXPvB4mD9jCBdZWs7su0HjEg0PJYAhzPeGQRNqq9A-0H1KV9edWNsB4OuGOQcx1R8mAg-4XaxCxLzn1QWVjjgoOgDEqBRO0VTBl-PwAgwiUq_WovypQBfxXSSEEiNtvBdr0Ad3QKjrunzZL_ZueLN5RhcgOuCyBh63qtBhJLYBrWjIhLUb00CAMkZ3T-did8b_g7e9DOcG_U"/>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-[20px]">lock</span>
-</div>
-</div>
-<div class="flex-1">
-<div class="flex justify-between items-start mb-xs">
-<span class="font-label-md text-primary font-bold">Profile #8821</span>
-<span class="font-label-sm text-on-surface-variant">2h ago</span>
-</div>
-<p class="text-[13px] text-on-surface-variant line-clamp-1 italic">Interest pending mutual consent...</p>
-<div class="mt-base">
-<span class="inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-surface-container-highest text-[10px] font-label-md">IAS Officer</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Thread 2: Active -->
-<div class="p-md border-b border-surface-variant bg-surface-container hover:bg-surface-container-high cursor-pointer transition-colors border-l-4 border-secondary">
-<div class="flex gap-md">
-<img class="w-14 h-14 rounded-full object-cover border border-secondary-container" data-alt="A clear, professional portrait of a woman in her early 30s with a confident smile, wearing elegant ethnic business wear. The lighting is bright and natural, reflecting a sophisticated Heritage Executive aesthetic. She is set against a clean, warm-toned studio background with subtle floral patterns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATf4ryTB7xbrMpo_TP2TB9DY-B3J3IHPhI2gVG5sq8WPZ3hqbS-XZ9-Z9Z74ybKZsKkMpnpJ2OTmlMRbKjcfUlpzl4seoCgoZI92Ve-QV8AD4EQFot1kWz8Ba8JndArCZApcVT0KkoJ7maLyRl5dqN9exml7YCLnj-u0R0xJ9eJA8QXaj2DAdPUCuuWM9MuZUs8gqFwbJ9f6ZTK60tZ7mhRAcCN7Ewyg-sLSJ3ne8eNu3226TsWkCVWWjXOWKcsqjWRSPGS798GLHk"/>
-<div class="flex-1">
-<div class="flex justify-between items-start mb-xs">
-<span class="font-label-md text-primary font-bold">Dr. Ananya Sharma</span>
-<span class="font-label-sm text-secondary font-bold">15m ago</span>
-</div>
-<p class="text-[13px] text-on-surface font-bold line-clamp-1">That sounds wonderful. I appreciate the focus on family values...</p>
-<div class="mt-base flex gap-xs">
-<span class="inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container text-[10px] font-label-md">Verified</span>
-<span class="inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-label-md">Mutual Match</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Thread 3: History -->
-<div class="p-md border-b border-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors">
-<div class="flex gap-md">
-<img class="w-14 h-14 rounded-full object-cover grayscale opacity-70" data-alt="A professional headshot of a creative director in her mid-30s, wearing stylish glasses and a smart blazer. The image is rendered with a slight desaturation to signify a past conversation, maintaining a professional and high-end aesthetic. The background is a modern, light-filled design studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9joAY7ues5UI-B7bHQFl78-y0qNgSAiimMJKPfRXwDTwxMMx_AQbn-1i1NlfDKXf-mT03feT9SJRwBuQ77eS-AjR9saBmndmD9m9soLn3aFADgMz7jTRiDjIjmrYnHs_lJ_h0DHn5Z-iGqiGDnpeH2LLxbBx8PyoX8PZozo1PaGepCASe4_t5ahu8uqLHoMGFnPv6_JYHICi0rYBJlCmAJ3Q67A8Qd3FesrmbyBcUJeXJ80RLLPNanGG8Us1UUUht0WiRqn5fhoJ-"/>
-<div class="flex-1">
-<div class="flex justify-between items-start mb-xs">
-<span class="font-label-md text-on-surface-variant font-bold">Ritika Varma</span>
-<span class="font-label-sm text-on-surface-variant">Yesterday</span>
-</div>
-<p class="text-[13px] text-on-surface-variant line-clamp-1">It was a pleasure connecting with you...</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Chat Canvas (Hidden on mobile for thread list) -->
-<div class="hidden md:flex flex-col flex-1 bg-surface-container-low">
-<div class="p-md border-b border-outline-variant bg-white flex justify-between items-center">
-<div class="flex items-center gap-md">
-<img class="w-10 h-10 rounded-full" data-alt="Clear profile photo of Ananya Sharma." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyJa0BgKbiewdklytM9bGPlsw-W6qOn93rY4Xi8qM7gVlGcB2F1xWB_rHbV9l0y3J4-Sy7_xJltI8ffjpg9wstMmooFaxx4PzWBPYdymwOJLA0-xmTjogAxMfbx_2alz_Zn9FQvxLijM3r2-HCNrEG7WpPOgYNHTRCP-3GdpSVceqWL5lcdL7rLfmTky-raNcrpu9Vwa9AFnX70WdaIYfD5PBiZ7TTlALJ5VH0t03KYfnLv7Q-pZjZQt7dp1OWjE-TC6hSrcAv88A9"/>
-<div>
-<p class="font-label-md font-bold text-on-surface">Dr. Ananya Sharma</p>
-<p class="text-[10px] text-primary flex items-center gap-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> Active Now</p>
-</div>
-</div>
-<div class="flex gap-sm">
-<button class="p-2 text-on-surface-variant hover:text-primary transition-all"><span class="material-symbols-outlined">call</span></button>
-<button class="p-2 text-on-surface-variant hover:text-primary transition-all"><span class="material-symbols-outlined">more_vert</span></button>
-</div>
-</div>
-<div class="flex-1 p-md space-y-md overflow-y-auto custom-scrollbar bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
-<div class="flex justify-center">
-<span class="bg-surface-variant/50 text-on-surface-variant text-[10px] px-3 py-1 rounded-full uppercase tracking-widest font-label-md">Monday, Oct 24</span>
-</div>
-<div class="flex justify-start">
-<div class="max-w-[80%] bg-white p-md rounded-2xl rounded-tl-none shadow-sm border border-outline-variant/20">
-<p class="text-body-md text-on-surface">Namaste. I reviewed your profile via the heritage verified channel. Your professional journey in the healthcare sector is quite impressive.</p>
-<p class="text-[10px] text-on-surface-variant mt-sm text-right">09:15 AM</p>
-</div>
-</div>
-<div class="flex justify-end">
-<div class="max-w-[80%] bg-primary text-white p-md rounded-2xl rounded-tr-none shadow-md">
-<p class="text-body-md">Thank you, Ananya. I strive to maintain a balance between corporate excellence and our traditional values. I see you've recently completed your residency in London.</p>
-<p class="text-[10px] text-primary-fixed-dim mt-sm text-right">09:42 AM <span class="material-symbols-outlined text-[12px] align-middle" data-weight="fill">done_all</span></p>
-</div>
-</div>
-<div class="flex justify-start">
-<div class="max-w-[80%] bg-white p-md rounded-2xl rounded-tl-none shadow-sm border border-outline-variant/20">
-<p class="text-body-md text-on-surface">Yes, that's correct. It was a transformative experience. That sounds wonderful. I appreciate the focus on family values as much as career growth.</p>
-<p class="text-[10px] text-on-surface-variant mt-sm text-right">10:05 AM</p>
-</div>
-</div>
-</div>
-<!-- Input Area -->
-<div class="p-md bg-white border-t border-outline-variant">
-<div class="flex items-center gap-md bg-surface-container-low rounded-full px-md py-sm border border-outline-variant/30 focus-within:border-primary transition-all">
-<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">add_circle</span></button>
-<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md" placeholder="Draft a respectful message..." type="text"/>
-<button class="bg-primary text-white p-2 rounded-full flex items-center justify-center marigold-glow hover:scale-105 transition-transform">
-<span class="material-symbols-outlined" data-weight="fill">send</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Notifications Section -->
-<section class="hidden animate-in fade-in duration-500" id="section-notifications">
-<div class="bg-white rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden">
-<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-bright">
-<h3 class="font-headline-sm text-primary">Activity Center</h3>
-<button class="text-label-md text-secondary font-bold hover:underline">Mark all as read</button>
-</div>
-<div class="divide-y divide-outline-variant/20">
-<!-- Interest Notification -->
-<div class="p-md hover:bg-surface-container-low transition-colors flex gap-md bg-secondary-fixed/10">
-<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-on-secondary-container" data-weight="fill">favorite</span>
-</div>
-<div class="flex-1">
-<div class="flex justify-between">
-<p class="text-body-md text-on-surface"><span class="font-bold">New Match Interest:</span> A verified Class-I Officer has expressed interest in your profile.</p>
-<span class="text-[11px] font-label-md text-secondary">URGENT</span>
-</div>
-<p class="text-label-sm text-on-surface-variant mt-xs">12 minutes ago</p>
-<div class="mt-md flex gap-sm">
-<button class="bg-primary text-white px-md py-base rounded-lg text-label-sm font-bold hover:bg-opacity-90">Review Profile</button>
-<button class="border border-outline-variant px-md py-base rounded-lg text-label-sm font-bold hover:bg-surface-container">Dismiss</button>
-</div>
-</div>
-</div>
-<!-- Verification Update -->
-<div class="p-md hover:bg-surface-container-low transition-colors flex gap-md">
-<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-white" data-weight="fill">verified_user</span>
-</div>
-<div class="flex-1">
-<p class="text-body-md text-on-surface"><span class="font-bold">Peer Verification Update:</span> Your credentials have been successfully cross-verified by 3 peers in the Secretariat.</p>
-<p class="text-label-sm text-on-surface-variant mt-xs">4 hours ago</p>
-<div class="mt-sm">
-<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-primary-container/10 text-primary text-[11px] font-bold">
-<span class="material-symbols-outlined text-[14px]">stars</span>
-                                        TRUST SCORE INCREASED BY 15%
-                                    </span>
-</div>
-</div>
-</div>
-<!-- Profile View -->
-<div class="p-md hover:bg-surface-container-low transition-colors flex gap-md">
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-on-surface-variant">visibility</span>
-</div>
-<div class="flex-1">
-<p class="text-body-md text-on-surface">Your profile was viewed by <span class="font-bold">Senior Consultant (Public Health)</span> from Mumbai.</p>
-<p class="text-label-sm text-on-surface-variant mt-xs">Yesterday, 06:45 PM</p>
-</div>
-</div>
-<!-- Recommendation -->
-<div class="p-md hover:bg-surface-container-low transition-colors flex gap-md border-l-4 border-secondary">
-<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-white">recommend</span>
-</div>
-<div class="flex-1">
-<p class="text-body-md text-on-surface"><span class="font-bold">Curated Match:</span> We've found a profile that aligns 94% with your professional and traditional criteria.</p>
-<p class="text-label-sm text-on-surface-variant mt-xs">2 days ago</p>
-<div class="mt-sm grid grid-cols-2 gap-sm">
-<div class="bg-surface p-sm rounded border border-outline-variant/30 flex items-center gap-sm">
-<img class="w-8 h-8 rounded-full blur-[2px]" data-alt="Blurred profile of a curated match, suggesting high compatibility while respecting privacy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuH9oZ7QdnTRTYlrgUFFHDc2hEj9l0NxqvDzxr8App-hALOXs4zh6GlyemE41w8mcnkF9zmz7125DLhe5gI7Iqe23_SjstLM-R2uXxL3yvIhRLxuU7XG1SrRPsQVbuI5avrA9kbitqraJweSwE2wlaTQ0KeI4-iSWwjRgoAbsQBfQbF6Kuj52fGNYGRtQKbNDqvFP-ev7RiE-y9tihVShbGAKvz2iJ2pIBatbKA5mSmThrqkf9ggjApO6A0LC-pE2EqUMEa-qrInla"/>
-<span class="text-[12px] font-bold text-primary">Heritage Match #902</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-</main>
-<!-- FAB for New Connection (Contextual) -->
-<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 w-14 h-14 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-2xl marigold-glow active:scale-90 transition-all hover:scale-110 z-50" id="fab-search">
-<span class="material-symbols-outlined text-[28px]" data-weight="fill">person_search</span>
-</button>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 w-full z-40 rounded-t-xl bg-surface border-t border-outline-variant shadow-[0_-4px_10px_rgba(0,0,0,0.05)] md:hidden">
-<div class="flex justify-around items-center w-full px-base py-xs pb-6">
-<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-90 transition-transform">
-<span class="material-symbols-outlined">explore</span>
-<span class="font-label-sm text-label-sm">Discover</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-90 transition-transform">
-<span class="material-symbols-outlined">search</span>
-<span class="font-label-sm text-label-sm">Search</span>
-</button>
-<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-4 py-1 active:scale-90 transition-transform">
-<span class="material-symbols-outlined" data-weight="fill">chat</span>
-<span class="font-label-sm text-label-sm">Messages</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-90 transition-transform">
-<span class="material-symbols-outlined">verified_user</span>
-<span class="font-label-sm text-label-sm">Verified</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-90 transition-transform">
-<span class="material-symbols-outlined">account_circle</span>
-<span class="font-label-sm text-label-sm">Profile</span>
-</button>
-</div>
-</nav>
-<script>
-        function switchTab(tab) {
-            const messagesSec = document.getElementById('section-messages');
-            const notificationsSec = document.getElementById('section-notifications');
-            const msgBtn = document.getElementById('tab-btn-messages');
-            const notifBtn = document.getElementById('tab-btn-notifications');
 
-            if (tab === 'messages') {
-                messagesSec.classList.remove('hidden');
-                notificationsSec.classList.add('hidden');
-                
-                msgBtn.className = "w-full flex items-center justify-between p-sm rounded-lg bg-secondary-container text-on-secondary-container font-bold transition-all";
-                notifBtn.className = "w-full flex items-center justify-between p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all";
-            } else {
-                messagesSec.classList.add('hidden');
-                notificationsSec.classList.remove('hidden');
+<!-- LOGIN GATE -->
+<div id="login-gate" style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 40px;">
+  <div style="max-width:380px;width:100%;text-align:center;">
+    <div style="width:60px;height:60px;border-radius:50%;background:#EDF5E0;border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px;">💬</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:#2D5016;font-weight:700;margin-bottom:8px;">Messages</h2>
+    <p style="color:#5C5040;font-size:14px;line-height:1.7;margin-bottom:20px;">Sign in to see your messages and interest notifications.</p>
+    <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-radius:12px;padding:18px;text-align:left;margin-bottom:12px;">
+      <label style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;">Official Email</label>
+      <input type="email" id="msg-email" style="width:100%;padding:11px 14px;background:white;border:1.5px solid #D4C5A0;border-radius:8px;font-size:14px;color:#1C1A14;outline:none;font-family:'DM Sans',sans-serif;" placeholder="name@rbi.org.in"/>
+      <label style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px;margin-top:12px;">Password</label>
+      <input type="password" id="msg-pwd" style="width:100%;padding:11px 14px;background:white;border:1.5px solid #D4C5A0;border-radius:8px;font-size:14px;color:#1C1A14;outline:none;font-family:'DM Sans',sans-serif;" placeholder="Your password"/>
+      <p id="msg-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:8px;font-weight:600;"></p>
+    </div>
+    <button onclick="msgLogin()" id="msg-btn" style="width:100%;padding:13px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;margin-bottom:12px;">Sign In →</button>
+    <p style="color:#5C5040;font-size:12px;">Don't have an account? <a href="my-profile.html" style="color:#2D5016;font-weight:700;">Set up profile →</a></p>
+  </div>
+</div>
 
-                msgBtn.className = "w-full flex items-center justify-between p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all";
-                notifBtn.className = "w-full flex items-center justify-between p-sm rounded-lg bg-secondary-container text-on-secondary-container font-bold transition-all";
-            }
-        }
+<!-- MESSAGES DASHBOARD -->
+<div id="messages-dashboard" style="display:none;max-width:800px;margin:0 auto;padding:90px 20px 40px;">
 
-        // Simple animation on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.bg-white');
-            cards.forEach((card, i) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.transition = 'all 0.5s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, i * 100);
-            });
-        });
-    </script>
+  <!-- Header -->
+  <div style="margin-bottom:24px;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:26px;color:#2D5016;font-weight:700;margin-bottom:4px;">Messages & Notifications</h2>
+    <p style="color:#5C5040;font-size:14px;" id="logged-as">—</p>
+  </div>
 
-<!-- SWAYMVAR: Supabase Connection -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
-const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
-</script>
+  <!-- Tabs -->
+  <div style="display:flex;gap:8px;margin-bottom:20px;">
+    <button class="tab-btn active" onclick="showTab('interests')" id="tab-interests">❤️ Interests</button>
+    <button class="tab-btn" onclick="showTab('notifications')" id="tab-notifications">🔔 Notifications</button>
+  </div>
 
-<!-- SIDEBAR OVERLAY -->
-<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
+  <!-- INTERESTS TAB -->
+  <div id="section-interests">
+    <div id="interests-loading" style="text-align:center;padding:40px;color:#5C5040;">
+      <p style="font-size:32px;margin-bottom:12px;">⏳</p>
+      <p style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;">Loading interests...</p>
+    </div>
+    <div id="interests-empty" style="display:none;text-align:center;padding:60px 24px;">
+      <p style="font-size:40px;margin-bottom:16px;">❤️</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:#2D5016;font-weight:700;margin-bottom:10px;">No interests yet</h3>
+      <p style="color:#5C5040;font-size:14px;line-height:1.7;margin-bottom:20px;">When someone expresses interest in your profile, it will appear here. Browse profiles and express your interest too.</p>
+      <a href="discover.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">Browse Profiles →</a>
+    </div>
+    <div id="interests-list"></div>
+  </div>
+
+  <!-- NOTIFICATIONS TAB -->
+  <div id="section-notifications" style="display:none;">
+    <div style="background:#EDF5E0;border:1px solid #2D5016;border-left:4px solid #C9960C;border-radius:12px;padding:16px 20px;margin-bottom:16px;">
+      <p style="font-family:'Space Mono',monospace;font-size:10px;color:#2D5016;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">🔒 How Introductions Work</p>
+      <p style="color:#5C5040;font-size:13px;line-height:1.65;">SWAYMVAR never shares direct contact details. When both members express interest, our Concierge team facilitates a formal introduction. Your privacy is always protected.</p>
+    </div>
+
+    <!-- Profile status card -->
+    <div class="card card-urgent">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+        <div>
+          <p style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Profile Status</p>
+          <p style="font-weight:700;color:#1C1A14;font-size:15px;" id="notif-status">Checking...</p>
+        </div>
+        <span id="notif-badge" class="badge badge-gold">Pending</span>
+      </div>
+      <p style="color:#5C5040;font-size:13px;line-height:1.6;" id="notif-message">Your profile is being reviewed by our Concierge team. You will receive an email once it goes live.</p>
+    </div>
+
+    <!-- Static helpful notifications -->
+    <div class="card">
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:22px;flex-shrink:0;">🛡️</span>
+        <div>
+          <p style="font-weight:700;color:#1C1A14;font-size:14px;margin-bottom:4px;">Peer Verification</p>
+          <p style="color:#5C5040;font-size:13px;line-height:1.6;">Your identity has been peer verified by a trusted colleague from your organisation. This badge appears on your profile in the Discover feed.</p>
+          <p style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;margin-top:8px;">Completed during invite approval</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:22px;flex-shrink:0;">🔒</span>
+        <div>
+          <p style="font-weight:700;color:#1C1A14;font-size:14px;margin-bottom:4px;">Privacy Active</p>
+          <p style="color:#5C5040;font-size:13px;line-height:1.6;">Your photos are blurred by default. Contact details are never shared. You are in full control.</p>
+          <p style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;margin-top:8px;"><a href="my-profile.html" style="color:#2D5016;text-decoration:underline;">Change privacy settings →</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:22px;flex-shrink:0;">📧</span>
+        <div>
+          <p style="font-weight:700;color:#1C1A14;font-size:14px;margin-bottom:4px;">Contact Concierge</p>
+          <p style="color:#5C5040;font-size:13px;line-height:1.6;">For any queries, profile issues, or introduction requests write directly to our Concierge team.</p>
+          <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:11px;color:#2D5016;text-decoration:underline;margin-top:8px;display:block;">concierge@swaymvar.in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <!-- SIDEBAR -->
+<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
 <div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.3);">
   <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
-    <div><h2 style="font-family:serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;" onclick="window.location='index.html'" style="cursor:pointer;">SWAYMVAR</h2><p style="font-family:monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
+    <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2><p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
     <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">✕</button>
   </div>
   <nav style="padding:8px 0;">
-    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🏠</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
-    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💎</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
-    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">👤</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
-    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💬</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
-    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">✨</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
-    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🛡️</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
-    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">❓</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
-    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🗺️</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🏠</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💎</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
+    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">👤</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
+    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);"><span style="font-size:18px;">💬</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
+    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">✨</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
+    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🛡️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
+    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">❓</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
+    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🗺️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
   </nav>
   <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);">
     <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">✓ Peer Verified Only<br/>✓ All Religions Welcome<br/>✓ Privacy Protected<br/>✦ First 100 Free for Life</p>
   </div>
   <div style="padding:12px 20px;border-top:1px solid rgba(201,150,12,0.15);">
-    <a href="mailto:concierge@swaymvar.in" style="font-family:monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
+    <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+let currentEmail = ''
+
+// Check if already logged in
+document.addEventListener('DOMContentLoaded', async function() {
+  const { data: { session } } = await db.auth.getSession()
+  if (session && session.user) {
+    currentEmail = session.user.email
+    await loadMessages(currentEmail)
+  }
+})
+
+async function msgLogin() {
+  const email = document.getElementById('msg-email').value.trim().toLowerCase()
+  const pwd = document.getElementById('msg-pwd').value
+  const err = document.getElementById('msg-error')
+  const btn = document.getElementById('msg-btn')
+  err.style.display = 'none'
+
+  if (!email || !pwd) {
+    err.style.display = 'block'
+    err.textContent = '❌ Please enter email and password.'
+    return
+  }
+
+  btn.textContent = 'Signing in...'
+  btn.disabled = true
+
+  const { error } = await db.auth.signInWithPassword({ email, password: pwd })
+  btn.textContent = 'Sign In →'
+  btn.disabled = false
+
+  if (error) {
+    err.style.display = 'block'
+    err.textContent = '❌ Wrong email or password.'
+    return
+  }
+
+  currentEmail = email
+  await loadMessages(email)
+}
+
+async function loadMessages(email) {
+  document.getElementById('login-gate').style.display = 'none'
+  document.getElementById('messages-dashboard').style.display = 'block'
+  document.getElementById('logged-as').textContent = 'Signed in as ' + email
+
+  // Load profile status
+  const { data: profiles } = await db.from('profiles').select('*').ilike('email', email)
+  if (profiles && profiles.length > 0) {
+    const p = profiles[0]
+    const statusEl = document.getElementById('notif-status')
+    const badgeEl = document.getElementById('notif-badge')
+    const msgEl = document.getElementById('notif-message')
+
+    if (p.status === 'approved' || p.verified) {
+      statusEl.textContent = '✓ Profile Active'
+      badgeEl.className = 'badge badge-green'
+      badgeEl.textContent = 'Live'
+      msgEl.textContent = 'Your profile is live in the Discover feed. Members can see and express interest in your profile.'
+    } else {
+      statusEl.textContent = '⏳ Profile Under Review'
+      badgeEl.className = 'badge badge-gold'
+      badgeEl.textContent = 'Pending'
+      msgEl.textContent = 'Your profile is being reviewed by our Concierge team. You will receive an email once it goes live. Usually within 24-48 hours.'
+    }
+  }
+
+  // Load interests from interests table (if exists)
+  const { data: interests, error } = await db
+    .from('interests')
+    .select('*')
+    .eq('to_email', email)
+    .order('created_at', { ascending: false })
+
+  document.getElementById('interests-loading').style.display = 'none'
+
+  if (error || !interests || interests.length === 0) {
+    document.getElementById('interests-empty').style.display = 'block'
+    return
+  }
+
+  // Show interests
+  const list = document.getElementById('interests-list')
+  interests.forEach(function(interest) {
+    const card = document.createElement('div')
+    card.className = 'card card-urgent'
+    card.style.cssText = 'margin-bottom:12px;'
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+        <div>
+          <p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">❤️ New Interest</p>
+          <p style="font-weight:700;color:#1C1A14;font-size:15px;">${interest.from_org || 'A verified member'}</p>
+          <p style="color:#5C5040;font-size:13px;margin-top:2px;">${interest.message || 'Has expressed interest in your profile.'}</p>
+        </div>
+        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;">${new Date(interest.created_at).toLocaleDateString('en-IN')}</span>
+      </div>
+      <div style="background:#EDF5E0;border-radius:8px;padding:12px;margin-bottom:12px;">
+        <p style="color:#2D5016;font-size:13px;line-height:1.6;"><strong>What happens next?</strong> Our Concierge team will reach out to you at <strong>${email}</strong> to facilitate a formal introduction if you are also interested.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="mailto:concierge@swaymvar.in?subject=Interested in introduction&body=I am interested in the profile that expressed interest in me." style="padding:10px 18px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">I am Interested →</a>
+        <a href="mailto:concierge@swaymvar.in?subject=Not interested&body=I am not interested in this introduction." style="padding:10px 16px;background:white;color:#5C5040;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border:1px solid #D4C5A0;border-radius:8px;text-decoration:none;">Not Interested</a>
+      </div>
+    `
+    list.appendChild(card)
+  })
+}
+
+function showTab(tab) {
+  document.getElementById('section-interests').style.display = tab === 'interests' ? 'block' : 'none'
+  document.getElementById('section-notifications').style.display = tab === 'notifications' ? 'block' : 'none'
+  document.getElementById('tab-interests').className = 'tab-btn' + (tab === 'interests' ? ' active' : '')
+  document.getElementById('tab-notifications').className = 'tab-btn' + (tab === 'notifications' ? ' active' : '')
+}
+
 function openSidebar() {
   document.getElementById('sidebar').style.left = '0px'
   document.getElementById('sidebar-overlay').style.display = 'block'
@@ -512,4 +308,5 @@ function closeSidebar() {
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
 </script>
-</body></html>
+</body>
+</html>
