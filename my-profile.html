@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWAYMVAR | My Profile</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#2D5016"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="SWAYMVAR"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; padding-bottom: 80px; }
+.font-display { font-family: 'Playfair Display', serif; }
+.font-mono { font-family: 'Space Mono', monospace; }
+.glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(254,252,245,0.93); }
+.form-label { font-family: 'Space Mono', monospace; font-size: 10px; color: #A67C00; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 6px; }
+.form-input { width: 100%; padding: 11px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-size: 14px; color: #1C1A14; outline: none; transition: border-color 0.2s; font-family: 'DM Sans', sans-serif; }
+.form-input:focus { border-color: #C9960C; }
+.form-input:disabled { background: #F9F5EC; color: #5C5040; cursor: not-allowed; }
+.form-select { width: 100%; padding: 11px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-size: 14px; color: #1C1A14; outline: none; font-family: 'DM Sans', sans-serif; }
+.form-textarea { width: 100%; padding: 11px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-size: 14px; color: #1C1A14; outline: none; resize: vertical; min-height: 90px; font-family: 'DM Sans', sans-serif; }
+.section-card { background: white; border: 1px solid #D4C5A0; border-left: 4px solid #C9960C; border-radius: 14px; padding: 24px; margin-bottom: 20px; }
+.trait-btn { padding: 7px 14px; border-radius: 999px; border: 1.5px solid #D4C5A0; background: white; color: #5C5040; font-family: 'Space Mono', monospace; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+.trait-btn.selected { background: #EDF5E0; border-color: #2D5016; color: #2D5016; }
+.edit-btn { padding: 10px 20px; background: #2D5016; color: white; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; border: none; border-radius: 8px; cursor: pointer; }
+.cancel-btn { padding: 10px 20px; background: white; color: #5C5040; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; border: 1.5px solid #D4C5A0; border-radius: 8px; cursor: pointer; }
+.badge-verified { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.4); color: #16a34a; padding: 4px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+.badge-pending { background: rgba(201,150,12,0.1); border: 1px solid rgba(201,150,12,0.4); color: #A67C00; padding: 4px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="glass-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;border-bottom:1px solid #D4C5A0;">
+  <div style="max-width:1000px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+    <a href="index.html" style="text-decoration:none;">
+      <h1 class="font-display" style="font-size:20px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
+      <p class="font-mono" style="font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:2px 0 0;">swaymvar.in</p>
+    </a>
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;" aria-label="Menu">
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:20px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+    </button>
+  </div>
+</header>
+
+<!-- EMAIL LOGIN GATE -->
+<div id="login-gate" style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 40px;">
+  <div style="max-width:420px;width:100%;text-align:center;">
+    <div style="width:64px;height:64px;border-radius:50%;background:#EDF5E0;border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;">👤</div>
+    <h2 class="font-display" style="font-size:26px;color:#2D5016;font-weight:700;margin-bottom:10px;">View My Profile</h2>
+    <p style="color:#5C5040;font-size:14px;line-height:1.7;margin-bottom:24px;">Enter the official email address you used to apply. We will find your profile.</p>
+    <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-radius:12px;padding:20px;text-align:left;margin-bottom:14px;">
+      <label class="form-label">Your Official Email</label>
+      <input type="email" id="login-email" class="form-input" placeholder="name@rbi.org.in" oninput="document.getElementById('login-error').style.display='none'"/>
+      <p id="login-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:8px;font-weight:600;"></p>
+    </div>
+    <button onclick="findProfile()" id="find-btn" style="width:100%;padding:14px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Find My Profile →</button>
+    <p style="color:#5C5040;font-size:12px;margin-top:12px;line-height:1.6;">Don't have a profile yet? <a href="index.html#invite" style="color:#2D5016;font-weight:700;">Apply for waitlist first →</a></p>
+  </div>
+</div>
+
+<!-- PROFILE VIEW -->
+<div id="profile-view" style="display:none;max-width:900px;margin:0 auto;padding:90px 20px 40px;">
+
+  <!-- Profile Header -->
+  <div style="background:#2D5016;border-radius:16px;padding:28px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="width:64px;height:64px;border-radius:50%;background:rgba(201,150,12,0.2);border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;font-size:28px;">👤</div>
+      <div>
+        <h2 class="font-display" style="font-size:24px;color:white;font-weight:700;margin:0 0 4px;" id="view-name">—</h2>
+        <p class="font-mono" style="font-size:10px;color:#E8B84B;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 6px;" id="view-org">—</p>
+        <span id="status-badge" class="badge-pending">Pending Review</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button onclick="enableEdit()" id="edit-toggle-btn" class="edit-btn">✏️ Edit Profile</button>
+      <button onclick="deleteProfile()" style="padding:10px 20px;background:rgba(139,26,26,0.2);color:#f87171;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;border:1px solid rgba(139,26,26,0.4);border-radius:8px;cursor:pointer;">🗑️ Delete</button>
+    </div>
+  </div>
+
+  <!-- PROFILE COMPLETENESS -->
+  <div style="background:#FFF8E1;border:1px solid #C9960C;border-radius:12px;padding:16px 20px;margin-bottom:20px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <p class="font-mono" style="font-size:10px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;">Profile Completeness</p>
+      <p class="font-mono" style="font-size:12px;color:#2D5016;font-weight:700;" id="completeness-pct">0%</p>
+    </div>
+    <div style="height:6px;background:#EDE5D0;border-radius:3px;overflow:hidden;">
+      <div id="completeness-bar" style="height:100%;background:#C9960C;border-radius:3px;width:0%;transition:width 0.8s ease;"></div>
+    </div>
+    <p style="color:#5C5040;font-size:12px;margin-top:8px;" id="completeness-tip">Complete your profile to improve visibility in the Discover feed.</p>
+  </div>
+
+  <!-- BASIC INFO -->
+  <div class="section-card" id="basic-section">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;">Basic Information</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div><label class="form-label">First Name</label><input type="text" class="form-input" id="edit-fname" disabled/></div>
+      <div><label class="form-label">Last Name</label><input type="text" class="form-input" id="edit-lname" disabled/></div>
+      <div><label class="form-label">Age</label><input type="number" class="form-input" id="edit-age" disabled/></div>
+      <div><label class="form-label">Height</label><input type="text" class="form-input" id="edit-height" disabled/></div>
+      <div><label class="form-label">Mother Tongue</label><input type="text" class="form-input" id="edit-language" disabled/></div>
+      <div><label class="form-label">Education</label><input type="text" class="form-input" id="edit-education" disabled/></div>
+    </div>
+    <div style="margin-top:14px;"><label class="form-label">About Yourself</label><textarea class="form-textarea" id="edit-about" disabled></textarea></div>
+  </div>
+
+  <!-- WORK & POSTING -->
+  <div class="section-card">
+    <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:16px;">Work & Posting</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div><label class="form-label">Organisation</label><input type="text" class="form-input" id="edit-org" disabled/></div>
+      <div><label class="form-label">Designation</label><input type="text" class="form-input" id="edit-designation" disabled/></div>
+      <div><label class="form-label">Current City</label><input type="text" class="form-input" id="edit-city" disabled/></div>
+      <div><label class="form-label">State</label><input type="text" class="form-input" id="edit-state" disabled/></div>
+      <div style="grid-column:1/-1;"><label class="form-label">Relocation Openness</label><input type="text" class="form-input" id="edit-relocation" disabled/></div>
+    </div>
+  </div>
+
+  <!-- PERSONALITY & LIFE -->
+  <div class="section-card">
+    <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:16px;">Personality & Life Preferences</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div><label class="form-label">Personality</label><input type="text" class="form-input" id="edit-personality" disabled/></div>
+      <div><label class="form-label">Traits</label><input type="text" class="form-input" id="edit-traits" disabled/></div>
+      <div><label class="form-label">Diet</label><input type="text" class="form-input" id="edit-diet" disabled/></div>
+      <div><label class="form-label">Travel Style</label><input type="text" class="form-input" id="edit-travel" disabled/></div>
+      <div><label class="form-label">Social Life</label><input type="text" class="form-input" id="edit-social" disabled/></div>
+      <div><label class="form-label">Cooking</label><input type="text" class="form-input" id="edit-cooking" disabled/></div>
+      <div><label class="form-label">Children</label><input type="text" class="form-input" id="edit-children" disabled/></div>
+      <div><label class="form-label">Parents</label><input type="text" class="form-input" id="edit-parents" disabled/></div>
+    </div>
+  </div>
+
+  <!-- PRIVACY SETTINGS -->
+  <div class="section-card">
+    <p class="font-mono" style="font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:16px;">Privacy Settings</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div>
+        <label class="form-label">Photo Visibility</label>
+        <select class="form-select" id="edit-photo-privacy" disabled>
+          <option value="blurred">🔒 Blurred for everyone</option>
+          <option value="mutual">🔑 Visible on mutual interest</option>
+          <option value="visible">👁️ Visible to all verified</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label">Name Visibility</label>
+        <select class="form-select" id="edit-name-privacy" disabled>
+          <option value="first">First name only</option>
+          <option value="full">Full name visible</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAVE CHANGES BUTTON (hidden until edit mode) -->
+  <div id="save-changes-bar" style="display:none;position:sticky;bottom:20px;background:white;border:1px solid #D4C5A0;border-radius:12px;padding:16px 20px;box-shadow:0 4px 20px rgba(45,80,22,0.12);display:none;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;">
+    <p style="color:#5C5040;font-size:13px;">You have unsaved changes</p>
+    <div style="display:flex;gap:10px;">
+      <button onclick="cancelEdit()" class="cancel-btn">Cancel</button>
+      <button onclick="saveChanges()" style="padding:10px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Save Changes ✓</button>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRMATION -->
+  <div id="delete-confirm" style="display:none;background:#FDF0F0;border:1px solid #8B1A1A;border-radius:12px;padding:20px;margin-top:16px;">
+    <p style="font-weight:700;color:#8B1A1A;font-size:14px;margin-bottom:8px;">⚠️ Delete Your Profile?</p>
+    <p style="color:#5C5040;font-size:13px;line-height:1.65;margin-bottom:14px;">This will permanently delete your profile and all your data from SWAYMVAR. This cannot be undone. You will need to re-apply if you wish to rejoin.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button onclick="confirmDelete()" style="padding:10px 20px;background:#8B1A1A;color:white;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;border:none;border-radius:8px;cursor:pointer;">Yes, Delete Everything</button>
+      <button onclick="document.getElementById('delete-confirm').style.display='none'" class="cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
+<div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.3);">
+  <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
+    <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2><p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
+    <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">✕</button>
+  </div>
+  <nav style="padding:8px 0;">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:20px;">🏠</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:20px;">💎</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
+    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);"><span style="font-size:20px;">👤</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
+    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:20px;">✨</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
+    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:16px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:20px;">🛡️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
+  </nav>
+  <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);">
+    <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">✓ Peer Verified Only<br/>✓ All Religions Welcome<br/>✓ Privacy Protected<br/>✦ First 100 Free for Life</p>
+  </div>
+  <div style="padding:12px 20px;border-top:1px solid rgba(201,150,12,0.15);">
+    <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+let currentProfile = null
+let editMode = false
+
+// ── FIND PROFILE BY EMAIL ──
+async function findProfile() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase()
+  const errorEl = document.getElementById('login-error')
+  const btn = document.getElementById('find-btn')
+
+  errorEl.style.display = 'none'
+
+  if (!email || !email.includes('@')) {
+    errorEl.style.display = 'block'
+    errorEl.textContent = '❌ Please enter a valid email address.'
+    return
+  }
+
+  btn.textContent = 'Searching...'
+  btn.disabled = true
+
+  // Check profiles table
+  const { data: profiles, error: pErr } = await db
+    .from('profiles')
+    .select('*')
+    .eq('email', email)
+
+  // Also check invite_requests for approved members
+  const { data: invites, error: iErr } = await db
+    .from('invite_requests')
+    .select('*')
+    .eq('email', email)
+
+  btn.textContent = 'Find My Profile →'
+  btn.disabled = false
+
+  if (profiles && profiles.length > 0) {
+    currentProfile = profiles[0]
+    showProfileView(currentProfile, 'profile')
+    return
+  }
+
+  if (invites && invites.length > 0) {
+    currentProfile = invites[0]
+    showProfileView(currentProfile, 'invite')
+    return
+  }
+
+  errorEl.style.display = 'block'
+  errorEl.textContent = '❌ No profile found with this email. Please check the email you used to apply.'
+}
+
+function showProfileView(data, type) {
+  document.getElementById('login-gate').style.display = 'none'
+  document.getElementById('profile-view').style.display = 'block'
+
+  // Name
+  const fullName = data.full_name || '—'
+  document.getElementById('view-name').textContent = fullName
+  document.getElementById('view-org').textContent = (data.org || '—') + ' · ' + (data.city || '—')
+
+  // Status badge
+  const badge = document.getElementById('status-badge')
+  if (data.status === 'approved' || data.verified) {
+    badge.className = 'badge-verified'
+    badge.textContent = '✓ Verified Member'
+  } else if (data.status === 'pending') {
+    badge.className = 'badge-pending'
+    badge.textContent = '⏳ Pending Review'
+  } else {
+    badge.className = 'badge-pending'
+    badge.textContent = data.status || 'Pending'
+  }
+
+  // Fill fields
+  const parts = fullName.split(' ')
+  document.getElementById('edit-fname').value = parts[0] || ''
+  document.getElementById('edit-lname').value = parts.slice(1).join(' ') || ''
+  document.getElementById('edit-org').value = data.org || ''
+  document.getElementById('edit-designation').value = data.designation || ''
+  document.getElementById('edit-city').value = data.city || ''
+  document.getElementById('edit-state').value = data.state || ''
+  document.getElementById('edit-relocation').value = data.relocation || ''
+  document.getElementById('edit-about').value = data.about || ''
+  document.getElementById('edit-education').value = data.education || ''
+  document.getElementById('edit-personality').value = data.personality || ''
+  document.getElementById('edit-traits').value = data.traits || ''
+  document.getElementById('edit-diet').value = data.diet || ''
+  document.getElementById('edit-travel').value = data.travel || ''
+  document.getElementById('edit-social').value = data.social_life || ''
+  document.getElementById('edit-cooking').value = data.cooking || ''
+  document.getElementById('edit-children').value = data.children || ''
+  document.getElementById('edit-parents').value = data.parents || ''
+
+  // Calculate completeness
+  const fields = ['full_name','org','designation','city','about','education','diet','travel','traits','personality']
+  const filled = fields.filter(f => data[f] && data[f].toString().trim().length > 0).length
+  const pct = Math.round((filled / fields.length) * 100)
+  document.getElementById('completeness-pct').textContent = pct + '%'
+  document.getElementById('completeness-bar').style.width = pct + '%'
+  document.getElementById('completeness-bar').style.background = pct >= 80 ? '#2D5016' : pct >= 50 ? '#C9960C' : '#8B1A1A'
+
+  if (pct === 100) {
+    document.getElementById('completeness-tip').textContent = '✓ Profile is complete. You have maximum visibility in the Discover feed.'
+    document.getElementById('completeness-tip').style.color = '#2D5016'
+  } else {
+    document.getElementById('completeness-tip').textContent = 'Complete all sections to improve your visibility in the Discover feed. ' + (100 - pct) + '% remaining.'
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+// ── EDIT MODE ──
+function enableEdit() {
+  editMode = true
+  const inputs = document.querySelectorAll('#profile-view input, #profile-view textarea, #profile-view select')
+  inputs.forEach(function(el) {
+    if (el.id !== 'login-email') el.disabled = false
+  })
+  document.getElementById('edit-toggle-btn').textContent = '✏️ Editing...'
+  document.getElementById('edit-toggle-btn').style.background = '#C9960C'
+  document.getElementById('edit-toggle-btn').style.color = '#1C1A14'
+  document.getElementById('save-changes-bar').style.display = 'flex'
+}
+
+function cancelEdit() {
+  editMode = false
+  const inputs = document.querySelectorAll('#profile-view input, #profile-view textarea, #profile-view select')
+  inputs.forEach(function(el) { el.disabled = true })
+  document.getElementById('edit-toggle-btn').textContent = '✏️ Edit Profile'
+  document.getElementById('edit-toggle-btn').style.background = '#2D5016'
+  document.getElementById('edit-toggle-btn').style.color = 'white'
+  document.getElementById('save-changes-bar').style.display = 'none'
+  // Restore original values
+  if (currentProfile) showProfileView(currentProfile, 'profile')
+}
+
+async function saveChanges() {
+  if (!currentProfile) return
+
+  const btn = document.querySelector('#save-changes-bar button:last-child')
+  btn.textContent = 'Saving...'
+  btn.disabled = true
+
+  const fname = document.getElementById('edit-fname').value.trim()
+  const lname = document.getElementById('edit-lname').value.trim()
+
+  const updates = {
+    full_name:   fname + (lname ? ' ' + lname : ''),
+    org:         document.getElementById('edit-org').value,
+    designation: document.getElementById('edit-designation').value,
+    city:        document.getElementById('edit-city').value,
+    state:       document.getElementById('edit-state').value,
+    relocation:  document.getElementById('edit-relocation').value,
+    about:       document.getElementById('edit-about').value,
+    education:   document.getElementById('edit-education').value,
+    diet:        document.getElementById('edit-diet').value,
+    travel:      document.getElementById('edit-travel').value,
+    social_life: document.getElementById('edit-social').value,
+    cooking:     document.getElementById('edit-cooking').value,
+    children:    document.getElementById('edit-children').value,
+    parents:     document.getElementById('edit-parents').value,
+  }
+
+  const table = currentProfile.org && !currentProfile.about ? 'invite_requests' : 'profiles'
+
+  const { error } = await db
+    .from(table)
+    .update(updates)
+    .eq('id', currentProfile.id)
+
+  btn.textContent = 'Save Changes ✓'
+  btn.disabled = false
+
+  if (!error) {
+    currentProfile = { ...currentProfile, ...updates }
+    cancelEdit()
+    // Show success toast
+    showToast('✓ Profile updated successfully')
+  } else {
+    alert('Error saving: ' + error.message)
+  }
+}
+
+// ── DELETE ──
+function deleteProfile() {
+  document.getElementById('delete-confirm').style.display = 'block'
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+}
+
+async function confirmDelete() {
+  if (!currentProfile) return
+
+  const { error: e1 } = await db.from('profiles').delete().eq('id', currentProfile.id)
+  const { error: e2 } = await db.from('invite_requests').delete().eq('email', currentProfile.email || '')
+
+  if (!e1 && !e2) {
+    document.getElementById('profile-view').innerHTML = '<div style="text-align:center;padding:60px 24px;"><p style="font-size:32px;margin-bottom:16px;">🗑️</p><h3 style="font-family:Playfair Display,serif;font-size:24px;color:#2D5016;margin-bottom:12px;">Profile Deleted</h3><p style="color:#5C5040;font-size:14px;margin-bottom:24px;">All your data has been permanently removed from SWAYMVAR.</p><a href="index.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:Space Mono,monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;">Back to Home</a></div>'
+  } else {
+    alert('Error deleting. Please write to concierge@swaymvar.in and we will remove your data within 72 hours.')
+  }
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.createElement('div')
+  t.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:999;padding:12px 20px;background:#EDF5E0;border:1px solid #2D5016;border-radius:10px;font-family:Space Mono,monospace;font-size:12px;color:#2D5016;box-shadow:0 4px 20px rgba(0,0,0,0.1);'
+  t.textContent = msg
+  document.body.appendChild(t)
+  setTimeout(function() { t.remove() }, 3000)
+}
+
+// Allow Enter on email field
+document.addEventListener('DOMContentLoaded', function() {
+  const em = document.getElementById('login-email')
+  if (em) em.addEventListener('keydown', function(e) { if (e.key === 'Enter') findProfile() })
+})
+
+// ── SIDEBAR ──
+function openSidebar() {
+  document.getElementById('sidebar').style.left = '0px'
+  document.getElementById('sidebar-overlay').style.display = 'block'
+  document.body.style.overflow = 'hidden'
+  document.body.style.position = 'fixed'
+  document.body.style.width = '100%'
+}
+function closeSidebar() {
+  document.getElementById('sidebar').style.left = '-300px'
+  document.getElementById('sidebar-overlay').style.display = 'none'
+  document.body.style.overflow = ''
+  document.body.style.position = ''
+  document.body.style.width = ''
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
+</script>
+</body>
+</html>
