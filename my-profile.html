@@ -9,6 +9,7 @@
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#2D5016"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,6 +30,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
 .badge-verified { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.4); color: #16a34a; padding: 4px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; }
 .badge-pending { background: rgba(201,150,12,0.1); border: 1px solid rgba(201,150,12,0.4); color: #A67C00; padding: 4px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; }
 </style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 </head>
 <body>
 
@@ -156,6 +158,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
     <button class="tab-btn" onclick="switchSection('personality')" id="sec-personality">🧠 Personality</button>
     <button class="tab-btn" onclick="switchSection('life')" id="sec-life">❤️ Life</button>
     <button class="tab-btn" onclick="switchSection('privacy')" id="sec-privacy">🔒 Privacy</button>
+    <button class="tab-btn" onclick="switchSection('preview')" id="sec-preview">👁️ Preview</button>
   </div>
 
   <!-- PHOTOS -->
@@ -285,6 +288,138 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
     </div>
   </div>
 
+  <!-- PREVIEW SECTION -->
+  <div id="sec-content-preview" class="section-card" style="display:none;">
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:6px;">Profile Preview</p>
+    <p style="color:#5C5040;font-size:13px;margin-bottom:20px;">This is exactly how your profile appears to other members — before and after mutual interest.</p>
+
+    <!-- Toggle -->
+    <div style="display:flex;background:#F0EDE6;border-radius:10px;padding:4px;margin-bottom:20px;max-width:340px;">
+      <button onclick="showPreview('before')" id="prev-before" style="flex:1;padding:10px;border:none;border-radius:8px;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;cursor:pointer;background:#2D5016;color:white;font-weight:700;">🔒 Before Interest</button>
+      <button onclick="showPreview('after')" id="prev-after" style="flex:1;padding:10px;border:none;border-radius:8px;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;cursor:pointer;background:transparent;color:#5C5040;">✓ After Match</button>
+    </div>
+
+    <!-- BEFORE INTEREST VIEW -->
+    <div id="preview-before">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#8B1A1A;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">🔒 What others see BEFORE expressing interest</p>
+      <div style="background:#1C1A14;border-radius:14px;padding:20px;max-width:380px;">
+        <!-- Photo blurred -->
+        <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;">
+          <div style="width:72px;height:72px;border-radius:12px;background:rgba(201,150,12,0.15);border:1px solid rgba(201,150,12,0.3);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;filter:blur(6px);">
+            <span style="font-size:28px;">👤</span>
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <p id="prev-name-hidden" style="font-family:'Playfair Display',serif;font-size:18px;color:white;font-weight:700;">—</p>
+              <span style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);color:#4ade80;padding:2px 8px;border-radius:999px;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;">✓ Peer Verified</span>
+            </div>
+            <p id="prev-org-hidden" style="font-family:'Space Mono',monospace;font-size:10px;color:#E8B84B;margin-bottom:4px;">—</p>
+            <p id="prev-city-hidden" style="font-size:13px;color:rgba(255,255,255,0.5);">—</p>
+          </div>
+        </div>
+
+        <!-- Blurred photo notice -->
+        <div style="background:rgba(255,255,255,0.05);border:1px dashed rgba(255,255,255,0.15);border-radius:10px;padding:12px;text-align:center;margin-bottom:14px;">
+          <p style="font-size:20px;margin-bottom:4px;">🔒</p>
+          <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;">Photo visible after mutual interest</p>
+        </div>
+
+        <!-- Visible info -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:3px;">Organisation</p>
+            <p id="prev-org2-hidden" style="font-size:13px;color:white;font-weight:600;">—</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:3px;">Posting City</p>
+            <p id="prev-city2-hidden" style="font-size:13px;color:white;font-weight:600;">—</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:3px;">Relocation</p>
+            <p id="prev-reloc-hidden" style="font-size:13px;color:white;font-weight:600;">—</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:3px;">Diet</p>
+            <p id="prev-diet-hidden" style="font-size:13px;color:white;font-weight:600;">—</p>
+          </div>
+        </div>
+
+        <!-- Traits visible -->
+        <div style="margin-bottom:14px;">
+          <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:8px;">Personality Traits</p>
+          <div id="prev-traits-hidden" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+        </div>
+
+        <!-- Contact details hidden -->
+        <div style="background:rgba(139,26,26,0.1);border:1px solid rgba(139,26,26,0.2);border-radius:8px;padding:10px;text-align:center;">
+          <p style="font-size:12px;color:rgba(255,255,255,0.4);">🔒 Contact details not visible</p>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#5C5040;margin-top:10px;">Name is shown. Photo, contact details, and About section are hidden until mutual interest.</p>
+    </div>
+
+    <!-- AFTER MATCH VIEW -->
+    <div id="preview-after" style="display:none;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#2D5016;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">✓ What others see AFTER mutual interest</p>
+      <div style="background:#1C1A14;border-radius:14px;padding:20px;max-width:380px;">
+        <!-- Photo visible -->
+        <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;">
+          <div style="width:72px;height:72px;border-radius:12px;background:rgba(201,150,12,0.15);border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:32px;">👤</span>
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <p id="prev-name-shown" style="font-family:'Playfair Display',serif;font-size:18px;color:white;font-weight:700;">—</p>
+              <span style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);color:#4ade80;padding:2px 8px;border-radius:999px;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;">✓ Peer Verified</span>
+            </div>
+            <p id="prev-org-shown" style="font-family:'Space Mono',monospace;font-size:10px;color:#E8B84B;margin-bottom:4px;">—</p>
+            <p id="prev-desig-shown" style="font-size:13px;color:rgba(255,255,255,0.6);">—</p>
+          </div>
+        </div>
+
+        <!-- About visible -->
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;margin-bottom:14px;">
+          <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:6px;">About</p>
+          <p id="prev-about-shown" style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;font-style:italic;">—</p>
+        </div>
+
+        <!-- Full details -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:3px;">Organisation</p>
+            <p id="prev-org2-shown" style="font-size:13px;color:white;font-weight:600;">—</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:3px;">City</p>
+            <p id="prev-city2-shown" style="font-size:13px;color:white;font-weight:600;">—</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:3px;">Relocation</p>
+            <p id="prev-reloc-shown" style="font-size:13px;color:white;font-weight:600;">—</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:3px;">Diet</p>
+            <p id="prev-diet-shown" style="font-size:13px;color:white;font-weight:600;">—</p>
+          </div>
+        </div>
+
+        <!-- Traits -->
+        <div style="margin-bottom:14px;">
+          <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:8px;">Personality Traits</p>
+          <div id="prev-traits-shown" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+        </div>
+
+        <!-- Mutual match notice -->
+        <div style="background:rgba(45,80,22,0.3);border:1px solid rgba(45,80,22,0.5);border-radius:8px;padding:12px;text-align:center;">
+          <p style="color:#4ade80;font-size:13px;font-weight:600;">✓ Mutual Interest Confirmed</p>
+          <p style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:4px;">Both parties notified. Introduction can proceed.</p>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#5C5040;margin-top:10px;">After mutual interest: full profile visible including About section and photo.</p>
+    </div>
+
+  </div>
+
   <!-- Save bar -->
   <div style="position:sticky;bottom:16px;background:white;border:1px solid #D4C5A0;border-radius:12px;padding:14px 20px;box-shadow:0 4px 20px rgba(45,80,22,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:8px;">
     <p style="color:#5C5040;font-size:13px;" id="save-status">Make changes in any tab then save.</p>
@@ -367,11 +502,44 @@ async function doLogin() {
   const email = document.getElementById('login-email').value.trim().toLowerCase()
   const pwd = document.getElementById('login-pwd').value
   const err = document.getElementById('login-error')
+  const btn = document.getElementById('auth-btn')
   err.style.display = 'none'
-  if (!email || !pwd) { err.style.display='block'; err.textContent='❌ Enter email and password.'; document.getElementById('auth-btn').textContent='Sign In →'; return }
-  const { error } = await db.auth.signInWithPassword({ email, password: pwd })
-  if (error) { err.style.display='block'; err.textContent='❌ Wrong email or password. Try again.'; document.getElementById('auth-btn').textContent='Sign In →'; return }
-  await loadProfileForUser(email)
+
+  if (!email || !pwd) {
+    err.style.display = 'block'
+    err.textContent = '❌ Enter your email and password.'
+    btn.textContent = 'Sign In →'
+    btn.disabled = false
+    return
+  }
+
+  try {
+    const { data, error } = await db.auth.signInWithPassword({ email, password: pwd })
+    console.log('Login result:', data, error)
+
+    if (error) {
+      err.style.display = 'block'
+      if (error.message.includes('Invalid login') || error.message.includes('invalid')) {
+        err.textContent = '❌ Wrong email or password. Use "Set Password" tab if first time.'
+      } else if (error.message.includes('Email not confirmed')) {
+        err.textContent = '❌ Please check your email and confirm your account first.'
+      } else {
+        err.textContent = '❌ ' + error.message
+      }
+      btn.textContent = 'Sign In →'
+      btn.disabled = false
+      return
+    }
+
+    await loadProfileForUser(email)
+
+  } catch (e) {
+    console.error('Login error:', e)
+    err.style.display = 'block'
+    err.textContent = '❌ Connection error. Please try again.'
+    btn.textContent = 'Sign In →'
+    btn.disabled = false
+  }
 }
 
 async function doRegister() {
@@ -388,9 +556,29 @@ async function doRegister() {
   const { data: prof } = await db.from('profiles').select('email').ilike('email', email)
   const approved = (inv && inv.some(function(i){return i.status==='approved'})) || (prof && prof.length>0)
   if (!approved) { err.style.display='block'; err.textContent='❌ This email is not on our approved list. Apply on the waitlist first.'; document.getElementById('auth-btn').textContent='Set Password & Sign In →'; return }
-  const { error } = await db.auth.signUp({ email, password: pwd })
-  if (error && !error.message.includes('already')) { err.style.display='block'; err.textContent='❌ '+error.message; document.getElementById('auth-btn').textContent='Set Password & Sign In →'; return }
-  await db.auth.signInWithPassword({ email, password: pwd })
+  // Try sign up
+  const { data: signUpData, error: signUpError } = await db.auth.signUp({ email, password: pwd })
+  console.log('Signup result:', signUpData, signUpError)
+
+  if (signUpError && !signUpError.message.includes('already')) {
+    err.style.display='block'
+    err.textContent='❌ ' + signUpError.message
+    document.getElementById('auth-btn').textContent='Set Password & Sign In →'
+    return
+  }
+
+  // Try sign in immediately
+  const { data: signInData, error: signInError } = await db.auth.signInWithPassword({ email, password: pwd })
+  console.log('Auto signin result:', signInData, signInError)
+
+  if (signInError) {
+    err.style.display='block'
+    err.textContent='✓ Account created. Check your email to confirm, then Sign In.'
+    err.style.color = '#2D5016'
+    document.getElementById('auth-btn').textContent='Set Password & Sign In →'
+    return
+  }
+
   await loadProfileForUser(email)
 }
 
@@ -509,11 +697,68 @@ async function confirmDelete() {
 
 // ── SECTIONS ──
 function switchSection(name) {
-  const secs=['photos','basic','work','personality','life','privacy']
+  const secs=['photos','basic','work','personality','life','privacy','preview']
   secs.forEach(function(s){
     document.getElementById('sec-content-'+s).style.display=s===name?'block':'none'
     document.getElementById('sec-'+s).className='tab-btn'+(s===name?' active':'')
   })
+  if (name === 'preview') populatePreview()
+}
+
+function showPreview(mode) {
+  document.getElementById('preview-before').style.display = mode==='before'?'block':'none'
+  document.getElementById('preview-after').style.display = mode==='after'?'block':'none'
+  document.getElementById('prev-before').style.background = mode==='before'?'#2D5016':'transparent'
+  document.getElementById('prev-before').style.color = mode==='before'?'white':'#5C5040'
+  document.getElementById('prev-after').style.background = mode==='after'?'#2D5016':'transparent'
+  document.getElementById('prev-after').style.color = mode==='after'?'white':'#5C5040'
+}
+
+function populatePreview() {
+  if (!currentRecord) return
+  const d = currentRecord
+  const name = d.full_name || '—'
+  const org = d.org || '—'
+  const city = d.city || '—'
+  const desig = d.designation || '—'
+  const reloc = d.relocation || '—'
+  const about = d.about || 'No about section added yet.'
+  const diet = d.diet || '—'
+  const traits = d.traits ? d.traits.split(', ') : []
+
+  // Before interest
+  document.getElementById('prev-name-hidden').textContent = name
+  document.getElementById('prev-org-hidden').textContent = org + ' · ' + desig
+  document.getElementById('prev-city-hidden').textContent = '📍 ' + city
+  document.getElementById('prev-org2-hidden').textContent = org
+  document.getElementById('prev-city2-hidden').textContent = city
+  document.getElementById('prev-reloc-hidden').textContent = reloc
+  document.getElementById('prev-diet-hidden').textContent = diet
+
+  // After match
+  document.getElementById('prev-name-shown').textContent = name
+  document.getElementById('prev-org-shown').textContent = org + ' · ' + desig
+  document.getElementById('prev-desig-shown').textContent = '📍 ' + city
+  document.getElementById('prev-about-shown').textContent = about
+  document.getElementById('prev-org2-shown').textContent = org
+  document.getElementById('prev-city2-shown').textContent = city
+  document.getElementById('prev-reloc-shown').textContent = reloc
+  document.getElementById('prev-diet-shown').textContent = diet
+
+  // Traits
+  function renderTraits(containerId) {
+    const el = document.getElementById(containerId)
+    el.innerHTML = ''
+    traits.slice(0, 6).forEach(function(t) {
+      const span = document.createElement('span')
+      span.style.cssText = 'background:rgba(201,150,12,0.15);border:1px solid rgba(201,150,12,0.3);color:#E8B84B;padding:4px 10px;border-radius:999px;font-family:Space Mono,monospace;font-size:10px;'
+      span.textContent = t
+      el.appendChild(span)
+    })
+    if (!traits.length) el.innerHTML = '<span style="color:rgba(255,255,255,0.3);font-size:13px;">No traits added yet</span>'
+  }
+  renderTraits('prev-traits-hidden')
+  renderTraits('prev-traits-shown')
 }
 
 // ── PHOTOS ──
