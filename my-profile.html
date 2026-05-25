@@ -230,38 +230,49 @@ async function findProfile() {
   btn.textContent = 'Searching...'
   btn.disabled = true
 
-  // Check profiles table
-  const { data: profiles, error: pErr } = await db
+  // Check profiles table first
+  const { data: profiles } = await db
     .from('profiles')
     .select('*')
-    .eq('email', email)
+    .ilike('email', email)
 
-  // Also check invite_requests for approved members
-  const { data: invites, error: iErr } = await db
+  // Also check invite_requests
+  const { data: invites } = await db
     .from('invite_requests')
     .select('*')
-    .eq('email', email)
+    .ilike('email', email)
 
   btn.textContent = 'Find My Profile →'
   btn.disabled = false
 
   if (profiles && profiles.length > 0) {
-    currentProfile = profiles[0]
-    showProfileView(currentProfile, 'profile')
+    currentProfile = { ...profiles[0], _table: 'profiles' }
+    showProfileView(currentProfile)
     return
   }
 
   if (invites && invites.length > 0) {
-    currentProfile = invites[0]
-    showProfileView(currentProfile, 'invite')
-    return
+    const inv = invites[0]
+    if (inv.status === 'approved') {
+      currentProfile = { ...inv, _table: 'invite_requests' }
+      showProfileView(currentProfile)
+      return
+    } else if (inv.status === 'pending') {
+      errorEl.style.display = 'block'
+      errorEl.textContent = '⏳ Your application is under review. You will receive an email when approved.'
+      return
+    } else if (inv.status === 'rejected') {
+      errorEl.style.display = 'block'
+      errorEl.textContent = '❌ Your application was not approved. Write to concierge@swaymvar.in for help.'
+      return
+    }
   }
 
   errorEl.style.display = 'block'
-  errorEl.textContent = '❌ No profile found with this email. Please check the email you used to apply.'
+  errorEl.textContent = '❌ No record found with this email. Please use the exact email you applied with.'
 }
 
-function showProfileView(data, type) {
+function showProfileView(data) {
   document.getElementById('login-gate').style.display = 'none'
   document.getElementById('profile-view').style.display = 'block'
 
