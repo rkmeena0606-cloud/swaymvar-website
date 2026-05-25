@@ -142,7 +142,7 @@ body { background: #0f0f0d; color: white; font-family: 'DM Sans', sans-serif; pa
 
   <!-- ACTION BUTTONS -->
   <div id="action-section">
-    <button onclick="expressInterest()" id="interest-btn" style="width:100%;padding:16px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:10px;cursor:pointer;font-weight:700;margin-bottom:10px;">❤️ Express Interest</button>
+    <button onclick="expressInterest()" id="interest-btn" disabled style="width:100%;padding:16px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:10px;cursor:pointer;font-weight:700;margin-bottom:10px;" id="interest-btn-inner">❤️ Express Interest</button>
 
     <!-- Interest form (hidden initially) -->
     <div id="interest-form" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.2);border-radius:12px;padding:18px;margin-bottom:10px;">
@@ -198,6 +198,21 @@ body { background: #0f0f0d; color: white; font-family: 'DM Sans', sans-serif; pa
 const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
 const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+// ── HARD LOGIN GATE — runs immediately on page load ──
+document.addEventListener('DOMContentLoaded', async function() {
+  const { data: { session } } = await db.auth.getSession()
+  if (!session || !session.user) {
+    // Hide entire main content
+    document.querySelector('main').style.display = 'none'
+    // Show gate
+    document.getElementById('profile-gate').style.display = 'flex'
+  } else {
+    // Logged in — show interest button normally
+    document.getElementById('profile-gate').style.display = 'none'
+    document.querySelector('main').style.display = 'block'
+  }
+})
 
 async function expressInterest() {
   // Check if logged in first
@@ -282,5 +297,19 @@ function closeSidebar() {
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
 </script>
+
+<!-- PROFILE LOGIN GATE -->
+<div id="profile-gate" style="display:none;position:fixed;inset:0;z-index:997;background:rgba(15,15,13,0.95);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:16px;padding:32px 24px;max-width:400px;width:100%;text-align:center;">
+    <p style="font-size:36px;margin-bottom:16px;">🔒</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:22px;color:white;font-weight:700;margin-bottom:10px;">Members Only</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.75;margin-bottom:24px;">Sign in to view profiles and express interest. Only verified SWAYMVAR members can browse profiles.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <a href="my-profile.html" style="display:block;padding:14px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
+      <a href="index.html#invite" style="display:block;padding:13px;background:rgba(201,150,12,0.1);color:#E8B84B;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border:1px solid rgba(201,150,12,0.3);border-radius:8px;text-decoration:none;">Apply for Waitlist →</a>
+      <a href="index.html" style="display:block;padding:10px;color:rgba(255,255,255,0.3);font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;text-decoration:none;">← Back to Home</a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
