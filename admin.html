@@ -322,7 +322,7 @@ function renderProfiles(data) {
       <td><span class="badge-${r.status || 'pending'}">${r.status || 'pending'}</span></td>
       <td>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
-          <button onclick="updateStatus('profiles','${r.id}','approved')" style="padding:4px 10px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:4px;color:#22c55e;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">✓ VERIFY</button>
+          <button onclick="activateProfile('${r.id}','${r.email}','${r.full_name}','${r.org}','${r.city}')" style="padding:4px 10px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:6px;color:#16a34a;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;text-transform:uppercase;">✓ Activate + Email</button>
           <button onclick="updateStatus('profiles','${r.id}','rejected')" style="padding:4px 10px;background:rgba(139,26,44,0.1);border:1px solid rgba(139,26,44,0.3);border-radius:4px;color:#f87171;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">✗ REJECT</button>
           <button onclick="showDetail(${JSON.stringify(r).replace(/"/g,'&quot;')})" style="padding:4px 10px;background:rgba(201,150,12,0.1);border:1px solid rgba(201,150,12,0.3);border-radius:4px;color:#C9960C;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">VIEW</button>
         </div>
