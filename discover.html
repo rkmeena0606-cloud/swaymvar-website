@@ -281,6 +281,15 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
 
 <div id="cards-container" style="display:flex;flex-direction:column;gap:14px;padding-bottom:80px;">
 
+<!-- REAL PROFILES (loaded from Supabase) -->
+<div id="real-profiles"></div>
+
+<!-- DUMMY PROFILES (shown when no real profiles exist) -->
+<div id="dummy-notice" style="display:none;background:rgba(201,150,12,0.08);border:1px dashed rgba(201,150,12,0.3);border-radius:10px;padding:12px 16px;text-align:center;margin-bottom:8px;">
+  <p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;">Sample Profiles — Real verified member profiles will appear here</p>
+</div>
+<div id="dummy-profiles">
+
 
 <div style="background:#1C1A14;border-radius:14px;padding:20px;border:1px solid rgba(201,150,12,0.2);cursor:pointer;"
   onclick="window.location='profile.html'"
@@ -2193,6 +2202,8 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
   <button onclick="event.stopPropagation();window.location='profile.html'" style="width:100%;padding:11px;background:rgba(45,80,22,0.5);border:1px solid rgba(45,80,22,0.7);color:white;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;cursor:pointer;font-weight:700;">Express Interest →</button>
 </div>
 
+</div><!-- end dummy-profiles -->
+
 </div>
 
 </div></main>
@@ -2531,21 +2542,112 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   // Load my profile for transfer fit calculation
   try {
-    const { data: profiles } = await db
+    const { data: myData } = await db
       .from('profiles')
-      .select('org, city, relocation')
+      .select('org, city, relocation, email')
       .eq('email', session.user.email)
       .single()
     
-    if (profiles) {
-      myProfile = profiles
-      // Recalculate transfer fit for all visible cards
+    if (myData) {
+      myProfile = myData
+    }
+  } catch(e) {
+    console.log('My profile not found')
+  }
+
+  // Load real profiles from Supabase
+  await loadRealProfiles(session.user.email)
+})
+
+async function loadRealProfiles(myEmail) {
+  try {
+    const { data: realProfiles, error } = await db
+      .from('profiles')
+      .select('*')
+      .eq('status', 'approved')
+      .eq('verified', true)
+      .neq('email', myEmail || '')
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+
+    if (realProfiles && realProfiles.length > 0) {
+      // Hide dummy profiles
+      document.getElementById('dummy-notice').style.display = 'none'
+      document.getElementById('dummy-profiles').style.display = 'none'
+
+      // Build real profile cards
+      const container = document.getElementById('real-profiles')
+      container.innerHTML = ''
+
+      realProfiles.forEach(function(p) {
+        const traits = (p.traits || '').split(',').slice(0, 3).map(function(t) {
+          return '<span style="background:rgba(201,150,12,0.15);border:1px solid rgba(201,150,12,0.25);color:#E8B84B;padding:4px 10px;border-radius:999px;font-family:'Space Mono',monospace;font-size:10px;">' + t.trim() + '</span>'
+        }).join('')
+
+        const reloc = p.relocation === 'flexible' ? 'Flexible' : p.relocation === 'zone' ? 'Within Region' : p.relocation === 'city' ? 'Same City' : 'Open'
+
+        // Calculate transfer fit
+        let tfScore = '—'
+        let tfLabel = ''
+        if (myProfile) {
+          const score = calcTransferFit(myProfile.org, myProfile.city, myProfile.relocation, p.org, p.city, p.relocation)
+          const info = getTransferLabel(score)
+          tfScore = score + '%'
+          tfLabel = info.label
+        }
+
+        // Map org to filter category
+        const orgFilter = getOrgFilter(p.org)
+
+        const card = document.createElement('div')
+        card.setAttribute('data-org', p.org || '')
+        card.setAttribute('data-org-filter', orgFilter)
+        card.setAttribute('data-city', p.city || '')
+        card.setAttribute('data-age', p.age || 0)
+        card.setAttribute('data-transfer', myProfile ? calcTransferFit(myProfile.org, myProfile.city, myProfile.relocation, p.org, p.city, p.relocation) : 0)
+        card.setAttribute('data-diet', p.diet || '')
+        card.setAttribute('data-reloc', p.relocation || '')
+        card.setAttribute('data-personality', (p.personality || '').split('|')[0] || '')
+        card.style.cssText = 'background:#1C1A14;border-radius:14px;padding:20px;border:1px solid rgba(201,150,12,0.2);cursor:pointer;margin-bottom:14px;'
+        card.onclick = function() { window.location = 'profile.html' }
+
+        const nameParts = (p.full_name || 'Member').split(' ')
+        const displayName = nameParts[0] + (nameParts[1] ? ' ' + nameParts[1][0] + '.' : '')
+
+        card.innerHTML = '<div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;">  <div style="width:56px;height:56px;border-radius:12px;background:rgba(201,150,12,0.1);border:1px solid rgba(201,150,12,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;filter:blur(5px);"><span style="font-size:24px;">👩</span></div>  <div style="flex:1;">    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">      <p style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;">' + displayName + '</p>      <span style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#4ade80;padding:2px 8px;border-radius:999px;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;">✓ Verified</span>    </div>    <p style="font-family:'Space Mono',monospace;font-size:10px;color:#E8B84B;margin-bottom:2px;">' + (p.org || '') + ' · ' + (p.designation || '') + '</p>    <p style="font-size:12px;color:rgba(255,255,255,0.45);">' + (p.city || '') + (p.state ? ' · ' + p.state : '') + '</p>  </div>  <div style="background:rgba(201,150,12,0.15);border:1px solid rgba(201,150,12,0.3);border-radius:8px;padding:6px 10px;text-align:center;flex-shrink:0;min-width:60px;">    <p style="font-family:'Space Mono',monospace;font-size:8px;color:#C9960C;text-transform:uppercase;">Transfer</p>    <p style="font-family:'Space Mono',monospace;font-size:13px;color:#E8B84B;font-weight:700;">' + tfScore + '</p>    <p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);">' + tfLabel + '</p>  </div></div><div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:8px 12px;margin-bottom:10px;text-align:center;">  <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;">🔒 Photo visible after mutual interest</p></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;">  <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 10px;"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:2px;">Organisation</p><p style="font-size:12px;color:white;font-weight:600;">' + (p.org || '') + '</p></div>  <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 10px;"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:2px;">City</p><p style="font-size:12px;color:white;font-weight:600;">' + (p.city || '') + '</p></div>  <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 10px;"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:2px;">Diet</p><p style="font-size:12px;color:white;font-weight:600;">' + (p.diet || '—') + '</p></div>  <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 10px;"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:2px;">Relocation</p><p style="font-size:12px;color:white;font-weight:600;">' + reloc + '</p></div></div>' + (traits ? '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">' + traits + '</div>' : '') + '<button onclick="event.stopPropagation();window.location='profile.html'" style="width:100%;padding:11px;background:rgba(45,80,22,0.5);border:1px solid rgba(45,80,22,0.7);color:white;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;cursor:pointer;font-weight:700;">Express Interest →</button>'
+
+        container.appendChild(card)
+      })
+
+      // Update count
+      const countEl = document.getElementById('profile-count')
+      if (countEl) countEl.textContent = realProfiles.length + ' Profile' + (realProfiles.length !== 1 ? 's' : '')
+
+    } else {
+      // No real profiles yet — show dummies with notice
+      document.getElementById('dummy-notice').style.display = 'block'
+      document.getElementById('dummy-profiles').style.display = 'block'
       updateTransferFitScores()
     }
   } catch(e) {
-    console.log('Profile not found for transfer fit calculation')
+    console.error('Error loading profiles:', e)
+    document.getElementById('dummy-profiles').style.display = 'block'
+    updateTransferFitScores()
   }
-})
+}
+
+function getOrgFilter(org) {
+  const banks = ['SBI','PNB','Bank of Baroda','Canara Bank','Union Bank','Bank of India','Indian Bank']
+  const insurance = ['LIC','GIC Re','National Insurance','New India Assurance','Oriental Insurance']
+  const aviation = ['AAI','Air Traffic Control','Air India']
+  const oil = ['IOCL','BPCL','HPCL','ONGC','GAIL','Coal India','NTPC','Power Grid','BHEL']
+  if (banks.includes(org)) return 'PSU Banks'
+  if (insurance.includes(org)) return 'Insurance'
+  if (aviation.includes(org)) return 'AAI'
+  if (oil.includes(org)) return 'Oil'
+  return org
+}
 
 function updateTransferFitScores() {
   if (!myProfile) return
