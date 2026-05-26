@@ -6,102 +6,8 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-error": "#ffffff",
-                    "primary-fixed-dim": "#b7c7eb",
-                    "primary-fixed": "#d7e2ff",
-                    "on-surface-variant": "#44474d",
-                    "on-secondary-container": "#715300",
-                    "on-tertiary-container": "#769d5a",
-                    "secondary": "#7a5900",
-                    "tertiary": "#071b00",
-                    "saffron-gold": "#E8B84B",
-                    "on-tertiary-fixed-variant": "#2c4f15",
-                    "surface-container-high": "#e7e8e9",
-                    "background": "#f8f9fa",
-                    "surface-dim": "#d9dadb",
-                    "on-tertiary": "#ffffff",
-                    "error-container": "#ffdad6",
-                    "surface-container-lowest": "#ffffff",
-                    "outline": "#75777e",
-                    "midnight-indigo": "#1C1A14",
-                    "inverse-surface": "#2e3132",
-                    "tertiary-fixed": "#c4efa3",
-                    "inverse-primary": "#b7c7eb",
-                    "secondary-fixed": "#ffdea1",
-                    "on-secondary-fixed-variant": "#5c4300",
-                    "surface-bright": "#f8f9fa",
-                    "on-tertiary-fixed": "#0a2100",
-                    "on-primary": "#ffffff",
-                    "secondary-container": "#ffc645",
-                    "on-primary-fixed": "#091b37",
-                    "error": "#ba1a1a",
-                    "on-error-container": "#93000a",
-                    "surface-container": "#edeeef",
-                    "surface": "#f8f9fa",
-                    "on-primary-container": "#8393b5",
-                    "inverse-on-surface": "#f0f1f2",
-                    "primary-container": "#1b2b48",
-                    "emerald-success": "#2D5016",
-                    "surface-variant": "#e1e3e4",
-                    "surface-tint": "#4f5e7e",
-                    "tertiary-fixed-dim": "#a8d38a",
-                    "on-secondary": "#ffffff",
-                    "secondary-fixed-dim": "#f6be3c",
-                    "on-primary-fixed-variant": "#374765",
-                    "primary": "#041632",
-                    "on-secondary-fixed": "#261900",
-                    "on-background": "#191c1d",
-                    "on-surface": "#191c1d",
-                    "tertiary-container": "#133200",
-                    "surface-container-highest": "#e1e3e4",
-                    "surface-container-low": "#f3f4f5",
-                    "outline-variant": "#c5c6ce",
-                    "heritage-cream": "#FEFCF5"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "margin-desktop": "64px",
-                    "max-width": "1200px",
-                    "unit": "4px",
-                    "margin-mobile": "16px",
-                    "gutter": "24px"
-            },
-            "fontFamily": {
-                    "body-md": ["DM Sans"],
-                    "body-lg": ["DM Sans"],
-                    "headline-md": ["Playfair Display"],
-                    "label-sm": ["DM Sans"],
-                    "label-md": ["DM Sans"],
-                    "display-lg": ["Playfair Display"],
-                    "headline-lg-mobile": ["Playfair Display"],
-                    "headline-lg": ["Playfair Display"]
-            },
-            "fontSize": {
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
-                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
-            }
-          },
-        },
-      }
-    </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>if(typeof tailwind!=="undefined"){tailwind.config={}}</script>
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -2561,17 +2467,26 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 async function loadRealProfiles(myEmail) {
   try {
+    console.log('Loading profiles, excluding email:', myEmail)
+    
     const { data: realProfiles, error } = await db
       .from('profiles')
       .select('*')
-      .eq('status', 'approved')
-      .eq('verified', true)
-      .neq('email', myEmail || '')
       .order('created_at', { ascending: false })
+
+    console.log('Profiles loaded:', realProfiles?.length, 'Error:', error)
+    if (realProfiles) filtered.forEach(function(p) { console.log('Profile:', p.full_name, p.email, p.status, p.verified) })
 
     if (error) throw error
 
-    if (realProfiles && realProfiles.length > 0) {
+    // Filter out own profile client-side
+    const filtered = (realProfiles || []).filter(function(p) {
+      return !myEmail || !p.email || p.email.toLowerCase() !== myEmail.toLowerCase()
+    })
+
+    console.log('After filter:', filtered.length)
+
+    if (filtered && filtered.length > 0) {
       // Hide dummy profiles
       document.getElementById('dummy-notice').style.display = 'none'
       document.getElementById('dummy-profiles').style.display = 'none'
@@ -2622,7 +2537,7 @@ async function loadRealProfiles(myEmail) {
 
       // Update count
       const countEl = document.getElementById('profile-count')
-      if (countEl) countEl.textContent = realProfiles.length + ' Profile' + (realProfiles.length !== 1 ? 's' : '')
+      if (countEl) countEl.textContent = filtered.length + ' Profile' + (realProfiles.length !== 1 ? 's' : '')
 
     } else {
       // No real profiles yet — show dummies with notice
