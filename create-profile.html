@@ -200,6 +200,19 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
           <div><label class="form-label">First Name *</label><input type="text" class="form-input" id="fname" placeholder="Your first name"/></div>
           <div><label class="form-label">Last Name *</label><input type="text" class="form-input" id="lname" placeholder="Your last name"/></div>
+          <div style="grid-column:1/-1;">
+            <label class="form-label">I am *</label>
+            <div style="display:flex;gap:12px;margin-top:6px;">
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;background:rgba(255,255,255,0.05);border:1.5px solid #D4C5A0;border-radius:8px;padding:12px 20px;flex:1;transition:all 0.2s;">
+                <input type="radio" name="gender" value="female" id="gender-female" style="accent-color:#2D5016;width:16px;height:16px;"/>
+                <span style="font-size:14px;color:#1C1A14;font-weight:600;">👩 Female</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;background:rgba(255,255,255,0.05);border:1.5px solid #D4C5A0;border-radius:8px;padding:12px 20px;flex:1;transition:all 0.2s;">
+                <input type="radio" name="gender" value="male" id="gender-male" style="accent-color:#2D5016;width:16px;height:16px;"/>
+                <span style="font-size:14px;color:#1C1A14;font-weight:600;">👨 Male</span>
+              </label>
+            </div>
+          </div>
           <div><label class="form-label">Age *</label><input type="number" class="form-input" id="age" placeholder="e.g. 28" min="21" max="55"/></div>
           <div><label class="form-label">Height</label>
             <select class="form-select" id="height">
@@ -640,6 +653,13 @@ async function submitProfile() {
     return
   }
 
+  // Validate gender selected
+  const genderVal = document.querySelector('input[name="gender"]:checked')?.value
+  if (!genderVal) {
+    alert('Please select your gender to continue.')
+    return
+  }
+
   const btn = document.querySelector('#step-5 button:last-child')
   btn.textContent = 'Saving...'
   btn.disabled = true
@@ -659,6 +679,7 @@ async function submitProfile() {
 
   const data = {
     full_name:   (document.getElementById('fname')?.value || '') + ' ' + (document.getElementById('lname')?.value || ''),
+    gender:      document.querySelector('input[name="gender"]:checked')?.value || '',
     email:       window.verifiedEmail || '',
     org:         document.getElementById('org')?.value || '',
     designation: document.getElementById('designation')?.value || '',

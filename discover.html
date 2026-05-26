@@ -338,20 +338,29 @@ document.addEventListener('DOMContentLoaded', async function() {
     return
   }
 
-  // Load my profile for transfer fit
+  // Load my profile for transfer fit and gender
+  var myGender = ''
   try {
-    var myResult = await db.from('profiles').select('org,city,relocation').eq('email', session.user.email).single()
-    if (myResult.data) myProfile = myResult.data
+    var myResult = await db.from('profiles').select('org,city,relocation,gender').eq('email', session.user.email).single()
+    if (myResult.data) {
+      myProfile = myResult.data
+      myGender = myResult.data.gender || ''
+    }
   } catch(e) {}
+
+  // Determine which gender to show (opposite of mine)
+  var showGender = myGender === 'male' ? 'female' : myGender === 'female' ? 'male' : ''
 
   // Load real profiles
   var profileResult = await db.from('profiles').select('*').order('created_at', {ascending: false})
   var realProfiles = profileResult.data || []
 
-  // Exclude own profile
+  // Exclude own profile and filter by opposite gender
   var userEmail = session.user.email.toLowerCase()
   realProfiles = realProfiles.filter(function(p) {
-    return !p.email || p.email.toLowerCase() !== userEmail
+    var notMe = !p.email || p.email.toLowerCase() !== userEmail
+    var rightGender = !showGender || !p.gender || p.gender === showGender
+    return notMe && rightGender
   })
 
   var profiles = realProfiles.length > 0 ? realProfiles : SAMPLES
