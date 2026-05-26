@@ -4,8 +4,8 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SWAYMVAR | Admin Dashboard</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config = { corePlugins: { preflight: false } }</script>
+
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -71,7 +71,7 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
         <label class="font-mono" style="font-size:10px;color:rgba(245,240,232,0.5);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.1em;">Admin Password</label>
         <input type="password" id="admin-pass" placeholder="Enter admin password" style="width:100%;" onkeydown="if(event.key==='Enter')checkLogin()"/>
       </div>
-      <button onclick="checkLogin()" style="width:100%;padding:12px;background:#C9960C;color:#1C1A14;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:6px;cursor:pointer;font-weight:700;">
+      <button onclick="checkLogin()" style="width:100%;padding:12px;background:#C9960C;color:#1C1A14;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:6px;cursor:pointer;font-weight:700;">
         Access Dashboard →
       </button>
       <p id="login-error" style="color:#f87171;font-size:12px;text-align:center;margin-top:10px;display:none;">Wrong password. Try again.</p>
@@ -91,8 +91,8 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
     </div>
     <div style="display:flex;gap:12px;align-items:center;">
       <div id="stats-bar" style="display:flex;gap:16px;"></div>
-      <button onclick="loadData()" style="padding:8px 16px;background:rgba(201,150,12,0.1);border:1px solid rgba(201,150,12,0.3);border-radius:6px;color:#C9960C;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:0.1em;">↻ REFRESH</button>
-      <button onclick="logout()" style="padding:8px 16px;background:rgba(139,26,44,0.1);border:1px solid rgba(139,26,44,0.3);border-radius:6px;color:#f87171;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;">LOGOUT</button>
+      <button onclick="loadData()" style="padding:8px 16px;background:rgba(201,150,12,0.1);border:1px solid rgba(201,150,12,0.3);border-radius:6px;color:#C9960C;font-family:monospace;font-size:10px;cursor:pointer;letter-spacing:0.1em;">↻ REFRESH</button>
+      <button onclick="logout()" style="padding:8px 16px;background:rgba(139,26,44,0.1);border:1px solid rgba(139,26,44,0.3);border-radius:6px;color:#f87171;font-family:monospace;font-size:10px;cursor:pointer;">LOGOUT</button>
     </div>
   </header>
 
@@ -111,7 +111,7 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
         <p class="font-mono" style="font-size:11px;color:rgba(245,240,232,0.5);letter-spacing:0.1em;">All invite requests — newest first</p>
         <div style="display:flex;gap:8px;">
           <input type="text" id="search-invites" placeholder="Search by name or org..." style="width:240px;" oninput="filterInvites()"/>
-          <select id="filter-status" style="background:rgba(255,255,255,0.08);border:1px solid rgba(201,150,12,0.3);border-radius:6px;padding:8px 12px;color:white;font-family:'Space Mono',monospace;font-size:11px;outline:none;" onchange="filterInvites()">
+          <select id="filter-status" style="background:rgba(255,255,255,0.08);border:1px solid rgba(201,150,12,0.3);border-radius:6px;padding:8px 12px;color:white;font-family:monospace;font-size:11px;outline:none;" onchange="filterInvites()">
             <option value="all">All Status</option>
             <option value="pending">Pending</option>
             <option value="approved">Approved</option>
@@ -268,7 +268,7 @@ function renderInvites(data) {
   const tbody = document.getElementById('invites-tbody')
   if (!data || !data.length) {
     tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:60px;">
-      <div style="color:rgba(245,240,232,0.3);font-family:'Space Mono',monospace;font-size:12px;">
+      <div style="color:rgba(245,240,232,0.3);font-family:monospace;font-size:12px;">
         <div style="font-size:32px;margin-bottom:12px;">📋</div>
         <div>No applications yet.</div>
         <div style="font-size:10px;margin-top:8px;color:rgba(245,240,232,0.2);">Applications appear here when someone fills the waitlist form on swaymvar.in</div>
@@ -288,9 +288,9 @@ function renderInvites(data) {
       <td><span class="badge-${r.status || 'pending'}">${r.status || 'pending'}</span></td>
       <td>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
-          <button onclick="updateStatus('invite_requests','${r.id}','approved')" style="padding:4px 10px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:4px;color:#22c55e;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:0.05em;">✓ APPROVE</button>
-          <button onclick="updateStatus('invite_requests','${r.id}','rejected')" style="padding:4px 10px;background:rgba(139,26,44,0.1);border:1px solid rgba(139,26,44,0.3);border-radius:4px;color:#f87171;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:0.05em;">✗ REJECT</button>
-          <button onclick="showDetail(${JSON.stringify(r).replace(/"/g,'&quot;')})" style="padding:4px 10px;background:rgba(201,150,12,0.1);border:1px solid rgba(201,150,12,0.3);border-radius:4px;color:#C9960C;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">VIEW</button>
+          <button onclick="updateStatus('invite_requests','${r.id}','approved')" style="padding:4px 10px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:4px;color:#22c55e;font-family:monospace;font-size:9px;cursor:pointer;letter-spacing:0.05em;">✓ APPROVE</button>
+          <button onclick="updateStatus('invite_requests','${r.id}','rejected')" style="padding:4px 10px;background:rgba(139,26,44,0.1);border:1px solid rgba(139,26,44,0.3);border-radius:4px;color:#f87171;font-family:monospace;font-size:9px;cursor:pointer;letter-spacing:0.05em;">✗ REJECT</button>
+          <button onclick="showDetail(${JSON.stringify(r).replace(/"/g,'&quot;')})" style="padding:4px 10px;background:rgba(201,150,12,0.1);border:1px solid rgba(201,150,12,0.3);border-radius:4px;color:#C9960C;font-family:monospace;font-size:9px;cursor:pointer;">VIEW</button>
         </div>
       </td>
     </tr>
@@ -301,7 +301,7 @@ function renderProfiles(data) {
   const tbody = document.getElementById('profiles-tbody')
   if (!data || !data.length) {
     tbody.innerHTML = `<tr><td colspan="10" style="text-align:center;padding:60px;">
-      <div style="color:rgba(245,240,232,0.3);font-family:'Space Mono',monospace;font-size:12px;">
+      <div style="color:rgba(245,240,232,0.3);font-family:monospace;font-size:12px;">
         <div style="font-size:32px;margin-bottom:12px;">👤</div>
         <div>No profiles submitted yet.</div>
         <div style="font-size:10px;margin-top:8px;color:rgba(245,240,232,0.2);">Profiles appear here after members complete the create-profile form using their invitation code.</div>
@@ -322,9 +322,9 @@ function renderProfiles(data) {
       <td><span class="badge-${r.status || 'pending'}">${r.status || 'pending'}</span></td>
       <td>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
-          <span style="padding:4px 10px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:6px;color:#16a34a;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;">✓ Auto-Active</span>
-          <button onclick="updateStatus('profiles','${r.id}','rejected')" style="padding:4px 10px;background:rgba(139,26,44,0.1);border:1px solid rgba(139,26,44,0.3);border-radius:4px;color:#f87171;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">✗ REJECT</button>
-          <button onclick="showDetail(${JSON.stringify(r).replace(/"/g,'&quot;')})" style="padding:4px 10px;background:rgba(201,150,12,0.1);border:1px solid rgba(201,150,12,0.3);border-radius:4px;color:#C9960C;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">VIEW</button>
+          <span style="padding:4px 10px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:6px;color:#16a34a;font-family:monospace;font-size:9px;text-transform:uppercase;">✓ Auto-Active</span>
+          <button onclick="updateStatus('profiles','${r.id}','rejected')" style="padding:4px 10px;background:rgba(139,26,44,0.1);border:1px solid rgba(139,26,44,0.3);border-radius:4px;color:#f87171;font-family:monospace;font-size:9px;cursor:pointer;">✗ REJECT</button>
+          <button onclick="showDetail(${JSON.stringify(r).replace(/"/g,'&quot;')})" style="padding:4px 10px;background:rgba(201,150,12,0.1);border:1px solid rgba(201,150,12,0.3);border-radius:4px;color:#C9960C;font-family:monospace;font-size:9px;cursor:pointer;">VIEW</button>
         </div>
       </td>
     </tr>

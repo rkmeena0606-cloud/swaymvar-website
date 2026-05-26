@@ -4,10 +4,10 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SWAYMVAR | Create Your Profile</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config = { corePlugins: { preflight: false } }</script>
+
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#2D5016"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -20,7 +20,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
 .font-display { font-family: 'Playfair Display', serif; }
 .font-mono { font-family: 'Space Mono', monospace; }
 .glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(254,252,245,0.93); }
-.material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+
 .form-label { font-family: 'Space Mono', monospace; font-size: 10px; color: #A67C00; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 6px; }
 .form-input { width: 100%; padding: 12px 14px; background: white; border: 1.5px solid #D4C5A0; border-radius: 8px; font-size: 14px; color: #1C1A14; outline: none; transition: border-color 0.2s; font-family: 'DM Sans', sans-serif; }
 .form-input:focus { border-color: #C9960C; }
@@ -36,22 +36,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
 </style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <style>.__tailwind_warning__{display:none!important;}[data-test="tailwind-warning"]{display:none!important;}</style>
-<script>
-// Remove Tailwind CDN development warning
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(function() {
-    var tw = document.querySelector('.__tailwind_dev_warning__,tw-warning,#tailwind-dev-warning')
-    if (tw) tw.remove()
-    // Also check shadow roots
-    document.querySelectorAll('*').forEach(function(el) {
-      if (el.shadowRoot) {
-        var w = el.shadowRoot.querySelector('div')
-        if (w && w.style && w.style.zIndex === '9999') w.remove()
-      }
-    })
-  }, 100)
-})
-</script>
+
 <style>
 /* Hide Tailwind CDN warning badge */
 body > div[style*="z-index: 9999"]:not([id]),
@@ -86,11 +71,11 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
 
       <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-radius:12px;padding:24px;text-align:left;margin-bottom:16px;">
         <label class="form-label">Your Invitation Code *</label>
-        <input type="text" id="invite-code-input" placeholder="e.g. SV-RBI-2026-0047" class="form-input" style="font-family:'Space Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;" oninput="this.value=this.value.toUpperCase();document.getElementById('code-error').style.display='none'"/>
+        <input type="text" id="invite-code-input" placeholder="e.g. SV-RBI-2026-0047" class="form-input" style="font-family:monospace;letter-spacing:0.1em;text-transform:uppercase;" oninput="this.value=this.value.toUpperCase();document.getElementById('code-error').style.display='none'"/>
         <p id="code-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:8px;font-weight:600;"></p>
       </div>
 
-      <button onclick="verifyInviteCode()" id="verify-btn" style="width:100%;padding:14px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;margin-bottom:16px;">
+      <button onclick="verifyInviteCode()" id="verify-btn" style="width:100%;padding:14px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;margin-bottom:16px;">
         Verify & Continue →
       </button>
 
@@ -161,25 +146,25 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
           <!-- Photo slot 1 — primary -->
           <div class="photo-slot" id="slot-0" onclick="triggerUpload(0)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;transition:all 0.2s;position:relative;" onmouseover="this.style.borderColor='#C9960C'" onmouseout="this.style.borderColor='#D4C5A0'">
             <span style="font-size:28px;margin-bottom:6px;">📷</span>
-            <span style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;">Main Photo</span>
-            <span style="font-family:'Space Mono',monospace;font-size:8px;color:#5C5040;margin-top:2px;">Required</span>
+            <span style="font-family:monospace;font-size:9px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;">Main Photo</span>
+            <span style="font-family:monospace;font-size:8px;color:#5C5040;margin-top:2px;">Required</span>
           </div>
           <!-- Photo slots 2-5 -->
           <div class="photo-slot" id="slot-1" onclick="triggerUpload(1)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;transition:all 0.2s;position:relative;" onmouseover="this.style.borderColor='#C9960C'" onmouseout="this.style.borderColor='#D4C5A0'">
             <span style="font-size:24px;margin-bottom:6px;">+</span>
-            <span style="font-family:'Space Mono',monospace;font-size:9px;color:#5C5040;text-transform:uppercase;">Add Photo</span>
+            <span style="font-family:monospace;font-size:9px;color:#5C5040;text-transform:uppercase;">Add Photo</span>
           </div>
           <div class="photo-slot" id="slot-2" onclick="triggerUpload(2)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;transition:all 0.2s;position:relative;" onmouseover="this.style.borderColor='#C9960C'" onmouseout="this.style.borderColor='#D4C5A0'">
             <span style="font-size:24px;margin-bottom:6px;">+</span>
-            <span style="font-family:'Space Mono',monospace;font-size:9px;color:#5C5040;text-transform:uppercase;">Add Photo</span>
+            <span style="font-family:monospace;font-size:9px;color:#5C5040;text-transform:uppercase;">Add Photo</span>
           </div>
           <div class="photo-slot" id="slot-3" onclick="triggerUpload(3)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;transition:all 0.2s;position:relative;" onmouseover="this.style.borderColor='#C9960C'" onmouseout="this.style.borderColor='#D4C5A0'">
             <span style="font-size:24px;margin-bottom:6px;">+</span>
-            <span style="font-family:'Space Mono',monospace;font-size:9px;color:#5C5040;text-transform:uppercase;">Add Photo</span>
+            <span style="font-family:monospace;font-size:9px;color:#5C5040;text-transform:uppercase;">Add Photo</span>
           </div>
           <div class="photo-slot" id="slot-4" onclick="triggerUpload(4)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;transition:all 0.2s;position:relative;" onmouseover="this.style.borderColor='#C9960C'" onmouseout="this.style.borderColor='#D4C5A0'">
             <span style="font-size:24px;margin-bottom:6px;">+</span>
-            <span style="font-family:'Space Mono',monospace;font-size:9px;color:#5C5040;text-transform:uppercase;">Add Photo</span>
+            <span style="font-family:monospace;font-size:9px;color:#5C5040;text-transform:uppercase;">Add Photo</span>
           </div>
         </div>
 
@@ -244,7 +229,7 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
         </div>
       </div>
       <div style="display:flex;justify-content:flex-end;">
-        <button onclick="goToStep(2)" style="padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Work & Posting →</button>
+        <button onclick="goToStep(2)" style="padding:14px 36px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Work & Posting →</button>
       </div>
     </div>
 
@@ -295,8 +280,8 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;">
-        <button onclick="goToStep(1)" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
-        <button onclick="goToStep(3)" style="padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Personality →</button>
+        <button onclick="goToStep(1)" style="padding:14px 28px;background:white;color:#2D5016;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
+        <button onclick="goToStep(3)" style="padding:14px 36px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Personality →</button>
       </div>
     </div>
 
@@ -355,8 +340,8 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;">
-        <button onclick="goToStep(2)" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
-        <button onclick="goToStep(4)" style="padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Life →</button>
+        <button onclick="goToStep(2)" style="padding:14px 28px;background:white;color:#2D5016;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
+        <button onclick="goToStep(4)" style="padding:14px 36px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Life →</button>
       </div>
     </div>
 
@@ -376,8 +361,8 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;">
-        <button onclick="goToStep(3)" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
-        <button onclick="goToStep(5)" style="padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Privacy →</button>
+        <button onclick="goToStep(3)" style="padding:14px 28px;background:white;color:#2D5016;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
+        <button onclick="goToStep(5)" style="padding:14px 36px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Next: Privacy →</button>
       </div>
     </div>
 
@@ -414,8 +399,8 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
       </div>
 
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-        <button onclick="goToStep(4)" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
-        <button onclick="submitProfile()" style="padding:16px 36px;background:#8B1A1A;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Submit Profile →</button>
+        <button onclick="goToStep(4)" style="padding:14px 28px;background:white;color:#2D5016;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer;">← Back</button>
+        <button onclick="submitProfile()" style="padding:16px 36px;background:#8B1A1A;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Submit Profile →</button>
       </div>
     </div>
 
@@ -425,12 +410,12 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
       <h3 class="font-display" style="font-size:30px;color:#2D5016;font-weight:700;margin-bottom:10px;">Profile is Live ✦</h3>
       <p style="color:#5C5040;font-size:15px;line-height:1.7;max-width:460px;margin:0 auto 20px;">Your SWAYMVAR profile is now live. You are visible in the Discover feed to verified members. A confirmation has been sent to your official email.</p>
       <div style="background:#EDF5E0;border:1px solid #2D5016;border-radius:10px;padding:16px 20px;max-width:400px;margin:0 auto 24px;text-align:left;">
-        <p style="font-family:'Space Mono',monospace;font-size:10px;color:#2D5016;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">What you can do now:</p>
+        <p style="font-family:monospace;font-size:10px;color:#2D5016;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">What you can do now:</p>
         <p style="color:#5C5040;font-size:13px;line-height:1.8;">✓ Your profile is live in Discover feed<br/>✓ Members can see and express interest<br/>✓ Browse other profiles and express interest<br/>✓ Sign in to My Profile to edit anytime</p>
       </div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <a href="discover.html" style="padding:14px 28px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Explore Profiles →</a>
-        <a href="index.html" style="padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;text-decoration:none;">Back to Home</a>
+        <a href="discover.html" style="padding:14px 28px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Explore Profiles →</a>
+        <a href="index.html" style="padding:14px 28px;background:white;color:#2D5016;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;text-decoration:none;">Back to Home</a>
       </div>
     </div>
 
@@ -441,43 +426,233 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
 <div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
 <div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.3);">
   <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
-    <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2><p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
+    <div><h2 style="font-family:Georgia,serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2><p style="font-family:monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
     <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">✕</button>
   </div>
   <nav style="padding:8px 0;">
-    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>🏠</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
-    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>💎</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
-    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>👤</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
-    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>💬</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
-    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>✨</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
-    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>🛡️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
-    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>❓</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
-    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>🗺️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
-    <a href="terms.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>📄</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Terms</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Privacy & terms of use</p></div></a>
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>🏠</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>💎</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
+    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>👤</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
+    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>💬</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
+    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>✨</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
+    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>🛡️</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
+    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>❓</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
+    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>🗺️</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
+    <a href="terms.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>📄</span><div><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Terms</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Privacy & terms of use</p></div></a>
   </nav>
   <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);">
     <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">✓ Peer Verified Only<br/>✓ All Religions Welcome<br/>✓ Privacy Protected<br/>✦ First 100 Free for Life</p>
   </div>
   <div style="padding:12px 20px;border-top:1px solid rgba(201,150,12,0.15);">
-    <a href="mailto:concierge@swaymvar.in" style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
+    <a href="mailto:concierge@swaymvar.in" style="font-family:monospace;font-size:10px;color:#C9960C;text-decoration:none;">concierge@swaymvar.in</a>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-function openSidebar() {
-  document.getElementById('sidebar').style.left = '0px'
-  document.getElementById('sidebar-overlay').style.display = 'block'
-  document.body.style.overflow = 'hidden'
-  document.body.style.position = 'fixed'
-  document.body.style.width = '100%'
-}
-function closeSidebar() {
-  document.getElementById('sidebar').style.left = '-300px'
-  document.getElementById('sidebar-overlay').style.display = 'none'
-  document.body.style.overflow = ''
-  document.body.style.position = ''
-  document.body.style.width = ''
-}
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
+\
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'\
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'\
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)\
+\
+// \\u2500\\u2500 INVITE CODE VERIFICATION \\u2500\\u2500\
+async function verifyInviteCode() {\
+  const code = document.getElementById('invite-code-input').value.trim().toUpperCase()\
+  const errorEl = document.getElementById('code-error')\
+  const btn = document.getElementById('verify-btn')\
+\
+  errorEl.style.display = 'none'\
+\
+  if (!code || code.length < 5) {\
+    errorEl.style.display = 'block'\
+    errorEl.textContent = '\\u274c Please enter your invitation code.'\
+    return\
+  }\
+\
+  btn.textContent = 'Verifying...'\
+  btn.disabled = true\
+\
+  const { data, error } = await db\
+    .from('invite_requests')\
+    .select('*')\
+    .eq('invite_code', code)\
+\
+  console.log('Verify result:', data, error)\
+\
+  btn.textContent = 'Verify & Continue \\u2192'\
+  btn.disabled = false\
+\
+  if (error) {\
+    errorEl.style.display = 'block'\
+    errorEl.textContent = '\\u274c Verification failed. Please try again or contact concierge@swaymvar.in'\
+    return\
+  }\
+\
+  if (!data || data.length === 0) {\
+    errorEl.style.display = 'block'\
+    errorEl.textContent = '\\u274c Invalid or expired invitation code. Please check your approval email.'\
+    return\
+  }\
+\
+  const record = data[0]\
+\
+  if (record.status === 'pending') {\
+    errorEl.style.display = 'block'\
+    errorEl.textContent = '\\u23f3 Your application is still under review. Please wait for your approval email.'\
+    return\
+  }\
+\
+  if (record.status === 'rejected') {\
+    errorEl.style.display = 'block'\
+    errorEl.textContent = '\\u274c Your application was not approved. Contact concierge@swaymvar.in for help.'\
+    return\
+  }\
+\
+  if (record.status !== 'approved') {\
+    errorEl.style.display = 'block'\
+    errorEl.textContent = '\\u274c This code is not valid. Please contact concierge@swaymvar.in'\
+    return\
+  }\
+\
+  // \\u2713 Valid \\u2014 unlock form\
+  document.getElementById('code-gate').style.display = 'none'\
+  document.getElementById('profile-form-container').style.display = 'block'\
+\
+  // Pre-fill fields\
+  if (record.full_name) {\
+    const parts = record.full_name.trim().split(' ')\
+    if (document.getElementById('fname')) document.getElementById('fname').value = parts[0] || ''\
+    if (document.getElementById('lname')) document.getElementById('lname').value = parts.slice(1).join(' ') || ''\
+  }\
+  if (record.org && document.getElementById('org')) document.getElementById('org').value = record.org\
+  if (record.city && document.getElementById('city')) document.getElementById('city').value = record.city\
+  if (record.designation && document.getElementById('designation')) document.getElementById('designation').value = record.designation\
+\
+  window.verifiedInviteCode = code\
+  window.scrollTo({ top: 0, behavior: 'smooth' })\
+}\
+\
+// Enter key on code input\
+document.addEventListener('DOMContentLoaded', function() {\
+  const inp = document.getElementById('invite-code-input')\
+  if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') verifyInviteCode() })\
+})\
+\
+// \\u2500\\u2500 STEP NAVIGATION \\u2500\\u2500\
+let currentStep = 1\
+function goToStep(n) {\
+  document.getElementById('step-' + currentStep).style.display = 'none'\
+  currentStep = n\
+  document.getElementById('step-' + currentStep).style.display = 'block'\
+  const pct = Math.round(((currentStep - 1) / 5) * 100)\
+  document.getElementById('progress-fill').style.width = pct + '%'\
+  document.getElementById('progress-pct').textContent = pct + '%'\
+  document.getElementById('step-label').textContent = 'Step ' + currentStep + ' of 5'\
+  for (let i = 1; i <= 5; i++) {\
+    const dot = document.querySelector('#si-' + i + ' .step-dot')\
+    if (dot) {\
+      dot.className = 'step-dot ' + (i < currentStep ? 'done' : i === currentStep ? 'active' : 'pending')\
+      dot.innerHTML = i < currentStep ? '\\u2713' : i\
+    }\
+  }\
+  window.scrollTo({ top: 0, behavior: 'smooth' })\
+}\
+\
+// \\u2500\\u2500 TRAIT BUTTONS \\u2500\\u2500\
+function toggleTrait(btn) {\
+  const selected = document.querySelectorAll('#trait-container .trait-btn.selected')\
+  if (!btn.classList.contains('selected') && selected.length >= 8) return\
+  btn.classList.toggle('selected')\
+}\
+function selectOne(id, btn) {\
+  document.querySelectorAll('#' + id + ' .trait-btn').forEach(function(b) { b.classList.remove('selected') })\
+  btn.classList.add('selected')\
+}\
+function updateLabel(id, val, labels) {\
+  document.getElementById(id).textContent = labels[parseInt(val) - 1]\
+}\
+\
+// \\u2500\\u2500 SUBMIT PROFILE \\u2500\\u2500\
+async function submitProfile() {\
+  const consent = document.getElementById('consent-check')\
+  if (!consent.checked) {\
+    consent.parentElement.parentElement.style.border = '2px solid #8B1A1A'\
+    setTimeout(function() { consent.parentElement.parentElement.style.border = '1px solid #D4C5A0' }, 2000)\
+    return\
+  }\
+\
+  const btn = document.querySelector('#step-5 button:last-child')\
+  btn.textContent = 'Saving...'\
+  btn.disabled = true\
+\
+  const traits = Array.from(document.querySelectorAll('#trait-container .trait-btn.selected')).map(function(b) { return b.textContent }).join(', ')\
+  const personality = [\
+    document.getElementById('lb-1').textContent,\
+    document.getElementById('lb-2').textContent,\
+    document.getElementById('lb-3').textContent,\
+    document.getElementById('lb-4').textContent\
+  ].join(' | ')\
+\
+  function getSelected(id) {\
+    const b = document.querySelector('#' + id + ' .trait-btn.selected')\
+    return b ? b.textContent.trim() : ''\
+  }\
+\
+  const data = {\
+    full_name:   (document.getElementById('fname')?.value || '') + ' ' + (document.getElementById('lname')?.value || ''),\
+    email:       '',\
+    org:         document.getElementById('org')?.value || '',\
+    designation: document.getElementById('designation')?.value || '',\
+    city:        document.getElementById('city')?.value || '',\
+    state:       document.getElementById('state')?.value || '',\
+    relocation:  document.querySelector('input[name=\\"relocation\\"]:checked')?.value || '',\
+    about:       document.getElementById('about')?.value || '',\
+    education:   (document.getElementById('qualification')?.value || '') + ' ' + (document.getElementById('college')?.value || ''),\
+    diet:        getSelected('diet-opts'),\
+    travel:      getSelected('travel-opts'),\
+    social_life: getSelected('social-opts'),\
+    cooking:     getSelected('cook-opts'),\
+    children:    getSelected('kids-opts'),\
+    parents:     getSelected('parents-opts'),\
+    traits:      traits,\
+    personality: personality,\
+    verified:    false,\
+    status:      'pending'\
+  }\
+\
+  const { error } = await db.from('profiles').insert(data)\
+\
+  if (!error) {\
+    document.getElementById('step-5').style.display = 'none'\
+    document.getElementById('step-success').style.display = 'block'\
+    document.getElementById('progress-fill').style.width = '100%'\
+    document.getElementById('progress-pct').textContent = '100%'\
+    window.scrollTo({ top: 0, behavior: 'smooth' })\
+  } else {\
+    console.error('Submit error:', error)\
+    btn.textContent = 'Submit Profile \\u2192'\
+    btn.disabled = false\
+    alert('Error: ' + error.message)\
+  }\
+}\
+\
+// \\u2500\\u2500 SIDEBAR \\u2500\\u2500\
+function openSidebar() {\
+  document.getElementById('sidebar').style.left = '0px'\
+  document.getElementById('sidebar-overlay').style.display = 'block'\
+  document.body.style.overflow = 'hidden'\
+  document.body.style.position = 'fixed'\
+  document.body.style.width = '100%'\
+}\
+function closeSidebar() {\
+  document.getElementById('sidebar').style.left = '-300px'\
+  document.getElementById('sidebar-overlay').style.display = 'none'\
+  document.body.style.overflow = ''\
+  document.body.style.position = ''\
+  document.body.style.width = ''\
+}\
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })\
+
 </script>
 </body>
 </html>
