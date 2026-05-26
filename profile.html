@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SWAYMVAR | Profile View</title>
+<title>SWAYMVAR | Profile</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="theme-color" content="#2D5016"/>
@@ -14,18 +14,19 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #0f0f0d; color: white; font-family: 'DM Sans', sans-serif; padding-bottom: 100px; }
-.glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(15,15,13,0.95); border-bottom: 1px solid rgba(201,150,12,0.2); }
-.info-box { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px 14px; }
-.trait-chip { background: rgba(201,150,12,0.15); border: 1px solid rgba(201,150,12,0.25); color: #E8B84B; padding: 6px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 11px; display: inline-block; }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(15,15,13,0.95); border-bottom: 1px solid rgba(201,150,12,0.2); }
+.card { background: #1C1A14; border-radius: 14px; padding: 20px; border: 1px solid rgba(201,150,12,0.2); margin-bottom: 14px; }
+.info-box { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 12px; }
+.trait { background: rgba(201,150,12,0.15); border: 1px solid rgba(201,150,12,0.25); color: #E8B84B; padding: 5px 12px; border-radius: 999px; font-family: 'Space Mono', monospace; font-size: 11px; display: inline-block; margin: 3px; }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<header class="glass-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;">
+<header class="nav">
   <div style="max-width:700px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
     <div style="display:flex;align-items:center;gap:12px;">
-      <button onclick="history.back()" style="background:rgba(255,255,255,0.08);border:none;border-radius:50%;width:36px;height:36px;color:white;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">←</button>
+      <button onclick="history.back()" style="background:rgba(255,255,255,0.08);border:none;border-radius:50%;width:36px;height:36px;color:white;cursor:pointer;font-size:18px;">←</button>
       <a href="index.html" style="text-decoration:none;">
         <h1 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
       </a>
@@ -38,139 +39,143 @@ body { background: #0f0f0d; color: white; font-family: 'DM Sans', sans-serif; pa
   </div>
 </header>
 
-<main style="max-width:700px;margin:0 auto;padding:80px 16px 20px;">
+<!-- LOGIN GATE -->
+<div id="login-gate" style="display:none;position:fixed;inset:0;z-index:997;background:rgba(15,15,13,0.95);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:16px;padding:32px 24px;max-width:400px;width:100%;text-align:center;">
+    <p style="font-size:36px;margin-bottom:16px;">🔒</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:22px;color:white;font-weight:700;margin-bottom:10px;">Members Only</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.75;margin-bottom:24px;">Sign in to view profiles and express interest.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <a href="my-profile.html" style="display:block;padding:14px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
+      <a href="index.html#invite" style="display:block;padding:13px;background:rgba(201,150,12,0.1);color:#E8B84B;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border:1px solid rgba(201,150,12,0.3);border-radius:8px;text-decoration:none;">Apply for Waitlist →</a>
+    </div>
+  </div>
+</div>
 
-  <!-- PROFILE HEADER -->
-  <div style="background:#1C1A14;border-radius:16px;padding:24px;margin-bottom:16px;border:1px solid rgba(201,150,12,0.2);">
+<!-- LOADING -->
+<div id="loading-state" style="display:none;text-align:center;padding:120px 24px;">
+  <p style="font-size:32px;margin-bottom:16px;">⏳</p>
+  <p style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;">Loading profile...</p>
+</div>
 
-    <!-- Photo + Name -->
-    <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;">
-      <div style="width:80px;height:80px;border-radius:14px;background:rgba(201,150,12,0.1);border:2px solid rgba(201,150,12,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;filter:blur(6px);">
-        <span style="font-size:36px;">👩</span>
+<!-- NOT FOUND -->
+<div id="not-found-state" style="display:none;text-align:center;padding:120px 24px;">
+  <p style="font-size:32px;margin-bottom:16px;">🔍</p>
+  <p style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:20px;">Profile not found</p>
+  <a href="discover.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;">← Back to Discover</a>
+</div>
+
+<!-- PROFILE CONTENT -->
+<main id="profile-main" style="display:none;max-width:700px;margin:0 auto;padding:76px 16px 20px;">
+
+  <!-- Header Card -->
+  <div class="card">
+    <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:18px;">
+      <div id="photo-box" style="width:80px;height:80px;border-radius:14px;background:rgba(201,150,12,0.1);border:2px solid rgba(201,150,12,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;filter:blur(6px);">
+        <span style="font-size:36px;">👤</span>
       </div>
       <div style="flex:1;">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
-          <h2 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;">Priya K.</h2>
-          <span style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#4ade80;padding:3px 10px;border-radius:999px;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;">✓ Peer Verified</span>
+          <h2 id="p-name" style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;">—</h2>
+          <span style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#4ade80;padding:3px 10px;border-radius:999px;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;">✓ Peer Verified</span>
         </div>
-        <p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;margin-bottom:4px;">RBI · Grade B Officer</p>
-        <p style="font-size:13px;color:rgba(255,255,255,0.5);">29 yrs · 5'4" · Mumbai · Economic Research</p>
+        <p id="p-org" style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;margin-bottom:4px;">—</p>
+        <p id="p-meta" style="font-size:13px;color:rgba(255,255,255,0.5);">—</p>
       </div>
     </div>
 
-    <!-- Photo blur notice -->
+    <!-- Photo notice -->
     <div style="background:rgba(139,26,26,0.1);border:1px solid rgba(139,26,26,0.2);border-radius:10px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
       <span style="font-size:18px;flex-shrink:0;">🔒</span>
       <div>
-        <p style="font-weight:600;color:rgba(255,255,255,0.8);font-size:14px;margin-bottom:2px;">Photo visible after mutual interest</p>
-        <p style="font-size:13px;color:rgba(255,255,255,0.4);">Express your interest below. If the other person also expresses interest, photos become visible to both.</p>
+        <p style="font-weight:600;color:rgba(255,255,255,0.8);font-size:13px;margin-bottom:2px;">Photo visible after mutual interest</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.4);">Express interest below. If they also express interest, photos become visible to both.</p>
       </div>
     </div>
 
     <!-- Key info grid -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
-      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Organisation</p><p style="font-size:14px;color:white;font-weight:600;">RBI</p></div>
-      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Posting City</p><p style="font-size:14px;color:white;font-weight:600;">Mumbai</p></div>
-      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Designation</p><p style="font-size:14px;color:white;font-weight:600;">Grade B Officer</p></div>
-      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Relocation</p><p style="font-size:14px;color:white;font-weight:600;">Flexible</p></div>
-      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Diet</p><p style="font-size:14px;color:white;font-weight:600;">Vegetarian</p></div>
-      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Transfer Fit</p><p style="font-size:14px;color:#E8B84B;font-weight:700;">88%</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Organisation</p><p id="p-org2" style="font-size:14px;color:white;font-weight:600;">—</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Posting City</p><p id="p-city" style="font-size:14px;color:white;font-weight:600;">—</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Designation</p><p id="p-desig" style="font-size:14px;color:white;font-weight:600;">—</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Relocation</p><p id="p-reloc" style="font-size:14px;color:white;font-weight:600;">—</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Diet</p><p id="p-diet" style="font-size:14px;color:white;font-weight:600;">—</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Transfer Fit</p><p id="p-tf" style="font-size:14px;font-weight:700;color:#E8B84B;">—</p></div>
     </div>
 
-    <!-- Personality traits -->
-    <div style="margin-bottom:16px;">
+    <!-- Traits -->
+    <div id="p-traits-box" style="margin-bottom:16px;display:none;">
       <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Personality & Interests</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;">
-        <span class="trait-chip">Introvert</span>
-        <span class="trait-chip">Disciplined</span>
-        <span class="trait-chip">Solo Traveller</span>
-        <span class="trait-chip">Vegetarian</span>
-        <span class="trait-chip">Intellectuall</span>
-        <span class="trait-chip">Calm</span>
-      </div>
+      <div id="p-traits"></div>
     </div>
 
-    <!-- Hidden section notice -->
-    <div style="background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;">
-      <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">🔒 Visible after mutual interest</p>
-      <p style="font-size:13px;color:rgba(255,255,255,0.35);line-height:1.6;">About section · Education · Full photo · Life preferences details</p>
+    <!-- Hidden fields notice -->
+    <div style="background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.1);border-radius:10px;padding:12px 16px;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">🔒 Visible after mutual interest</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.3);">About section · Education · Full photo · Life preferences</p>
     </div>
   </div>
 
-  <!-- TRANSFER INFO -->
-  <div style="background:#1C1A14;border-radius:14px;padding:20px;margin-bottom:16px;border:1px solid rgba(201,150,12,0.15);">
-    <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:14px;">🗺️ Transfer Compatibility</p>
+  <!-- Transfer Info -->
+  <div class="card">
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">🗺️ Transfer Compatibility</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Organisation Type</p><p style="font-size:13px;color:white;font-weight:600;">Financial Regulator</p></div>
-      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Transfer Cycle</p><p style="font-size:13px;color:white;font-weight:600;">Every 3 years</p></div>
-      <div class="info-box" style="grid-column:1/-1;"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Posting Cities</p><p style="font-size:13px;color:white;font-weight:600;">Metro cities only — Mumbai, Delhi, Chennai, Kolkata, Bengaluru</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Transfer Cycle</p><p id="p-cycle" style="font-size:13px;color:white;font-weight:600;">—</p></div>
+      <div class="info-box"><p style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:3px;">Posting Type</p><p id="p-posting" style="font-size:13px;color:white;font-weight:600;">—</p></div>
     </div>
-    <div style="margin-top:12px;background:rgba(45,80,22,0.2);border:1px solid rgba(45,80,22,0.3);border-radius:8px;padding:10px 14px;">
-      <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">RBI postings are metro-only with predictable 3-year cycles. Good compatibility with other financial regulators and metro-based PSU professionals. <a href="transfer-fit.html" style="color:#E8B84B;text-decoration:underline;">Learn more →</a></p>
+    <div style="margin-top:10px;background:rgba(45,80,22,0.15);border:1px solid rgba(45,80,22,0.3);border-radius:8px;padding:10px 14px;">
+      <p id="p-tf-note" style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">— <a href="transfer-fit.html" style="color:#E8B84B;text-decoration:underline;">Learn more →</a></p>
     </div>
   </div>
 
-  <!-- PRIVACY NOTICE -->
-  <div style="background:#1C1A14;border-radius:14px;padding:20px;margin-bottom:20px;border:1px solid rgba(201,150,12,0.15);">
+  <!-- Privacy -->
+  <div class="card">
     <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:12px;">🔒 Privacy Promise</p>
     <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:14px;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">Contact details never shown to any member</p></div>
-      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:14px;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">Photo visible only after mutual interest</p></div>
-      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:14px;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">No direct messaging — introductions only</p></div>
-      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;font-size:14px;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">She controls who can see her full profile</p></div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">Contact details never shown to any member</p></div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">Photo visible only after mutual interest</p></div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">No direct messaging — one-time notification only</p></div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#4ade80;">✓</span><p style="font-size:13px;color:rgba(255,255,255,0.6);">She controls who can see her full profile</p></div>
     </div>
   </div>
 
-  <!-- LOGIN REQUIRED -->
-  <div id="login-required" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:14px;padding:20px;margin-bottom:16px;text-align:center;">
-    <p style="font-size:28px;margin-bottom:12px;">🔐</p>
-    <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:white;font-weight:700;margin-bottom:8px;">Sign In Required</h3>
-    <p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7;margin-bottom:16px;">You need to be signed in with a verified member account to express interest in profiles.</p>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-      <a href="my-profile.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
-      <a href="index.html#invite" style="padding:12px 20px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);border-radius:8px;text-decoration:none;">Apply for Waitlist</a>
-    </div>
-  </div>
-
-  <!-- NO PROFILE REQUIRED -->
-  <div id="no-profile-required" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:14px;padding:20px;margin-bottom:16px;text-align:center;">
-    <p style="font-size:28px;margin-bottom:12px;">👤</p>
-    <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:white;font-weight:700;margin-bottom:8px;">Create Your Profile First</h3>
-    <p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7;margin-bottom:16px;">You need a complete profile before expressing interest in others. Use your invitation code to create your profile.</p>
-    <a href="create-profile.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;">Create Profile →</a>
-  </div>
-
-  <!-- ACTION BUTTONS -->
+  <!-- Action -->
   <div id="action-section">
-    <button onclick="expressInterest()" id="interest-btn" style="width:100%;padding:16px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:10px;cursor:pointer;font-weight:700;margin-bottom:10px;" id="interest-btn-inner">❤️ Express Interest</button>
+    <div id="login-required" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:14px;padding:20px;margin-bottom:12px;text-align:center;">
+      <p style="font-size:28px;margin-bottom:12px;">🔐</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:white;font-weight:700;margin-bottom:8px;">Sign In Required</h3>
+      <p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.7;margin-bottom:16px;">You need to be signed in to express interest.</p>
+      <a href="my-profile.html" style="display:inline-block;padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
+    </div>
 
-    <!-- Interest form (hidden initially) -->
+    <button onclick="expressInterest()" id="interest-btn" style="width:100%;padding:16px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;border:none;border-radius:10px;cursor:pointer;font-weight:700;margin-bottom:10px;">❤️ Express Interest</button>
+
     <div id="interest-form" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.2);border-radius:12px;padding:18px;margin-bottom:10px;">
-      <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Optional Message</p>
-      <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;line-height:1.6;">You can express interest without a message. If you want to add a brief introduction you may do so below.</p>
+      <p style="font-family:'Space Mono',monospace;font-size:10px;color:#C9960C;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Optional Message</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;line-height:1.6;">A brief introduction — optional. The other person receives a one-time private notification.</p>
       <textarea id="interest-msg" placeholder="Brief introduction (optional)..." style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:white;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical;min-height:80px;outline:none;margin-bottom:12px;"></textarea>
       <div style="display:flex;gap:10px;">
         <button onclick="submitInterest()" style="flex:1;padding:13px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Send Interest →</button>
-        <button onclick="document.getElementById('interest-form').style.display='none'" style="padding:13px 20px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;">Cancel</button>
+        <button onclick="document.getElementById('interest-form').style.display='none';document.getElementById('interest-btn').style.display='block';" style="padding:13px 20px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);border-radius:8px;cursor:pointer;">Cancel</button>
       </div>
     </div>
 
     <button onclick="history.back()" style="width:100%;padding:14px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:1px solid rgba(255,255,255,0.1);border-radius:10px;cursor:pointer;">← Back to Discover</button>
   </div>
 
-  <!-- SUCCESS STATE -->
+  <!-- Success -->
   <div id="success-section" style="display:none;background:#1C1A14;border:1px solid rgba(45,80,22,0.5);border-radius:14px;padding:24px;text-align:center;">
     <p style="font-size:36px;margin-bottom:14px;">✦</p>
     <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:white;font-weight:700;margin-bottom:10px;">Interest Expressed</h3>
-    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;margin-bottom:20px;">The other person has received a one-time private notification. If they also express interest, you will both be notified. You will only hear back if they respond positively. No contact details are ever shared without consent.</p>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;margin-bottom:20px;">The other person has received a one-time private notification. You will only hear back if they respond positively.</p>
     <a href="discover.html" style="display:inline-block;padding:13px 28px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Back to Discover →</a>
   </div>
 
 </main>
 
 <!-- SIDEBAR -->
-<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:998;"></div>
-<div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.5);">
+<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
+<div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;height:-webkit-fill-available;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,0.3);">
   <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
     <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#E8B84B;text-transform:uppercase;margin:0;">SWAYMVAR</h2><p style="font-family:'Space Mono',monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
     <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">✕</button>
@@ -199,65 +204,196 @@ const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
 const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
 
-// ── HARD LOGIN GATE — runs immediately on page load ──
-document.addEventListener('DOMContentLoaded', async function() {
-  const { data: { session } } = await db.auth.getSession()
-  if (!session || !session.user) {
-    // Hide entire main content
-    document.querySelector('main').style.display = 'none'
-    // Show gate
-    document.getElementById('profile-gate').style.display = 'flex'
+var currentProfile = null
+var myProfileData = null
+var currentSession = null
+
+const ORG_CYCLE = {
+  'RBI':'Every 3 years','SEBI':'Every 2-3 years','NABARD':'Every 3 years',
+  'SBI':'Every 2-3 years','PNB':'Every 2-3 years','LIC':'Every 3-5 years',
+  'AAI':'Every 3-5 years','IOCL':'Every 3-5 years','ONGC':'Every 3-5 years',
+  'NTPC':'Every 3-5 years','GAIL':'Every 3-5 years'
+}
+const ORG_TYPE = {
+  'RBI':'Metro cities only','SEBI':'Mumbai, Delhi, regional offices',
+  'NABARD':'Regional offices pan-India','SBI':'Pan-India including rural',
+  'PNB':'Pan-India','LIC':'Divisional cities','AAI':'Airports across India',
+  'IOCL':'Refineries including remote','ONGC':'Fields including remote',
+  'NTPC':'Power plants across India'
+}
+
+function calcTF(myOrg, myCity, myReloc, theirOrg, theirCity, theirReloc) {
+  const METRO = ['Mumbai','Delhi','Chennai','Kolkata','Bengaluru','Hyderabad','Pune','Ahmedabad']
+  const ORG_CAT = {'RBI':'reg','SEBI':'reg','NABARD':'reg','PFRDA':'reg','IRDAI':'reg','SBI':'bank','PNB':'bank','Bank of Baroda':'bank','Canara Bank':'bank','Union Bank':'bank','LIC':'ins','GIC Re':'ins','National Insurance':'ins','New India Assurance':'ins','AAI':'avi','Air Traffic Control':'avi','IOCL':'oil','BPCL':'oil','ONGC':'oil','GAIL':'oil','NTPC':'energy'}
+  var score = 0
+  var myM = METRO.some(function(c){ return (myCity||'').includes(c) })
+  var thM = METRO.some(function(c){ return (theirCity||'').includes(c) })
+  if ((myCity||'').toLowerCase() === (theirCity||'').toLowerCase()) score += 40
+  else if (myM && thM) score += 30
+  else if (myM || thM) score += 15
+  else score += 20
+  var mc = ORG_CAT[myOrg]||'other', tc = ORG_CAT[theirOrg]||'other'
+  if (mc===tc) score += 30
+  else if ((mc==='reg'&&(tc==='bank'||tc==='ins'))||(tc==='reg'&&(mc==='bank'||mc==='ins'))) score += 22
+  else score += 10
+  var rm = {'flexible-flexible':30,'flexible-zone':25,'flexible-city':20,'zone-flexible':25,'zone-zone':25,'zone-city':15,'city-city':30,'city-flexible':20,'discuss-flexible':25,'discuss-zone':20,'flexible-discuss':25,'zone-discuss':20,'city-discuss':18,'discuss-discuss':22}
+  score += rm[(myReloc||'discuss')+'-'+(theirReloc||'discuss')] || 15
+  return Math.min(score, 99)
+}
+
+function tfColor(score) {
+  if (score >= 85) return '#4ade80'
+  if (score >= 70) return '#E8B84B'
+  if (score >= 55) return '#fb923c'
+  return '#f87171'
+}
+function tfLabel(score) {
+  if (score >= 85) return 'Excellent'
+  if (score >= 70) return 'Good'
+  if (score >= 55) return 'Fair'
+  return 'Discuss'
+}
+
+function populateProfile(p) {
+  currentProfile = p
+
+  // Name - show first name + last initial only
+  var nameParts = (p.full_name || 'Member').split(' ')
+  var display = nameParts[0] + (nameParts[1] ? ' ' + nameParts[1][0] + '.' : '')
+  document.getElementById('p-name').textContent = display
+
+  // Org + designation
+  document.getElementById('p-org').textContent = (p.org || '') + (p.designation ? ' · ' + p.designation : '')
+  document.getElementById('p-org2').textContent = p.org || '—'
+  document.getElementById('p-desig').textContent = p.designation || '—'
+
+  // Meta
+  var meta = []
+  if (p.age) meta.push(p.age + ' yrs')
+  if (p.height) meta.push(p.height)
+  if (p.city) meta.push(p.city)
+  document.getElementById('p-meta').textContent = meta.join(' · ')
+
+  // Other fields
+  document.getElementById('p-city').textContent = p.city || '—'
+  document.getElementById('p-diet').textContent = p.diet || '—'
+  var relocMap = {'flexible':'Flexible','zone':'Within Region','city':'Same City','discuss':'Open to Discussion'}
+  document.getElementById('p-reloc').textContent = relocMap[p.relocation] || (p.relocation || '—')
+
+  // Transfer fit
+  if (myProfileData) {
+    var tf = calcTF(myProfileData.org, myProfileData.city, myProfileData.relocation, p.org, p.city, p.relocation)
+    var el = document.getElementById('p-tf')
+    el.textContent = tf + '% — ' + tfLabel(tf)
+    el.style.color = tfColor(tf)
   } else {
-    // Logged in — show interest button normally
-    document.getElementById('profile-gate').style.display = 'none'
-    document.querySelector('main').style.display = 'block'
+    document.getElementById('p-tf').textContent = '—'
+  }
+
+  // Traits
+  if (p.traits) {
+    var traitsBox = document.getElementById('p-traits-box')
+    var traitsEl = document.getElementById('p-traits')
+    traitsBox.style.display = 'block'
+    traitsEl.innerHTML = ''
+    p.traits.split(',').forEach(function(t) {
+      if (t.trim()) {
+        var span = document.createElement('span')
+        span.className = 'trait'
+        span.textContent = t.trim()
+        traitsEl.appendChild(span)
+      }
+    })
+  }
+
+  // Transfer info
+  document.getElementById('p-cycle').textContent = ORG_CYCLE[p.org] || 'Varies'
+  document.getElementById('p-posting').textContent = ORG_TYPE[p.org] || 'Varies by location'
+  document.getElementById('p-tf-note').innerHTML = 'RBI postings are metro-only with predictable cycles. Check transfer guide for full details. <a href="transfer-fit.html" style="color:#E8B84B;text-decoration:underline;">Learn more →</a>'
+
+  // Show main content
+  document.getElementById('loading-state').style.display = 'none'
+  document.getElementById('profile-main').style.display = 'block'
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+  // Check login
+  var result = await db.auth.getSession()
+  currentSession = result.data.session
+
+  if (!currentSession || !currentSession.user) {
+    document.getElementById('login-gate').style.display = 'flex'
+    return
+  }
+
+  // Load my profile
+  try {
+    var myRes = await db.from('profiles').select('org,city,relocation').eq('email', currentSession.user.email).single()
+    if (myRes.data) myProfileData = myRes.data
+  } catch(e) {}
+
+  // Get profile ID from URL
+  var params = new URLSearchParams(window.location.search)
+  var profileId = params.get('id')
+  var profileEmail = params.get('email')
+
+  document.getElementById('loading-state').style.display = 'block'
+
+  if (profileId) {
+    // Load by ID
+    var res = await db.from('profiles').select('*').eq('id', profileId).single()
+    if (res.data) {
+      populateProfile(res.data)
+    } else {
+      document.getElementById('loading-state').style.display = 'none'
+      document.getElementById('not-found-state').style.display = 'block'
+    }
+  } else if (profileEmail) {
+    // Load by email
+    var res2 = await db.from('profiles').select('*').eq('email', profileEmail).single()
+    if (res2.data) {
+      populateProfile(res2.data)
+    } else {
+      document.getElementById('loading-state').style.display = 'none'
+      document.getElementById('not-found-state').style.display = 'block'
+    }
+  } else {
+    // No ID — show not found
+    document.getElementById('loading-state').style.display = 'none'
+    document.getElementById('not-found-state').style.display = 'block'
   }
 })
 
 async function expressInterest() {
-  try {
-    var result = await db.auth.getSession()
-    var session = result.data.session
-    
-    if (!session || !session.user) {
-      document.getElementById('login-required').style.display = 'block'
-      document.getElementById('login-required').scrollIntoView({ behavior: 'smooth' })
-      return
-    }
-
-    document.getElementById('interest-form').style.display = 'block'
+  if (!currentSession || !currentSession.user) {
+    document.getElementById('login-required').style.display = 'block'
     document.getElementById('interest-btn').style.display = 'none'
-    document.getElementById('interest-form').scrollIntoView({ behavior: 'smooth' })
-    
-  } catch(err) {
-    document.getElementById('interest-form').style.display = 'block'
-    document.getElementById('interest-btn').style.display = 'none'
+    return
   }
+  document.getElementById('interest-form').style.display = 'block'
+  document.getElementById('interest-btn').style.display = 'none'
+  document.getElementById('interest-form').scrollIntoView({ behavior: 'smooth' })
 }
 
 async function submitInterest() {
-  const msg = document.getElementById('interest-msg').value.trim()
-  const btn = document.querySelector('#interest-form button')
-  btn.textContent = 'Sending...'
-  btn.disabled = true
+  if (!currentProfile || !currentSession) return
+  var msg = document.getElementById('interest-msg').value.trim()
+  var sendBtn = document.querySelector('#interest-form button')
+  sendBtn.textContent = 'Sending...'
+  sendBtn.disabled = true
 
-  const { data: { session } } = await db.auth.getSession()
-
-  if (session && session.user) {
-    const { data: profile } = await db
-      .from('profiles')
-      .select('full_name, org, designation')
-      .eq('email', session.user.email)
-      .single()
-
+  try {
+    var myRes = await db.from('profiles').select('org,designation').eq('email', currentSession.user.email).single()
     await db.from('interests').insert({
-      from_email: session.user.email,
-      from_org: profile?.org || '',
-      from_designation: profile?.designation || '',
-      to_email: 'sample@rbi.org.in',
+      from_email: currentSession.user.email,
+      from_org: myRes.data ? myRes.data.org : '',
+      from_designation: myRes.data ? myRes.data.designation : '',
+      to_email: currentProfile.email || '',
       message: msg,
       status: 'pending'
     })
+  } catch(e) {
+    console.log('Interest save error:', e)
   }
 
   document.getElementById('action-section').style.display = 'none'
@@ -281,19 +417,5 @@ function closeSidebar() {
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
 </script>
-
-<!-- PROFILE LOGIN GATE -->
-<div id="profile-gate" style="display:none;position:fixed;inset:0;z-index:997;background:rgba(15,15,13,0.95);align-items:center;justify-content:center;padding:24px;">
-  <div style="background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:16px;padding:32px 24px;max-width:400px;width:100%;text-align:center;">
-    <p style="font-size:36px;margin-bottom:16px;">🔒</p>
-    <h2 style="font-family:'Playfair Display',serif;font-size:22px;color:white;font-weight:700;margin-bottom:10px;">Members Only</h2>
-    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.75;margin-bottom:24px;">Sign in to view profiles and express interest. Only verified SWAYMVAR members can browse profiles.</p>
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      <a href="my-profile.html" style="display:block;padding:14px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
-      <a href="index.html#invite" style="display:block;padding:13px;background:rgba(201,150,12,0.1);color:#E8B84B;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border:1px solid rgba(201,150,12,0.3);border-radius:8px;text-decoration:none;">Apply for Waitlist →</a>
-      <a href="index.html" style="display:block;padding:10px;color:rgba(255,255,255,0.3);font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;text-decoration:none;">← Back to Home</a>
-    </div>
-  </div>
-</div>
 </body>
 </html>
