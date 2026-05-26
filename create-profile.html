@@ -541,6 +541,8 @@ async function verifyInviteCode() {\
   if (record.designation && document.getElementById('designation')) document.getElementById('designation').value = record.designation\
 \
   window.verifiedInviteCode = code\
+  window.verifiedEmail = record.email || ''\
+  window.verifiedCode = code\
   window.scrollTo({ top: 0, behavior: 'smooth' })\
 }\
 \
@@ -629,7 +631,7 @@ async function submitProfile() {\
 \
   const data = {\
     full_name:   (document.getElementById('fname')?.value || '') + ' ' + (document.getElementById('lname')?.value || ''),\
-    email:       '',\
+    email:       window.verifiedEmail || '',\
     org:         document.getElementById('org')?.value || '',\
     designation: document.getElementById('designation')?.value || '',\
     city:        document.getElementById('city')?.value || '',\
