@@ -50,7 +50,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
 <!-- \═\═\═ LOGIN GATE \═\═\═ -->
 <div id="login-gate" style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 40px;">
   <div style="max-width:420px;width:100%;text-align:center;">
-    <div style="width:64px;height:64px;border-radius:50%;background:#EDF5E0;border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;">\\ud83d\\udd10</div>
+    <div style="width:64px;height:64px;border-radius:50%;background:#EDF5E0;border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;">🔐</div>
     <h2 class="font-display" style="font-size:26px;color:#2D5016;font-weight:700;margin-bottom:6px;">My Profile</h2>
     <p style="color:#5C5040;font-size:14px;line-height:1.7;margin-bottom:20px;">Sign in securely to view and edit your profile.</p>
 
@@ -70,7 +70,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
         <label class="form-label">Password</label>
         <div style="position:relative;">
           <input type="password" id="login-pwd" class="form-input" placeholder="Your password" style="padding-right:44px;"/>
-          <button onclick="togglePwd('login-pwd')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">\\ud83d\\udc41\️</button>
+          <button onclick="togglePwd('login-pwd')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">👁️\️</button>
         </div>
       </div>
       <p style="font-size:12px;color:#5C5040;"><a href="javascript:void(0)" onclick="switchTab('forgot')" style="color:#2D5016;font-weight:700;">Forgot password?</a></p>
@@ -88,14 +88,14 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
         <label class="form-label">Create Password (min 8 chars)</label>
         <div style="position:relative;">
           <input type="password" id="reg-pwd" class="form-input" placeholder="Create password" style="padding-right:44px;"/>
-          <button onclick="togglePwd('reg-pwd')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">\\ud83d\\udc41\️</button>
+          <button onclick="togglePwd('reg-pwd')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">👁️\️</button>
         </div>
       </div>
       <div style="margin-bottom:6px;">
         <label class="form-label">Confirm Password</label>
         <div style="position:relative;">
           <input type="password" id="reg-confirm" class="form-input" placeholder="Repeat password" style="padding-right:44px;"/>
-          <button onclick="togglePwd('reg-confirm')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">\\ud83d\\udc41\️</button>
+          <button onclick="togglePwd('reg-confirm')" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;">👁️\️</button>
         </div>
       </div>
       <p id="reg-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:8px;font-weight:600;"></p>
@@ -123,7 +123,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
   <div style="background:#2D5016;border-radius:16px;padding:24px;margin-bottom:20px;">
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;">
       <div style="display:flex;align-items:center;gap:14px;">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,150,12,0.2);border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">\\ud83d\\udc64</div>
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,150,12,0.2);border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">👤</div>
         <div>
           <h2 class="font-display" style="font-size:20px;color:white;font-weight:700;margin:0 0 4px;" id="header-name">\—</h2>
           <p class="font-mono" style="font-size:10px;color:#E8B84B;margin:0 0 6px;" id="header-org">\—</p>
@@ -131,9 +131,9 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
         </div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button onclick="saveAllChanges()" id="save-btn" style="padding:10px 18px;background:#C9960C;color:#1C1A14;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">\\ud83d\\udcbe Save</button>
+        <button onclick="saveAllChanges()" id="save-btn" style="padding:10px 18px;background:#C9960C;color:#1C1A14;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">💾 Save</button>
         <button onclick="signOut()" style="padding:10px 14px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.2);border-radius:8px;cursor:pointer;">Sign Out</button>
-        <button onclick="confirmDelete()" style="padding:10px 14px;background:rgba(139,26,26,0.2);color:#f87171;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border:1px solid rgba(139,26,26,0.4);border-radius:8px;cursor:pointer;">\\ud83d\\uddd1\️</button>
+        <button onclick="confirmDelete()" style="padding:10px 14px;background:rgba(139,26,26,0.2);color:#f87171;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border:1px solid rgba(139,26,26,0.4);border-radius:8px;cursor:pointer;">🗑️</button>
       </div>
     </div>
     <!-- Completeness -->
@@ -150,12 +150,12 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
 
   <!-- Tabs -->
   <div style="display:flex;gap:8px;margin-bottom:20px;overflow-x:auto;padding-bottom:4px;">
-    <button class="tab-btn active" onclick="switchSection('photos')" id="sec-photos">\\ud83d\\udcf7 Photos</button>
-    <button class="tab-btn" onclick="switchSection('basic')" id="sec-basic">\\ud83d\\udc64 Basic</button>
-    <button class="tab-btn" onclick="switchSection('work')" id="sec-work">\\ud83c\\udfdb\️ Work</button>
-    <button class="tab-btn" onclick="switchSection('personality')" id="sec-personality">\\ud83e\\udde0 Personality</button>
+    <button class="tab-btn active" onclick="switchSection('photos')" id="sec-photos">📷 Photos</button>
+    <button class="tab-btn" onclick="switchSection('basic')" id="sec-basic">👤 Basic</button>
+    <button class="tab-btn" onclick="switchSection('work')" id="sec-work">🏛️ Work</button>
+    <button class="tab-btn" onclick="switchSection('personality')" id="sec-personality">🧠 Personality</button>
     <button class="tab-btn" onclick="switchSection('life')" id="sec-life">\❤\️ Life</button>
-    <button class="tab-btn" onclick="switchSection('privacy')" id="sec-privacy">\\ud83d\\udd12 Privacy</button>
+    <button class="tab-btn" onclick="switchSection('privacy')" id="sec-privacy">🔒 Privacy</button>
   </div>
 
   <!-- PHOTOS -->
@@ -164,7 +164,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
     <p style="color:#5C5040;font-size:13px;margin-bottom:16px;">1 to 5 photos. All <strong style="color:#2D5016;">blurred by default</strong> until mutual interest. Max 5MB each.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:14px;">
       <div id="pslot-0" onclick="triggerPhoto(0)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;position:relative;overflow:hidden;">
-        <span style="font-size:26px;margin-bottom:4px;">\\ud83d\\udcf7</span><span class="font-mono" style="font-size:8px;color:#A67C00;text-transform:uppercase;">Main Photo</span>
+        <span style="font-size:26px;margin-bottom:4px;">📷</span><span class="font-mono" style="font-size:8px;color:#A67C00;text-transform:uppercase;">Main Photo</span>
       </div>
       <div id="pslot-1" onclick="triggerPhoto(1)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;position:relative;overflow:hidden;"><span style="font-size:22px;">+</span><span class="font-mono" style="font-size:8px;color:#5C5040;">Photo 2</span></div>
       <div id="pslot-2" onclick="triggerPhoto(2)" style="aspect-ratio:1;border:2px dashed #D4C5A0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:white;position:relative;overflow:hidden;"><span style="font-size:22px;">+</span><span class="font-mono" style="font-size:8px;color:#5C5040;">Photo 3</span></div>
@@ -177,7 +177,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
     <input type="file" id="pfile-3" accept="image/*" style="display:none;" onchange="handlePhoto(3,this)"/>
     <input type="file" id="pfile-4" accept="image/*" style="display:none;" onchange="handlePhoto(4,this)"/>
     <div style="background:#EDF5E0;border:1px solid #2D5016;border-radius:8px;padding:10px 14px;">
-      <p style="color:#2D5016;font-size:12px;line-height:1.6;"><strong>\\ud83d\\udd12 Privacy:</strong> Photos blurred for all members until mutual interest confirmed.</p>
+      <p style="color:#2D5016;font-size:12px;line-height:1.6;"><strong>🔒 Privacy:</strong> Photos blurred for all members until mutual interest confirmed.</p>
     </div>
   </div>
 
@@ -239,10 +239,10 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
     <p class="form-label" style="margin-bottom:6px;">Your Personality</p>
     <p style="color:#5C5040;font-size:13px;margin-bottom:16px;">Be honest \— these help find someone truly compatible.</p>
     <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px;">
-      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">\\ud83e\\uddd8 Introvert</span><span style="font-weight:600;font-size:13px;">Extrovert \\ud83c\\udf89</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-1" oninput="updateLabel('lb-1',this.value,['Strongly Introvert','More Introvert','Ambivert','More Extrovert','Strongly Extrovert'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-1">Ambivert</p></div>
-      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">\\ud83d\\ude0c Very Calm</span><span style="font-weight:600;font-size:13px;">Very Emotional \\ud83d\\udcad</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-2" oninput="updateLabel('lb-2',this.value,['Very calm','Generally calm','Balanced','Emotionally expressive','Deeply feeling'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-2">Balanced</p></div>
-      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">\\ud83d\\udccb Organised</span><span style="font-weight:600;font-size:13px;">Spontaneous \✨</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-3" oninput="updateLabel('lb-3',this.value,['Very structured','Mostly organised','Mix of both','Generally spontaneous','Very spontaneous'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-3">Mix of both</p></div>
-      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">\\ud83e\\udd1d Agreeable</span><span style="font-weight:600;font-size:13px;">Assertive \\ud83d\\udcaa</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-4" oninput="updateLabel('lb-4',this.value,['Very collaborative','Mostly agreeable','Balanced','Mostly assertive','Very assertive'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-4">Balanced</p></div>
+      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">🧘 Introvert</span><span style="font-weight:600;font-size:13px;">Extrovert 🎉</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-1" oninput="updateLabel('lb-1',this.value,['Strongly Introvert','More Introvert','Ambivert','More Extrovert','Strongly Extrovert'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-1">Ambivert</p></div>
+      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">😌 Very Calm</span><span style="font-weight:600;font-size:13px;">Very Emotional 💭</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-2" oninput="updateLabel('lb-2',this.value,['Very calm','Generally calm','Balanced','Emotionally expressive','Deeply feeling'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-2">Balanced</p></div>
+      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">📋 Organised</span><span style="font-weight:600;font-size:13px;">Spontaneous \✨</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-3" oninput="updateLabel('lb-3',this.value,['Very structured','Mostly organised','Mix of both','Generally spontaneous','Very spontaneous'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-3">Mix of both</p></div>
+      <div style="background:#F9F5EC;border-radius:10px;padding:14px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-weight:600;font-size:13px;">🤝 Agreeable</span><span style="font-weight:600;font-size:13px;">Assertive 💪</span></div><input type="range" min="1" max="5" value="3" style="width:100%;accent-color:#2D5016;" id="sl-4" oninput="updateLabel('lb-4',this.value,['Very collaborative','Mostly agreeable','Balanced','Mostly assertive','Very assertive'])"/><p class="font-mono" style="font-size:10px;color:#2D5016;text-align:center;margin-top:4px;" id="lb-4">Balanced</p></div>
     </div>
     <p class="form-label" style="margin-bottom:8px;">Select Traits (up to 8)</p>
     <div style="display:flex;flex-wrap:wrap;gap:8px;" id="trait-container">
@@ -256,12 +256,12 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
     <p style="color:#5C5040;font-size:13px;margin-bottom:20px;">These matter in daily married life.</p>
     <div style="display:flex;flex-direction:column;gap:16px;">
       <div><label class="form-label">Diet</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="diet-opts"><button class="trait-btn" onclick="selectOne('diet-opts',this)">Vegetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Jain</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Eggetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Non-Vegetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Vegan</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">No preference</button></div></div>
-      <div><label class="form-label">Travel</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="travel-opts"><button class="trait-btn" onclick="selectOne('travel-opts',this)">\\ud83c\\udfd4\️ Mountains</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">\\ud83c\\udfd6\️ Beaches</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">\\ud83c\\udfdb\️ Heritage</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">\\ud83c\\udf0d International</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">\\ud83c\\udfe0 Homebody</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">Mix of everything</button></div></div>
-      <div><label class="form-label">Social Life</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="social-opts"><button class="trait-btn" onclick="selectOne('social-opts',this)">\\ud83c\\udf89 Love parties</button><button class="trait-btn" onclick="selectOne('social-opts',this)">\\ud83c\\udf7d\️ Small dinners</button><button class="trait-btn" onclick="selectOne('social-opts',this)">\\ud83c\\udfe0 Quiet evenings</button><button class="trait-btn" onclick="selectOne('social-opts',this)">Mix of both</button></div></div>
-      <div><label class="form-label">Cooking</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="cook-opts"><button class="trait-btn" onclick="selectOne('cook-opts',this)">\\ud83c\\udf73 Love cooking</button><button class="trait-btn" onclick="selectOne('cook-opts',this)">\\ud83c\\udf7d\️ Prefer eating out</button><button class="trait-btn" onclick="selectOne('cook-opts',this)">Mix of both</button></div></div>
-      <div><label class="form-label">Children</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="kids-opts"><button class="trait-btn" onclick="selectOne('kids-opts',this)">\\ud83d\\udc76 Want children</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">\\ud83d\\udeab Do not want</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">\⏳ Open, not urgent</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">Prefer not to say</button></div></div>
-      <div><label class="form-label">Living with Parents</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="parents-opts"><button class="trait-btn" onclick="selectOne('parents-opts',this)">\\ud83c\\udfe0 Joint family</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">\\ud83c\\udfd8\️ Same city</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">\✈\️ Independent</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">Open to discussion</button></div></div>
-      <div><label class="form-label">Money</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="money-opts"><button class="trait-btn" onclick="selectOne('money-opts',this)">\\ud83d\\udcb0 Saver</button><button class="trait-btn" onclick="selectOne('money-opts',this)">\\ud83d\\udcb3 Spender on experiences</button><button class="trait-btn" onclick="selectOne('money-opts',this)">\\ud83d\\udcc8 Investor</button><button class="trait-btn" onclick="selectOne('money-opts',this)">Balanced</button></div></div>
+      <div><label class="form-label">Travel</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="travel-opts"><button class="trait-btn" onclick="selectOne('travel-opts',this)">🏔️ Mountains</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">🏖️ Beaches</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">🏛️ Heritage</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">🌍 International</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">🏠 Homebody</button><button class="trait-btn" onclick="selectOne('travel-opts',this)">Mix of everything</button></div></div>
+      <div><label class="form-label">Social Life</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="social-opts"><button class="trait-btn" onclick="selectOne('social-opts',this)">🎉 Love parties</button><button class="trait-btn" onclick="selectOne('social-opts',this)">🍽️ Small dinners</button><button class="trait-btn" onclick="selectOne('social-opts',this)">🏠 Quiet evenings</button><button class="trait-btn" onclick="selectOne('social-opts',this)">Mix of both</button></div></div>
+      <div><label class="form-label">Cooking</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="cook-opts"><button class="trait-btn" onclick="selectOne('cook-opts',this)">🍳 Love cooking</button><button class="trait-btn" onclick="selectOne('cook-opts',this)">🍽️ Prefer eating out</button><button class="trait-btn" onclick="selectOne('cook-opts',this)">Mix of both</button></div></div>
+      <div><label class="form-label">Children</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="kids-opts"><button class="trait-btn" onclick="selectOne('kids-opts',this)">👶 Want children</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">🚫 Do not want</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">\⏳ Open, not urgent</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">Prefer not to say</button></div></div>
+      <div><label class="form-label">Living with Parents</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="parents-opts"><button class="trait-btn" onclick="selectOne('parents-opts',this)">🏠 Joint family</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">🏘️ Same city</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">\✈\️ Independent</button><button class="trait-btn" onclick="selectOne('parents-opts',this)">Open to discussion</button></div></div>
+      <div><label class="form-label">Money</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="money-opts"><button class="trait-btn" onclick="selectOne('money-opts',this)">💰 Saver</button><button class="trait-btn" onclick="selectOne('money-opts',this)">💳 Spender on experiences</button><button class="trait-btn" onclick="selectOne('money-opts',this)">📈 Investor</button><button class="trait-btn" onclick="selectOne('money-opts',this)">Balanced</button></div></div>
     </div>
   </div>
 
@@ -271,7 +271,7 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
     <div style="display:flex;flex-direction:column;gap:12px;">
       <div style="padding:14px;background:#F9F5EC;border-radius:10px;border:1px solid #D4C5A0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
         <div><p style="font-weight:600;color:#1C1A14;font-size:14px;margin-bottom:3px;">Photo Visibility</p><p style="color:#5C5040;font-size:13px;">Who sees your photos</p></div>
-        <select class="form-select" style="width:auto;" id="f-photo-privacy"><option value="blurred">\\ud83d\\udd12 Blurred for everyone</option><option value="mutual">\\ud83d\\udd11 On mutual interest</option><option value="visible">\\ud83d\\udc41\️ Visible to all verified</option></select>
+        <select class="form-select" style="width:auto;" id="f-photo-privacy"><option value="blurred">🔒 Blurred for everyone</option><option value="mutual">🔑 On mutual interest</option><option value="visible">👁️\️ Visible to all verified</option></select>
       </div>
       <div style="padding:14px;background:#F9F5EC;border-radius:10px;border:1px solid #D4C5A0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
         <div><p style="font-weight:600;color:#1C1A14;font-size:14px;margin-bottom:3px;">Name Visibility</p><p style="color:#5C5040;font-size:13px;">Show first name or full name</p></div>
@@ -324,14 +324,14 @@ body { background: #FEFCF5; color: #1C1A14; font-family: 'DM Sans', sans-serif; 
     <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">\✕</button>
   </div>
   <nav style="padding:8px 0;">
-    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">\\ud83c\\udfe0</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
-    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">\\ud83d\\udc8e</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
-    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);"><span style="font-size:18px;">\\ud83d\\udc64</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
-    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">\\ud83d\\udcac</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🏠</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div></a>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💎</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div></a>
+    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);"><span style="font-size:18px;">👤</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div></a>
+    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">💬</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div></a>
     <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">\✨</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div></a>
-    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">\\ud83d\\udee1\️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
+    <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🛡️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div></a>
     <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">\❓</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div></a>
-    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">\\ud83d\\uddfa\️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
+    <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:18px;">🗺️</span><div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div></a>
   </nav>
   <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);">
     <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">\✓ Peer Verified Only<br/>\✓ All Religions Welcome<br/>\✓ Privacy Protected<br/>\✦ First 100 Free for Life</p>
@@ -496,7 +496,7 @@ function setSelect(id,val) {
 async function saveAllChanges() {
   if (!currentRecord) return
   const btn = document.getElementById('save-btn')
-  btn.textContent='\\ud83d\\udcbe Saving..'; btn.disabled=true
+  btn.textContent='💾 Saving..'; btn.disabled=true
   const fname=document.getElementById('f-fname').value.trim()
   const lname=document.getElementById('f-lname').value.trim()
   function getSel(id){const b=document.querySelector('#'+id+' .trait-btn.selected');return b?b.textContent.trim():''}
@@ -510,7 +510,7 @@ async function saveAllChanges() {
     parents: getSel('parents-opts'), traits: traits
   }
   const { error } = await db.from(currentTable).update(updates).eq('id', currentRecord.id)
-  btn.textContent='\\ud83d\\udcbe Save'; btn.disabled=false
+  btn.textContent='💾 Save'; btn.disabled=false
   if (!error) {
     currentRecord={...currentRecord,...updates}
     document.getElementById('save-status').textContent='\✓ Saved successfully'
@@ -528,7 +528,7 @@ async function confirmDelete() {
   await db.from('profiles').delete().eq('id', currentRecord.id)
   await db.from('invite_requests').delete().eq('email', currentRecord.email||'')
   await db.auth.signOut()
-  document.getElementById('profile-dashboard').innerHTML='<div style="text-align:center;padding:60px 24px;"><p style="font-size:40px;margin-bottom:16px;">\\ud83d\\uddd1\️</p><h3 style="font-family:Playfair Display,serif;font-size:24px;color:#2D5016;font-weight:700;margin-bottom:12px;">Profile Deleted</h3><p style="color:#5C5040;font-size:14px;margin-bottom:24px;">All your data has been permanently removed.</p><a href="index.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:Space Mono,monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">Back to Home</a></div>'
+  document.getElementById('profile-dashboard').innerHTML='<div style="text-align:center;padding:60px 24px;"><p style="font-size:40px;margin-bottom:16px;">🗑️</p><h3 style="font-family:Playfair Display,serif;font-size:24px;color:#2D5016;font-weight:700;margin-bottom:12px;">Profile Deleted</h3><p style="color:#5C5040;font-size:14px;margin-bottom:24px;">All your data has been permanently removed.</p><a href="index.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:Space Mono,monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">Back to Home</a></div>'
 }
 
 // \─\─ SECTIONS \─\─
@@ -557,14 +557,14 @@ function handlePhoto(i,input){
     rm.onclick=function(ev){ev.stopPropagation();removePhoto(i)}; slot.appendChild(rm)
     const badge=document.createElement('div')
     badge.style.cssText='position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:8px;color:rgba(255,255,255,0.8);background:rgba(0,0,0,0.5);padding:2px;font-family:Space Mono,monospace;'
-    badge.textContent='\\ud83d\\udd12 Blurred'; slot.appendChild(badge)
+    badge.textContent='🔒 Blurred'; slot.appendChild(badge)
   }
   reader.readAsDataURL(input.files[0])
 }
 function removePhoto(i){
   const slot=document.getElementById('pslot-'+i)
   slot.style.padding=''; slot.style.border='2px dashed #D4C5A0'
-  slot.innerHTML=i===0?'<span style="font-size:26px;margin-bottom:4px;">\\ud83d\\udcf7</span><span style="font-family:Space Mono,monospace;font-size:8px;color:#A67C00;text-transform:uppercase;">Main Photo</span>':'<span style="font-size:22px;">+</span><span style="font-family:Space Mono,monospace;font-size:8px;color:#5C5040;">Photo '+(i+1)+'</span>'
+  slot.innerHTML=i===0?'<span style="font-size:26px;margin-bottom:4px;">📷</span><span style="font-family:Space Mono,monospace;font-size:8px;color:#A67C00;text-transform:uppercase;">Main Photo</span>':'<span style="font-size:22px;">+</span><span style="font-family:Space Mono,monospace;font-size:8px;color:#5C5040;">Photo '+(i+1)+'</span>'
 }
 
 // \─\─ HELPERS \─\─
@@ -1663,8 +1663,8 @@ else:
 
 # Fix the IAS filter chip to show as disabled/coming soon
 content = content.replace(
-    '\\ud83d\\udd12 IAS/IPS \— Soon',
-    '\\ud83d\\udd12 IAS/IPS'
+    '🔒 IAS/IPS \— Soon',
+    '🔒 IAS/IPS'
 )
 
 with open('/mnt/user-data/outputs/swaymvar-website/discover.html', 'w') as f:
@@ -2847,19 +2847,19 @@ SIDEBAR = '''
   </div>
   <nav style="padding:8px 0;">
     <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
-      <span style="font-size:18px;">\\ud83c\\udfe0</span>
+      <span style="font-size:18px;">🏠</span>
       <div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Landing page</p></div>
     </a>
     <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);">
-      <span style="font-size:18px;">\\ud83d\\udc8e</span>
+      <span style="font-size:18px;">💎</span>
       <div><p style="font-family:'Space Mono',monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">Discover</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Browse verified profiles</p></div>
     </a>
     <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
-      <span style="font-size:18px;">\\ud83d\\udc64</span>
+      <span style="font-size:18px;">👤</span>
       <div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">View and edit your profile</p></div>
     </a>
     <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
-      <span style="font-size:18px;">\\ud83d\\udcac</span>
+      <span style="font-size:18px;">💬</span>
       <div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Notifications & interests</p></div>
     </a>
     <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
@@ -2867,7 +2867,7 @@ SIDEBAR = '''
       <div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Create Profile</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Join founding 100</p></div>
     </a>
     <a href="verify.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
-      <span style="font-size:18px;">\\ud83d\\udee1\️</span>
+      <span style="font-size:18px;">🛡️</span>
       <div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">How It Works</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Verification explained</p></div>
     </a>
     <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
@@ -2875,7 +2875,7 @@ SIDEBAR = '''
       <div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Common questions</p></div>
     </a>
     <a href="transfer-fit.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);">
-      <span style="font-size:18px;">\\ud83d\\uddfa\️</span>
+      <span style="font-size:18px;">🗺️</span>
       <div><p style="font-family:'Space Mono',monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Transfer Fit</p><p style="font-size:11px;color:rgba(255,255,255,0.4);margin:2px 0 0;">Career compatibility</p></div>
     </a>
   </nav>
