@@ -161,11 +161,19 @@ const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
 const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
 
-document.addEventListener('DOMContentLoaded', async function() {
+// Wait for Supabase to load then check session
+async function initMessages() {
+  if (typeof db === 'undefined') {
+    setTimeout(initMessages, 100)
+    return
+  }
   var res = await db.auth.getSession()
   if (res.data.session && res.data.session.user) {
     await loadMessages(res.data.session.user.email)
   }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(initMessages, 200)
 })
 
 async function msgLogin() {
