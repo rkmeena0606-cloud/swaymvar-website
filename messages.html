@@ -59,7 +59,8 @@ body{background:#FEFCF5;color:#1C1A14;font-family:sans-serif;padding-bottom:60px
     <p style="color:#5C5040;font-size:14px;" id="logged-as">—</p>
   </div>
   <div style="display:flex;gap:8px;margin-bottom:20px;">
-    <button class="tab-btn active" onclick="showTab('interests')" id="tab-interests">❤️ Interests</button>
+    <button class="tab-btn active" onclick="showTab('interests')" id="tab-interests">❤️ Received</button>
+    <button class="tab-btn" onclick="showTab('sent')" id="tab-sent">💌 Sent</button>
     <button class="tab-btn" onclick="showTab('notifications')" id="tab-notifications">🔔 Notifications</button>
   </div>
 
@@ -75,6 +76,20 @@ body{background:#FEFCF5;color:#1C1A14;font-family:sans-serif;padding-bottom:60px
       <a href="discover.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">Browse Profiles →</a>
     </div>
     <div id="interests-list"></div>
+  </div>
+
+  <div id="section-sent" style="display:none;">
+    <div id="sent-loading" style="text-align:center;padding:40px;color:#5C5040;">
+      <p style="font-size:32px;margin-bottom:12px;">⏳</p>
+      <p style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;">Loading...</p>
+    </div>
+    <div id="sent-empty" style="display:none;text-align:center;padding:60px 24px;">
+      <p style="font-size:40px;margin-bottom:16px;">💌</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:#2D5016;font-weight:700;margin-bottom:10px;">No interests sent yet</h3>
+      <p style="color:#5C5040;font-size:14px;line-height:1.7;margin-bottom:20px;">Browse profiles and express interest to connect.</p>
+      <a href="discover.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">Browse Profiles →</a>
+    </div>
+    <div id="sent-list"></div>
   </div>
 
   <div id="section-notifications" style="display:none;">
@@ -219,9 +234,41 @@ async function loadMessages(email) {
 
 function showTab(tab) {
   document.getElementById('section-interests').style.display = tab==='interests'?'block':'none'
+  document.getElementById('section-sent').style.display = tab==='sent'?'block':'none'
   document.getElementById('section-notifications').style.display = tab==='notifications'?'block':'none'
   document.getElementById('tab-interests').className = 'tab-btn'+(tab==='interests'?' active':'')
+  document.getElementById('tab-sent').className = 'tab-btn'+(tab==='sent'?' active':'')
   document.getElementById('tab-notifications').className = 'tab-btn'+(tab==='notifications'?' active':'')
+  if (tab==='sent') loadSentInterests()
+}
+
+async function loadSentInterests() {
+  if (!window._sentLoaded) {
+    window._sentLoaded = true
+    var email = document.getElementById('logged-as').textContent.replace('Signed in as ','')
+    var sr = await db.from('interests').select('*').eq('from_email', email).order('created_at', {ascending:false})
+    document.getElementById('sent-loading').style.display = 'none'
+    if (sr.error || !sr.data || sr.data.length === 0) {
+      document.getElementById('sent-empty').style.display = 'block'
+      return
+    }
+    var list = document.getElementById('sent-list')
+    sr.data.forEach(function(interest) {
+      var card = document.createElement('div')
+      card.className = 'card'
+      card.innerHTML =
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px;">' +
+          '<div><p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">💌 Interest Sent</p>' +
+          '<p style="font-weight:700;color:#1C1A14;font-size:15px;">To: ' + (interest.to_email || 'Member') + '</p>' +
+          (interest.message ? '<p style="color:#5C5040;font-size:13px;margin-top:4px;">"' + interest.message + '"</p>' : '') + '</div>' +
+          '<span style="font-family:'Space Mono',monospace;font-size:10px;color:#5C5040;">' + new Date(interest.created_at).toLocaleDateString('en-IN') + '</span>' +
+        '</div>' +
+        '<div style="background:#F9F5EC;border-radius:8px;padding:10px 14px;">' +
+          '<p style="color:#5C5040;font-size:12px;">Waiting for response. You will be notified if they express interest back.</p>' +
+        '</div>'
+      list.appendChild(card)
+    })
+  }
 }
 
 function openSidebar(){document.getElementById('sidebar').style.left='0px';document.getElementById('sidebar-overlay').style.display='block';document.body.style.overflow='hidden';document.body.style.position='fixed';document.body.style.width='100%'}

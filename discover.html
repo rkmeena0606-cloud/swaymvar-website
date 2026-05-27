@@ -410,7 +410,7 @@ function applyFilters() {
 
 function updateCount() {
   var v = allCards.filter(function(c){ return c.style.display!=='none' }).length
-  document.getElementById('profile-count').textContent = v
+  document.getElementById('profile-count').textContent = v + (v === 1 ? ' Profile' : ' Profiles')
   document.getElementById('empty-state').style.display = v===0 ? 'block' : 'none'
 }
 

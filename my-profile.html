@@ -91,6 +91,7 @@ body{background:#FEFCF5;color:#1C1A14;font-family:'DM Sans',sans-serif;padding-b
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;">
       <a href="discover.html" style="padding:10px 18px;background:#EDF5E0;color:#2D5016;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border-radius:8px;text-decoration:none;border:1px solid #2D5016;">&#128142; Discover</a>
+      <button onclick="previewMyProfile()" style="padding:10px 18px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border-radius:8px;border:1px solid #2D5016;cursor:pointer;">&#128065; Preview</button>
       <button onclick="doSignOut()" style="padding:10px 18px;background:white;color:#8B1A1A;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;border-radius:8px;border:1px solid #8B1A1A;cursor:pointer;">Sign Out</button>
     </div>
   </div>
@@ -372,8 +373,10 @@ function populateDashboard(p) {
   var fields = ['age','height','city','state','about','education','org','designation','relocation','diet','travel','children','traits','personality']
   fields.forEach(function(f) {
     var el = document.getElementById('edit-' + f)
-    if (el && p[f]) el.value = p[f]
+    if (el && p[f] !== null && p[f] !== undefined) el.value = p[f]
   })
+  // Store profile ID for preview link
+  window.profileId = p.id
 }
 
 function switchSection(sec) {
@@ -414,9 +417,28 @@ async function saveSection(sec) {
     data.personality = document.getElementById('edit-personality').value.trim()
   }
   var res = await db.from('profiles').update(data).ilike('email', currentUser.email)
-  btn.textContent = res.error ? 'Error!' : 'Saved!'
+  if (res.error) {
+    btn.textContent = '✗ Error saving'
+    btn.style.background = '#8B1A1A'
+  } else {
+    btn.textContent = '✓ Saved!'
+    btn.style.background = '#16a34a'
+    // Show toast
+    showToast('Profile updated successfully!')
+  }
   btn.disabled = false
-  setTimeout(function() { btn.textContent = 'Save ' + sec.charAt(0).toUpperCase() + sec.slice(1); }, 2000)
+  setTimeout(function() {
+    btn.textContent = 'Save ' + sec.charAt(0).toUpperCase() + sec.slice(1)
+    btn.style.background = ''
+  }, 2500)
+}
+
+function showToast(msg) {
+  var t = document.createElement('div')
+  t.textContent = msg
+  t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2D5016;color:white;padding:12px 24px;border-radius:8px;font-family:monospace;font-size:12px;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.2);'
+  document.body.appendChild(t)
+  setTimeout(function() { t.remove() }, 3000)
 }
 
 async function handleAuth() { await doLogin() }
@@ -424,6 +446,17 @@ async function handleAuth() { await doLogin() }
 async function doSignOut() {
   await db.auth.signOut()
   window.location.href = 'index.html'
+}
+
+function previewMyProfile() {
+  if (window.profileId) {
+    window.open('profile.html?id=' + window.profileId, '_blank')
+  } else if (currentUser) {
+    // Find profile ID from email
+    db.from('profiles').select('id').ilike('email', currentUser.email).single().then(function(r) {
+      if (r.data) window.open('profile.html?id=' + r.data.id, '_blank')
+    })
+  }
 }
 
 async function showForgotPassword() {
@@ -445,17 +478,69 @@ async function showForgotPassword() {
   }
 }
 
-function handlePhotoUpload(input) {
+async function handlePhotoUpload(input) {
   if (!input.files || !input.files[0]) return
+  var file = input.files[0]
+  
+  // Validate size (5MB max)
+  if (file.size > 5 * 1024 * 1024) {
+    alert('Photo must be under 5MB. Please choose a smaller image.')
+    return
+  }
+  
+  // Show preview immediately
   var reader = new FileReader()
   reader.onload = function(e) {
     var grid = document.getElementById('photos-grid')
     var div = document.createElement('div')
+    div.id = 'photo-preview-new'
     div.style.cssText = 'aspect-ratio:1;border-radius:10px;overflow:hidden;position:relative;'
-    div.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;filter:blur(8px);"/>'
+    div.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;filter:blur(8px);"/><div style="position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:10px;color:white;background:rgba(0,0,0,0.5);padding:2px;">Uploading...</div>'
     grid.insertBefore(div, grid.lastElementChild)
   }
-  reader.readAsDataURL(input.files[0])
+  reader.readAsDataURL(file)
+  
+  if (!currentUser) { alert('Please sign in first.'); return }
+  
+  // Upload to Supabase Storage
+  try {
+    var ext = file.name.split('.').pop().toLowerCase() || 'jpg'
+    var fileName = currentUser.id + '/' + Date.now() + '.' + ext
+    var { data, error } = await db.storage.from('profile-photos').upload(fileName, file, {
+      cacheControl: '3600',
+      upsert: false,
+      contentType: file.type
+    })
+    
+    if (error) {
+      console.error('Upload error:', error)
+      var prev = document.getElementById('photo-preview-new')
+      if (prev) prev.querySelector('div') && (prev.querySelector('div').textContent = 'Upload failed')
+      return
+    }
+    
+    // Get public URL
+    var { data: urlData } = db.storage.from('profile-photos').getPublicUrl(fileName)
+    var publicUrl = urlData.publicUrl
+    
+    // Save URL to profiles table
+    var existing = profileData?.photo_urls ? JSON.parse(profileData.photo_urls) : []
+    existing.push(publicUrl)
+    await db.from('profiles').update({photo_urls: JSON.stringify(existing)}).ilike('email', currentUser.email)
+    
+    // Update preview div
+    var prev = document.getElementById('photo-preview-new')
+    if (prev) {
+      prev.removeAttribute('id')
+      var overlay = prev.querySelector('div')
+      if (overlay) overlay.textContent = '✓ Uploaded'
+      setTimeout(() => { if (overlay) overlay.remove() }, 2000)
+    }
+    
+    console.log('Photo uploaded:', publicUrl)
+  } catch(e) {
+    console.error('Upload failed:', e)
+  }
 }
 
 function openSidebar() {
