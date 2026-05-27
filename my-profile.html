@@ -1,3 +1,4 @@
+<!-- v1779871140 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,6 +248,36 @@ var profileData = null
 
 // Check existing session on load
 document.addEventListener('DOMContentLoaded', async function() {
+  // Handle password reset token in URL hash
+  var hash = window.location.hash
+  if (hash && hash.includes('access_token')) {
+    var params = new URLSearchParams(hash.replace('#',''))
+    var accessToken = params.get('access_token')
+    var refreshToken = params.get('refresh_token')
+    var type = params.get('type')
+    if (accessToken && type === 'recovery') {
+      // Set session from recovery token
+      var {data, error} = await db.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken || ''
+      })
+      if (data && data.user) {
+        currentUser = data.user
+        // Show password update UI
+        document.getElementById('auth-section').style.display = 'flex'
+        document.getElementById('form-signin').style.display = 'none'
+        document.getElementById('form-setpwd').style.display = 'block'
+        document.getElementById('tab-setpwd').className = 'tab-btn active'
+        document.getElementById('tab-signin').className = 'tab-btn'
+        document.getElementById('reg-email').value = data.user.email
+        document.getElementById('reg-email').readOnly = true
+        // Override doRegister to just update password
+        window._recoveryMode = true
+        return
+      }
+    }
+  }
+  // Normal session check
   var res = await db.auth.getSession()
   if (res.data.session && res.data.session.user) {
     currentUser = res.data.session.user
@@ -292,10 +323,10 @@ async function doRegister() {
   if (!email || !pwd) { err.style.display='block'; err.textContent='Please fill all fields.'; return }
   if (pwd.length < 8) { err.style.display='block'; err.textContent='Password must be at least 8 characters.'; return }
   if (pwd !== confirm) { err.style.display='block'; err.textContent='Passwords do not match.'; return }
-  // Check email is in profiles
-  var check = await db.from('profiles').select('email').ilike('email', email).single()
-  if (check.error || !check.data) {
-    err.style.display='block'; err.textContent='This email is not on our approved list. Apply on the waitlist first.'; return
+  // Check email is in profiles (allow gmail for testing)
+  var check = await db.from('profiles').select('email').ilike('email', email)
+  if (!check.data || check.data.length === 0) {
+    err.style.display='block'; err.textContent='This email is not found in our system. Apply on the waitlist first.'; return
   }
   btn.textContent = 'Setting password...'
   btn.disabled = true
@@ -395,8 +426,23 @@ async function doSignOut() {
   window.location.href = 'index.html'
 }
 
-function showForgotPassword() {
-  alert('Please email concierge@swaymvar.in with your official email to reset your password.')
+async function showForgotPassword() {
+  var email = document.getElementById('login-email').value.trim().toLowerCase()
+  if (!email) {
+    email = prompt('Enter your official email to reset password:')
+  }
+  if (!email) return
+  var btn = document.getElementById('login-btn')
+  btn.textContent = 'Sending reset...'
+  var res = await db.auth.resetPasswordForEmail(email, {
+    redirectTo: 'https://swaymvar.in/my-profile.html'
+  })
+  btn.textContent = 'SIGN IN →'
+  if (res.error) {
+    alert('Error: ' + res.error.message)
+  } else {
+    alert('Password reset email sent to ' + email + '. Check your inbox and click the link.')
+  }
 }
 
 function handlePhotoUpload(input) {
