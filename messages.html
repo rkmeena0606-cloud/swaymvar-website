@@ -224,20 +224,135 @@ async function loadMessages(email) {
   }
   var list = document.getElementById('interests-list')
   ir.data.forEach(function(interest) {
-    var card = document.createElement('div')
-    card.className = 'card'
-    card.innerHTML =
-      '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px;">' +
-        '<div><p style="font-family:\'Space Mono\',monospace;font-size:9px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">❤️ New Interest</p>' +
-        '<p style="font-weight:700;color:#1C1A14;font-size:15px;">' + (interest.from_org || 'A verified member') + '</p>' +
-        (interest.message ? '<p style="color:#5C5040;font-size:13px;margin-top:4px;">' + interest.message + '</p>' : '') + '</div>' +
-        '<span style="font-family:\'Space Mono\',monospace;font-size:10px;color:#5C5040;">' + new Date(interest.created_at).toLocaleDateString('en-IN') + '</span>' +
-      '</div>' +
-      '<div style="background:#EDF5E0;border-radius:8px;padding:12px;margin-bottom:12px;">' +
-        '<p style="color:#2D5016;font-size:13px;line-height:1.6;">If you are also interested, express interest on their profile or write to <a href="mailto:concierge@swaymvar.in" style="color:#2D5016;text-decoration:underline;">concierge@swaymvar.in</a> to proceed.</p>' +
-      '</div>'
-    list.appendChild(card)
+    buildInterestCard(list, interest)
   })
+}
+
+function buildInterestCard(list, interest) {
+  var card = document.createElement('div')
+  card.className = 'card'
+  card.id = 'interest-card-' + interest.id
+  card.style.marginBottom = '12px'
+
+  // Status badge
+  var status = interest.status || 'pending'
+  var statusColor = status === 'accepted' ? '#16a34a' : status === 'rejected' ? '#8B1A1A' : '#A67C00'
+  var statusLabel = status === 'accepted' ? '✓ Accepted' : status === 'rejected' ? '✕ Declined' : '❤️ New Interest'
+
+  // Header
+  var header = document.createElement('div')
+  header.style.cssText = 'display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px;'
+
+  var left = document.createElement('div')
+
+  var badge = document.createElement('p')
+  badge.style.cssText = 'font-size:9px;color:' + statusColor + ';text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;font-weight:700;'
+  badge.textContent = statusLabel
+
+  var org = document.createElement('p')
+  org.style.cssText = 'font-weight:700;color:#1C1A14;font-size:16px;'
+  org.textContent = interest.from_org || 'A verified member'
+
+  var desig = document.createElement('p')
+  desig.style.cssText = 'color:#2D5016;font-size:12px;margin-top:2px;'
+  desig.textContent = interest.from_designation || ''
+
+  left.appendChild(badge)
+  left.appendChild(org)
+  if (interest.from_designation) left.appendChild(desig)
+
+  if (interest.message) {
+    var msg = document.createElement('p')
+    msg.style.cssText = 'color:#5C5040;font-size:13px;margin-top:6px;font-style:italic;'
+    msg.textContent = '"' + interest.message + '"'
+    left.appendChild(msg)
+  }
+
+  var date = document.createElement('span')
+  date.style.cssText = 'font-size:10px;color:#5C5040;white-space:nowrap;'
+  date.textContent = new Date(interest.created_at).toLocaleDateString('en-IN')
+
+  header.appendChild(left)
+  header.appendChild(date)
+  card.appendChild(header)
+
+  // Show contact info if accepted
+  if (status === 'accepted') {
+    var contactBox = document.createElement('div')
+    contactBox.style.cssText = 'background:#EDF5E0;border:1px solid #2D5016;border-radius:8px;padding:12px;margin-bottom:10px;'
+    var contactText = document.createElement('p')
+    contactText.style.cssText = 'color:#2D5016;font-size:13px;font-weight:600;'
+    contactText.textContent = '🎉 You accepted this interest! Write to concierge@swaymvar.in to connect.'
+    contactBox.appendChild(contactText)
+    card.appendChild(contactBox)
+  }
+
+  // Buttons — only show if pending
+  if (status === 'pending') {
+    var btnRow = document.createElement('div')
+    btnRow.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;'
+
+    var acceptBtn = document.createElement('button')
+    acceptBtn.textContent = '✓ Accept Interest'
+    acceptBtn.style.cssText = 'padding:11px 20px;background:#2D5016;color:white;font-size:11px;font-family:monospace;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;border:none;cursor:pointer;font-weight:700;'
+    acceptBtn.onclick = function() { handleInterestAction(interest.id, 'accepted', card) }
+
+    var rejectBtn = document.createElement('button')
+    rejectBtn.textContent = '✕ Decline'
+    rejectBtn.style.cssText = 'padding:11px 20px;background:white;color:#8B1A1A;font-size:11px;font-family:monospace;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;border:1px solid #8B1A1A;cursor:pointer;'
+    rejectBtn.onclick = function() { handleInterestAction(interest.id, 'rejected', card) }
+
+    var viewBtn = document.createElement('a')
+    viewBtn.href = 'discover.html'
+    viewBtn.textContent = 'Browse Profiles'
+    viewBtn.style.cssText = 'padding:11px 20px;background:#F9F5EC;color:#2D5016;font-size:11px;font-family:monospace;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;border:1px solid #D4C5A0;'
+
+    btnRow.appendChild(acceptBtn)
+    btnRow.appendChild(rejectBtn)
+    btnRow.appendChild(viewBtn)
+    card.appendChild(btnRow)
+  }
+
+  list.appendChild(card)
+}
+
+async function handleInterestAction(interestId, newStatus, card) {
+  // Disable buttons immediately
+  var btns = card.querySelectorAll('button')
+  btns.forEach(function(b) { b.disabled = true; b.style.opacity = '0.5' })
+
+  var res = await db.from('interests').update({status: newStatus}).eq('id', interestId)
+
+  if (res.error) {
+    btns.forEach(function(b) { b.disabled = false; b.style.opacity = '1' })
+    alert('Something went wrong. Please try again.')
+    return
+  }
+
+  // Rebuild the card with updated status
+  var list = card.parentNode
+  var updatedInterest = {
+    id: interestId,
+    status: newStatus,
+    from_org: card.querySelector('p[style*="font-size:16px"]')?.textContent,
+    from_designation: '',
+    message: '',
+    created_at: new Date().toISOString()
+  }
+
+  // Fade out and replace
+  card.style.transition = 'opacity 0.3s'
+  card.style.opacity = '0'
+  setTimeout(function() {
+    var newCard = document.createElement('div')
+    buildInterestCard(newCard, {
+      id: interestId,
+      status: newStatus,
+      from_org: updatedInterest.from_org,
+      created_at: new Date().toISOString()
+    })
+    card.replaceWith(newCard.firstChild || newCard)
+  }, 300)
 }
 
 function showTab(tab) {
@@ -264,16 +379,46 @@ async function loadSentInterests() {
     sr.data.forEach(function(interest) {
       var card = document.createElement('div')
       card.className = 'card'
-      card.innerHTML =
-        '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px;">' +
-          '<div><p style="font-family:monospace;font-size:9px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">💌 Interest Sent</p>' +
-          '<p style="font-weight:700;color:#1C1A14;font-size:15px;">To: ' + (interest.to_email || 'Member') + '</p>' +
-          (interest.message ? '<p style="color:#5C5040;font-size:13px;margin-top:4px;">"' + interest.message + '"</p>' : '') + '</div>' +
-          '<span style="font-family:monospace;font-size:10px;color:#5C5040;">' + new Date(interest.created_at).toLocaleDateString('en-IN') + '</span>' +
-        '</div>' +
-        '<div style="background:#F9F5EC;border-radius:8px;padding:10px 14px;">' +
-          '<p style="color:#5C5040;font-size:12px;">Waiting for response. You will be notified if they express interest back.</p>' +
-        '</div>'
+      card.style.marginBottom = '12px'
+
+      var header = document.createElement('div')
+      header.style.cssText = 'display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;'
+
+      var label = document.createElement('p')
+      label.style.cssText = 'font-size:9px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;'
+      label.textContent = 'Interest Sent'
+
+      var toEl = document.createElement('p')
+      toEl.style.cssText = 'font-weight:700;color:#1C1A14;font-size:15px;'
+      toEl.textContent = 'To: ' + (interest.to_email || 'Member')
+
+      var leftDiv = document.createElement('div')
+      leftDiv.appendChild(label)
+      leftDiv.appendChild(toEl)
+
+      if (interest.message) {
+        var msgEl = document.createElement('p')
+        msgEl.style.cssText = 'color:#5C5040;font-size:13px;margin-top:4px;'
+        msgEl.textContent = interest.message
+        leftDiv.appendChild(msgEl)
+      }
+
+      var dateEl = document.createElement('span')
+      dateEl.style.cssText = 'font-size:10px;color:#5C5040;'
+      dateEl.textContent = new Date(interest.created_at).toLocaleDateString('en-IN')
+
+      header.appendChild(leftDiv)
+      header.appendChild(dateEl)
+
+      var footer = document.createElement('div')
+      footer.style.cssText = 'background:#F9F5EC;border-radius:8px;padding:10px 14px;'
+      var footerText = document.createElement('p')
+      footerText.style.cssText = 'color:#5C5040;font-size:12px;'
+      footerText.textContent = 'Waiting for response. You will be notified if they express interest back.'
+      footer.appendChild(footerText)
+
+      card.appendChild(header)
+      card.appendChild(footer)
       list.appendChild(card)
     })
   }

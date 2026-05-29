@@ -260,6 +260,11 @@ async function expressInterest() {
 
 async function submitInterest() {
   if(!currentProfile||!currentSession) return
+  // Prevent self-interest
+  if (currentProfile.email && currentSession.user.email.toLowerCase() === currentProfile.email.toLowerCase()) {
+    alert('You cannot express interest in your own profile.')
+    return
+  }
   var msg=document.getElementById('interest-msg').value.trim()
   var btn=document.querySelector('#interest-form button')
   btn.textContent='Sending...'; btn.disabled=true
