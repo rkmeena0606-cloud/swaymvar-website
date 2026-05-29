@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWAYMVAR | Create Your Profile</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet"/>
+<!-- SWAYMVAR-CP-V3 -->
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#FEFCF5;color:#1C1A14;font-family:'DM Sans',sans-serif;padding-bottom:80px}
+.form-label{font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;text-transform:uppercase;letter-spacing:0.15em;display:block;margin-bottom:6px}
+.form-input{width:100%;padding:12px 14px;background:white;border:1.5px solid #D4C5A0;border-radius:8px;font-size:14px;color:#1C1A14;outline:none;font-family:'DM Sans',sans-serif}
+.form-input:focus{border-color:#C9960C}
+.form-select{width:100%;padding:12px 14px;background:white;border:1.5px solid #D4C5A0;border-radius:8px;font-size:14px;color:#1C1A14;outline:none;font-family:'DM Sans',sans-serif}
+.trait-btn{padding:8px 16px;border-radius:999px;border:1.5px solid #D4C5A0;background:white;color:#5C5040;font-family:'Space Mono',monospace;font-size:11px;cursor:pointer}
+.trait-btn.selected{background:#EDF5E0;border-color:#2D5016;color:#2D5016}
+.card{background:white;border:1px solid #D4C5A0;border-left:4px solid #C9960C;border-radius:14px;padding:24px;margin-bottom:20px}
+.btn-primary{padding:14px 36px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700}
+.btn-secondary{padding:14px 28px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:2px solid #2D5016;border-radius:8px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(12px);background:rgba(254,252,245,0.95);border-bottom:1px solid #D4C5A0;">
+  <div style="max-width:1000px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+    <a href="index.html" style="text-decoration:none;">
+      <h1 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:0.3em;color:#2D5016;text-transform:uppercase;margin:0;">SWAYMVAR</h1>
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:#A67C00;letter-spacing:0.2em;margin:2px 0 0;">swaymvar.in</p>
+    </a>
+    <button onclick="openSidebar()" style="background:transparent;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;">
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:20px;height:2px;background:#2D5016;border-radius:2px;"></span>
+      <span style="display:block;width:24px;height:2px;background:#2D5016;border-radius:2px;"></span>
+    </button>
+  </div>
+</header>
+
+<main style="max-width:800px;margin:0 auto;padding:90px 20px 40px;">
+
+  <!-- INVITE CODE GATE -->
+  <div id="code-gate" style="min-height:70vh;display:flex;align-items:center;justify-content:center;">
+    <div style="max-width:460px;width:100%;text-align:center;">
+      <div style="width:72px;height:72px;border-radius:50%;background:#EDF5E0;border:2px solid #C9960C;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:32px;">&#128272;</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:28px;color:#2D5016;font-weight:700;margin-bottom:12px;">Invitation Required</h2>
+      <p style="color:#5C5040;font-size:14px;line-height:1.75;margin-bottom:24px;">Profile creation is by invitation only. Apply on the waitlist first. Upon approval you receive a unique invitation code at your official email.</p>
+      <div style="background:#F9F5EC;border:1px solid #D4C5A0;border-radius:12px;padding:24px;text-align:left;margin-bottom:16px;">
+        <label class="form-label">Your Invitation Code</label>
+        <input type="text" id="invite-code-input" class="form-input" placeholder="e.g. SV-RBI-2026-0047" style="font-family:monospace;letter-spacing:0.1em;text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()"/>
+        <p id="code-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:8px;font-weight:600;"></p>
+      </div>
+      <button onclick="verifyInviteCode()" id="verify-btn" class="btn-primary" style="width:100%;margin-bottom:16px;">Verify &amp; Continue &#8594;</button>
+      <p style="font-size:13px;color:#5C5040;">No code? <a href="index.html#invite" style="color:#2D5016;font-weight:700;">Apply on the waitlist</a> first.</p>
+    </div>
+  </div>
+
+  <!-- PROFILE FORM -->
+  <div id="profile-form" style="display:none;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:36px;color:#2D5016;font-weight:700;">Create Your Profile</h2>
+    </div>
+
+    <!-- STEP 1: BASIC -->
+    <div id="step-1">
+      <div class="card">
+        <p class="form-label" style="margin-bottom:16px;">Basic Information</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div><label class="form-label">First Name</label><input type="text" class="form-input" id="fname" placeholder="First name"/></div>
+          <div><label class="form-label">Last Name</label><input type="text" class="form-input" id="lname" placeholder="Last name"/></div>
+          <div><label class="form-label">Age</label><input type="number" class="form-input" id="age" placeholder="e.g. 28" min="21" max="55"/></div>
+          <div><label class="form-label">Height</label>
+            <select class="form-select" id="height">
+              <option value="">Select</option>
+              <option>4'10"</option><option>4'11"</option><option>5'0"</option><option>5'1"</option>
+              <option>5'2"</option><option>5'3"</option><option>5'4"</option><option>5'5"</option>
+              <option>5'6"</option><option>5'7"</option><option>5'8"</option><option>5'9"</option>
+              <option>5'10"</option><option>5'11"</option><option>6'0"</option><option>6'1"+</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label class="form-label">I am</label>
+            <div style="display:flex;gap:12px;margin-top:6px;">
+              <label style="display:flex;align-items:center;gap:8px;border:1.5px solid #D4C5A0;border-radius:8px;padding:12px 20px;flex:1;cursor:pointer;">
+                <input type="radio" name="gender" value="female" style="accent-color:#2D5016;width:16px;height:16px;"/>
+                <span style="font-size:14px;font-weight:600;">&#128105; Female</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;border:1.5px solid #D4C5A0;border-radius:8px;padding:12px 20px;flex:1;cursor:pointer;">
+                <input type="radio" name="gender" value="male" style="accent-color:#2D5016;width:16px;height:16px;"/>
+                <span style="font-size:14px;font-weight:600;">&#128104; Male</span>
+              </label>
+            </div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label class="form-label">Set Password <span style="font-size:11px;color:#5C5040;font-weight:400;">(to sign in to My Profile later)</span></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;">
+              <input type="password" class="form-input" id="set-pwd" placeholder="Min 8 characters"/>
+              <input type="password" class="form-input" id="set-pwd-confirm" placeholder="Confirm password"/>
+            </div>
+            <p id="pwd-error" style="display:none;color:#8B1A1A;font-size:12px;margin-top:6px;font-weight:600;"></p>
+          </div>
+          <div style="grid-column:1/-1;"><label class="form-label">About Yourself</label><textarea class="form-input" id="about" rows="4" placeholder="Write about yourself — who you are, what you value."></textarea></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;">
+        <button onclick="goToStep(2)" class="btn-primary">Next: Work &#8594;</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: WORK -->
+    <div id="step-2" style="display:none;">
+      <div class="card">
+        <p class="form-label" style="margin-bottom:16px;">Work Details</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="grid-column:1/-1;"><label class="form-label">Organisation</label>
+            <select class="form-select" id="org">
+              <option value="">Select organisation</option>
+              <optgroup label="Financial Regulators"><option>RBI</option><option>SEBI</option><option>NABARD</option><option>PFRDA</option><option>IRDAI</option></optgroup>
+              <optgroup label="PSU Banks"><option>SBI</option><option>PNB</option><option>Bank of Baroda</option><option>Canara Bank</option><option>Union Bank</option><option>Bank of India</option><option>Indian Bank</option><option>Other PSU Bank</option></optgroup>
+              <optgroup label="Insurance"><option>LIC</option><option>GIC Re</option><option>National Insurance</option><option>New India</option></optgroup>
+              <optgroup label="Oil and Energy"><option>IOCL</option><option>BPCL</option><option>HPCL</option><option>ONGC</option><option>GAIL</option><option>Coal India</option><option>NTPC</option><option>BHEL</option></optgroup>
+              <optgroup label="Aviation and Transport"><option>AAI</option><option>Air Traffic Control</option><option>Indian Railways</option></optgroup>
+              <optgroup label="Other"><option>Other Central PSU</option></optgroup>
+            </select>
+          </div>
+          <div><label class="form-label">Designation</label><input type="text" class="form-input" id="designation" placeholder="e.g. Officer, Scale II"/></div>
+          <div><label class="form-label">Current City</label><input type="text" class="form-input" id="city" placeholder="e.g. Mumbai, Kanpur"/></div>
+          <div><label class="form-label">Current State</label><input type="text" class="form-input" id="state" placeholder="e.g. Maharashtra, UP"/></div>
+          <div style="grid-column:1/-1;">
+            <label class="form-label">Relocation Flexibility</label>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+              <label style="display:flex;gap:12px;padding:12px;border:1.5px solid #D4C5A0;border-radius:8px;cursor:pointer;"><input type="radio" name="relocation" value="flexible" style="accent-color:#2D5016;margin-top:2px;"/><div><p style="font-weight:600;margin:0 0 2px;">Fully flexible</p><p style="color:#5C5040;font-size:13px;margin:0;">Open to moving anywhere in India</p></div></label>
+              <label style="display:flex;gap:12px;padding:12px;border:1.5px solid #D4C5A0;border-radius:8px;cursor:pointer;"><input type="radio" name="relocation" value="zone" style="accent-color:#2D5016;margin-top:2px;"/><div><p style="font-weight:600;margin:0 0 2px;">Within region</p><p style="color:#5C5040;font-size:13px;margin:0;">Can move within a few states</p></div></label>
+              <label style="display:flex;gap:12px;padding:12px;border:1.5px solid #D4C5A0;border-radius:8px;cursor:pointer;"><input type="radio" name="relocation" value="city" style="accent-color:#2D5016;margin-top:2px;"/><div><p style="font-weight:600;margin:0 0 2px;">Prefer current city</p><p style="color:#5C5040;font-size:13px;margin:0;">Want partner also based here</p></div></label>
+              <label style="display:flex;gap:12px;padding:12px;border:1.5px solid #D4C5A0;border-radius:8px;cursor:pointer;"><input type="radio" name="relocation" value="discuss" style="accent-color:#2D5016;margin-top:2px;"/><div><p style="font-weight:600;margin:0 0 2px;">Open to discussion</p><p style="color:#5C5040;font-size:13px;margin:0;">Want to figure this out together</p></div></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <button onclick="goToStep(1)" class="btn-secondary">&#8592; Back</button>
+        <button onclick="goToStep(3)" class="btn-primary">Next: Lifestyle &#8594;</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: LIFESTYLE -->
+    <div id="step-3" style="display:none;">
+      <div class="card">
+        <p class="form-label" style="margin-bottom:16px;">Lifestyle</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div><label class="form-label">Diet</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="diet-opts"><button class="trait-btn" onclick="selectOne('diet-opts',this)">Vegetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Jain</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Eggetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Non-Vegetarian</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">Vegan</button><button class="trait-btn" onclick="selectOne('diet-opts',this)">No preference</button></div></div>
+          <div><label class="form-label">Children</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="kids-opts"><button class="trait-btn" onclick="selectOne('kids-opts',this)">Want children</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">Do not want</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">Open, not urgent</button><button class="trait-btn" onclick="selectOne('kids-opts',this)">Prefer not to say</button></div></div>
+          <div><label class="form-label">Your Traits (pick up to 8)</label><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;" id="trait-container"><button class="trait-btn" onclick="toggleTrait(this)">Honest</button><button class="trait-btn" onclick="toggleTrait(this)">Loyal</button><button class="trait-btn" onclick="toggleTrait(this)">Ambitious</button><button class="trait-btn" onclick="toggleTrait(this)">Empathetic</button><button class="trait-btn" onclick="toggleTrait(this)">Curious</button><button class="trait-btn" onclick="toggleTrait(this)">Creative</button><button class="trait-btn" onclick="toggleTrait(this)">Disciplined</button><button class="trait-btn" onclick="toggleTrait(this)">Optimistic</button><button class="trait-btn" onclick="toggleTrait(this)">Humorous</button><button class="trait-btn" onclick="toggleTrait(this)">Patient</button><button class="trait-btn" onclick="toggleTrait(this)">Independent</button><button class="trait-btn" onclick="toggleTrait(this)">Family-oriented</button><button class="trait-btn" onclick="toggleTrait(this)">Adventurous</button><button class="trait-btn" onclick="toggleTrait(this)">Practical</button><button class="trait-btn" onclick="toggleTrait(this)">Caring</button><button class="trait-btn" onclick="toggleTrait(this)">Determined</button></div></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <button onclick="goToStep(2)" class="btn-secondary">&#8592; Back</button>
+        <button onclick="submitProfile()" style="padding:16px 36px;background:#8B1A1A;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Submit Profile &#8594;</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="step-success" style="display:none;text-align:center;padding:60px 0;">
+      <div style="width:72px;height:72px;border-radius:50%;background:#EDF5E0;border:2px solid #2D5016;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;">&#10022;</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:30px;color:#2D5016;font-weight:700;margin-bottom:10px;">Profile Submitted!</h3>
+      <p style="color:#5C5040;font-size:15px;line-height:1.7;max-width:460px;margin:0 auto 24px;">Your SWAYMVAR profile is now live. Sign in with your email and the password you just set.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <a href="my-profile.html" style="padding:14px 28px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;border-radius:8px;text-decoration:none;font-weight:700;">Sign In to My Profile &#8594;</a>
+        <a href="discover.html" style="padding:14px 24px;background:white;color:#2D5016;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border:1px solid #2D5016;border-radius:8px;text-decoration:none;">Browse Profiles</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- SIDEBAR -->
+<div id="sidebar-overlay" onclick="closeSidebar()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:998;"></div>
+<div id="sidebar" style="position:fixed;top:0;left:-300px;width:280px;height:100%;background:#0d1f05;z-index:999;transition:left 0.3s ease;overflow-y:auto;">
+  <div style="padding:20px;border-bottom:1px solid rgba(201,150,12,0.2);display:flex;justify-content:space-between;align-items:center;">
+    <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;color:#E8B84B;letter-spacing:0.3em;margin:0;">SWAYMVAR</h2><p style="font-family:monospace;font-size:9px;color:#C9960C;letter-spacing:0.2em;margin:3px 0 0;">swaymvar.in</p></div>
+    <button onclick="closeSidebar()" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:white;cursor:pointer;font-size:18px;">&#10005;</button>
+  </div>
+  <nav style="padding:8px 0;">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>&#127968;</span><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Home</p></a>
+    <a href="discover.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>&#128142;</span><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Discover</p></a>
+    <a href="my-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>&#128100;</span><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">My Profile</p></a>
+    <a href="messages.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>&#128172;</span><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Messages</p></a>
+    <a href="create-profile.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(201,150,12,0.08);"><span>&#10024;</span><p style="font-family:monospace;font-size:11px;color:#E8B84B;text-transform:uppercase;margin:0;">Create Profile</p></a>
+    <a href="faq.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>&#10067;</span><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">FAQ</p></a>
+    <a href="terms.html" style="display:flex;align-items:center;gap:12px;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);"><span>&#128196;</span><p style="font-family:monospace;font-size:11px;color:white;text-transform:uppercase;margin:0;">Terms</p></a>
+  </nav>
+  <div style="padding:16px 20px;border-top:1px solid rgba(201,150,12,0.2);">
+    <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8;">&#10003; Peer Verified Only<br/>&#10003; All Religions Welcome<br/>&#10022; First 100 Free for Life</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+var SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co';
+var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY';
+var db;
+
+window.addEventListener('load', function() {
+  db = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  var inp = document.getElementById('invite-code-input');
+  if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') verifyInviteCode(); });
+});
+
+function verifyInviteCode() {
+  var code = document.getElementById('invite-code-input').value.trim().toUpperCase();
+  var errorEl = document.getElementById('code-error');
+  var btn = document.getElementById('verify-btn');
+  errorEl.style.display = 'none';
+  if (!code || code.length < 5) {
+    errorEl.style.display = 'block';
+    errorEl.textContent = 'Please enter your invitation code.';
+    return;
+  }
+  btn.textContent = 'Verifying...';
+  btn.disabled = true;
+  db.from('invite_requests').select('*').eq('invite_code', code).then(function(res) {
+    btn.textContent = 'Verify & Continue';
+    btn.disabled = false;
+    if (res.error || !res.data || res.data.length === 0) {
+      errorEl.style.display = 'block';
+      errorEl.textContent = 'Invalid or expired code. Check your approval email.';
+      return;
+    }
+    var record = res.data[0];
+    if (record.status === 'pending') {
+      errorEl.style.display = 'block';
+      errorEl.textContent = 'Your application is still under review. Please wait.';
+      return;
+    }
+    if (record.status !== 'approved') {
+      errorEl.style.display = 'block';
+      errorEl.textContent = 'This code is not valid. Contact concierge@swaymvar.in';
+      return;
+    }
+    document.getElementById('code-gate').style.display = 'none';
+    document.getElementById('profile-form').style.display = 'block';
+    if (record.full_name) {
+      var parts = record.full_name.trim().split(' ');
+      document.getElementById('fname').value = parts[0] || '';
+      document.getElementById('lname').value = parts.slice(1).join(' ') || '';
+    }
+    if (record.org) document.getElementById('org').value = record.org;
+    if (record.city) document.getElementById('city').value = record.city;
+    if (record.designation) document.getElementById('designation').value = record.designation;
+    window.verifiedEmail = record.email || '';
+    window.verifiedCode = code;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+var currentStep = 1;
+function goToStep(n) {
+  document.getElementById('step-' + currentStep).style.display = 'none';
+  currentStep = n;
+  document.getElementById('step-' + currentStep).style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleTrait(btn) {
+  var selected = document.querySelectorAll('#trait-container .trait-btn.selected');
+  if (!btn.classList.contains('selected') && selected.length >= 8) return;
+  btn.classList.toggle('selected');
+}
+
+function selectOne(id, btn) {
+  document.querySelectorAll('#' + id + ' .trait-btn').forEach(function(b) { b.classList.remove('selected'); });
+  btn.classList.add('selected');
+}
+
+function submitProfile() {
+  var setPwd = document.getElementById('set-pwd').value || '';
+  var setPwdConfirm = document.getElementById('set-pwd-confirm').value || '';
+  var pwdErrEl = document.getElementById('pwd-error');
+  if (!setPwd || setPwd.length < 8) {
+    pwdErrEl.style.display = 'block';
+    pwdErrEl.textContent = 'Please set a password (min 8 characters).';
+    goToStep(1);
+    return;
+  }
+  if (setPwd !== setPwdConfirm) {
+    pwdErrEl.style.display = 'block';
+    pwdErrEl.textContent = 'Passwords do not match.';
+    goToStep(1);
+    return;
+  }
+  pwdErrEl.style.display = 'none';
+  var btn = document.querySelector('#step-3 button:last-child');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+  function getSelected(id) {
+    var b = document.querySelector('#' + id + ' .trait-btn.selected');
+    return b ? b.textContent.trim() : '';
+  }
+  var traits = Array.from(document.querySelectorAll('#trait-container .trait-btn.selected')).map(function(b) { return b.textContent; }).join(', ');
+  var genderRadio = document.querySelector('input[name="gender"]:checked');
+  var relocationRadio = document.querySelector('input[name="relocation"]:checked');
+  var data = {
+    full_name: (document.getElementById('fname').value || '') + ' ' + (document.getElementById('lname').value || ''),
+    email: window.verifiedEmail || '',
+    org: document.getElementById('org').value || '',
+    designation: document.getElementById('designation').value || '',
+    city: document.getElementById('city').value || '',
+    state: document.getElementById('state').value || '',
+    relocation: relocationRadio ? relocationRadio.value : '',
+    about: document.getElementById('about').value || '',
+    diet: getSelected('diet-opts'),
+    children: getSelected('kids-opts'),
+    traits: traits,
+    gender: genderRadio ? genderRadio.value : '',
+    verified: true,
+    status: 'approved'
+  };
+  db.from('profiles').insert(data).then(function(res) {
+    if (!res.error) {
+      var emailVal = window.verifiedEmail || '';
+      if (emailVal && setPwd) {
+        db.auth.signUp({ email: emailVal, password: setPwd }).catch(function() {});
+      }
+      document.getElementById('step-3').style.display = 'none';
+      document.getElementById('step-success').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      btn.textContent = 'Submit Profile';
+      btn.disabled = false;
+      alert('Error: ' + res.error.message);
+    }
+  });
+}
+
+function openSidebar() {
+  document.getElementById('sidebar').style.left = '0px';
+  document.getElementById('sidebar-overlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+  document.getElementById('sidebar').style.left = '-300px';
+  document.getElementById('sidebar-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar(); });
+</script>
+</body>
+</html>
