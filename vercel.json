@@ -2,12 +2,7 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "swaymvar.in"
-        }
-      ],
+      "has": [{"type": "host", "value": "swaymvar.in"}],
       "destination": "https://www.swaymvar.in/$1",
       "permanent": true
     }
@@ -16,20 +11,10 @@
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        },
-        {
-          "key": "Pragma",
-          "value": "no-cache"
-        },
-        {
-          "key": "Expires",
-          "value": "0"
-        }
+        {"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"},
+        {"key": "Pragma", "value": "no-cache"},
+        {"key": "Expires", "value": "0"}
       ]
     }
-  ],
-  "_v": 1779975648
+  ]
 }
