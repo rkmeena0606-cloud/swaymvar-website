@@ -462,139 +462,139 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-\
-const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'\
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'\
-const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)\
-\
-// \\u2500\\u2500 INVITE CODE VERIFICATION \\u2500\\u2500\
-async function verifyInviteCode() {\
-  const code = document.getElementById('invite-code-input').value.trim().toUpperCase()\
-  const errorEl = document.getElementById('code-error')\
-  const btn = document.getElementById('verify-btn')\
-\
-  errorEl.style.display = 'none'\
-\
-  if (!code || code.length < 5) {\
-    errorEl.style.display = 'block'\
-    errorEl.textContent = '\\u274c Please enter your invitation code.'\
-    return\
-  }\
-\
-  btn.textContent = 'Verifying...'\
-  btn.disabled = true\
-\
-  const { data, error } = await db\
-    .from('invite_requests')\
-    .select('*')\
-    .eq('invite_code', code)\
-\
-  console.log('Verify result:', data, error)\
-\
-  btn.textContent = 'Verify & Continue \\u2192'\
-  btn.disabled = false\
-\
-  if (error) {\
-    errorEl.style.display = 'block'\
-    errorEl.textContent = '\\u274c Verification failed. Please try again or contact concierge@swaymvar.in'\
-    return\
-  }\
-\
-  if (!data || data.length === 0) {\
-    errorEl.style.display = 'block'\
-    errorEl.textContent = '\\u274c Invalid or expired invitation code. Please check your approval email.'\
-    return\
-  }\
-\
-  const record = data[0]\
-\
-  if (record.status === 'pending') {\
-    errorEl.style.display = 'block'\
-    errorEl.textContent = '\\u23f3 Your application is still under review. Please wait for your approval email.'\
-    return\
-  }\
-\
-  if (record.status === 'rejected') {\
-    errorEl.style.display = 'block'\
-    errorEl.textContent = '\\u274c Your application was not approved. Contact concierge@swaymvar.in for help.'\
-    return\
-  }\
-\
-  if (record.status !== 'approved') {\
-    errorEl.style.display = 'block'\
-    errorEl.textContent = '\\u274c This code is not valid. Please contact concierge@swaymvar.in'\
-    return\
-  }\
-\
-  // \\u2713 Valid \\u2014 unlock form\
-  document.getElementById('code-gate').style.display = 'none'\
-  document.getElementById('profile-form-container').style.display = 'block'\
-\
-  // Pre-fill fields\
-  if (record.full_name) {\
-    const parts = record.full_name.trim().split(' ')\
-    if (document.getElementById('fname')) document.getElementById('fname').value = parts[0] || ''\
-    if (document.getElementById('lname')) document.getElementById('lname').value = parts.slice(1).join(' ') || ''\
-  }\
-  if (record.org && document.getElementById('org')) document.getElementById('org').value = record.org\
-  if (record.city && document.getElementById('city')) document.getElementById('city').value = record.city\
-  if (record.designation && document.getElementById('designation')) document.getElementById('designation').value = record.designation\
-\
-  window.verifiedInviteCode = code\
-  window.verifiedEmail = record.email || ''\
-  window.verifiedCode = code\
-  window.scrollTo({ top: 0, behavior: 'smooth' })\
-}\
-\
-// Enter key on code input\
-document.addEventListener('DOMContentLoaded', function() {\
-  const inp = document.getElementById('invite-code-input')\
-  if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') verifyInviteCode() })\
-})\
-\
-// \\u2500\\u2500 STEP NAVIGATION \\u2500\\u2500\
-let currentStep = 1\
-function goToStep(n) {\
-  document.getElementById('step-' + currentStep).style.display = 'none'\
-  currentStep = n\
-  document.getElementById('step-' + currentStep).style.display = 'block'\
-  const pct = Math.round(((currentStep - 1) / 5) * 100)\
-  document.getElementById('progress-fill').style.width = pct + '%'\
-  document.getElementById('progress-pct').textContent = pct + '%'\
-  document.getElementById('step-label').textContent = 'Step ' + currentStep + ' of 5'\
-  for (let i = 1; i <= 5; i++) {\
-    const dot = document.querySelector('#si-' + i + ' .step-dot')\
-    if (dot) {\
-      dot.className = 'step-dot ' + (i < currentStep ? 'done' : i === currentStep ? 'active' : 'pending')\
-      dot.innerHTML = i < currentStep ? '\\u2713' : i\
-    }\
-  }\
-  window.scrollTo({ top: 0, behavior: 'smooth' })\
-}\
-\
-// \\u2500\\u2500 TRAIT BUTTONS \\u2500\\u2500\
-function toggleTrait(btn) {\
-  const selected = document.querySelectorAll('#trait-container .trait-btn.selected')\
-  if (!btn.classList.contains('selected') && selected.length >= 8) return\
-  btn.classList.toggle('selected')\
-}\
-function selectOne(id, btn) {\
-  document.querySelectorAll('#' + id + ' .trait-btn').forEach(function(b) { b.classList.remove('selected') })\
-  btn.classList.add('selected')\
-}\
-function updateLabel(id, val, labels) {\
-  document.getElementById(id).textContent = labels[parseInt(val) - 1]\
-}\
-\
-// \\u2500\\u2500 SUBMIT PROFILE \\u2500\\u2500\
-async function submitProfile() {\
-  const consent = document.getElementById('consent-check')\
-  if (!consent.checked) {\
-    consent.parentElement.parentElement.style.border = '2px solid #8B1A1A'\
-    setTimeout(function() { consent.parentElement.parentElement.style.border = '1px solid #D4C5A0' }, 2000)\
-    return\
-  }\
-\
+
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+// \-\- INVITE CODE VERIFICATION \-\-
+async function verifyInviteCode() {
+  const code = document.getElementById('invite-code-input').value.trim().toUpperCase()
+  const errorEl = document.getElementById('code-error')
+  const btn = document.getElementById('verify-btn')
+
+  errorEl.style.display = 'none'
+
+  if (!code || code.length < 5) {
+    errorEl.style.display = 'block'
+    errorEl.textContent = '\X Please enter your invitation code.'
+    return
+  }
+
+  btn.textContent = 'Verifying...'
+  btn.disabled = true
+
+  const { data, error } = await db
+    .from('invite_requests')
+    .select('*')
+    .eq('invite_code', code)
+
+  console.log('Verify result:', data, error)
+
+  btn.textContent = 'Verify & Continue \->'
+  btn.disabled = false
+
+  if (error) {
+    errorEl.style.display = 'block'
+    errorEl.textContent = '\X Verification failed. Please try again or contact concierge@swaymvar.in'
+    return
+  }
+
+  if (!data || data.length === 0) {
+    errorEl.style.display = 'block'
+    errorEl.textContent = '\X Invalid or expired invitation code. Please check your approval email.'
+    return
+  }
+
+  const record = data[0]
+
+  if (record.status === 'pending') {
+    errorEl.style.display = 'block'
+    errorEl.textContent = '\\u23f3 Your application is still under review. Please wait for your approval email.'
+    return
+  }
+
+  if (record.status === 'rejected') {
+    errorEl.style.display = 'block'
+    errorEl.textContent = '\X Your application was not approved. Contact concierge@swaymvar.in for help.'
+    return
+  }
+
+  if (record.status !== 'approved') {
+    errorEl.style.display = 'block'
+    errorEl.textContent = '\X This code is not valid. Please contact concierge@swaymvar.in'
+    return
+  }
+
+  // \v Valid \\u2014 unlock form
+  document.getElementById('code-gate').style.display = 'none'
+  document.getElementById('profile-form-container').style.display = 'block'
+
+  // Pre-fill fields
+  if (record.full_name) {
+    const parts = record.full_name.trim().split(' ')
+    if (document.getElementById('fname')) document.getElementById('fname').value = parts[0] || ''
+    if (document.getElementById('lname')) document.getElementById('lname').value = parts.slice(1).join(' ') || ''
+  }
+  if (record.org && document.getElementById('org')) document.getElementById('org').value = record.org
+  if (record.city && document.getElementById('city')) document.getElementById('city').value = record.city
+  if (record.designation && document.getElementById('designation')) document.getElementById('designation').value = record.designation
+
+  window.verifiedInviteCode = code
+  window.verifiedEmail = record.email || ''
+  window.verifiedCode = code
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+// Enter key on code input
+document.addEventListener('DOMContentLoaded', function() {
+  const inp = document.getElementById('invite-code-input')
+  if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') verifyInviteCode() })
+})
+
+// \-\- STEP NAVIGATION \-\-
+let currentStep = 1
+function goToStep(n) {
+  document.getElementById('step-' + currentStep).style.display = 'none'
+  currentStep = n
+  document.getElementById('step-' + currentStep).style.display = 'block'
+  const pct = Math.round(((currentStep - 1) / 5) * 100)
+  document.getElementById('progress-fill').style.width = pct + '%'
+  document.getElementById('progress-pct').textContent = pct + '%'
+  document.getElementById('step-label').textContent = 'Step ' + currentStep + ' of 5'
+  for (let i = 1; i <= 5; i++) {
+    const dot = document.querySelector('#si-' + i + ' .step-dot')
+    if (dot) {
+      dot.className = 'step-dot ' + (i < currentStep ? 'done' : i === currentStep ? 'active' : 'pending')
+      dot.innerHTML = i < currentStep ? '\v' : i
+    }
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+// \-\- TRAIT BUTTONS \-\-
+function toggleTrait(btn) {
+  const selected = document.querySelectorAll('#trait-container .trait-btn.selected')
+  if (!btn.classList.contains('selected') && selected.length >= 8) return
+  btn.classList.toggle('selected')
+}
+function selectOne(id, btn) {
+  document.querySelectorAll('#' + id + ' .trait-btn').forEach(function(b) { b.classList.remove('selected') })
+  btn.classList.add('selected')
+}
+function updateLabel(id, val, labels) {
+  document.getElementById(id).textContent = labels[parseInt(val) - 1]
+}
+
+// \-\- SUBMIT PROFILE \-\-
+async function submitProfile() {
+  const consent = document.getElementById('consent-check')
+  if (!consent.checked) {
+    consent.parentElement.parentElement.style.border = '2px solid #8B1A1A'
+    setTimeout(function() { consent.parentElement.parentElement.style.border = '1px solid #D4C5A0' }, 2000)
+    return
+  }
+
   // Validate password
   const setPwd = document.getElementById('set-pwd')?.value || ''
   const setPwdConfirm = document.getElementById('set-pwd-confirm')?.value || ''
@@ -612,90 +612,90 @@ async function submitProfile() {\
 
   const btn = document.querySelector('#step-5 button:last-child')
   btn.textContent = 'Saving...'
-  btn.disabled = true\
-  btn.textContent = 'Saving...'\
-  btn.disabled = true\
-\
-  const traits = Array.from(document.querySelectorAll('#trait-container .trait-btn.selected')).map(function(b) { return b.textContent }).join(', ')\
-  const personality = [\
-    document.getElementById('lb-1').textContent,\
-    document.getElementById('lb-2').textContent,\
-    document.getElementById('lb-3').textContent,\
-    document.getElementById('lb-4').textContent\
-  ].join(' | ')\
-\
-  function getSelected(id) {\
-    const b = document.querySelector('#' + id + ' .trait-btn.selected')\
-    return b ? b.textContent.trim() : ''\
-  }\
-\
-  const data = {\
-    full_name:   (document.getElementById('fname')?.value || '') + ' ' + (document.getElementById('lname')?.value || ''),\
-    email:       window.verifiedEmail || '',\
-    org:         document.getElementById('org')?.value || '',\
-    designation: document.getElementById('designation')?.value || '',\
-    city:        document.getElementById('city')?.value || '',\
-    state:       document.getElementById('state')?.value || '',\
-    relocation:  document.querySelector('input[name=\\"relocation\\"]:checked')?.value || '',\
-    about:       document.getElementById('about')?.value || '',\
-    education:   (document.getElementById('qualification')?.value || '') + ' ' + (document.getElementById('college')?.value || ''),\
-    diet:        getSelected('diet-opts'),\
-    travel:      getSelected('travel-opts'),\
-    social_life: getSelected('social-opts'),\
-    cooking:     getSelected('cook-opts'),\
-    children:    getSelected('kids-opts'),\
-    parents:     getSelected('parents-opts'),\
-    traits:      traits,\
-    personality: personality,\
-    gender:      document.querySelector('input[name=\\"gender\\"]:checked')?.value || '',\
-    verified:    true,\
-    status:      'approved'\
-  }\
-\
-  const { error } = await db.from('profiles').insert(data)\
-\
-  if (!error) {\
-    // Create Supabase Auth account so user can sign in to my-profile\
-    const emailVal = window.verifiedEmail || data.email || ''\
-    const userChosenPwd = document.getElementById('set-pwd')?.value || ''\
-    if (emailVal && userChosenPwd) {\
-      try {\
-        const signUpRes = await db.auth.signUp({ email: emailVal, password: userChosenPwd })\
-        if (signUpRes.error) { console.log('Auth note:', signUpRes.error.message) }\
-        else { console.log('Login account created for', emailVal) }\
-      } catch(authErr) { console.log('Auth error:', authErr) }\
-    }\
-    document.getElementById('step-5').style.display = 'none'\
+  btn.disabled = true
+  btn.textContent = 'Saving...'
+  btn.disabled = true
+
+  const traits = Array.from(document.querySelectorAll('#trait-container .trait-btn.selected')).map(function(b) { return b.textContent }).join(', ')
+  const personality = [
+    document.getElementById('lb-1').textContent,
+    document.getElementById('lb-2').textContent,
+    document.getElementById('lb-3').textContent,
+    document.getElementById('lb-4').textContent
+  ].join(' | ')
+
+  function getSelected(id) {
+    const b = document.querySelector('#' + id + ' .trait-btn.selected')
+    return b ? b.textContent.trim() : ''
+  }
+
+  const data = {
+    full_name:   (document.getElementById('fname')?.value || '') + ' ' + (document.getElementById('lname')?.value || ''),
+    email:       window.verifiedEmail || '',
+    org:         document.getElementById('org')?.value || '',
+    designation: document.getElementById('designation')?.value || '',
+    city:        document.getElementById('city')?.value || '',
+    state:       document.getElementById('state')?.value || '',
+    relocation:  document.querySelector('input[name=\\"relocation\\"]:checked')?.value || '',
+    about:       document.getElementById('about')?.value || '',
+    education:   (document.getElementById('qualification')?.value || '') + ' ' + (document.getElementById('college')?.value || ''),
+    diet:        getSelected('diet-opts'),
+    travel:      getSelected('travel-opts'),
+    social_life: getSelected('social-opts'),
+    cooking:     getSelected('cook-opts'),
+    children:    getSelected('kids-opts'),
+    parents:     getSelected('parents-opts'),
+    traits:      traits,
+    personality: personality,
+    gender:      document.querySelector('input[name=\\"gender\\"]:checked')?.value || '',
+    verified:    true,
+    status:      'approved'
+  }
+
+  const { error } = await db.from('profiles').insert(data)
+
+  if (!error) {
+    // Create Supabase Auth account so user can sign in to my-profile
+    const emailVal = window.verifiedEmail || data.email || ''
+    const userChosenPwd = document.getElementById('set-pwd')?.value || ''
+    if (emailVal && userChosenPwd) {
+      try {
+        const signUpRes = await db.auth.signUp({ email: emailVal, password: userChosenPwd })
+        if (signUpRes.error) { console.log('Auth note:', signUpRes.error.message) }
+        else { console.log('Login account created for', emailVal) }
+      } catch(authErr) { console.log('Auth error:', authErr) }
+    }
+    document.getElementById('step-5').style.display = 'none'
     document.getElementById('step-success').style.display = 'block'
     const successEmailEl = document.getElementById('success-email')
-    if (successEmailEl && window.verifiedEmail) successEmailEl.textContent = window.verifiedEmail\
-    document.getElementById('progress-fill').style.width = '100%'\
-    document.getElementById('progress-pct').textContent = '100%'\
-    window.scrollTo({ top: 0, behavior: 'smooth' })\
-  } else {\
-    console.error('Submit error:', error)\
-    btn.textContent = 'Submit Profile \\u2192'\
-    btn.disabled = false\
-    alert('Error: ' + error.message)\
-  }\
-}\
-\
-// \\u2500\\u2500 SIDEBAR \\u2500\\u2500\
-function openSidebar() {\
-  document.getElementById('sidebar').style.left = '0px'\
-  document.getElementById('sidebar-overlay').style.display = 'block'\
-  document.body.style.overflow = 'hidden'\
-  document.body.style.position = 'fixed'\
-  document.body.style.width = '100%'\
-}\
-function closeSidebar() {\
-  document.getElementById('sidebar').style.left = '-300px'\
-  document.getElementById('sidebar-overlay').style.display = 'none'\
-  document.body.style.overflow = ''\
-  document.body.style.position = ''\
-  document.body.style.width = ''\
-}\
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })\
+    if (successEmailEl && window.verifiedEmail) successEmailEl.textContent = window.verifiedEmail
+    document.getElementById('progress-fill').style.width = '100%'
+    document.getElementById('progress-pct').textContent = '100%'
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  } else {
+    console.error('Submit error:', error)
+    btn.textContent = 'Submit Profile \->'
+    btn.disabled = false
+    alert('Error: ' + error.message)
+  }
+}
+
+// \-\- SIDEBAR \-\-
+function openSidebar() {
+  document.getElementById('sidebar').style.left = '0px'
+  document.getElementById('sidebar-overlay').style.display = 'block'
+  document.body.style.overflow = 'hidden'
+  document.body.style.position = 'fixed'
+  document.body.style.width = '100%'
+}
+function closeSidebar() {
+  document.getElementById('sidebar').style.left = '-300px'
+  document.getElementById('sidebar-overlay').style.display = 'none'
+  document.body.style.overflow = ''
+  document.body.style.position = ''
+  document.body.style.width = ''
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar() })
 
 </script>
 </body>
