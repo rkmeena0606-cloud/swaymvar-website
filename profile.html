@@ -230,13 +230,16 @@ function populateProfile(p) {
 
 async function checkInterestStatus(profileEmail, myEmail) {
   // Check if I already sent interest to this person
-  var sent = await db.from('interests').select('*').ilike('from_email', myEmail).ilike('to_email', profileEmail).single()
-  // Check if they sent me interest (reverse)
-  var received = await db.from('interests').select('*').ilike('from_email', profileEmail).ilike('to_email', myEmail).single()
+  var sentRes = await db.from('interests').select('*').ilike('from_email', myEmail).ilike('to_email', profileEmail).order('created_at', {ascending:false}).limit(1)
+  // Check if they sent me interest (and I accepted it)
+  var receivedRes = await db.from('interests').select('*').ilike('from_email', profileEmail).ilike('to_email', myEmail).order('created_at', {ascending:false}).limit(1)
 
-  var iSent = sent.data
-  var theySent = received.data
-  var mutualMatch = iSent && theySent && (iSent.status === 'accepted' || theySent.status === 'accepted')
+  var iSent = sentRes.data && sentRes.data.length > 0 ? sentRes.data[0] : null
+  var theySent = receivedRes.data && receivedRes.data.length > 0 ? receivedRes.data[0] : null
+
+  // Mutual match = they sent interest AND I accepted it (status=accepted means recipient accepted)
+  // OR I sent interest AND they accepted it
+  var mutualMatch = (theySent && theySent.status === 'accepted') || (iSent && iSent.status === 'accepted')
 
   var actionSec = document.getElementById('action-section')
   var interestBtn = document.getElementById('interest-btn')
@@ -263,7 +266,7 @@ async function checkInterestStatus(profileEmail, myEmail) {
       '<div style="background:linear-gradient(135deg,#2D5016,#1a3308);border-radius:14px;padding:24px;text-align:center;">' +
         '<p style="font-size:36px;margin-bottom:10px;">🎉</p>' +
         '<h3 style="color:white;font-family:Georgia,serif;font-size:20px;font-weight:700;margin-bottom:8px;">Mutual Match!</h3>' +
-        '<p style="color:rgba(255,255,255,0.7);font-size:13px;margin-bottom:18px;">You both expressed interest. You can now see each other's photos and chat directly.</p>' +
+        '<p style="color:rgba(255,255,255,0.7);font-size:13px;margin-bottom:18px;">You both expressed interest. You can now see each other&#39;s photos and chat directly.</p>' +
         '<a href="chat.html?with=' + encodeURIComponent(profileEmail) + '" style="display:block;padding:14px;background:#C9960C;color:#1C1A14;font-family:monospace;font-size:12px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;margin-bottom:10px;">💬 Open Chat</a>' +
         '<a href="messages.html" style="display:block;padding:10px;color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;text-transform:uppercase;text-decoration:none;">← Back to Messages</a>' +
       '</div>'
