@@ -337,13 +337,27 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
   } catch(e) {}
 
-  var showGender = myGender === 'male' ? 'female' : myGender === 'female' ? 'male' : ''
+  // If gender not set, show prompt to complete profile
+  if (!myGender) {
+    document.getElementById('login-gate').style.display = 'none'
+    var wrap = document.getElementById('profiles-wrap') || document.body
+    var notice = document.createElement('div')
+    notice.style.cssText = 'max-width:480px;margin:80px auto;text-align:center;padding:40px 24px;'
+    notice.innerHTML = '<p style="font-size:40px;margin-bottom:16px;">👤</p>' +
+      '<h3 style="font-family:Playfair Display,serif;font-size:22px;color:#2D5016;font-weight:700;margin-bottom:10px;">Complete your profile first</h3>' +
+      '<p style="color:#5C5040;font-size:14px;line-height:1.7;margin-bottom:20px;">Please set your gender in your profile so we can show you the right matches.</p>' +
+      '<a href="my-profile.html" style="padding:13px 28px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;">Complete My Profile →</a>'
+    document.querySelector('.content-wrap, main, body').appendChild(notice)
+    return
+  }
+
+  var showGender = myGender === 'male' ? 'female' : 'male'
 
   // Load real profiles from Supabase
   var dbRes = await db.from('profiles').select('*').order('created_at', {ascending:false})
   var realProfiles = (dbRes.data || []).filter(function(p) {
     var notMe = !p.email || p.email.toLowerCase() !== session.user.email.toLowerCase()
-    var rightGender = !showGender || !p.gender || p.gender === showGender
+    var rightGender = p.gender === showGender
     return notMe && rightGender
   })
 
