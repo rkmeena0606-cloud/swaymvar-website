@@ -283,12 +283,28 @@ function buildInterestCard(list, interest) {
     var contactText = document.createElement('p')
     contactText.style.cssText = 'color:#2D5016;font-size:13px;font-weight:600;'
     contactText.textContent = '🎉 Mutual match! You can now chat directly.'
+    var btnWrap = document.createElement('div')
+    btnWrap.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;'
+
     var chatBtn = document.createElement('a')
     chatBtn.href = 'chat.html?with=' + encodeURIComponent(interest.from_email) + '&interest=' + interest.id
     chatBtn.textContent = '💬 Open Chat'
     chatBtn.style.cssText = 'padding:10px 18px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;white-space:nowrap;'
+
+    var viewBtn = document.createElement('a')
+    viewBtn.href = 'discover.html'
+    viewBtn.textContent = '👤 View Profile'
+    viewBtn.style.cssText = 'padding:10px 18px;background:#EDF5E0;color:#2D5016;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;border:1px solid #2D5016;white-space:nowrap;'
+
+    // Try to get profile ID from email to link directly
+    db.from('profiles').select('id').ilike('email', interest.from_email).single().then(function(res) {
+      if (res.data) viewBtn.href = 'profile.html?id=' + res.data.id
+    })
+
+    btnWrap.appendChild(chatBtn)
+    btnWrap.appendChild(viewBtn)
     contactBox.appendChild(contactText)
-    contactBox.appendChild(chatBtn)
+    contactBox.appendChild(btnWrap)
     card.appendChild(contactBox)
   }
 
@@ -424,12 +440,27 @@ async function loadSentInterests() {
         footerText.textContent = '🎉 They accepted! You can now chat.'
         footerText.style.color = '#2D5016'
         footerText.style.fontWeight = '600'
+        var sentBtnWrap = document.createElement('div')
+        sentBtnWrap.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;'
+
         var chatBtn2 = document.createElement('a')
         chatBtn2.href = 'chat.html?with=' + encodeURIComponent(interest.to_email) + '&interest=' + interest.id
-        chatBtn2.textContent = '💬 Open Chat'
+        chatBtn2.textContent = '💬 Chat'
         chatBtn2.style.cssText = 'padding:8px 16px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;'
+
+        var viewBtn2 = document.createElement('a')
+        viewBtn2.href = 'discover.html'
+        viewBtn2.textContent = '👤 Profile'
+        viewBtn2.style.cssText = 'padding:8px 16px;background:#EDF5E0;color:#2D5016;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;border:1px solid #2D5016;'
+
+        db.from('profiles').select('id').ilike('email', interest.to_email).single().then(function(res) {
+          if (res.data) viewBtn2.href = 'profile.html?id=' + res.data.id
+        })
+
+        sentBtnWrap.appendChild(chatBtn2)
+        sentBtnWrap.appendChild(viewBtn2)
         footer.appendChild(footerText)
-        footer.appendChild(chatBtn2)
+        footer.appendChild(sentBtnWrap)
       } else if (sentStatus === 'rejected') {
         footerText.textContent = 'They declined this time.'
         footerText.style.color = '#8B1A1A'

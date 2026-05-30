@@ -38,9 +38,9 @@ body{background:#FEFCF5;color:#1C1A14;font-family:'DM Sans',sans-serif;height:10
 <!-- NAV -->
 <div class="nav">
   <a href="messages.html">← Back</a>
-  <div style="flex:1">
-    <div class="nav-title" id="chat-partner-name">Chat</div>
-    <div class="nav-with" id="chat-partner-org"></div>
+  <div style="flex:1;cursor:pointer;" onclick="openPartnerProfile()" title="View profile">
+    <div class="nav-title" id="chat-partner-name" style="text-decoration:none;">Chat</div>
+    <div class="nav-with" id="chat-partner-org" style="color:#A67C00;font-size:11px;">Tap to view profile ↗</div>
   </div>
   <div style="width:36px;height:36px;border-radius:50%;background:#2D5016;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;">💬</div>
 </div>
@@ -111,23 +111,36 @@ async function init() {
   }
 
   // Load partner profile
-  var pr = await db.from('profiles').select('full_name,org,designation').ilike('email', partnerEmail).single()
+  var pr = await db.from('profiles').select('full_name,org,designation,id').ilike('email', partnerEmail).single()
   if (pr.data) {
     var firstName = (pr.data.full_name || 'Member').split(' ')[0]
     document.getElementById('chat-partner-name').textContent = firstName
-    document.getElementById('chat-partner-org').textContent = (pr.data.org || '') + (pr.data.designation ? ' · ' + pr.data.designation : '')
     document.title = 'Chat with ' + firstName + ' | SWAYMVAR'
+    window.partnerProfileId = pr.data.id
+    document.getElementById('chat-partner-org').textContent = (pr.data.org || '') + (pr.data.designation ? ' · ' + pr.data.designation : '') + '  ↗'
   }
 
   document.getElementById('match-banner').style.display = 'block'
   document.getElementById('login-gate').style.display = 'none'
   document.getElementById('chat-area').style.display = 'flex'
 
+  // Store partner profile ID for profile link
+  if (pr.data && pr.data.id) {
+    window.partnerProfileId = pr.data.id
+    document.getElementById('chat-partner-org').textContent = (pr.data.org||'') + (pr.data.designation ? ' · ' + pr.data.designation : '') + '  ↗ View Profile'
+  }
+
   // Load messages
   await loadMessages()
 
   // Poll for new messages every 5 seconds
   pollInterval = setInterval(loadMessages, 5000)
+}
+
+function openPartnerProfile() {
+  if (window.partnerProfileId) {
+    window.open('profile.html?id=' + window.partnerProfileId, '_blank')
+  }
 }
 
 async function loadMessages() {
