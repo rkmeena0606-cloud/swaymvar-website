@@ -42,7 +42,7 @@ body{background:#0f0f0d;color:white;font-family:sans-serif;padding-bottom:80px}
     <p style="font-size:36px;margin-bottom:16px;">🔒</p>
     <h2 style="font-family:Georgia,serif;font-size:22px;color:white;font-weight:700;margin-bottom:10px;">Members Only</h2>
     <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.75;margin-bottom:24px;">Sign in to view profiles and express interest.</p>
-    <a href="my-profile.html" style="display:block;padding:14px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;margin-bottom:10px;">Sign In →</a>
+    <a href="#" onclick="document.getElementById('profile-login-overlay').style.display='none';setTimeout(function(){document.getElementById('login-required').style.display='block';document.getElementById('interest-btn').style.display='none';document.getElementById('action-section').scrollIntoView({behavior:'smooth'});},100);return false;" style="display:block;padding:14px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;margin-bottom:10px;text-align:center;">Sign In →</a>
     <a href="index.html" style="display:block;padding:10px;color:rgba(255,255,255,0.3);font-family:monospace;font-size:10px;text-transform:uppercase;text-decoration:none;">← Back to Home</a>
   </div>
 </div>
@@ -99,15 +99,21 @@ body{background:#0f0f0d;color:white;font-family:sans-serif;padding-bottom:80px}
     <div style="display:flex;flex-direction:column;gap:8px;">
       <p style="font-size:13px;color:rgba(255,255,255,0.6);">✓ Contact details never shown to any member</p>
       <p style="font-size:13px;color:rgba(255,255,255,0.6);">✓ Photo visible only after mutual interest</p>
-      <p style="font-size:13px;color:rgba(255,255,255,0.6);">✓ No direct messaging — one-time notification only</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.6);">✓ Messages only after mutual interest confirmed</p>
     </div>
   </div>
 
   <div id="action-section">
-    <div id="login-required" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:14px;padding:20px;margin-bottom:12px;text-align:center;">
-      <p style="font-size:28px;margin-bottom:12px;">🔐</p>
-      <p style="color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:16px;">Sign in to express interest in profiles.</p>
-      <a href="my-profile.html" style="display:inline-block;padding:12px 24px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;">Sign In →</a>
+    <div id="login-required" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:14px;padding:20px;margin-bottom:12px;">
+      <p style="font-size:24px;text-align:center;margin-bottom:8px;">🔐</p>
+      <p style="color:rgba(255,255,255,0.7);font-size:13px;text-align:center;margin-bottom:16px;">Sign in to express interest</p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <input id="inline-email" type="email" placeholder="Your official email" style="padding:12px;border-radius:8px;border:1px solid rgba(201,150,12,0.3);background:#2A2820;color:white;font-size:14px;width:100%;"/>
+        <input id="inline-pwd" type="password" placeholder="Password" style="padding:12px;border-radius:8px;border:1px solid rgba(201,150,12,0.3);background:#2A2820;color:white;font-size:14px;width:100%;"/>
+        <p id="inline-login-error" style="color:#FF6B6B;font-size:12px;display:none;text-align:center;"></p>
+        <button onclick="inlineLogin()" style="padding:12px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;border-radius:8px;border:none;cursor:pointer;font-weight:700;">Sign In & Express Interest →</button>
+        <a href="my-profile.html" style="text-align:center;color:rgba(255,255,255,0.4);font-size:11px;text-decoration:none;">No account? Create profile first</a>
+      </div>
     </div>
     <button onclick="expressInterest()" id="interest-btn" class="btn-primary">❤️ Express Interest</button>
     <div id="interest-form" style="display:none;background:#1C1A14;border:1px solid rgba(201,150,12,0.2);border-radius:12px;padding:18px;margin-bottom:10px;">
@@ -222,6 +228,68 @@ function populateProfile(p) {
   document.getElementById('profile-main').style.display='block'
 }
 
+async function checkInterestStatus(profileEmail, myEmail) {
+  // Check if I already sent interest to this person
+  var sent = await db.from('interests').select('*').ilike('from_email', myEmail).ilike('to_email', profileEmail).single()
+  // Check if they sent me interest (reverse)
+  var received = await db.from('interests').select('*').ilike('from_email', profileEmail).ilike('to_email', myEmail).single()
+
+  var iSent = sent.data
+  var theySent = received.data
+  var mutualMatch = iSent && theySent && (iSent.status === 'accepted' || theySent.status === 'accepted')
+
+  var actionSec = document.getElementById('action-section')
+  var interestBtn = document.getElementById('interest-btn')
+  var successSec = document.getElementById('success-section')
+
+  if (mutualMatch) {
+    // MUTUAL MATCH — show photo, show chat button
+    actionSec.style.display = 'block'
+    interestBtn.style.display = 'none'
+
+    // Unblur photo
+    var photoEl = document.getElementById('p-photo-placeholder')
+    if (photoEl && currentProfile.photo_urls) {
+      try {
+        var urls = JSON.parse(currentProfile.photo_urls)
+        if (urls.length > 0) {
+          photoEl.innerHTML = '<img src="' + urls[0] + '" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"/>'
+        }
+      } catch(e) {}
+    }
+
+    // Show match banner + chat button instead of interest form
+    actionSec.innerHTML =
+      '<div style="background:linear-gradient(135deg,#2D5016,#1a3308);border-radius:14px;padding:24px;text-align:center;">' +
+        '<p style="font-size:36px;margin-bottom:10px;">🎉</p>' +
+        '<h3 style="color:white;font-family:Georgia,serif;font-size:20px;font-weight:700;margin-bottom:8px;">Mutual Match!</h3>' +
+        '<p style="color:rgba(255,255,255,0.7);font-size:13px;margin-bottom:18px;">You both expressed interest. You can now see each other's photos and chat directly.</p>' +
+        '<a href="chat.html?with=' + encodeURIComponent(profileEmail) + '" style="display:block;padding:14px;background:#C9960C;color:#1C1A14;font-family:monospace;font-size:12px;text-transform:uppercase;border-radius:8px;text-decoration:none;font-weight:700;margin-bottom:10px;">💬 Open Chat</a>' +
+        '<a href="messages.html" style="display:block;padding:10px;color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;text-transform:uppercase;text-decoration:none;">← Back to Messages</a>' +
+      '</div>'
+    return
+  }
+
+  if (iSent) {
+    // Already sent interest — show status instead of button
+    actionSec.style.display = 'block'
+    interestBtn.style.display = 'none'
+    actionSec.innerHTML =
+      '<div style="background:#1C1A14;border:1px solid rgba(201,150,12,0.3);border-radius:14px;padding:20px;text-align:center;">' +
+        '<p style="font-size:28px;margin-bottom:10px;">✦</p>' +
+        '<h3 style="color:white;font-family:Georgia,serif;font-size:18px;margin-bottom:8px;">Interest Already Sent</h3>' +
+        '<p style="color:rgba(255,255,255,0.6);font-size:13px;margin-bottom:4px;">You expressed interest on ' + new Date(iSent.created_at).toLocaleDateString('en-IN') + '</p>' +
+        '<p style="color:rgba(255,255,255,0.4);font-size:12px;">Waiting for them to respond. Check Messages for updates.</p>' +
+        '<a href="messages.html" style="display:inline-block;margin-top:14px;padding:10px 20px;border:1px solid rgba(201,150,12,0.4);color:rgba(201,150,12,0.8);font-family:monospace;font-size:10px;text-transform:uppercase;border-radius:8px;text-decoration:none;">View Messages</a>' +
+      '</div>'
+    return
+  }
+
+  // No interest yet — show normal button
+  actionSec.style.display = 'block'
+  interestBtn.style.display = 'block'
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
   var res = await db.auth.getSession()
   currentSession = res.data.session
@@ -230,7 +298,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     return
   }
   try {
-    var mr=await db.from('profiles').select('org,city,relocation').eq('email',currentSession.user.email).single()
+    var mr=await db.from('profiles').select('org,city,relocation,email').eq('email',currentSession.user.email).single()
     if(mr.data) myProfileData=mr.data
   } catch(e){}
   var params=new URLSearchParams(window.location.search)
@@ -238,13 +306,43 @@ document.addEventListener('DOMContentLoaded', async function() {
   document.getElementById('loading-state').style.display='block'
   if (pid) {
     var pr=await db.from('profiles').select('*').eq('id',pid).single()
-    if(pr.data) populateProfile(pr.data)
+    if(pr.data) {
+      populateProfile(pr.data)
+      // Check interest/mutual status AFTER populating
+      if (pr.data.email && currentSession.user.email) {
+        await checkInterestStatus(pr.data.email, currentSession.user.email)
+      }
+    }
     else {document.getElementById('loading-state').style.display='none';document.getElementById('not-found-state').style.display='block'}
   } else {
     document.getElementById('loading-state').style.display='none'
     document.getElementById('not-found-state').style.display='block'
   }
 })
+
+async function inlineLogin() {
+  var email = document.getElementById('inline-email').value.trim().toLowerCase()
+  var pwd = document.getElementById('inline-pwd').value
+  var errEl = document.getElementById('inline-login-error')
+  if (!email || !pwd) { errEl.textContent='Enter email and password'; errEl.style.display='block'; return }
+  errEl.style.display = 'none'
+  var btn = document.querySelector('#login-required button')
+  btn.textContent = 'Signing in...'
+  btn.disabled = true
+  var res = await db.auth.signInWithPassword({email: email, password: pwd})
+  if (res.error) {
+    errEl.textContent = 'Incorrect email or password'
+    errEl.style.display = 'block'
+    btn.textContent = 'Sign In & Express Interest →'
+    btn.disabled = false
+    return
+  }
+  currentSession = res.data.session
+  // Now show express interest form
+  document.getElementById('login-required').style.display = 'none'
+  document.getElementById('interest-form').style.display = 'block'
+  document.getElementById('interest-btn').style.display = 'none'
+}
 
 async function expressInterest() {
   var res=await db.auth.getSession()
