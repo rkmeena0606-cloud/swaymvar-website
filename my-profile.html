@@ -443,6 +443,61 @@ function showToast(msg) {
 
 async function handleAuth() { await doLogin() }
 
+function addPhotoCard(grid, url) {
+  var div = document.createElement('div')
+  div.style.cssText = 'aspect-ratio:1;border-radius:10px;overflow:hidden;position:relative;'
+  div.setAttribute('data-url', url)
+
+  var img = document.createElement('img')
+  img.src = url
+  img.style.cssText = 'width:100%;height:100%;object-fit:cover;filter:blur(8px);'
+  img.title = 'Your photo (blurred until mutual interest)'
+
+  var overlay = document.createElement('div')
+  overlay.style.cssText = 'position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;padding:6px;'
+
+  var badge = document.createElement('div')
+  badge.style.cssText = 'background:rgba(0,0,0,0.5);color:white;font-size:9px;border-radius:4px;padding:2px 5px;text-align:center;font-family:monospace;'
+  badge.textContent = '🔒 Blurred'
+
+  var delBtn = document.createElement('button')
+  delBtn.textContent = '🗑 Delete'
+  delBtn.style.cssText = 'background:rgba(139,26,26,0.85);color:white;border:none;border-radius:6px;padding:4px 6px;font-size:10px;cursor:pointer;font-family:monospace;'
+  delBtn.onclick = function(e) {
+    e.stopPropagation()
+    deletePhoto(url, div)
+  }
+
+  overlay.appendChild(badge)
+  overlay.appendChild(delBtn)
+  div.appendChild(img)
+  div.appendChild(overlay)
+  grid.insertBefore(div, grid.lastElementChild)
+}
+
+async function deletePhoto(url, cardEl) {
+  if (!confirm('Delete this photo?')) return
+  cardEl.style.opacity = '0.4'
+
+  // Remove from Supabase Storage
+  try {
+    // Extract path from URL
+    var path = url.split('/profile-photos/')[1]
+    if (path) await db.storage.from('profile-photos').remove([path])
+  } catch(e) { console.log('Storage delete:', e) }
+
+  // Remove from profiles.photo_urls
+  try {
+    var existing = profileData && profileData.photo_urls ? JSON.parse(profileData.photo_urls) : []
+    var updated = existing.filter(function(u) { return u !== url })
+    await db.from('profiles').update({photo_urls: JSON.stringify(updated)}).ilike('email', currentUser.email)
+    if (profileData) profileData.photo_urls = JSON.stringify(updated)
+  } catch(e) { console.log('DB delete:', e) }
+
+  cardEl.remove()
+  showToast('Photo deleted')
+}
+
 async function doSignOut() {
   await db.auth.signOut()
   window.location.href = 'index.html'
@@ -529,14 +584,13 @@ async function handlePhotoUpload(input) {
     await db.from('profiles').update({photo_urls: JSON.stringify(existing)}).ilike('email', currentUser.email)
     
     // Update preview div
+    // Replace temp preview with proper card with delete button
     var prev = document.getElementById('photo-preview-new')
     if (prev) {
-      prev.removeAttribute('id')
-      var overlay = prev.querySelector('div')
-      if (overlay) overlay.textContent = '✓ Uploaded'
-      setTimeout(() => { if (overlay) overlay.remove() }, 2000)
+      prev.remove()
+      addPhotoCard(document.getElementById('photos-grid'), publicUrl)
     }
-    
+    showToast('Photo saved ✓')
     console.log('Photo uploaded:', publicUrl)
   } catch(e) {
     console.error('Upload failed:', e)
