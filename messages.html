@@ -279,11 +279,16 @@ function buildInterestCard(list, interest) {
   // Show contact info if accepted
   if (status === 'accepted') {
     var contactBox = document.createElement('div')
-    contactBox.style.cssText = 'background:#EDF5E0;border:1px solid #2D5016;border-radius:8px;padding:12px;margin-bottom:10px;'
+    contactBox.style.cssText = 'background:#EDF5E0;border:1px solid #2D5016;border-radius:8px;padding:14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;'
     var contactText = document.createElement('p')
     contactText.style.cssText = 'color:#2D5016;font-size:13px;font-weight:600;'
-    contactText.textContent = '🎉 You accepted this interest! Write to concierge@swaymvar.in to connect.'
+    contactText.textContent = '🎉 Mutual match! You can now chat directly.'
+    var chatBtn = document.createElement('a')
+    chatBtn.href = 'chat.html?with=' + encodeURIComponent(interest.from_email) + '&interest=' + interest.id
+    chatBtn.textContent = '💬 Open Chat'
+    chatBtn.style.cssText = 'padding:10px 18px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;white-space:nowrap;'
     contactBox.appendChild(contactText)
+    contactBox.appendChild(chatBtn)
     card.appendChild(contactBox)
   }
 
@@ -411,11 +416,28 @@ async function loadSentInterests() {
       header.appendChild(dateEl)
 
       var footer = document.createElement('div')
-      footer.style.cssText = 'background:#F9F5EC;border-radius:8px;padding:10px 14px;'
+      footer.style.cssText = 'background:#F9F5EC;border-radius:8px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;'
       var footerText = document.createElement('p')
       footerText.style.cssText = 'color:#5C5040;font-size:12px;'
-      footerText.textContent = 'Waiting for response. You will be notified if they express interest back.'
-      footer.appendChild(footerText)
+      var sentStatus = interest.status || 'pending'
+      if (sentStatus === 'accepted') {
+        footerText.textContent = '🎉 They accepted! You can now chat.'
+        footerText.style.color = '#2D5016'
+        footerText.style.fontWeight = '600'
+        var chatBtn2 = document.createElement('a')
+        chatBtn2.href = 'chat.html?with=' + encodeURIComponent(interest.to_email) + '&interest=' + interest.id
+        chatBtn2.textContent = '💬 Open Chat'
+        chatBtn2.style.cssText = 'padding:8px 16px;background:#2D5016;color:white;font-family:monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;border-radius:8px;text-decoration:none;font-weight:700;'
+        footer.appendChild(footerText)
+        footer.appendChild(chatBtn2)
+      } else if (sentStatus === 'rejected') {
+        footerText.textContent = 'They declined this time.'
+        footerText.style.color = '#8B1A1A'
+        footer.appendChild(footerText)
+      } else {
+        footerText.textContent = 'Waiting for response...'
+        footer.appendChild(footerText)
+      }
 
       card.appendChild(header)
       card.appendChild(footer)

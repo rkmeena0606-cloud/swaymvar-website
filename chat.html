@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWAYMVAR | Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#FEFCF5;color:#1C1A14;font-family:'DM Sans',sans-serif;height:100vh;display:flex;flex-direction:column;}
+.nav{background:#FEFCF5;border-bottom:1px solid #D4C5A0;padding:14px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.nav a{color:#2D5016;text-decoration:none;font-size:13px;}
+.nav-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#2D5016;}
+.nav-with{font-size:12px;color:#5C5040;}
+.chat-wrap{flex:1;display:flex;flex-direction:column;max-width:680px;width:100%;margin:0 auto;padding:0;}
+.messages-area{flex:1;overflow-y:auto;padding:20px 16px;display:flex;flex-direction:column;gap:10px;}
+.msg{max-width:75%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.5;}
+.msg.sent{background:#2D5016;color:white;align-self:flex-end;border-bottom-right-radius:4px;}
+.msg.received{background:white;border:1px solid #D4C5A0;color:#1C1A14;align-self:flex-start;border-bottom-left-radius:4px;}
+.msg-time{font-size:10px;opacity:0.6;margin-top:3px;}
+.msg.sent .msg-time{text-align:right;}
+.msg-sender{font-size:10px;color:#A67C00;font-family:'Space Mono',monospace;text-transform:uppercase;margin-bottom:2px;}
+.input-area{padding:12px 16px;border-top:1px solid #D4C5A0;background:#FEFCF5;display:flex;gap:8px;flex-shrink:0;}
+.msg-input{flex:1;padding:12px 16px;border:1px solid #D4C5A0;border-radius:24px;font-size:14px;font-family:'DM Sans',sans-serif;background:white;outline:none;resize:none;}
+.msg-input:focus{border-color:#2D5016;}
+.send-btn{padding:12px 20px;background:#2D5016;color:white;border:none;border-radius:24px;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;cursor:pointer;flex-shrink:0;}
+.send-btn:hover{background:#1a3308;}
+.send-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.empty-chat{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:40px;text-align:center;}
+.login-gate{flex:1;display:flex;align-items:center;justify-content:center;padding:40px;}
+.match-header{background:#EDF5E0;border-bottom:1px solid #2D5016;padding:10px 16px;text-align:center;flex-shrink:0;}
+.match-header p{font-size:12px;color:#2D5016;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="messages.html">← Back</a>
+  <div style="flex:1">
+    <div class="nav-title" id="chat-partner-name">Chat</div>
+    <div class="nav-with" id="chat-partner-org"></div>
+  </div>
+  <div style="width:36px;height:36px;border-radius:50%;background:#2D5016;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;">💬</div>
+</div>
+
+<!-- MATCH BANNER -->
+<div class="match-header" id="match-banner" style="display:none;">
+  <p>✓ Mutual Interest — You are now connected</p>
+</div>
+
+<!-- MAIN -->
+<div class="chat-wrap">
+
+  <!-- LOGIN GATE -->
+  <div class="login-gate" id="login-gate">
+    <div style="text-align:center;">
+      <p style="font-size:32px;margin-bottom:12px;">🔒</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#2D5016;margin-bottom:8px;">Sign in to chat</h3>
+      <p style="color:#5C5040;font-size:14px;margin-bottom:16px;">Only matched members can message each other.</p>
+      <a href="messages.html" style="padding:12px 24px;background:#2D5016;color:white;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;border-radius:8px;text-decoration:none;">Go to Messages</a>
+    </div>
+  </div>
+
+  <!-- CHAT AREA -->
+  <div id="chat-area" style="display:none;flex:1;display:none;flex-direction:column;">
+    <div class="messages-area" id="messages-area">
+      <div class="empty-chat" id="empty-chat">
+        <p style="font-size:40px;">👋</p>
+        <p style="font-family:'Playfair Display',serif;font-size:18px;color:#2D5016;font-weight:700;">Start the conversation</p>
+        <p style="color:#5C5040;font-size:13px;">You both expressed interest. Say hello!</p>
+      </div>
+    </div>
+    <div class="input-area">
+      <textarea class="msg-input" id="msg-input" rows="1" placeholder="Type a message..." onkeydown="handleKey(event)"></textarea>
+      <button class="send-btn" id="send-btn" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA_URL = 'https://hlfccfuyduotjliadkou.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsZmNjZnV5ZHVvdGpsaWFka291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NDQ4NTUsImV4cCI6MjA5NTEyMDg1NX0.z8yosdFqHpO0kj3AGi-G_jH0f8mh8iC9u6EVa_lH7wY'
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY)
+
+var currentUser = null
+var partnerEmail = null
+var interestId = null
+var pollInterval = null
+
+// Get params from URL
+var params = new URLSearchParams(window.location.search)
+partnerEmail = params.get('with')
+interestId = params.get('interest')
+
+async function init() {
+  if (typeof db === 'undefined') { setTimeout(init, 100); return }
+  var res = await db.auth.getSession()
+  if (!res.data.session) { return }
+  currentUser = res.data.session.user
+
+  if (!partnerEmail) {
+    document.getElementById('login-gate').style.display = 'none'
+    document.getElementById('chat-area').style.display = 'flex'
+    document.getElementById('empty-chat').style.display = 'flex'
+    document.getElementById('empty-chat').innerHTML = '<p style="color:#8B1A1A;">No chat partner specified.</p>'
+    return
+  }
+
+  // Load partner profile
+  var pr = await db.from('profiles').select('full_name,org,designation').ilike('email', partnerEmail).single()
+  if (pr.data) {
+    var firstName = (pr.data.full_name || 'Member').split(' ')[0]
+    document.getElementById('chat-partner-name').textContent = firstName
+    document.getElementById('chat-partner-org').textContent = (pr.data.org || '') + (pr.data.designation ? ' · ' + pr.data.designation : '')
+    document.title = 'Chat with ' + firstName + ' | SWAYMVAR'
+  }
+
+  document.getElementById('match-banner').style.display = 'block'
+  document.getElementById('login-gate').style.display = 'none'
+  document.getElementById('chat-area').style.display = 'flex'
+
+  // Load messages
+  await loadMessages()
+
+  // Poll for new messages every 5 seconds
+  pollInterval = setInterval(loadMessages, 5000)
+}
+
+async function loadMessages() {
+  var myEmail = currentUser.email
+  var res = await db.from('chat_messages')
+    .select('*')
+    .or('and(from_email.ilike.' + myEmail + ',to_email.ilike.' + partnerEmail + '),and(from_email.ilike.' + partnerEmail + ',to_email.ilike.' + myEmail + ')')
+    .order('created_at', {ascending: true})
+
+  if (res.error || !res.data) return
+
+  var area = document.getElementById('messages-area')
+  var emptyEl = document.getElementById('empty-chat')
+
+  if (res.data.length === 0) {
+    if (emptyEl) emptyEl.style.display = 'flex'
+    return
+  }
+
+  if (emptyEl) emptyEl.style.display = 'none'
+
+  // Rebuild messages
+  area.innerHTML = ''
+  res.data.forEach(function(msg) {
+    var isMine = msg.from_email.toLowerCase() === myEmail.toLowerCase()
+    var div = document.createElement('div')
+    div.className = 'msg ' + (isMine ? 'sent' : 'received')
+
+    var text = document.createElement('p')
+    text.textContent = msg.message
+    div.appendChild(text)
+
+    var time = document.createElement('p')
+    time.className = 'msg-time'
+    var d = new Date(msg.created_at)
+    time.textContent = d.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'})
+    div.appendChild(time)
+
+    area.appendChild(div)
+  })
+
+  // Scroll to bottom
+  area.scrollTop = area.scrollHeight
+}
+
+async function sendMessage() {
+  var input = document.getElementById('msg-input')
+  var btn = document.getElementById('send-btn')
+  var text = input.value.trim()
+  if (!text || !currentUser || !partnerEmail) return
+
+  btn.disabled = true
+  input.value = ''
+  input.style.height = 'auto'
+
+  var res = await db.from('chat_messages').insert({
+    from_email: currentUser.email,
+    to_email: partnerEmail,
+    message: text,
+    interest_id: interestId || null
+  })
+
+  if (res.error) {
+    input.value = text
+    alert('Failed to send. Try again.')
+  } else {
+    await loadMessages()
+  }
+  btn.disabled = false
+  input.focus()
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault()
+    sendMessage()
+  }
+}
+
+// Auto-resize textarea
+document.getElementById('msg-input').addEventListener('input', function() {
+  this.style.height = 'auto'
+  this.style.height = Math.min(this.scrollHeight, 120) + 'px'
+})
+
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(init, 200)
+})
+</script>
+</body>
+</html>
