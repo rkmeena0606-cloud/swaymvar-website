@@ -80,13 +80,13 @@ body{background:#FEFCF5;color:#1C1A14;font-family:'DM Sans',sans-serif;padding-b
             </select>
           </div>
           <div style="grid-column:1/-1;">
-            <label class="form-label">I am</label>
-            <div style="display:flex;gap:12px;margin-top:6px;">
-              <label style="display:flex;align-items:center;gap:8px;border:1.5px solid #D4C5A0;border-radius:8px;padding:12px 20px;flex:1;cursor:pointer;">
+            <label class="form-label">I am <span style="color:#8B1A1A;">*</span> <span id="gender-error" style="color:#8B1A1A;font-size:11px;font-weight:400;display:none;">— Please select your gender</span></label>
+            <div id="gender-group" style="display:flex;gap:12px;margin-top:6px;">
+              <label id="gender-female-label" style="display:flex;align-items:center;gap:8px;border:1.5px solid #D4C5A0;border-radius:8px;padding:12px 20px;flex:1;cursor:pointer;transition:all 0.2s;" onclick="highlightGender('female')">
                 <input type="radio" name="gender" value="female" style="accent-color:#2D5016;width:16px;height:16px;"/>
                 <span style="font-size:14px;font-weight:600;">&#128105; Female</span>
               </label>
-              <label style="display:flex;align-items:center;gap:8px;border:1.5px solid #D4C5A0;border-radius:8px;padding:12px 20px;flex:1;cursor:pointer;">
+              <label id="gender-male-label" style="display:flex;align-items:center;gap:8px;border:1.5px solid #D4C5A0;border-radius:8px;padding:12px 20px;flex:1;cursor:pointer;transition:all 0.2s;" onclick="highlightGender('male')">
                 <input type="radio" name="gender" value="male" style="accent-color:#2D5016;width:16px;height:16px;"/>
                 <span style="font-size:14px;font-weight:600;">&#128104; Male</span>
               </label>
@@ -298,6 +298,19 @@ function submitProfile() {
   }
   var traits = Array.from(document.querySelectorAll('#trait-container .trait-btn.selected')).map(function(b) { return b.textContent; }).join(', ');
   var genderRadio = document.querySelector('input[name="gender"]:checked');
+
+  // Gender is mandatory — block submit if not selected
+  if (!genderRadio) {
+    document.getElementById('gender-error').style.display = 'inline'
+    var grp = document.getElementById('gender-group')
+    grp.style.outline = '2px solid #8B1A1A'
+    grp.style.borderRadius = '10px'
+    grp.style.padding = '6px'
+    grp.scrollIntoView({behavior:'smooth', block:'center'})
+    if (submitBtn) { submitBtn.textContent = 'Create My Profile'; submitBtn.disabled = false }
+    return
+  }
+
   var relocationRadio = document.querySelector('input[name="relocation"]:checked');
   var data = {
     full_name: (document.getElementById('fname').value || '') + ' ' + (document.getElementById('lname').value || ''),
