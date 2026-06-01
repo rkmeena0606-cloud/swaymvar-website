@@ -377,6 +377,19 @@ function populateDashboard(p) {
   })
   // Store profile ID for preview link
   window.profileId = p.id
+
+  // ✅ Load existing photos into grid
+  var grid = document.getElementById('photos-grid')
+  if (grid && p.photo_urls) {
+    try {
+      var savedUrls = typeof p.photo_urls === 'string' ? JSON.parse(p.photo_urls) : p.photo_urls
+      if (savedUrls && savedUrls.length > 0) {
+        savedUrls.forEach(function(url) {
+          if (url) addPhotoCard(grid, url)
+        })
+      }
+    } catch(e) { console.error('Error loading saved photos:', e) }
+  }
 }
 
 function switchSection(sec) {
@@ -579,11 +592,23 @@ async function handlePhotoUpload(input) {
     var publicUrl = urlData.publicUrl
     
     // Save URL to profiles table
-    var existing = profileData?.photo_urls ? JSON.parse(profileData.photo_urls) : []
+    var existing = []
+    try {
+      existing = profileData?.photo_urls
+        ? (typeof profileData.photo_urls === 'string' ? JSON.parse(profileData.photo_urls) : profileData.photo_urls)
+        : []
+    } catch(pe) { existing = [] }
     existing.push(publicUrl)
-    await db.from('profiles').update({photo_urls: JSON.stringify(existing)}).ilike('email', currentUser.email)
-    
-    // Update preview div
+    var newJson = JSON.stringify(existing)
+    var { error: updateErr } = await db.from('profiles').update({photo_urls: newJson}).ilike('email', currentUser.email)
+    if (updateErr) {
+      console.error('DB update error:', updateErr)
+      showToast('Photo uploaded but save failed. Try again.')
+      return
+    }
+    // ✅ Update profileData in memory so next upload doesn't overwrite
+    if (profileData) profileData.photo_urls = newJson
+
     // Replace temp preview with proper card with delete button
     var prev = document.getElementById('photo-preview-new')
     if (prev) {
