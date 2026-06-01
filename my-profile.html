@@ -417,56 +417,69 @@ async function loadInterests() {
   if (!currentUser) return
   var myEmail = currentUser.email
 
+  function makeCard(r, isSent) {
+    var div = document.createElement('div')
+    div.style.cssText = 'padding:14px;border:1px solid #D4C5A0;border-radius:10px;margin-bottom:10px;background:white;'
+    var date = new Date(r.created_at).toLocaleDateString('en-IN')
+    var statusColor = r.status === 'accepted' ? '#16a34a' : r.status === 'declined' ? '#8B1A1A' : '#A67C00'
+    var topLine = isSent ? r.to_email : (r.from_org || r.from_email.split('@')[0])
+    var subLine = isSent ? '' : (r.from_designation || r.from_email)
+    var msgLine = (!isSent && r.message) ? r.message : ''
+
+    div.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">' +
+      '<div style="flex:1;">' +
+        '<p style="font-weight:600;color:#1C1A14;font-size:14px;">' + topLine + '</p>' +
+        (subLine ? '<p style="font-size:12px;color:#5C5040;">' + subLine + '</p>' : '') +
+        (msgLine ? '<p style="font-size:12px;color:#5C5040;margin-top:4px;font-style:italic;">&ldquo;' + msgLine + '&rdquo;</p>' : '') +
+        '<p style="font-size:11px;color:#A67C00;margin-top:4px;">' + date + '</p>' +
+      '</div>' +
+      '<div class="btn-area" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;"></div>' +
+    '</div>'
+
+    var btnArea = div.querySelector('.btn-area')
+    if (!isSent && r.status === 'pending') {
+      var accBtn = document.createElement('button')
+      accBtn.textContent = 'Accept'
+      accBtn.style.cssText = 'padding:8px 14px;background:#2D5016;color:white;border:none;border-radius:6px;font-size:11px;font-family:monospace;cursor:pointer;text-transform:uppercase;'
+      accBtn.onclick = function() { respondInterest(r.id, 'accepted', accBtn) }
+      var decBtn = document.createElement('button')
+      decBtn.textContent = 'Decline'
+      decBtn.style.cssText = 'padding:8px 14px;background:transparent;color:#8B1A1A;border:1px solid #8B1A1A;border-radius:6px;font-size:11px;font-family:monospace;cursor:pointer;text-transform:uppercase;'
+      decBtn.onclick = function() { respondInterest(r.id, 'declined', decBtn) }
+      btnArea.appendChild(accBtn)
+      btnArea.appendChild(decBtn)
+    } else {
+      var span = document.createElement('span')
+      span.textContent = r.status
+      span.style.cssText = 'font-size:11px;font-family:monospace;text-transform:uppercase;color:' + statusColor + ';'
+      btnArea.appendChild(span)
+    }
+    return div
+  }
+
   // Load received interests
-  var recRes = await db.from('interests').select('*').ilike('to_email', myEmail).order('created_at', {ascending: false})
   var recList = document.getElementById('interests-list')
+  recList.innerHTML = '<p style="color:#5C5040;font-size:13px;text-align:center;padding:16px 0;">Loading...</p>'
+  var recRes = await db.from('interests').select('*').ilike('to_email', myEmail).order('created_at', {ascending: false})
+  recList.innerHTML = ''
   if (!recRes.data || recRes.data.length === 0) {
     recList.innerHTML = '<p style="color:#5C5040;font-size:13px;text-align:center;padding:24px 0;">No interests received yet.</p>'
   } else {
-    recList.innerHTML = recRes.data.map(function(r) {
-      var date = new Date(r.created_at).toLocaleDateString('en-IN')
-      var statusColor = r.status === 'accepted' ? '#16a34a' : r.status === 'declined' ? '#8B1A1A' : '#A67C00'
-      var fromName = r.from_email.split('@')[0]
-      return '<div style="padding:14px;border:1px solid #D4C5A0;border-radius:10px;margin-bottom:10px;background:white;">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">' +
-          '<div>' +
-            '<p style="font-weight:600;color:#1C1A14;font-size:14px;">' + (r.from_org || fromName) + '</p>' +
-            '<p style="font-size:12px;color:#5C5040;">' + (r.from_designation || r.from_email) + '</p>' +
-            (r.message ? '<p style="font-size:12px;color:#5C5040;margin-top:4px;font-style:italic;">"' + r.message + '"</p>' : '') +
-            '<p style="font-size:11px;color:#A67C00;margin-top:4px;">' + date + '</p>' +
-          '</div>' +
-          '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
-            (r.status === 'pending' ?
-              '<button onclick="respondInterest('' + r.id + '','accepted',this)" style="padding:8px 14px;background:#2D5016;color:white;border:none;border-radius:6px;font-size:11px;font-family:monospace;cursor:pointer;text-transform:uppercase;">Accept</button>' +
-              '<button onclick="respondInterest('' + r.id + '','declined',this)" style="padding:8px 14px;background:transparent;color:#8B1A1A;border:1px solid #8B1A1A;border-radius:6px;font-size:11px;font-family:monospace;cursor:pointer;text-transform:uppercase;">Decline</button>'
-              : '<span style="font-size:11px;font-family:monospace;text-transform:uppercase;color:' + statusColor + ';">' + r.status + '</span>') +
-          '</div>' +
-        '</div>' +
-      '</div>'
-    }).join('')
+    recRes.data.forEach(function(r) { recList.appendChild(makeCard(r, false)) })
   }
 
   // Load sent interests
-  var sentRes = await db.from('interests').select('*').ilike('from_email', myEmail).order('created_at', {ascending: false})
   var sentList = document.getElementById('sent-list')
+  sentList.innerHTML = '<p style="color:#5C5040;font-size:13px;text-align:center;padding:16px 0;">Loading...</p>'
+  var sentRes = await db.from('interests').select('*').ilike('from_email', myEmail).order('created_at', {ascending: false})
+  sentList.innerHTML = ''
   if (!sentRes.data || sentRes.data.length === 0) {
     sentList.innerHTML = '<p style="color:#5C5040;font-size:13px;text-align:center;padding:24px 0;">You have not sent any interests yet.</p>'
   } else {
-    sentList.innerHTML = sentRes.data.map(function(r) {
-      var date = new Date(r.created_at).toLocaleDateString('en-IN')
-      var statusColor = r.status === 'accepted' ? '#16a34a' : r.status === 'declined' ? '#8B1A1A' : '#A67C00'
-      return '<div style="padding:14px;border:1px solid #D4C5A0;border-radius:10px;margin-bottom:10px;background:white;">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">' +
-          '<div>' +
-            '<p style="font-weight:600;color:#1C1A14;font-size:14px;">' + r.to_email + '</p>' +
-            '<p style="font-size:11px;color:#A67C00;margin-top:4px;">' + date + '</p>' +
-          '</div>' +
-          '<span style="font-size:11px;font-family:monospace;text-transform:uppercase;color:' + statusColor + ';">' + r.status + '</span>' +
-        '</div>' +
-      '</div>'
-    }).join('')
+    sentRes.data.forEach(function(r) { sentList.appendChild(makeCard(r, true)) })
   }
 }
+
 
 async function respondInterest(id, status, btn) {
   btn.disabled = true
