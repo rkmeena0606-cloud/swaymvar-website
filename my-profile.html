@@ -103,6 +103,7 @@ body{background:#FEFCF5;color:#1C1A14;font-family:'DM Sans',sans-serif;padding-b
     <button class="tab-btn" id="sec-work" onclick="switchSection('work')">&#128188; Work</button>
     <button class="tab-btn" id="sec-life" onclick="switchSection('life')">&#127775; Life</button>
     <button class="tab-btn" id="sec-personality" onclick="switchSection('personality')">&#129504; Personality</button>
+    <button class="tab-btn" id="sec-interests" onclick="switchSection('interests')">&#10084; Interests</button>
   </div>
 
   <!-- PHOTOS SECTION -->
@@ -207,6 +208,18 @@ body{background:#FEFCF5;color:#1C1A14;font-family:'DM Sans',sans-serif;padding-b
       <label class="form-label">About Your Personality</label>
       <textarea class="form-input" id="edit-personality" rows="4" placeholder="Describe your personality..."></textarea>
       <button onclick="saveSection('personality')" class="btn-primary" style="margin-top:16px;" id="save-personality-btn">Save Personality</button>
+    </div>
+  </div>
+
+  <!-- INTERESTS SECTION -->
+  <div id="content-interests" style="display:none;">
+    <div class="section-card">
+      <p style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Received Interests</p>
+      <div id="interests-list"><p style="color:#5C5040;font-size:13px;text-align:center;padding:24px 0;">Loading...</p></div>
+    </div>
+    <div class="section-card" style="margin-top:12px;">
+      <p style="font-family:'Space Mono',monospace;font-size:10px;color:#A67C00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Interests I Sent</p>
+      <div id="sent-list"><p style="color:#5C5040;font-size:13px;text-align:center;padding:24px 0;">Loading...</p></div>
     </div>
   </div>
 
@@ -378,27 +391,92 @@ function populateDashboard(p) {
   // Store profile ID for preview link
   window.profileId = p.id
 
-  // ✅ Load existing photos into grid
+  // Load existing saved photos into grid
   var grid = document.getElementById('photos-grid')
   if (grid && p.photo_urls) {
     try {
       var savedUrls = typeof p.photo_urls === 'string' ? JSON.parse(p.photo_urls) : p.photo_urls
       if (savedUrls && savedUrls.length > 0) {
-        savedUrls.forEach(function(url) {
-          if (url) addPhotoCard(grid, url)
-        })
+        savedUrls.forEach(function(url) { if (url) addPhotoCard(grid, url) })
       }
     } catch(e) { console.error('Error loading saved photos:', e) }
   }
 }
 
 function switchSection(sec) {
-  var sections = ['photos','basic','work','life','personality']
+  var sections = ['photos','basic','work','life','personality','interests']
   sections.forEach(function(s) {
     document.getElementById('content-' + s).style.display = s === sec ? 'block' : 'none'
     var btn = document.getElementById('sec-' + s)
     if (btn) btn.className = 'tab-btn' + (s === sec ? ' active' : '')
   })
+  if (sec === 'interests') loadInterests()
+}
+
+async function loadInterests() {
+  if (!currentUser) return
+  var myEmail = currentUser.email
+
+  // Load received interests
+  var recRes = await db.from('interests').select('*').ilike('to_email', myEmail).order('created_at', {ascending: false})
+  var recList = document.getElementById('interests-list')
+  if (!recRes.data || recRes.data.length === 0) {
+    recList.innerHTML = '<p style="color:#5C5040;font-size:13px;text-align:center;padding:24px 0;">No interests received yet.</p>'
+  } else {
+    recList.innerHTML = recRes.data.map(function(r) {
+      var date = new Date(r.created_at).toLocaleDateString('en-IN')
+      var statusColor = r.status === 'accepted' ? '#16a34a' : r.status === 'declined' ? '#8B1A1A' : '#A67C00'
+      var fromName = r.from_email.split('@')[0]
+      return '<div style="padding:14px;border:1px solid #D4C5A0;border-radius:10px;margin-bottom:10px;background:white;">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">' +
+          '<div>' +
+            '<p style="font-weight:600;color:#1C1A14;font-size:14px;">' + (r.from_org || fromName) + '</p>' +
+            '<p style="font-size:12px;color:#5C5040;">' + (r.from_designation || r.from_email) + '</p>' +
+            (r.message ? '<p style="font-size:12px;color:#5C5040;margin-top:4px;font-style:italic;">"' + r.message + '"</p>' : '') +
+            '<p style="font-size:11px;color:#A67C00;margin-top:4px;">' + date + '</p>' +
+          '</div>' +
+          '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+            (r.status === 'pending' ?
+              '<button onclick="respondInterest('' + r.id + '','accepted',this)" style="padding:8px 14px;background:#2D5016;color:white;border:none;border-radius:6px;font-size:11px;font-family:monospace;cursor:pointer;text-transform:uppercase;">Accept</button>' +
+              '<button onclick="respondInterest('' + r.id + '','declined',this)" style="padding:8px 14px;background:transparent;color:#8B1A1A;border:1px solid #8B1A1A;border-radius:6px;font-size:11px;font-family:monospace;cursor:pointer;text-transform:uppercase;">Decline</button>'
+              : '<span style="font-size:11px;font-family:monospace;text-transform:uppercase;color:' + statusColor + ';">' + r.status + '</span>') +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    }).join('')
+  }
+
+  // Load sent interests
+  var sentRes = await db.from('interests').select('*').ilike('from_email', myEmail).order('created_at', {ascending: false})
+  var sentList = document.getElementById('sent-list')
+  if (!sentRes.data || sentRes.data.length === 0) {
+    sentList.innerHTML = '<p style="color:#5C5040;font-size:13px;text-align:center;padding:24px 0;">You have not sent any interests yet.</p>'
+  } else {
+    sentList.innerHTML = sentRes.data.map(function(r) {
+      var date = new Date(r.created_at).toLocaleDateString('en-IN')
+      var statusColor = r.status === 'accepted' ? '#16a34a' : r.status === 'declined' ? '#8B1A1A' : '#A67C00'
+      return '<div style="padding:14px;border:1px solid #D4C5A0;border-radius:10px;margin-bottom:10px;background:white;">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">' +
+          '<div>' +
+            '<p style="font-weight:600;color:#1C1A14;font-size:14px;">' + r.to_email + '</p>' +
+            '<p style="font-size:11px;color:#A67C00;margin-top:4px;">' + date + '</p>' +
+          '</div>' +
+          '<span style="font-size:11px;font-family:monospace;text-transform:uppercase;color:' + statusColor + ';">' + r.status + '</span>' +
+        '</div>' +
+      '</div>'
+    }).join('')
+  }
+}
+
+async function respondInterest(id, status, btn) {
+  btn.disabled = true
+  btn.textContent = status === 'accepted' ? 'Accepting...' : 'Declining...'
+  var res = await db.from('interests').update({status: status}).eq('id', id)
+  if (res.error) {
+    btn.disabled = false; btn.textContent = 'Error'
+    return
+  }
+  loadInterests()
 }
 
 async function saveSection(sec) {
@@ -601,20 +679,10 @@ async function handlePhotoUpload(input) {
     existing.push(publicUrl)
     var newJson = JSON.stringify(existing)
     var { error: updateErr } = await db.from('profiles').update({photo_urls: newJson}).ilike('email', currentUser.email)
-    if (updateErr) {
-      console.error('DB update error:', updateErr)
-      showToast('Photo uploaded but save failed. Try again.')
-      return
-    }
-    // ✅ Update profileData in memory so next upload doesn't overwrite
-    if (profileData) profileData.photo_urls = newJson
-
-    // Replace temp preview with proper card with delete button
+    if (updateErr) { showToast('Upload failed to save. Try again.'); return }
+    if (profileData) profileData.photo_urls = newJson  // keep memory in sync
     var prev = document.getElementById('photo-preview-new')
-    if (prev) {
-      prev.remove()
-      addPhotoCard(document.getElementById('photos-grid'), publicUrl)
-    }
+    if (prev) { prev.remove(); addPhotoCard(document.getElementById('photos-grid'), publicUrl) }
     showToast('Photo saved ✓')
     console.log('Photo uploaded:', publicUrl)
   } catch(e) {

@@ -326,9 +326,13 @@ function submitProfile() {
   }
 
   var relocationRadio = document.querySelector('input[name="relocation"]:checked');
+  var ageVal = parseInt(document.getElementById('age').value) || null;
+  var heightVal = document.getElementById('height').value || '';
   var data = {
     full_name: (document.getElementById('fname').value || '') + ' ' + (document.getElementById('lname').value || ''),
     email: window.verifiedEmail || '',
+    age: ageVal,
+    height: heightVal,
     org: document.getElementById('org').value || '',
     designation: document.getElementById('designation').value || '',
     city: document.getElementById('city').value || '',
@@ -361,6 +365,12 @@ function submitProfile() {
               }
             })
           }
+        }).catch(function() {})
+      }
+      // Auto sign-in the user immediately after registration
+      if (emailVal && setPwd) {
+        db.auth.signInWithPassword({ email: emailVal, password: setPwd }).then(function() {
+          // Signed in — let them proceed naturally
         }).catch(function() {})
       }
       document.getElementById('step-3').style.display = 'none';
