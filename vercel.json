@@ -1,8 +1,63 @@
 {
+  "rewrites": [
+    {
+      "source": "/discover",
+      "destination": "/discover.html"
+    },
+    {
+      "source": "/profile",
+      "destination": "/profile.html"
+    },
+    {
+      "source": "/my-profile",
+      "destination": "/my-profile.html"
+    },
+    {
+      "source": "/create-profile",
+      "destination": "/create-profile.html"
+    },
+    {
+      "source": "/messages",
+      "destination": "/messages.html"
+    },
+    {
+      "source": "/chat",
+      "destination": "/chat.html"
+    },
+    {
+      "source": "/verify",
+      "destination": "/verify.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq.html"
+    },
+    {
+      "source": "/transfer-fit",
+      "destination": "/transfer-fit.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin.html"
+    },
+    {
+      "source": "/signup",
+      "destination": "/signup.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{"type": "host", "value": "swaymvar.in"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "swaymvar.in"
+        }
+      ],
       "destination": "https://www.swaymvar.in/$1",
       "permanent": true
     }
@@ -11,9 +66,18 @@
     {
       "source": "/(.*)",
       "headers": [
-        {"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"},
-        {"key": "Pragma", "value": "no-cache"},
-        {"key": "Expires", "value": "0"}
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "Pragma",
+          "value": "no-cache"
+        },
+        {
+          "key": "Expires",
+          "value": "0"
+        }
       ]
     }
   ]

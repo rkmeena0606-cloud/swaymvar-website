@@ -1,0 +1,36 @@
+SWAYMVAR  —  index.html footer fixes
+=====================================
+Open index.html on GitHub → pencil ✏️ → Ctrl+H (Find & Replace)
+Make all 3 replacements then commit.
+
+─────────────────────────────────────────────────────────
+FIX 1 of 3 — Footer "Verification" link
+─────────────────────────────────────────────────────────
+FIND (exact):
+<a href="profile.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Verification</a>
+
+REPLACE WITH:
+<a href="verify.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">How It Works</a>
+
+─────────────────────────────────────────────────────────
+FIX 2 of 3 — Footer Privacy Policy link
+─────────────────────────────────────────────────────────
+FIND (exact):
+<a href="#" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Privacy Policy</a>
+
+REPLACE WITH:
+<a href="terms.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Privacy Policy</a>
+
+─────────────────────────────────────────────────────────
+FIX 3 of 3 — Footer Terms of Use link
+─────────────────────────────────────────────────────────
+FIND (exact):
+<a href="#" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Terms of Use</a>
+
+REPLACE WITH:
+<a href="terms.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Terms of Use</a>
+
+─────────────────────────────────────────────────────────
+DONE — Commit message suggestion:
+"fix: footer links — verify/privacy/terms"
+─────────────────────────────────────────────────────────

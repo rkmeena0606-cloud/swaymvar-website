@@ -1,0 +1,41 @@
+<!-- ============================================================
+  SWAYMVAR profile.html — No-ID Guard
+  INSTRUCTIONS: Copy the <script> block below and paste it
+  inside the <head> section of your existing profile.html,
+  right before the closing </head> tag.
+  ============================================================ -->
+
+<script>
+/* No-ID guard — runs immediately before page renders */
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  if (!params.get('id')) {
+    /* No ?id= in URL — show a helpful page instead of blank screen */
+    document.addEventListener('DOMContentLoaded', function () {
+      var ls = document.getElementById('loading-state');
+      if (ls) ls.style.display = 'none';
+      document.body.innerHTML =
+        '<div style="min-height:100vh;background:#0d1f0d;display:flex;' +
+          'align-items:center;justify-content:center;font-family:sans-serif;">' +
+          '<div style="text-align:center;padding:40px 24px;max-width:420px;">' +
+            '<div style="font-size:52px;margin-bottom:18px;">&#128269;</div>' +
+            '<h2 style="color:#E8B84B;font-size:22px;font-weight:700;' +
+              'margin-bottom:12px;">No Profile Selected</h2>' +
+            '<p style="color:rgba(255,255,255,0.6);font-size:14px;' +
+              'line-height:1.6;margin-bottom:28px;">' +
+              'This page shows a member&#39;s profile.<br/>' +
+              'Browse verified profiles from the Discover page.</p>' +
+            '<a href="discover.html" style="display:inline-block;' +
+              'background:#C9960C;color:#1C1A14;padding:12px 28px;' +
+              'border-radius:8px;font-weight:700;font-size:14px;' +
+              'text-decoration:none;margin-right:8px;">Browse Profiles</a>' +
+            '<a href="index.html" style="display:inline-block;' +
+              'border:1px solid rgba(201,150,12,0.5);color:#E8B84B;' +
+              'padding:12px 28px;border-radius:8px;font-weight:700;' +
+              'font-size:14px;text-decoration:none;">Home</a>' +
+          '</div>' +
+        '</div>';
+    });
+  }
+})();
+</script>
