@@ -453,15 +453,15 @@ body > div[style*="z-index:9999"]:not([id]) { display: none !important; }
           <a href="index.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Home</a>
           <a href="discover.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Discover</a>
           <a href="create-profile.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Create Profile</a>
-          <a href="profile.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Verification</a>
+          <a href="verify.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">How It Works</a>
         </div>
       </div>
       <div>
         <p class="font-mono" style="font-size:9px;color:#C9960C;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:10px;">Contact</p>
         <div style="display:flex;flex-direction:column;gap:7px;">
           <a href="mailto:concierge@swaymvar.in" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">concierge@swaymvar.in</a>
-          <a href="#" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Privacy Policy</a>
-          <a href="#" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Terms of Use</a>
+          <a href="terms.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Privacy Policy</a>
+          <a href="terms.html" style="color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;">Terms of Use</a>
         </div>
       </div>
     </div>
@@ -546,7 +546,29 @@ document.getElementById('invite-form').addEventListener('submit', async function
   btn.textContent = 'Checking...'
   btn.disabled = true
 
-  const email = document.getElementById('inv-email').value || ''
+  const email = document.getElementById('inv-email').value.trim() || ''
+
+  // Block personal email domains
+  const personalDomains = ['gmail.com','yahoo.com','yahoo.in','hotmail.com','outlook.com','rediffmail.com','icloud.com','protonmail.com','live.com','aol.com','ymail.com']
+  const emailDomain = email.split('@')[1] ? email.split('@')[1].toLowerCase() : ''
+  if (personalDomains.includes(emailDomain)) {
+    formSubmitting = false
+    btn.textContent = 'Join Waitlist →'
+    btn.disabled = false
+    const emailField = document.getElementById('inv-email')
+    emailField.style.borderColor = '#f87171'
+    emailField.focus()
+    let warn = document.getElementById('email-warn')
+    if (!warn) {
+      warn = document.createElement('p')
+      warn.id = 'email-warn'
+      warn.style.cssText = 'color:#f87171;font-size:11px;font-family:monospace;margin-top:4px;'
+      emailField.parentNode.appendChild(warn)
+    }
+    warn.textContent = '⚠ Please use your official work email (e.g. name@rbi.org.in)'
+    setTimeout(function() { emailField.style.borderColor = 'rgba(201,150,12,0.4)'; if(warn) warn.remove() }, 4000)
+    return
+  }
 
   // Check duplicate
   const { data: existing } = await db.from('invite_requests').select('status').eq('email', email).single()
